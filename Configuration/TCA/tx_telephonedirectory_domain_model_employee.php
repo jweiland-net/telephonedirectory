@@ -107,13 +107,30 @@ return array(
                 ),
             ),
         ),
+        'title' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title',
+            'config' => array(
+                'type' => 'radio',
+                'items' => array(
+                    array(
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.0',
+                        0
+                    ),
+                    array(
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.1',
+                        1
+                    ),
+                )
+            )
+        ),
         'first_name' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.first_name',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim, required'
             ),
         ),
         'last_name' => array(
@@ -122,7 +139,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim, required'
             ),
         ),
         'name_additions' => array(
@@ -158,7 +175,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim, required'
             ),
         ),
         'function' => array(
@@ -191,13 +208,22 @@ return array(
                 ),
             ),
         ),
+        'regular_attendance' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.regular_attendance',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            )
+        ),
         'telephone1' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.telephone1',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim, required'
             ),
         ),
         'telephone2' => array(
@@ -299,7 +325,7 @@ return array(
                 'type' => 'select',
                 'foreign_table' => 'tx_telephonedirectory_domain_model_office',
                 'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_office.title',
-                'minitems' => 0,
+                'minitems' => 1,
                 'maxitems' => 1,
             ),
         ),
@@ -310,7 +336,7 @@ return array(
                 'type' => 'select',
                 'foreign_table' => 'tx_telephonedirectory_domain_model_building',
                 'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_building.title',
-                'minitems' => 0,
+                'minitems' => 1,
                 'maxitems' => 1,
             ),
         ),
@@ -344,7 +370,7 @@ return array(
         ),
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, first_name, last_name, name_additions, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, image, office, building, department, language_skill,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, first_name, last_name, name_additions, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, regular_attendance, image, office, building, department, language_skill,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),

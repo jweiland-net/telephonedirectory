@@ -3,7 +3,6 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
-
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
 				<source>Employees</source>
 				<target>Mitarbeiter</target>
@@ -96,7 +95,7 @@
 				<source>Language Skill</source>
 				<target>Sprachkenntnisse</target>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_office">
 				<source>Offices</source>
 				<target>Ämter</target>
@@ -105,7 +104,7 @@
 				<source>Title</source>
 				<target>Bezeichnung</target>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_building">
 				<source>Buildings</source>
 				<target>Gebäude</target>
@@ -118,7 +117,7 @@
 				<source>Address</source>
 				<target>Adresse</target>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_department">
 				<source>Departments</source>
 				<target>Abteilungen</target>
@@ -127,7 +126,7 @@
 				<source>Title</source>
 				<target>Bezeichnung</target>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill">
 				<source>Language Skills</source>
 				<target>Sprachkenntnisse</target>
@@ -226,7 +225,6 @@
 				<source>Click following link to edit entry:</source>
 				<target>Klicken Sie auf den nachfolgenden Link, um den Eintrag zu bearbeiten:</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>

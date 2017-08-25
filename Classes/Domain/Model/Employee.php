@@ -29,6 +29,13 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Employee extends AbstractEntity
 {
     /**
+     * title
+     *
+     * @var int
+     */
+    protected $title;
+
+    /**
      * First name
      *
      * @var string
@@ -148,6 +155,13 @@ class Employee extends AbstractEntity
     protected $additionalInformations = '';
 
     /**
+     * Regular attendance
+     *
+     * @var string
+     */
+    protected $regularAttendance = '';
+
+    /**
      * send HTML-Mail?
      *
      * @var boolean
@@ -218,6 +232,26 @@ class Employee extends AbstractEntity
     }
 
     /**
+     * Returns title
+     *
+     * @return int
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets title
+     *
+     * @param int $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = (int)$title;
+    }
+
+    /**
      * Returns the firstName
      *
      * @return string
@@ -235,7 +269,7 @@ class Employee extends AbstractEntity
      */
     public function setFirstName($firstName)
     {
-        $this->firstName = $firstName;
+        $this->firstName = (string)$firstName;
     }
 
     /**
@@ -256,7 +290,7 @@ class Employee extends AbstractEntity
      */
     public function setLastName($lastName)
     {
-        $this->lastName = $lastName;
+        $this->lastName = (string)$lastName;
     }
 
     /**
@@ -277,7 +311,7 @@ class Employee extends AbstractEntity
      */
     public function setNameAdditions($nameAdditions)
     {
-        $this->nameAdditions = $nameAdditions;
+        $this->nameAdditions = (string)$nameAdditions;
     }
 
     /**
@@ -298,7 +332,7 @@ class Employee extends AbstractEntity
      */
     public function setSubjectField($subjectField)
     {
-        $this->subjectField = $subjectField;
+        $this->subjectField = (string)$subjectField;
     }
 
     /**
@@ -319,7 +353,7 @@ class Employee extends AbstractEntity
      */
     public function setCompany($company)
     {
-        $this->company = $company;
+        $this->company = (string)$company;
     }
 
     /**
@@ -340,7 +374,7 @@ class Employee extends AbstractEntity
      */
     public function setRoomNumber($roomNumber)
     {
-        $this->roomNumber = $roomNumber;
+        $this->roomNumber = (string)$roomNumber;
     }
 
     /**
@@ -361,7 +395,7 @@ class Employee extends AbstractEntity
      */
     public function setFunction($function)
     {
-        $this->function = $function;
+        $this->function = (string)$function;
     }
 
     /**
@@ -382,7 +416,7 @@ class Employee extends AbstractEntity
      */
     public function setAdditionalFunction($additionalFunction)
     {
-        $this->additionalFunction = $additionalFunction;
+        $this->additionalFunction = (string)$additionalFunction;
     }
 
     /**
@@ -403,7 +437,7 @@ class Employee extends AbstractEntity
      */
     public function setTelephone1($telephone1)
     {
-        $this->telephone1 = $telephone1;
+        $this->telephone1 = (string)$telephone1;
     }
 
     /**
@@ -424,7 +458,7 @@ class Employee extends AbstractEntity
      */
     public function setTelephone2($telephone2)
     {
-        $this->telephone2 = $telephone2;
+        $this->telephone2 = (string)$telephone2;
     }
 
     /**
@@ -445,7 +479,7 @@ class Employee extends AbstractEntity
      */
     public function setTelephone3($telephone3)
     {
-        $this->telephone3 = $telephone3;
+        $this->telephone3 = (string)$telephone3;
     }
 
     /**
@@ -466,7 +500,7 @@ class Employee extends AbstractEntity
      */
     public function setMobile($mobile)
     {
-        $this->mobile = $mobile;
+        $this->mobile = (string)$mobile;
     }
 
     /**
@@ -487,7 +521,7 @@ class Employee extends AbstractEntity
      */
     public function setPager($pager)
     {
-        $this->pager = $pager;
+        $this->pager = (string)$pager;
     }
 
     /**
@@ -508,7 +542,7 @@ class Employee extends AbstractEntity
      */
     public function setFax($fax)
     {
-        $this->fax = $fax;
+        $this->fax = (string)$fax;
     }
 
     /**
@@ -529,7 +563,7 @@ class Employee extends AbstractEntity
      */
     public function setPcFax($pcFax)
     {
-        $this->pcFax = $pcFax;
+        $this->pcFax = (string)$pcFax;
     }
 
     /**
@@ -550,7 +584,7 @@ class Employee extends AbstractEntity
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = (string)$email;
     }
 
     /**
@@ -571,13 +605,33 @@ class Employee extends AbstractEntity
      */
     public function setAdditionalInformations($additionalInformations)
     {
-        $this->additionalInformations = $additionalInformations;
+        $this->additionalInformations = (string)$additionalInformations;
+    }
+
+    /**
+     * Returns regular attendance
+     *
+     * @return string
+     */
+    public function getRegularAttendance()
+    {
+        return $this->regularAttendance;
+    }
+
+    /**
+     * Sets regular attendance
+     *
+     * @param string $regularAttendance
+     */
+    public function setRegularAttendance($regularAttendance)
+    {
+        $this->regularAttendance = (string)$regularAttendance;
     }
 
     /**
      * Returns the moduleSysDmailHtml
      *
-     * @return boolean
+     * @return bool
      */
     public function getModuleSysDmailHtml()
     {
@@ -587,12 +641,12 @@ class Employee extends AbstractEntity
     /**
      * Sets the moduleSysDmailHtml
      *
-     * @param boolean $moduleSysDmailHtml
+     * @param bool $moduleSysDmailHtml
      * @return void
      */
     public function setModuleSysDmailHtml($moduleSysDmailHtml)
     {
-        $this->moduleSysDmailHtml = $moduleSysDmailHtml;
+        $this->moduleSysDmailHtml = (bool)$moduleSysDmailHtml;
     }
 
     /**

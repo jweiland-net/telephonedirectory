@@ -3,9 +3,14 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
-
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
 				<source>Employee</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+				<source>Regular attendance</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
 				<source>First name</source>
@@ -168,13 +173,10 @@
 
 			<trans-unit id="email.subject">
 				<source>Edit entry</source>
-				<target>Eintrag bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="email.text">
 				<source>Click following link to edit entry:</source>
-				<target>Klicken Sie auf den nachfolgenden Link, um den Eintrag zu bearbeiten:</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>

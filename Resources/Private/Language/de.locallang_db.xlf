@@ -3,10 +3,21 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
-
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
-				<source>Employees</source>
+				<source>Employee</source>
 				<target>Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+				<source>Title</source>
+				<target>Anrede</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+				<source>Mrs.</source>
+				<target>Frau</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+				<source>Mr.</source>
+				<target>Herr</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
 				<source>First name</source>
@@ -75,6 +86,10 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
 				<source>Additional Informations</source>
 				<target>Zusatzinformation</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+				<source>Regular attendance</source>
+				<target>Regelmäßige Anwesenheitszeiten</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.image">
 				<source>Image</source>
@@ -176,7 +191,6 @@
 				<source>Infotext</source>
 				<target>Infotext</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>

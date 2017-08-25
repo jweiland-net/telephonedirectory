@@ -6,6 +6,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+	title TINYINT(1) DEFAULT 0 NOT NULL,
 	first_name varchar(255) DEFAULT '' NOT NULL,
 	last_name varchar(255) DEFAULT '' NOT NULL,
 	name_additions varchar(255) DEFAULT '' NOT NULL,
@@ -23,6 +24,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	pc_fax varchar(255) DEFAULT '' NOT NULL,
 	email varchar(255) DEFAULT '' NOT NULL,
 	additional_informations varchar(255) DEFAULT '' NOT NULL,
+	regular_attendance VARCHAR(255) DEFAULT '' NOT NULL,
 	module_sys_dmail_html tinyint(4) unsigned DEFAULT '1' NOT NULL,
 	office int(11) unsigned DEFAULT '0',
 	building int(11) unsigned DEFAULT '0',

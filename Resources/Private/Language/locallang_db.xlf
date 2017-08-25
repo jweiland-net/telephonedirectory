@@ -3,9 +3,17 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
-
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
 				<source>Employees</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+				<source>Mrs.</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+				<source>Mr.</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
 				<source>First name</source>
@@ -57,6 +65,9 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
 				<source>Additional Informations</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+				<source>Regular attendance</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.image">
 				<source>Image</source>
@@ -134,7 +145,6 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
 				<source>Infotext</source>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>

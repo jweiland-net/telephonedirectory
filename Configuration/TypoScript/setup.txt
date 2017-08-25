@@ -4,10 +4,12 @@ plugin.tx_telephonedirectory {
             0 = EXT:telephonedirectory/Resources/Private/Templates/
             1 = {$plugin.tx_telephonedirectory.view.templateRootPath}
         }
+
         partialRootPaths {
             0 = EXT:telephonedirectory/Resources/Private/Partials/
             1 = {$plugin.tx_telephonedirectory.view.partialRootPath}
         }
+
         layoutRootPaths {
             0 = EXT:telephonedirectory/Resources/Private/Layouts/
             1 = {$plugin.tx_telephonedirectory.view.layoutRootPath}
