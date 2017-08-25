@@ -1,0 +1,21 @@
+<f:if condition="{employees}">
+	<f:then>
+		<div class="list scroll-container">
+			<f:widget.paginate objects="{employees}" as="paginatedEmployees" configuration="{itemsPerPage: settings.pageBrowser.itemsPerPage, insertAbove: settings.pageBrowser.insertAbove, insertBelow: settings.pageBrowser.insertBelow, maximumNumberOfLinks: settings.pageBrowser.maximumNumberOfLinks}">
+				<f:for each="{paginatedEmployees}" as="employee">
+					<div class="marginbottom borderbottom grid_12 scroll-item clearfix">
+						<h2 class="noborder nomargin"><f:link.action action="show" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
+							<f:if condition="{employee.nameAdditions}">{employee.nameAdditions} </f:if>{employee.lastName}, {employee.firstName} </f:link.action></h2>
+						<div class="grid_6 floatleft">{employee.office.title}</div>
+						<div class="grid_6 floatleft">
+							<f:if condition="{employee.telephone1}"><span aria-hidden="true" class="icon-phone_pf"></span>{employee.telephone1}</f:if>
+						</div>
+					</div>
+				</f:for>
+			</f:widget.paginate>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="noResults"><f:translate key="noResults" /></div>
+	</f:else>
+</f:if>

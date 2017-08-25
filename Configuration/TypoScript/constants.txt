@@ -1,0 +1,28 @@
+plugin.tx_telephonedirectory {
+	view {
+		# cat=plugin.tx_telephonedirectory/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:telephonedirectory/Resources/Private/Templates/
+		# cat=plugin.tx_telephonedirectory/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:telephonedirectory/Resources/Private/Partials/
+		# cat=plugin.tx_telephonedirectory/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:telephonedirectory/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_telephonedirectory//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		# cat=plugin.tx_telephonedirectory//b; type=int+; label=PID of Detail page: Leave empty to show details on current page.
+		pidOfDetailPage =
+		pageBrowser {
+			# cat=plugin.tx_telephonedirectory/basic/dims; type=int+; label=Items per page: How many items should be displayed on one page
+			itemsPerPage = 15
+			# cat=plugin.tx_telephonedirectory/basic/enable; type=boolean; label=insert above: Should pagebrowser be displayed on top of the list
+			insertAbove = 1
+			# cat=plugin.tx_telephonedirectory/basic/enable; type=boolean; label=insert below: Should pagebrowser be displayed at bottom of the list
+			insertBelow = 0
+			# cat=plugin.tx_telephonedirectory/basic/dims; type=int+; label=max number of links: Define maximum amount of pages which should be displayed
+			maximumNumberOfLinks = 5
+		}
+	}
+}

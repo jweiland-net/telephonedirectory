@@ -1,0 +1,13 @@
+<f:if condition="{value}">
+	<f:if condition="{email}">
+		<f:then>
+			<dd>
+				<f:translate key="tx_telephonedirectory_domain_model_employee.{field}"/>:
+				<f:link.email email="{value}">{value}</f:link.email>
+			</dd>
+		</f:then>
+		<f:else>
+			<dd><f:translate key="tx_telephonedirectory_domain_model_employee.{field}"/>: {value}</dd>
+		</f:else>
+	</f:if>
+</f:if>

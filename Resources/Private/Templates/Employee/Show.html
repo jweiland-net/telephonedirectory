@@ -1,0 +1,26 @@
+{namespace td=JWeiland\Telephonedirectory\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<f:render partial="Employee/Properties" arguments="{employee: employee}" />
+
+	<f:if condition="{td:isEmailUnique(email: employee.email)}">
+		<f:then>
+			<p class="align-right info-box">
+				<f:link.action action="sendEditMail" arguments="{employee: employee}">
+					<span><f:translate key="editYourRecord"/></span><span aria-hidden="true" class="icon-arrowright"></span>
+				</f:link.action>
+			</p>
+		</f:then>
+		<f:else>
+			<f:translate key="cantEditYourRecord" arguments="{0: settings.editContactName, 1: settings.editContactEmail}" />
+		</f:else>
+	</f:if>
+
+</f:section>
+
+

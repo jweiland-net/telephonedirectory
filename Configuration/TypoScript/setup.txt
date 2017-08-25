@@ -1,0 +1,37 @@
+plugin.tx_telephonedirectory {
+	view {
+		templateRootPath = {$plugin.tx_telephonedirectory.view.templateRootPath}
+		partialRootPath = {$plugin.tx_telephonedirectory.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_telephonedirectory.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_telephonedirectory.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		rewrittenPropertyMapper = 1
+	}
+	settings {
+		editContactName = [Name]
+		editContactEmail = [Email]
+		pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
+		pageBrowser {
+			itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
+			insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
+			insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
+			maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
+		}
+	}
+}
+
+plugin.tx_telephonedirectory._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+)

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_employee">
+				<source>Employees</source>
+				<target>Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
+				<source>First name</source>
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.last_name">
+				<source>Last name</source>
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
+				<source>Name additions</source>
+				<target>Namenszusatz</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
+				<source>Subject Field</source>
+				<target>Sachgebiet</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.company">
+				<source>Company</source>
+				<target>Firma</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.room_number">
+				<source>Room number</source>
+				<target>Zimmernummer</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.function">
+				<source>Function</source>
+				<target>Position</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
+				<source>Additional Function</source>
+				<target>Zusatzfunktion</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone1">
+				<source>Telephone 1</source>
+				<target>Telefon 1</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone2">
+				<source>Telephone 2</source>
+				<target>Telefon 2</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone3">
+				<source>Telephone 3</source>
+				<target>Telefon 3</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.mobile">
+				<source>Mobile</source>
+				<target>Mobil</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.pager">
+				<source>Pager</source>
+				<target>Pager</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.fax">
+				<source>Fax</source>
+				<target>Fax</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.pc_fax">
+				<source>PC Fax</source>
+				<target>PC Fax</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.email">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
+				<source>Additional Informations</source>
+				<target>Zusatzinformation</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.image">
+				<source>Image</source>
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.office">
+				<source>Office</source>
+				<target>Amt</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.building">
+				<source>Building</source>
+				<target>Gebäude</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.department">
+				<source>Department</source>
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
+				<source>Language Skill</source>
+				<target>Sprachkenntnisse</target>
+			</trans-unit>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_office">
+				<source>Offices</source>
+				<target>Ämter</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.title">
+				<source>Title</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_building">
+				<source>Buildings</source>
+				<target>Gebäude</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.title">
+				<source>Title</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.address">
+				<source>Address</source>
+				<target>Adresse</target>
+			</trans-unit>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_department">
+				<source>Departments</source>
+				<target>Abteilungen</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_department.title">
+				<source>Title</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill">
+				<source>Language Skills</source>
+				<target>Sprachkenntnisse</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.language">
+				<source>Language</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what">
+				<source>What</source>
+				<target>Was</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
+				<source>Speak</source>
+				<target>Wort</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
+				<source>Write</source>
+				<target>Schrift</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
+				<source>Speak and Write</source>
+				<target>Wort und Schrift</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
+				<source>Skill</source>
+				<target>Kenntnisse</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
+				<source>Native language</source>
+				<target>Muttersprache</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
+				<source>Fluent</source>
+				<target>Flüssig</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
+				<source>Good</source>
+				<target>Gut</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
+				<source>Basic knowledge</source>
+				<target>Grundkenntnisse</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
+				<source>Infotext</source>
+				<target>Infotext</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,14 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<f:render partial="FormErrors" arguments="{object:Employee}"/>
+
+	<f:form action="create"  name="newEmployee" object="{newEmployee}">
+		<f:render partial="Employee/FormFields" />
+		<f:form.submit value="Create new" />
+	</f:form>
+
+</f:section>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_employee">
+				<source>Employees</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
+				<source>First name</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.last_name">
+				<source>Last name</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
+				<source>Name additions</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
+				<source>Subject Field</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.company">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.room_number">
+				<source>Room number</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
+				<source>Additional Function</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone1">
+				<source>Telephone 1</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone2">
+				<source>Telephone 2</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.telephone3">
+				<source>Telephone 3</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.mobile">
+				<source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.pager">
+				<source>Pager</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.fax">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.pc_fax">
+				<source>PC Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
+				<source>Additional Informations</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.office">
+				<source>Office</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.building">
+				<source>Building</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.department">
+				<source>Department</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
+				<source>Language Skill</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_telephonedirectory_domain_model_office">
+				<source>Offices</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.title">
+				<source>Title</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_telephonedirectory_domain_model_building">
+				<source>Buildings</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.address">
+				<source>Address</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_telephonedirectory_domain_model_department">
+				<source>Departments</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_department.title">
+				<source>Title</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill">
+				<source>Language Skills</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what">
+				<source>What</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
+				<source>Speak</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
+				<source>Write</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
+				<source>Speak and Write</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
+				<source>Skill</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
+				<source>Native language</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
+				<source>Fluent</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
+				<source>Good</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
+				<source>Basic knowledge</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
+				<source>Infotext</source>
+			</trans-unit>
+
+			<trans-unit id="search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="noResults">
+				<source>No results found</source>
+			</trans-unit>
+			<trans-unit id="backToList">
+				<source>Back to list</source>
+			</trans-unit>
+			<trans-unit id="edit">
+				<source>Edit entry</source>
+			</trans-unit>
+			<trans-unit id="editYourRecord">
+				<source>Here you can edit your own data</source>
+			</trans-unit>
+			<trans-unit id="cantEditYourRecord">
+				<source>For editing your record please contact %1$s (%2$s)</source>
+			</trans-unit>
+			<trans-unit id="save">
+				<source>Save</source>
+			</trans-unit>
+			<trans-unit id="employeeCreated">
+				<source>New employee created</source>
+			</trans-unit>
+			<trans-unit id="employeeUpdated">
+				<source>Employee successful edited</source>
+			</trans-unit>
+			<trans-unit id="emailWasSend">
+				<source>An email was send to employee to edit this entry</source>
+			</trans-unit>
+
+			<trans-unit id="email.subject">
+				<source>Edit entry</source>
+				<target>Eintrag bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="email.text">
+				<source>Click following link to edit entry:</source>
+				<target>Klicken Sie auf den nachfolgenden Link, um den Eintrag zu bearbeiten:</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>
