@@ -1,27 +1,39 @@
 plugin.tx_telephonedirectory {
-	view {
-		templateRootPath = {$plugin.tx_telephonedirectory.view.templateRootPath}
-		partialRootPath = {$plugin.tx_telephonedirectory.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_telephonedirectory.view.layoutRootPath}
-	}
-	persistence {
-		storagePid = {$plugin.tx_telephonedirectory.persistence.storagePid}
-	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		rewrittenPropertyMapper = 1
-	}
-	settings {
-		editContactName = [Name]
-		editContactEmail = [Email]
-		pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
-		pageBrowser {
-			itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
-			insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
-			insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
-			maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
-		}
-	}
+    view {
+        templateRootPaths {
+            0 = EXT:telephonedirectory/Resources/Private/Templates/
+            1 = {$plugin.tx_telephonedirectory.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:telephonedirectory/Resources/Private/Partials/
+            1 = {$plugin.tx_telephonedirectory.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:telephonedirectory/Resources/Private/Layouts/
+            1 = {$plugin.tx_telephonedirectory.view.layoutRootPath}
+        }
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_telephonedirectory.persistence.storagePid}
+    }
+
+    features {
+        # uncomment the following line to enable the new Property Mapper.
+        rewrittenPropertyMapper = 1
+    }
+
+    settings {
+        editContactName = [Name]
+        editContactEmail = [Email]
+        pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
+        pageBrowser {
+            itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
+            insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
+            insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
+            maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
+        }
+    }
 }
 
 plugin.tx_telephonedirectory._CSS_DEFAULT_STYLE (
