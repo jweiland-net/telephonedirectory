@@ -26,9 +26,11 @@ use JWeiland\Telephonedirectory\Domain\Repository\BuildingRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
+use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * @package telephonedirectory
@@ -255,7 +257,8 @@ class EmployeeController extends ActionController
      */
     public function sendEditMailAction(Employee $employee)
     {
-        $mail = $this->objectManager->get('TYPO3\\CMS\\Core\\Mail\\MailMessage');
+        /** @var MailMessage $mail */
+        $mail = $this->objectManager->get(MailMessage::class);
         $mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $mail->setTo($employee->getEmail(), $employee->getFirstName() . ' ' . $employee->getLastName());
         $mail->setSubject(LocalizationUtility::translate('email.subject', 'telephonedirectory'));
@@ -275,7 +278,7 @@ class EmployeeController extends ActionController
     protected function getContent(Employee $employee)
     {
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
-        $view = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $view = $this->objectManager->get(StandaloneView::class);
         $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
         $view->setControllerContext($this->getControllerContext());
         $view->assign('settings', $this->settings);
