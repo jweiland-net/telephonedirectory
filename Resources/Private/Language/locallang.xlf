@@ -5,7 +5,7 @@
 		<body>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
-				<source>Employees</source>
+				<source>Employee</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
 				<source>First name</source>
@@ -73,14 +73,14 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
 				<source>Language Skill</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_office">
 				<source>Offices</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_office.title">
 				<source>Title</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_building">
 				<source>Buildings</source>
 			</trans-unit>
@@ -90,14 +90,14 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_building.address">
 				<source>Address</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_department">
 				<source>Departments</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_department.title">
 				<source>Title</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill">
 				<source>Language Skills</source>
 			</trans-unit>
