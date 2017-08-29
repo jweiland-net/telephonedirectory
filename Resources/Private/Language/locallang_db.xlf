@@ -117,8 +117,17 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_building.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_building.address">
-				<source>Address</source>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.house_number">
+				<source>House number</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.city">
+				<source>City</source>
 			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_department">

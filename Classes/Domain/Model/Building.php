@@ -35,11 +35,32 @@ class Building extends AbstractEntity
     protected $title = '';
 
     /**
-     * Address
+     * Street
      *
      * @var string
      */
-    protected $address = '';
+    protected $street = '';
+
+    /**
+     * House number
+     *
+     * @var string
+     */
+    protected $house_number = '';
+
+    /**
+     * Zip
+     *
+     * @var string
+     */
+    protected $zip = '';
+
+    /**
+     * City
+     *
+     * @var string
+     */
+    protected $city = '';
 
     /**
      * Returns the title
@@ -63,23 +84,82 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns the address
+     * Returns street
      *
      * @return string
      */
-    public function getAddress()
+    public function getStreet()
     {
-        return $this->address;
+        return $this->street;
     }
 
     /**
-     * Sets the address
+     * Sets street
      *
-     * @param string $address
-     * @return void
+     * @param string $street
      */
-    public function setAddress($address)
+    public function setStreet($street)
     {
-        $this->address = $address;
+        $this->street = (string)$street;
+    }
+
+    /**
+     * Returns house number
+     *
+     * @return string
+     */
+    public function getHouseNumber()
+    {
+        return $this->house_number;
+    }
+
+    /**
+     * Sets house number
+     *
+     * @param string $house_number
+     */
+    public function setHouseNumber($house_number)
+    {
+        $this->house_number = (string)$house_number;
+    }
+
+    /**
+     * Returns zip
+     *
+     * @return string
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * Sets zip
+     *
+     * @param string $zip
+     */
+    public function setZip($zip)
+    {
+        $this->zip = (string)$zip;
+    }
+
+    /**
+     * Returns city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Sets city
+     *
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = (string)$city;
     }
 }

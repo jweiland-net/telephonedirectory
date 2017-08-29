@@ -154,9 +154,21 @@
 				<source>Title</source>
 				<target>Bezeichnung</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_building.address">
-				<source>Address</source>
-				<target>Adresse</target>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.street">
+				<source>Street</source>
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.house_number">
+				<source>House number</source>
+				<target>Hausnummer</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.zip">
+				<source>ZIP</source>
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.city">
+				<source>City</source>
+				<target>Stadt</target>
 			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_department">
