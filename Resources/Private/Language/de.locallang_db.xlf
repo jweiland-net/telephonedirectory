@@ -180,6 +180,10 @@
 				<source>Skill</source>
 				<target>Kenntnisse</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
+				<source>None</source>
+				<target>Keine</target>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
 				<source>Native language</source>
 				<target>Muttersprache</target>

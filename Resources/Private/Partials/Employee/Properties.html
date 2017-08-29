@@ -39,6 +39,7 @@
 			<f:render partial="Employee/SingleLine" arguments="{field: 'pc_fax', value: employee.pcFax}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'email', value: employee.email, email: 1}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'additional_informations', value: employee.additionalInformations}"/>
+			<f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
 		</dl>
 			<f:debug>{_all}</f:debug>
 		<f:if condition="{employee.languageSkill}">

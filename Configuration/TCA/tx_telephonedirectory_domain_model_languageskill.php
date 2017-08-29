@@ -119,10 +119,10 @@ return array(
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.speak',
             'config' => array(
-                'type' => 'select',
+                'type' => 'radio',
                 'items' => array(
                     array(
-                        '',
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
                         '0'
                     ),
                     array(
@@ -142,19 +142,16 @@ return array(
                         'basic'
                     ),
                 ),
-                'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
             ),
         ),
         'writing' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.write',
             'config' => array(
-                'type' => 'select',
+                'type' => 'radio',
                 'items' => array(
                     array(
-                        '',
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
                         '0'
                     ),
                     array(
@@ -174,9 +171,6 @@ return array(
                         'basic'
                     ),
                 ),
-                'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
             ),
         ),
         'infotext' => array(

@@ -137,6 +137,9 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
 				<source>Skill</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
+				<source>None</source>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
 				<source>Native language</source>
 			</trans-unit>
