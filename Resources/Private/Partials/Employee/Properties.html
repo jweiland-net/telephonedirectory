@@ -16,15 +16,7 @@
 		<dl class="extdl marginbottom2">
 			<f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
-			<dd><dl>
-				<f:translate key="tx_telephonedirectory_domain_model_employee.subject_field"/>:
-				<f:for each="{employee.subjectField}" as="subjectField">
-					<dd>
-						{subjectField.title}
-					</dd>
-				</f:for>
-			</dl></dd>
-		</dl>
+			<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
 		<dl class="extdl marginbottom2">
 			<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
 
