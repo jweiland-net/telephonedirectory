@@ -107,6 +107,14 @@
 				<source>Language Skill</source>
 				<target>Sprachkenntnisse</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.speak">
+				<source>Speak</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.write">
+				<source>Write</source>
+				<target>Schrift</target>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_office">
 				<source>Offices</source>

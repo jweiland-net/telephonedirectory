@@ -84,6 +84,12 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
 				<source>Language Skill</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.speak">
+				<source>Speak</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.write">
+				<source>Write</source>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_office">
 				<source>Offices</source>

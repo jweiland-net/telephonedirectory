@@ -35,18 +35,18 @@ class LanguageSkill extends AbstractEntity
     protected $language = '';
 
     /**
-     * What
+     * writing
      *
      * @var string
      */
-    protected $what = '';
+    protected $writing = '';
 
     /**
-     * Skill
+     * speaking
      *
      * @var string
      */
-    protected $skill = '';
+    protected $speaking = '';
 
     /**
      * Infotext
@@ -84,45 +84,45 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Returns the what
+     * Returns writing
      *
      * @return string
      */
-    public function getWhat()
+    public function getWriting()
     {
-        return $this->what;
+        return $this->writing;
     }
 
     /**
-     * Sets the what
+     * Sets writing
      *
-     * @param string $what
+     * @param string $writing
      * @return void
      */
-    public function setWhat($what)
+    public function setWriting($writing)
     {
-        $this->what = $what;
+        $this->writing = $writing;
     }
 
     /**
-     * Returns the skill
+     * Returns speaking
      *
      * @return string
      */
-    public function getSkill()
+    public function getSpeaking()
     {
-        return $this->skill;
+        return $this->speaking;
     }
 
     /**
-     * Sets the skill
+     * Sets speaking
      *
-     * @param string $skill
+     * @param string $speaking
      * @return void
      */
-    public function setSkill($skill)
+    public function setSpeaking($speaking)
     {
-        $this->skill = $skill;
+        $this->speaking = $speaking;
     }
 
     /**
