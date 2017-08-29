@@ -91,6 +91,18 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_office.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.code">
+				<source>Office Code</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.token">
+				<source>Office token</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.department">
+				<source>Department</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.subject_field">
+				<source>Subject field</source>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_subjectfield">
 				<source>Subject Field</source>

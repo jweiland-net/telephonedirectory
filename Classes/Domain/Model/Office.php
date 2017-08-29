@@ -35,6 +35,34 @@ class Office extends AbstractEntity
     protected $title = '';
 
     /**
+     * Code
+     *
+     * @var string
+     */
+    protected $code = '';
+
+    /**
+     * Token
+     *
+     * @var string
+     */
+    protected $token = '';
+
+    /**
+     * Department
+     *
+     * @var \JWeiland\Telephonedirectory\Domain\Model\Department
+     */
+    protected $department = null;
+
+    /**
+     * Subject field
+     *
+     * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
+     */
+    protected $subjectField = null;
+
+    /**
      * Returns the title
      *
      * @return string
@@ -52,6 +80,86 @@ class Office extends AbstractEntity
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = (string)$title;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = (string)$code;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this->token = (string)$token;
+    }
+
+    /**
+     * Gets department
+     *
+     * @return Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * Sets department
+     *
+     * @param Department $department
+     */
+    public function setDepartment(Department $department)
+    {
+        $this->department = $department;
+    }
+
+    /**
+     * Gets subject field
+     *
+     * @return SubjectField
+     */
+    public function getSubjectField()
+    {
+        return $this->subjectField;
+    }
+
+    /**
+     * Sets subject field
+     *
+     * @param SubjectField $subjectField
+     */
+    public function setSubjectField(SubjectField $subjectField)
+    {
+        $this->subjectField = $subjectField;
     }
 }

@@ -120,6 +120,22 @@
 				<source>Title</source>
 				<target>Bezeichnung</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.code">
+				<source>Office Code</source>
+				<target>Amtsnummer</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.token">
+				<source>Office token</source>
+				<target>Amtskürzel</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.department">
+				<source>Department</source>
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_office.subject_field">
+				<source>Subject field</source>
+				<target>Sachgebiet</target>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_subjectfield">
 				<source>Subject Field</source>

@@ -67,6 +67,10 @@ CREATE TABLE tx_telephonedirectory_domain_model_office (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
+	code varchar(30) DEFAULT '' NOT NULL,
+	token varchar(30) DEFAULT '' NOT NULL,
+	department int(11) unsigned DEFAULT '0',
+	subject_field int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
