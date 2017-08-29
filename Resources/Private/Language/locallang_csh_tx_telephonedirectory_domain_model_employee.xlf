@@ -12,7 +12,7 @@
 			<trans-unit id="additional_informations.description">
 				<source>Additional Informations</source>
 			</trans-unit>
-			<trans-unit id="subject_field.description">
+			<trans-unit id="subjectfield.description">
 				<source>Subject Field</source>
 			</trans-unit>
 			<trans-unit id="telephone1.description">

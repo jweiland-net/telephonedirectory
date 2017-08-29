@@ -92,6 +92,13 @@
 				<source>Title</source>
 			</trans-unit>
 
+			<trans-unit id="tx_telephonedirectory_domain_model_subjectfield">
+				<source>Subject Field</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_subjectfield.title">
+				<source>Title</source>
+			</trans-unit>
+
 			<trans-unit id="tx_telephonedirectory_domain_model_building">
 				<source>Building</source>
 			</trans-unit>

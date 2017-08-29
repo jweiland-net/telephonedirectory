@@ -155,9 +155,10 @@ return array(
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.subject_field',
             'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'select',
+                'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
+                'minitems' => 1,
+                'maxitems' => 1,
             ),
         ),
         'company' => array(
@@ -185,27 +186,6 @@ return array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ),
-        ),
-        'additional_function' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.additional_function',
-            'config' => array(
-                'type' => 'select',
-                'size' => 1,
-                'items' => array(
-                    array('', ''),
-                    array('Leiternbeauftragter', 'Leiternbeauftragter'),
-                    array('Datenschutzbeauftragter', 'Datenschutzbeauftragter'),
-                    array('DV-Beauftragter', 'DV-Beauftragter'),
-                    array('Ersthelfer', 'Ersthelfer'),
-                    array('Brandschutzhelfer', 'Brandschutzhelfer'),
-                    array('Sicherheitsbeauftragter', 'Sicherheitsbeauftragter'),
-                    array('Azubi-Beauftragter', 'Azubi-Beauftragter'),
-                    array('Strahlenschutzbeauftragter', 'Strahlenschutzbeauftragter'),
-                    array('Gefahrgutbeauftragter', 'Gefahrgutbeauftragter'),
-                    array('Explosionsschutzbeauftragter', 'Explosionsschutzbeauftragter'),
-                ),
             ),
         ),
         'regular_attendance' => array(

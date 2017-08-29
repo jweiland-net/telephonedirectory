@@ -8,15 +8,35 @@
 	</f:if>
 	<div class="{f:if(condition: employee.image, then: 'floatleft grid_8')}">
 		<h2 class="noborder">
-			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions} </f:if>{employee.firstName} {employee.lastName}</h2>
+			<f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
+			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
+			{employee.firstName}
+			{employee.lastName}
+		</h2>
 		<dl class="extdl marginbottom2">
 			<f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField}"/>
+			<dd><dl>
+				<f:translate key="tx_telephonedirectory_domain_model_employee.subject_field"/>:
+				<f:for each="{employee.subjectField}" as="subjectField">
+					<dd>
+						{subjectField.title}
+					</dd>
+				</f:for>
+			</dl></dd>
 		</dl>
 		<dl class="extdl marginbottom2">
 			<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'additional_function', value: employee.additionalFunction}"/>
+
+			<dd><dl>
+			<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
+			<f:for each="{employee.additionalFunction}" as="additional_function">
+				<dd>
+					{additional_function.title}
+				</dd>
+			</f:for>
+			</dl></dd>
+
 			<f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
 		</dl>

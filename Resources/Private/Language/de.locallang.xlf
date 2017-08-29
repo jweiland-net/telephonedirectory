@@ -15,6 +15,18 @@
 				<source>Last name</source>
 				<target>Nachname</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+				<source>Title</source>
+				<target>Anrede</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+				<source>Mrs.</source>
+				<target>Frau</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+				<source>Mr.</source>
+				<target>Herr</target>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
 				<source>Name additions</source>
 				<target>Namenszusatz</target>

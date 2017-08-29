@@ -1,30 +1,26 @@
 <?php
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *  (c) 2013 Stefan Froemken <sfroemken@gmail.com>, jweiland.net
- *  All rights reserved
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class Employee
+ *
+ * @package JWeiland\Telephonedirectory\Domain\Model
  */
 class Employee extends AbstractEntity
 {
@@ -59,7 +55,7 @@ class Employee extends AbstractEntity
     /**
      * Subject Field
      *
-     * @var string
+     * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
      */
     protected $subjectField = '';
 
@@ -87,7 +83,7 @@ class Employee extends AbstractEntity
     /**
      * additionalFunction
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      */
     protected $additionalFunction = '';
 
@@ -315,9 +311,9 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the subjectField
+     * Returns the subject field
      *
-     * @return string
+     * @return SubjectField
      */
     public function getSubjectField()
     {
@@ -325,14 +321,14 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the subjectField
+     * Sets the subject field
      *
-     * @param string $subjectField
+     * @param SubjectField $subjectField
      * @return void
      */
-    public function setSubjectField($subjectField)
+    public function setSubjectField(SubjectField $subjectField)
     {
-        $this->subjectField = (string)$subjectField;
+        $this->languageSkill = $subjectField;
     }
 
     /**
@@ -401,7 +397,7 @@ class Employee extends AbstractEntity
     /**
      * Returns the additionalFunction
      *
-     * @return string
+     * @return ObjectStorage
      */
     public function getAdditionalFunction()
     {
@@ -411,12 +407,12 @@ class Employee extends AbstractEntity
     /**
      * Sets the additionalFunction
      *
-     * @param string $additionalFunction
+     * @param ObjectStorage $additionalFunction
      * @return void
      */
-    public function setAdditionalFunction($additionalFunction)
+    public function setAdditionalFunction(ObjectStorage $additionalFunction)
     {
-        $this->additionalFunction = (string)$additionalFunction;
+        $this->additionalFunction = $additionalFunction;
     }
 
     /**

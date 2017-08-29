@@ -9,6 +9,12 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+				<source>Mrs.</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+				<source>Mr.</source>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
 				<source>Regular attendance</source>
 			</trans-unit>
