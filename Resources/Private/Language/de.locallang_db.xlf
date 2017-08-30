@@ -170,6 +170,10 @@
 				<source>City</source>
 				<target>Stadt</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.tx_maps2_uid">
+				<source>Marker</source>
+				<target>Markierung</target>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_department">
 				<source>Departments</source>

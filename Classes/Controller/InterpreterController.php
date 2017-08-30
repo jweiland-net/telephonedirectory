@@ -59,7 +59,7 @@ class InterpreterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function listAction()
     {
-        $skills = $this->languageSkillRepository->findAll();
+        $skills = $this->languageSkillRepository->findAllWithEmployeeRelation();
         $this->view->assign('skills', $skills);
     }
 }

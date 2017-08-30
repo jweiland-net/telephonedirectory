@@ -186,6 +186,7 @@ return array(
         'employee' => array(
             'config' => array(
                 'type' => 'passthrough',
+                'foreign_table' => 'tx_telephonedirectory_domain_model_employee',
             ),
         ),
     ),

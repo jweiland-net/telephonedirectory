@@ -27,5 +27,22 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class LanguageSkillRepository extends Repository
 {
+    /**
+     * Returns all languageskills that are connected to a employee record
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAllWithEmployeeRelation()
+    {
+        $query = $this->createQuery();
 
+        $query->matching(
+            $query->logicalAnd(array(
+                $query->equals('employee.hidden', 0),
+                $query->equals('employee.deleted', 0)
+                )
+            )
+        );
+        return $query->execute();
+    }
 }

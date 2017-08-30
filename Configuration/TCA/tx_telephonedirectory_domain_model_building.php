@@ -24,7 +24,7 @@ return array(
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('telephonedirectory') . 'Resources/Public/Icons/tx_telephonedirectory_domain_model_building.gif'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, street, house_number, zip, city',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, street, house_number, zip, city, tx_maps2_uid',
     ),
     'columns' => array(
         'sys_language_uid' => array(
@@ -150,9 +150,30 @@ return array(
                 'eval' => 'trim'
             ),
         ),
+        'tx_maps2_uid' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:maps2/Resources/Private/Language/locallang_db.xlf:tx_maps2_uid',
+            'config' => array(
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_maps2_domain_model_poicollection',
+                'prepend_tname' => false,
+                'show_thumbs' => false,
+                'size' => 1,
+                'maxitems' => 1,
+                'wizards' => array(
+                    'suggest' => array(
+                        'type' => 'suggest',
+                        'default' => array(
+                            'searchWholePhrase' => true
+                        ),
+                    ),
+                ),
+            ),
+        ),
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, street, house_number, zip, city, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, street, house_number, zip, city, tx_maps2_uid, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),

@@ -129,6 +129,9 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_building.city">
 				<source>City</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_building.tx_maps2_uid">
+				<source>Marker</source>
+			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_department">
 				<source>Department</source>

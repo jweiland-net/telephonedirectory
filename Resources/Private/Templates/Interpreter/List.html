@@ -1,7 +1,6 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-
 	<f:flashMessages />
 
 	<f:if condition="{skills}">
@@ -11,9 +10,9 @@
 					<h2>{language}</h2>
 
 					<f:groupedFor each="{groupedSkillsByLanguage}" as="groupedSkillsByEmployee" groupBy="employee" groupKey="employee">
-
+						<f:if condition="{employee}">
 						<div class="marginbottom borderbottom grid_12 scroll-item clearfix">
-							<h3><f:link.action action="show" controller="Employee" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
+							<h3><f:link.action action="show" controller="Employee" pluginName="Telephone" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
 								<f:if condition="{employee.nameAdditions}">{employee.nameAdditions} </f:if>{employee.lastName}, {employee.firstName} </f:link.action></h3>
 							<div class="grid_6 floatleft">{employee.office.title}
 								<f:if condition="{employee.telephone1}"><br/><span aria-hidden="true" class="icon-phone_pf"></span>{employee.telephone1}
@@ -23,15 +22,15 @@
 								<dl class="nomargin">
 									<dt><f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" />:</dt>
 									<f:for each="{groupedSkillsByEmployee}" as="skill">
-										<dd class="nomargin"><f:translate key="tx_telephonedirectory_domain_model_languageskill.what.{skill.what}"/> (<f:translate key="tx_telephonedirectory_domain_model_languageskill.skill.{skill.skill}" />)
-										<f:if condition="{skill.infotext}"><br />{skill.infotext}</f:if>
+										<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>
+										<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking}"/>
 										</dd>
 									</f:for>
 								</dl>
 							</div>
 
 						</div>
-
+						</f:if>
 					</f:groupedFor>
 					<br /><br />
 				</f:groupedFor>

@@ -19,6 +19,7 @@ namespace JWeiland\Telephonedirectory\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use JWeiland\Maps2\Domain\Model\PoiCollection;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -61,6 +62,13 @@ class Building extends AbstractEntity
      * @var string
      */
     protected $city = '';
+
+    /**
+     * Poi collection
+     *
+     * @var \JWeiland\Maps2\Domain\Model\PoiCollection
+     */
+    protected $txMaps2Uid;
 
     /**
      * Returns the title
@@ -161,5 +169,26 @@ class Building extends AbstractEntity
     public function setCity($city)
     {
         $this->city = (string)$city;
+    }
+
+    /**
+     * Returns the txMaps2Uid
+     *
+     * @return PoiCollection $txMaps2Uid
+     */
+    public function getTxMaps2Uid()
+    {
+        return $this->txMaps2Uid;
+    }
+
+    /**
+     * Sets the txMaps2Uid
+     *
+     * @param PoiCollection $txMaps2Uid
+     * @return void
+     */
+    public function setTxMaps2Uid(PoiCollection $txMaps2Uid)
+    {
+        $this->txMaps2Uid = $txMaps2Uid;
     }
 }
