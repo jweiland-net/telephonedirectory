@@ -21,8 +21,10 @@ use JWeiland\Telephonedirectory\Domain\Repository\BuildingRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
+use JWeiland\Telephonedirectory\Service\EmailService;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -253,13 +255,9 @@ class EmployeeController extends ActionController
      */
     public function sendEditMailAction(Employee $employee)
     {
-        /** @var MailMessage $mail */
-        $mail = $this->objectManager->get(MailMessage::class);
-        $mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
-        $mail->setTo($employee->getEmail(), $employee->getFirstName() . ' ' . $employee->getLastName());
-        $mail->setSubject(LocalizationUtility::translate('email.subject', 'telephonedirectory'));
-        $mail->setBody($this->getContent($employee), 'text/html');
-        $mail->send();
+        GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData(
+            $employee, $this->getContent($employee)
+        );
 
         $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
         $this->redirect('list');
