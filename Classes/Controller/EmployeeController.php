@@ -255,9 +255,7 @@ class EmployeeController extends ActionController
      */
     public function sendEditMailAction(Employee $employee)
     {
-        GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData(
-            $employee, $this->getContent($employee)
-        );
+        GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData($employee, $this->getContent($employee));
 
         $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
         $this->redirect('list');
