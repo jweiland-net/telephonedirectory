@@ -20,8 +20,11 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
  ***************************************************************/
 
 use JWeiland\Telephonedirectory\Domain\Model\Office;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * @package telephonedirectory
@@ -30,12 +33,28 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class EmployeeRepository extends Repository
 {
     /**
+     * @var ConnectionPool
+     */
+    protected $connectionPool = null;
+
+    /**
      * @var array
      */
     protected $defaultOrderings = array(
         'lastName' => QueryInterface::ORDER_ASCENDING,
         'firstName' => QueryInterface::ORDER_ASCENDING,
     );
+
+    /**
+     * inject connectionPool
+     *
+     * @param ConnectionPool $connectionPool
+     * @return void
+     */
+    public function injectConnectionPool(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
 
     /**
      * search

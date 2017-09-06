@@ -64,6 +64,8 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      */
     public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule)
     {
+        $additionalFields = array();
+
         if (empty($taskInfo['storagePid'])) {
             if($schedulerModule->CMD == 'edit') {
                 $taskInfo['storagePid'] = $task->storagePid;
@@ -72,12 +74,26 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
             }
         }
 
+        if (empty($taskInfo['detailViewPid'])) {
+            if($schedulerModule->CMD == 'edit') {
+                $taskInfo['detailViewPid'] = $task->detailViewPid;
+            } else {
+                $taskInfo['detailViewPid'] = '';
+            }
+        }
+
         $fieldID = 'storagePid';
         $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
-        $additionalFields = array();
         $additionalFields[$fieldID] = array(
             'code'     => $fieldCode,
             'label'    => 'Storage pid'
+        );
+
+        $fieldID = 'detailViewPid';
+        $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
+        $additionalFields[$fieldID] = array(
+            'code'     => $fieldCode,
+            'label'    => 'Detail View Pid'
         );
 
         return $additionalFields;
@@ -93,6 +109,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
     public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule)
     {
         $submittedData['storagePid'] = trim($submittedData['storagePid']);
+        $submittedData['detailViewPid'] = trim($submittedData['detailViewPid']);
 
         return true;
     }
@@ -107,5 +124,6 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
     public function saveAdditionalFields(array $submittedData, AbstractTask $task)
     {
         $task->storagePid = $submittedData['storagePid'];
+        $task->detailViewPid = $submittedData['detailViewPid'];
     }
 }
