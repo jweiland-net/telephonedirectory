@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 /*
@@ -15,12 +16,14 @@ namespace JWeiland\Telephonedirectory\Controller;
  */
 
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class InterpreterController
+ *
+ * @package JWeiland\Telephonedirectory\Controller
  */
-class InterpreterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class InterpreterController extends ActionController
 {
     /**
      * @var LanguageSkillRepository

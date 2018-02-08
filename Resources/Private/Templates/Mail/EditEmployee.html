@@ -1,2 +1,10 @@
 <p><f:translate key="email.text" /></p>
-<p><f:link.action action="edit" controller="Employee" pluginName="Telephone" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" absolute="1"><f:translate key="edit" />: {employee.firstName} {employee.lastName}</f:link.action></p>
+<f:render partial="Employee/PropertiesForMail" arguments="{employee: employee}" />
+<f:if condition="{employee.isCatchAllMail}}">
+	<f:then>
+		<p><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord" arguments="{0: contactName, 1: contactEmail}" /></p>
+	</f:then>
+	<f:else>
+		<p><a href="{link}"><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:edit" /></a></p>
+	</f:else>
+</f:if>

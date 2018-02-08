@@ -1,36 +1,32 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\ViewHelpers;
 
-/***************************************************************
- *  Copyright notice
- *  (c) 2013 Stefan Froemken <sfroemken@jweiland.net>, jweiland.net
- *  Yves Poersch <ypoersch@jweiland.net>, jweiland.net
- *  All rights reserved
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class IsEmailUniqueViewHelper
+ *
+ * @package JWeiland\Telephonedirectory\ViewHelpers
  */
 class IsEmailUniqueViewHelper extends AbstractViewHelper
 {
     /**
-     * @var \JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository
+     * @var EmployeeRepository
      */
     protected $employeeRepository;
 
@@ -50,17 +46,13 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
      * @param string $email
      * @return boolean
      */
-    public function render($email = '')
+    public function render($email = ''): bool
     {
         if (empty($email)) {
             return false;
-        } else {
-            $amount = $this->employeeRepository->countByEmail($email);
-            if ($amount === 1) {
-                return true;
-            } else {
-                return false;
-            }
         }
+        $amount = $this->employeeRepository->countByEmail($email);
+
+        return $amount === 1;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Task;
 
 /*
@@ -30,19 +31,19 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      *
      * @var array
      */
-    protected $requiredFields = array(
+    protected $requiredFields = [
         'name',
         'city',
         'country',
         'apiKey'
-    );
+    ];
 
     /**
      * Fields to insert from task if empty
      *
      * @var array
      */
-    protected $insertFields = array(
+    protected $insertFields = [
         'name',
         'city',
         'country',
@@ -52,7 +53,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
         'emailSender',
         'emailReceiver',
         'recordStoragePage'
-    );
+    ];
 
     /**
      * Gets additional fields to render in the form to add/edit a task
@@ -64,10 +65,10 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      */
     public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule)
     {
-        $additionalFields = array();
+        $additionalFields = [];
 
         if (empty($taskInfo['storagePid'])) {
-            if($schedulerModule->CMD == 'edit') {
+            if ($schedulerModule->CMD === 'edit') {
                 $taskInfo['storagePid'] = $task->storagePid;
             } else {
                 $taskInfo['storagePid'] = '';
@@ -75,7 +76,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
         }
 
         if (empty($taskInfo['detailViewPid'])) {
-            if($schedulerModule->CMD == 'edit') {
+            if ($schedulerModule->CMD === 'edit') {
                 $taskInfo['detailViewPid'] = $task->detailViewPid;
             } else {
                 $taskInfo['detailViewPid'] = '';
@@ -84,17 +85,17 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
 
         $fieldID = 'storagePid';
         $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
-        $additionalFields[$fieldID] = array(
+        $additionalFields[$fieldID] = [
             'code'     => $fieldCode,
             'label'    => 'Storage pid'
-        );
+        ];
 
         $fieldID = 'detailViewPid';
         $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
-        $additionalFields[$fieldID] = array(
+        $additionalFields[$fieldID] = [
             'code'     => $fieldCode,
             'label'    => 'Detail View Pid'
-        );
+        ];
 
         return $additionalFields;
     }
@@ -108,8 +109,8 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      */
     public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule)
     {
-        $submittedData['storagePid'] = trim($submittedData['storagePid']);
-        $submittedData['detailViewPid'] = trim($submittedData['detailViewPid']);
+        $submittedData['storagePid'] = \trim($submittedData['storagePid']);
+        $submittedData['detailViewPid'] = \trim($submittedData['detailViewPid']);
 
         return true;
     }

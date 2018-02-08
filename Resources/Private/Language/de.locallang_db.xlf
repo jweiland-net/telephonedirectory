@@ -31,6 +31,10 @@
 				<source>Name additions</source>
 				<target>Namenszusatz</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.is_catch_all_mail">
+				<source>Is Catch-All Mail?</source>
+				<target>Ist Sammeladresse?</target>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
 				<source>Subject Field</source>
 				<target>Sachgebiet</target>

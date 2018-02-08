@@ -9,6 +9,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	first_name varchar(255) DEFAULT '' NOT NULL,
 	last_name varchar(255) DEFAULT '' NOT NULL,
 	name_additions varchar(255) DEFAULT '' NOT NULL,
+	is_catch_all_mail TINYINT(1) DEFAULT '0' NOT NULL,
 	function varchar(255) DEFAULT '' NOT NULL,
 	office int(11) unsigned DEFAULT '0',
 	company varchar(255) DEFAULT '' NOT NULL,

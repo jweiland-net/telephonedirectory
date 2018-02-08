@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 /*
@@ -25,11 +26,16 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Employee extends AbstractEntity
 {
     /**
+     * @var bool
+     */
+    protected $hidden = true;
+
+    /**
      * title
      *
      * @var int
      */
-    protected $title;
+    protected $title = 0;
 
     /**
      * First name
@@ -51,6 +57,13 @@ class Employee extends AbstractEntity
      * @var string
      */
     protected $nameAdditions = '';
+
+    /**
+     * is catch all mail
+     *
+     * @var bool
+     */
+    protected $isCatchAllMail = false;
 
     /**
      * Subject Field
@@ -228,11 +241,31 @@ class Employee extends AbstractEntity
     }
 
     /**
+     * Returns hidden
+     *
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param bool $hidden
+     */
+    public function setHidden(bool $hidden)
+    {
+        $this->hidden = $hidden;
+    }
+
+    /**
      * Returns title
      *
      * @return int
      */
-    public function getTitle()
+    public function getTitle(): int
     {
         return $this->title;
     }
@@ -242,9 +275,9 @@ class Employee extends AbstractEntity
      *
      * @param int $title
      */
-    public function setTitle($title)
+    public function setTitle(int $title)
     {
-        $this->title = (int)$title;
+        $this->title = $title;
     }
 
     /**
@@ -252,7 +285,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -263,9 +296,9 @@ class Employee extends AbstractEntity
      * @param string $firstName
      * @return void
      */
-    public function setFirstName($firstName)
+    public function setFirstName(string $firstName)
     {
-        $this->firstName = (string)$firstName;
+        $this->firstName = $firstName;
     }
 
     /**
@@ -273,7 +306,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->lastName;
     }
@@ -284,9 +317,9 @@ class Employee extends AbstractEntity
      * @param string $lastName
      * @return void
      */
-    public function setLastName($lastName)
+    public function setLastName(string $lastName)
     {
-        $this->lastName = (string)$lastName;
+        $this->lastName = $lastName;
     }
 
     /**
@@ -294,7 +327,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getNameAdditions()
+    public function getNameAdditions(): string
     {
         return $this->nameAdditions;
     }
@@ -305,9 +338,29 @@ class Employee extends AbstractEntity
      * @param string $nameAdditions
      * @return void
      */
-    public function setNameAdditions($nameAdditions)
+    public function setNameAdditions(string $nameAdditions)
     {
-        $this->nameAdditions = (string)$nameAdditions;
+        $this->nameAdditions = $nameAdditions;
+    }
+
+    /**
+     * Returns is catch all mail
+     *
+     * @return bool
+     */
+    public function getIsCatchAllMail(): bool
+    {
+        return $this->isCatchAllMail;
+    }
+
+    /**
+     * Gets is catch all mail
+     *
+     * @param bool $isCatchAllMail
+     */
+    public function setIsCatchAllMail(bool $isCatchAllMail)
+    {
+        $this->isCatchAllMail = $isCatchAllMail;
     }
 
     /**
@@ -336,7 +389,7 @@ class Employee extends AbstractEntity
      *
      * @return string $company
      */
-    public function getCompany()
+    public function getCompany(): string
     {
         return $this->company;
     }
@@ -347,9 +400,9 @@ class Employee extends AbstractEntity
      * @param string $company
      * @return void
      */
-    public function setCompany($company)
+    public function setCompany(string $company)
     {
-        $this->company = (string)$company;
+        $this->company = $company;
     }
 
     /**
@@ -357,7 +410,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getRoomNumber()
+    public function getRoomNumber(): string
     {
         return $this->roomNumber;
     }
@@ -368,9 +421,9 @@ class Employee extends AbstractEntity
      * @param string $roomNumber
      * @return void
      */
-    public function setRoomNumber($roomNumber)
+    public function setRoomNumber(string $roomNumber)
     {
-        $this->roomNumber = (string)$roomNumber;
+        $this->roomNumber = $roomNumber;
     }
 
     /**
@@ -378,7 +431,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getFunction()
+    public function getFunction(): string
     {
         return $this->function;
     }
@@ -389,9 +442,9 @@ class Employee extends AbstractEntity
      * @param string $function
      * @return void
      */
-    public function setFunction($function)
+    public function setFunction(string $function)
     {
-        $this->function = (string)$function;
+        $this->function = $function;
     }
 
     /**
@@ -420,7 +473,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getTelephone1()
+    public function getTelephone1(): string
     {
         return $this->telephone1;
     }
@@ -431,9 +484,9 @@ class Employee extends AbstractEntity
      * @param string $telephone1
      * @return void
      */
-    public function setTelephone1($telephone1)
+    public function setTelephone1(string $telephone1)
     {
-        $this->telephone1 = (string)$telephone1;
+        $this->telephone1 = $telephone1;
     }
 
     /**
@@ -441,7 +494,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getTelephone2()
+    public function getTelephone2(): string
     {
         return $this->telephone2;
     }
@@ -452,9 +505,9 @@ class Employee extends AbstractEntity
      * @param string $telephone2
      * @return void
      */
-    public function setTelephone2($telephone2)
+    public function setTelephone2(string $telephone2)
     {
-        $this->telephone2 = (string)$telephone2;
+        $this->telephone2 = $telephone2;
     }
 
     /**
@@ -462,7 +515,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getTelephone3()
+    public function getTelephone3(): string
     {
         return $this->telephone3;
     }
@@ -473,9 +526,9 @@ class Employee extends AbstractEntity
      * @param string $telephone3
      * @return void
      */
-    public function setTelephone3($telephone3)
+    public function setTelephone3(string $telephone3)
     {
-        $this->telephone3 = (string)$telephone3;
+        $this->telephone3 = $telephone3;
     }
 
     /**
@@ -483,7 +536,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getMobile()
+    public function getMobile(): string
     {
         return $this->mobile;
     }
@@ -494,9 +547,9 @@ class Employee extends AbstractEntity
      * @param string $mobile
      * @return void
      */
-    public function setMobile($mobile)
+    public function setMobile(string $mobile)
     {
-        $this->mobile = (string)$mobile;
+        $this->mobile = $mobile;
     }
 
     /**
@@ -504,7 +557,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getPager()
+    public function getPager(): string
     {
         return $this->pager;
     }
@@ -515,9 +568,9 @@ class Employee extends AbstractEntity
      * @param string $pager
      * @return void
      */
-    public function setPager($pager)
+    public function setPager(string $pager)
     {
-        $this->pager = (string)$pager;
+        $this->pager = $pager;
     }
 
     /**
@@ -525,7 +578,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getFax()
+    public function getFax(): string
     {
         return $this->fax;
     }
@@ -536,9 +589,9 @@ class Employee extends AbstractEntity
      * @param string $fax
      * @return void
      */
-    public function setFax($fax)
+    public function setFax(string $fax)
     {
-        $this->fax = (string)$fax;
+        $this->fax = $fax;
     }
 
     /**
@@ -546,7 +599,7 @@ class Employee extends AbstractEntity
      *
      * @return string $pcFax
      */
-    public function getPcFax()
+    public function getPcFax(): string
     {
         return $this->pcFax;
     }
@@ -557,9 +610,9 @@ class Employee extends AbstractEntity
      * @param string $pcFax
      * @return void
      */
-    public function setPcFax($pcFax)
+    public function setPcFax(string $pcFax)
     {
-        $this->pcFax = (string)$pcFax;
+        $this->pcFax = $pcFax;
     }
 
     /**
@@ -567,7 +620,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -578,9 +631,9 @@ class Employee extends AbstractEntity
      * @param string $email
      * @return void
      */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
-        $this->email = (string)$email;
+        $this->email = $email;
     }
 
     /**
@@ -588,7 +641,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getAdditionalInformations()
+    public function getAdditionalInformations(): string
     {
         return $this->additionalInformations;
     }
@@ -599,9 +652,9 @@ class Employee extends AbstractEntity
      * @param string $additionalInformations
      * @return void
      */
-    public function setAdditionalInformations($additionalInformations)
+    public function setAdditionalInformations(string $additionalInformations)
     {
-        $this->additionalInformations = (string)$additionalInformations;
+        $this->additionalInformations = $additionalInformations;
     }
 
     /**
@@ -609,7 +662,7 @@ class Employee extends AbstractEntity
      *
      * @return string
      */
-    public function getRegularAttendance()
+    public function getRegularAttendance(): string
     {
         return $this->regularAttendance;
     }
@@ -619,9 +672,9 @@ class Employee extends AbstractEntity
      *
      * @param string $regularAttendance
      */
-    public function setRegularAttendance($regularAttendance)
+    public function setRegularAttendance(string $regularAttendance)
     {
-        $this->regularAttendance = (string)$regularAttendance;
+        $this->regularAttendance = $regularAttendance;
     }
 
     /**
@@ -629,7 +682,7 @@ class Employee extends AbstractEntity
      *
      * @return bool
      */
-    public function getModuleSysDmailHtml()
+    public function getModuleSysDmailHtml(): bool
     {
         return $this->moduleSysDmailHtml;
     }
@@ -640,9 +693,9 @@ class Employee extends AbstractEntity
      * @param bool $moduleSysDmailHtml
      * @return void
      */
-    public function setModuleSysDmailHtml($moduleSysDmailHtml)
+    public function setModuleSysDmailHtml(bool $moduleSysDmailHtml)
     {
-        $this->moduleSysDmailHtml = (bool)$moduleSysDmailHtml;
+        $this->moduleSysDmailHtml = $moduleSysDmailHtml;
     }
 
     /**
@@ -713,7 +766,7 @@ class Employee extends AbstractEntity
      *
      * @return string $image
      */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
@@ -724,7 +777,7 @@ class Employee extends AbstractEntity
      * @param string $image
      * @return void
      */
-    public function setImage($image)
+    public function setImage(string $image)
     {
         $this->image = $image;
     }

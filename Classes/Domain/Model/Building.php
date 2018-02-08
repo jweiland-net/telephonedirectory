@@ -1,30 +1,27 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *  (c) 2013 Stefan Froemken <sfroemken@gmail.com>, jweiland.net
- *  All rights reserved
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class Building
+ *
+ * @package JWeiland\Telephonedirectory\Domain\Model
  */
 class Building extends AbstractEntity
 {
@@ -75,7 +72,7 @@ class Building extends AbstractEntity
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -86,7 +83,7 @@ class Building extends AbstractEntity
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
@@ -96,7 +93,7 @@ class Building extends AbstractEntity
      *
      * @return string
      */
-    public function getStreet()
+    public function getStreet(): string
     {
         return $this->street;
     }
@@ -106,9 +103,9 @@ class Building extends AbstractEntity
      *
      * @param string $street
      */
-    public function setStreet($street)
+    public function setStreet(string $street)
     {
-        $this->street = (string)$street;
+        $this->street = $street;
     }
 
     /**
@@ -116,7 +113,7 @@ class Building extends AbstractEntity
      *
      * @return string
      */
-    public function getHouseNumber()
+    public function getHouseNumber(): string
     {
         return $this->house_number;
     }
@@ -126,9 +123,9 @@ class Building extends AbstractEntity
      *
      * @param string $house_number
      */
-    public function setHouseNumber($house_number)
+    public function setHouseNumber(string $house_number)
     {
-        $this->house_number = (string)$house_number;
+        $this->house_number = $house_number;
     }
 
     /**
@@ -136,7 +133,7 @@ class Building extends AbstractEntity
      *
      * @return string
      */
-    public function getZip()
+    public function getZip(): string
     {
         return $this->zip;
     }
@@ -146,9 +143,9 @@ class Building extends AbstractEntity
      *
      * @param string $zip
      */
-    public function setZip($zip)
+    public function setZip(string $zip)
     {
-        $this->zip = (string)$zip;
+        $this->zip = $zip;
     }
 
     /**
@@ -156,7 +153,7 @@ class Building extends AbstractEntity
      *
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -166,9 +163,9 @@ class Building extends AbstractEntity
      *
      * @param string $city
      */
-    public function setCity($city)
+    public function setCity(string $city)
     {
-        $this->city = (string)$city;
+        $this->city = $city;
     }
 
     /**

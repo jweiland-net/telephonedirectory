@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 /*
@@ -22,17 +23,17 @@ use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
-use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class EmployeeController
+ *
+ * @package JWeiland\Telephonedirectory\Controller
  */
 class EmployeeController extends ActionController
 {
@@ -193,6 +194,11 @@ class EmployeeController extends ActionController
      */
     public function showAction(Employee $employee)
     {
+        $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
+        $config = $configurationUtility->getCurrentConfiguration('telephonedirectory');
+
+        $this->view->assign('contactName', $config['emailFromName']['value']);
+        $this->view->assign('contactEmail', $config['emailFromAddress']['value']);
         $this->view->assign('employee', $employee);
     }
 
@@ -229,10 +235,21 @@ class EmployeeController extends ActionController
      */
     public function editAction(Employee $employee)
     {
-        $this->view->assign('employee', $employee);
-        $this->view->assign('buildings', $this->buildingRepository->findAll());
-        $this->view->assign('departments', $this->departmentRepository->findAll());
-        $this->view->assign('offices', $this->officeRepository->findAll());
+        if (!$employee->getIsCatchAllMail()) {
+            $authToken = $this->request->getArgument('authToken');
+            $controlAuthToken = GeneralUtility::stdAuthCode($employee);
+
+            if ($authToken === $controlAuthToken) {
+                $this->view->assign('employee', $employee);
+                $this->view->assign('buildings', $this->buildingRepository->findAll());
+                $this->view->assign('departments', $this->departmentRepository->findAll());
+                $this->view->assign('offices', $this->officeRepository->findAll());
+            } else {
+
+            }
+        } else {
+            // TODO: Display that editing is not allowed
+        }
     }
 
     /**
@@ -243,6 +260,7 @@ class EmployeeController extends ActionController
      */
     public function updateAction(Employee $employee)
     {
+        $employee->setHidden(true);
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
         $this->redirect('list');
@@ -273,8 +291,22 @@ class EmployeeController extends ActionController
         $view = $this->objectManager->get(StandaloneView::class);
         $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
         $view->setControllerContext($this->getControllerContext());
-        $view->assign('settings', $this->settings);
+
+        $this->uriBuilder->setCreateAbsoluteUri(true);
+        $link = $this->uriBuilder->uriFor(
+            'edit',
+            [
+                'parameter' => $this->settings['pidOfDetailPage'],
+                'authToken' => GeneralUtility::stdAuthCode($employee),
+                'action' => 'edit',
+                'controller' => 'Employee',
+                'employee' => $employee->getUid()
+            ]
+        );
+
+        $view->assign('link', $link);
         $view->assign('employee', $employee);
+
         return $view->render();
     }
 }

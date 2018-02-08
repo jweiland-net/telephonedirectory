@@ -1,0 +1,38 @@
+{
+    "name": "jweiland/telephonedirectory",
+    "type": "typo3-cms-extension",
+    "description": "Telephone Directory",
+    "version": "1.0.0",
+    "license": "GPL-2.0+",
+    "keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
+    "homepage": "http://www.jweiland.net",
+    "authors": [
+      {
+        "name": "Stefan Froemken",
+        "email": "sfroemken@jweiland.net",
+        "role": "Senior Lead Developer"
+      },
+      {
+        "name": "Markus Kugler",
+        "email": "mkugler@jweiland.net",
+        "role": "Lead Developer"
+      }
+    ],
+    "support": {
+      "email": "projects@jweiland.net",
+      "issues": "https://github.com/jweiland-net/telephonedirectory/issues",
+      "source": "https://github.com/jweiland-net/telephonedirectory"
+    },
+    "require": {
+      "typo3/cms-core": "~8.7",
+      "jweiland/maps2": "2.9-4.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "~4.8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JWeiland\\Telephonedirectory\\": "Classes"
+        }
+    }
+}

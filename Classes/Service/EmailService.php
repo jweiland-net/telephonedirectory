@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 /*
@@ -47,6 +48,7 @@ class EmailService
      *
      * @param Employee $employee
      * @param string $content
+     * @return void
      */
     public function informEmployeeAboutTheirData(Employee $employee, $content)
     {

@@ -20,14 +20,18 @@
 			<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
-			<dd><dl>
-			<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
-			<f:for each="{employee.additionalFunction}" as="additional_function">
-				<dd>
-					{additional_function.title}
-				</dd>
-			</f:for>
-			</dl></dd>
+			<dd>
+				<f:if condition="{employee.additionalFunction}">
+					<dl>
+						<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
+						<f:for each="{employee.additionalFunction}" as="additional_function">
+							<dd>
+								{additional_function.title}
+							</dd>
+						</f:for>
+					</dl>
+				</f:if>
+			</dd>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
 		</dl>

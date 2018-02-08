@@ -26,8 +26,6 @@ plugin.tx_telephonedirectory {
     }
 
     settings {
-        editContactName = [Name]
-        editContactEmail = [Email]
         pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
         pageBrowser {
             itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}

@@ -1,29 +1,26 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *  (c) 2013 Stefan Froemken <sfroemken@gmail.com>, jweiland.net
- *  All rights reserved
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * @package telephonedirectory
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class LanguageSkill
+ *
+ * @package JWeiland\Telephonedirectory\Domain\Model
  */
 class LanguageSkill extends AbstractEntity
 {
@@ -67,7 +64,7 @@ class LanguageSkill extends AbstractEntity
      *
      * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
@@ -78,7 +75,7 @@ class LanguageSkill extends AbstractEntity
      * @param string $language
      * @return void
      */
-    public function setLanguage($language)
+    public function setLanguage(string $language)
     {
         $this->language = $language;
     }
@@ -88,7 +85,7 @@ class LanguageSkill extends AbstractEntity
      *
      * @return string
      */
-    public function getWriting()
+    public function getWriting(): string
     {
         return $this->writing;
     }
@@ -99,7 +96,7 @@ class LanguageSkill extends AbstractEntity
      * @param string $writing
      * @return void
      */
-    public function setWriting($writing)
+    public function setWriting(string $writing)
     {
         $this->writing = $writing;
     }
@@ -109,7 +106,7 @@ class LanguageSkill extends AbstractEntity
      *
      * @return string
      */
-    public function getSpeaking()
+    public function getSpeaking(): string
     {
         return $this->speaking;
     }
@@ -120,7 +117,7 @@ class LanguageSkill extends AbstractEntity
      * @param string $speaking
      * @return void
      */
-    public function setSpeaking($speaking)
+    public function setSpeaking(string $speaking)
     {
         $this->speaking = $speaking;
     }
@@ -130,7 +127,7 @@ class LanguageSkill extends AbstractEntity
      *
      * @return string
      */
-    public function getInfotext()
+    public function getInfotext(): string
     {
         return $this->infotext;
     }
@@ -141,7 +138,7 @@ class LanguageSkill extends AbstractEntity
      * @param string $infotext
      * @return void
      */
-    public function setInfotext($infotext)
+    public function setInfotext(string $infotext)
     {
         $this->infotext = $infotext;
     }
