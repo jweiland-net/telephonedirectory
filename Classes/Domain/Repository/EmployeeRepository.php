@@ -28,30 +28,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class EmployeeRepository extends Repository
 {
     /**
-     * @var ConnectionPool
-     */
-    protected $connectionPool;
-
-    /**
-     * @var array
-     */
-    protected $defaultOrderings = [
-        'lastName' => QueryInterface::ORDER_ASCENDING,
-        'firstName' => QueryInterface::ORDER_ASCENDING
-    ];
-
-    /**
-     * inject connectionPool
-     *
-     * @param ConnectionPool $connectionPool
-     * @return void
-     */
-    public function injectConnectionPool(ConnectionPool $connectionPool)
-    {
-        $this->connectionPool = $connectionPool;
-    }
-
-    /**
      * search
      *
      * @param Office $office

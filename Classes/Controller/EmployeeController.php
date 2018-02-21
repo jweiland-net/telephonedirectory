@@ -194,6 +194,7 @@ class EmployeeController extends ActionController
      */
     public function showAction(Employee $employee)
     {
+        /** @var ConfigurationUtility $configurationUtility */
         $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
         $config = $configurationUtility->getCurrentConfiguration('telephonedirectory');
 
