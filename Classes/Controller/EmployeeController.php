@@ -218,7 +218,12 @@ class EmployeeController extends ActionController
      * action create
      *
      * @param Employee $newEmployee
+     *
      * @return void
+     *
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function createAction(Employee $newEmployee)
     {
@@ -244,11 +249,7 @@ class EmployeeController extends ActionController
                 $this->view->assign('buildings', $this->buildingRepository->findAll());
                 $this->view->assign('departments', $this->departmentRepository->findAll());
                 $this->view->assign('offices', $this->officeRepository->findAll());
-            } else {
-
             }
-        } else {
-            // TODO: Display that editing is not allowed
         }
     }
 
@@ -256,7 +257,13 @@ class EmployeeController extends ActionController
      * action update
      *
      * @param Employee $employee
+     *
      * @return void
+     *
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function updateAction(Employee $employee)
     {
@@ -270,6 +277,9 @@ class EmployeeController extends ActionController
      * send a mail with link to edit this entry
      *
      * @param Employee $employee
+     *
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function sendEditMailAction(Employee $employee)
     {

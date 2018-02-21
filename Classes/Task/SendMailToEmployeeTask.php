@@ -141,10 +141,10 @@ class SendMailToEmployeeTask extends AbstractTask
      */
     public function getObjectManager()
     {
-        if ($this->objectManager) {
-            return $this->objectManager;
+        if (!$this->objectManager) {
+            $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         }
 
-        return $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        return $this->objectManager;
     }
 }

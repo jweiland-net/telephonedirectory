@@ -48,7 +48,10 @@ class EmailService
      *
      * @param Employee $employee
      * @param string $content
+     *
      * @return void
+     *
+     * @throws \Exception
      */
     public function informEmployeeAboutTheirData(Employee $employee, $content)
     {
