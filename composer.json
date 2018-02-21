@@ -2,8 +2,7 @@
     "name": "jweiland/telephonedirectory",
     "type": "typo3-cms-extension",
     "description": "Telephone Directory",
-    "version": "1.0.0",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
     "homepage": "http://www.jweiland.net",
     "authors": [
