@@ -1,7 +1,7 @@
 <f:if condition="{employees}">
 	<f:then>
 		<div class="list scroll-container">
-			<f:widget.paginate objects="{employees}" as="paginatedEmployees" configuration="{itemsPerPage: settings.pageBrowser.itemsPerPage, insertAbove: settings.pageBrowser.insertAbove, insertBelow: settings.pageBrowser.insertBelow, maximumNumberOfLinks: settings.pageBrowser.maximumNumberOfLinks}">
+			<f:widget.paginate objects="{employees}" as="paginatedEmployees" configuration="{itemsPerPage: settings.pageBrowser.itemsPerPage, insertAbove: settings.pageBrowser.insertAbove, insertBelow: settings.pageBrowser.insertBelow, maximumNumberOfLinks: settings.pageBrowser.maximumNumberOfLinks, addQueryStringMethod: 'POST,GET'}">
 				<f:for each="{paginatedEmployees}" as="employee">
 					<div class="marginbottom borderbottom grid_12 scroll-item clearfix">
 						<h2 class="noborder nomargin"><f:link.action action="show" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
