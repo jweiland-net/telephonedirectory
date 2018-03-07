@@ -164,7 +164,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
-                'minitems' => 1,
+                'minitems' => 0,
                 'maxitems' => 1
             ]
         ],
@@ -183,7 +183,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, required'
+                'eval' => 'trim'
             ]
         ],
         'function' => [
