@@ -3,33 +3,35 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask::class] = [
-    'extension' => $_EXTKEY,
-    'title' => 'Send email to every employee about their current data',
-    'description' => 'Send email to every employee about their current data',
-    'additionalFields' => \JWeiland\Telephonedirectory\Task\SendMailToEmployeeAdditionalFieldProvider::class
-];
+call_user_func(function($extKey) {
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask::class] = [
+        'extension' => $extKey,
+        'title' => 'Send email to every employee about their current data',
+        'description' => 'Send email to every employee about their current data',
+        'additionalFields' => \JWeiland\Telephonedirectory\Task\SendMailToEmployeeAdditionalFieldProvider::class
+    ];
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'JWeiland.' . $_EXTKEY,
-    'Telephone',
-    [
-        'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
-    ], // non-cacheable actions
-    [
-        'Employee' => 'search, create, update, sendEditMail'
-    ]
-);
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'JWeiland.' . $extKey,
+        'Telephone',
+        [
+            'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
+        ], // non-cacheable actions
+        [
+            'Employee' => 'search, create, update, sendEditMail'
+        ]
+    );
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'JWeiland.' . $_EXTKEY,
-    'Interpreter',
-    [
-        'Interpreter' => 'list',
-        'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
-    ], // non-cacheable actions
-    [
-        'Interpreter' => '',
-        'Employee' => 'search, create, update, sendEditMail'
-    ]
-);
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'JWeiland.' . $extKey,
+        'Interpreter',
+        [
+            'Interpreter' => 'list',
+            'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
+        ], // non-cacheable actions
+        [
+            'Interpreter' => '',
+            'Employee' => 'search, create, update, sendEditMail'
+        ]
+    );
+}, $_EXTKEY);
