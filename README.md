@@ -1,4 +1,4 @@
-events2
-=======
+telephonedirectory
+==================
 
-With this TYPO3 extension you can organize one, multiple and recurring events.
+With this TYPO3 extension you can organize your contact persons and buildings.
