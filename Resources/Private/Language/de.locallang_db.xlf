@@ -49,7 +49,7 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.function">
 				<source>Function</source>
-				<target>Position</target>
+				<target>Funktion</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
 				<source>Additional Function</source>
