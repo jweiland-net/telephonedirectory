@@ -236,7 +236,7 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.regular_attendance',
             'config' => [
-                'type' => 'check'
+                'type' => 'text'
             ]
         ],
         'telephone1' => [
