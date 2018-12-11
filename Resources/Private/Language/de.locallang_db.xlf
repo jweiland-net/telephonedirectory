@@ -29,7 +29,7 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
 				<source>Name additions</source>
-				<target>Namenszusatz</target>
+				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.is_catch_all_mail">
 				<source>Is Catch-All Mail?</source>
