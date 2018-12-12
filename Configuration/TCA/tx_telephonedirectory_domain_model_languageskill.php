@@ -1,28 +1,4 @@
 <?php
-
-$languageSkills = [
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.0',
-        '0'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.1',
-        '1'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.2',
-        '2'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.3',
-        '3'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.4',
-        '4'
-    ]
-];
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill',
@@ -177,7 +153,28 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.speak',
             'config' => [
                 'type' => 'radio',
-                'items' => $languageSkills
+                'items' => [
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.0',
+                        '0'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.1',
+                        '1'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.2',
+                        '2'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.3',
+                        '3'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.4',
+                        '4'
+                    ]
+                ]
             ]
         ],
         'writing' => [
@@ -185,7 +182,28 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.write',
             'config' => [
                 'type' => 'radio',
-                'items' => $languageSkills
+                'items' => [
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.0',
+                        '0'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.1',
+                        '1'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.2',
+                        '2'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.3',
+                        '3'
+                    ],
+                    [
+                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.4',
+                        '4'
+                    ]
+                ]
             ]
         ],
         'infotext' => [
