@@ -71,7 +71,7 @@ class SendMailToEmployeeTask extends AbstractTask
         /**
          * @var $employee Employee
          */
-        foreach($employees as $employee) {
+        foreach ($employees as $employee) {
             $emailService->informEmployeeAboutTheirData($employee, $this->generateContent($employee));
         }
 
@@ -88,7 +88,7 @@ class SendMailToEmployeeTask extends AbstractTask
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
-        $view->setPartialRootPaths(array(10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/'));
+        $view->setPartialRootPaths([10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/']);
 
         if (!is_object($GLOBALS['TT'])) {
             $GLOBALS['TT'] = GeneralUtility::makeInstance(TimeTracker::class);

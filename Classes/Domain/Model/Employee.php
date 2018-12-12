@@ -170,7 +170,7 @@ class Employee extends AbstractEntity
     /**
      * send HTML-Mail?
      *
-     * @var boolean
+     * @var bool
      */
     protected $moduleSysDmailHtml = true;
 

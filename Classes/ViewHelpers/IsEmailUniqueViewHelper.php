@@ -41,8 +41,7 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
      * implements a vievHelper which checks if a given email address is unique in DB
      *
      * @param string $email
-     *
-     * @return boolean
+     * @return bool
      */
     public function render($email = ''): bool
     {
