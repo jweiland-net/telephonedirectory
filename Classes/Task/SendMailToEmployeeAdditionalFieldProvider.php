@@ -14,15 +14,12 @@ namespace JWeiland\Telephonedirectory\Task;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
- * Class SendMailToEmployeeAdditionalFieldProvider
- *
- * @package JWeiland\Telephonedirectory\Task
+ * Provider to add some further input fields to scheduler task
  */
 class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProviderInterface
 {

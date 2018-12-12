@@ -14,7 +14,6 @@ namespace JWeiland\Telephonedirectory\Service;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -22,9 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Class EmailService
- *
- * @package JWeiland\Telephonedirectory\Service
+ * Send an information mail to employees email address
  */
 class EmailService
 {

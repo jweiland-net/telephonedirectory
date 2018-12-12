@@ -1,37 +1,53 @@
 {
-    "name": "jweiland/telephonedirectory",
-    "type": "typo3-cms-extension",
-    "description": "Telephone Directory",
-    "license": "GPL-2.0-or-later",
-    "keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
-    "homepage": "http://www.jweiland.net",
-    "authors": [
-      {
-        "name": "Stefan Froemken",
-        "email": "sfroemken@jweiland.net",
-        "role": "Senior Lead Developer"
-      },
-      {
-        "name": "Markus Kugler",
-        "email": "mkugler@jweiland.net",
-        "role": "Lead Developer"
-      }
-    ],
-    "support": {
-      "email": "projects@jweiland.net",
-      "issues": "https://github.com/jweiland-net/telephonedirectory/issues",
-      "source": "https://github.com/jweiland-net/telephonedirectory"
-    },
-    "require": {
-      "typo3/cms-core": "^8.7",
-      "jweiland/maps2": "^4.2"
-    },
-    "require-dev": {
-      "phpunit/phpunit": "~4.8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "JWeiland\\Telephonedirectory\\": "Classes"
-        }
-    }
+	"name": "jweiland/telephonedirectory",
+	"type": "typo3-cms-extension",
+	"description": "Telephone Directory",
+	"license": "GPL-2.0-or-later",
+	"keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
+	"homepage": "http://www.jweiland.net",
+	"authors": [
+		{
+			"name": "Stefan Froemken",
+			"email": "sfroemken@jweiland.net",
+			"role": "Senior Lead Developer"
+		},
+		{
+			"name": "Markus Kugler",
+			"email": "mkugler@jweiland.net",
+			"role": "Lead Developer"
+		}
+	],
+	"support": {
+		"email": "projects@jweiland.net",
+		"issues": "https://github.com/jweiland-net/telephonedirectory/issues",
+		"source": "https://github.com/jweiland-net/telephonedirectory"
+	},
+	"require": {
+		"typo3/cms-core": "^8.7 || ^9.5",
+		"jweiland/maps2": "^4.2"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^2.0",
+		"nimut/testing-framework": "^4.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"JWeiland\\Telephonedirectory\\": "Classes"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"JWeiland\\Telephonedirectory\\Tests\\": "Tests"
+		}
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin"
+	},
+	"extra": {
+		"typo3/cms": {
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"web-dir": ".Build/public"
+		}
+	}
 }

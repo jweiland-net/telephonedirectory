@@ -14,7 +14,6 @@ namespace JWeiland\Telephonedirectory\Task;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
@@ -31,9 +30,7 @@ use TYPO3\CMS\Frontend\Page\PageRepository;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
- * Class SendMailToEmployeeTask
- *
- * @package JWeiland\Telephonedirectory\Task
+ * Send a mail to employee to re-check his data
  */
 class SendMailToEmployeeTask extends AbstractTask
 {
@@ -74,7 +71,7 @@ class SendMailToEmployeeTask extends AbstractTask
         /**
          * @var $employee Employee
          */
-        foreach($employees as $employee) {
+        foreach ($employees as $employee) {
             $emailService->informEmployeeAboutTheirData($employee, $this->generateContent($employee));
         }
 
@@ -91,7 +88,7 @@ class SendMailToEmployeeTask extends AbstractTask
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
-        $view->setPartialRootPaths(array(10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/'));
+        $view->setPartialRootPaths([10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/']);
 
         if (!is_object($GLOBALS['TT'])) {
             $GLOBALS['TT'] = GeneralUtility::makeInstance(TimeTracker::class);
