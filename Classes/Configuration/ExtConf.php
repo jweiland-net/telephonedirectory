@@ -18,9 +18,7 @@ namespace JWeiland\Telephonedirectory\Configuration;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * Class ExtConf
- *
- * @package JWeiland\Telephonedirectory\Configuration
+ * Class with all properties of Extensionmanager Configuration
  */
 class ExtConf implements SingletonInterface
 {

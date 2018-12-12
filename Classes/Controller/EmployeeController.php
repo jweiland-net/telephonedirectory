@@ -14,7 +14,6 @@ namespace JWeiland\Telephonedirectory\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
@@ -32,8 +31,6 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Class EmployeeController
- *
- * @package JWeiland\Telephonedirectory\Controller
  */
 class EmployeeController extends ActionController
 {

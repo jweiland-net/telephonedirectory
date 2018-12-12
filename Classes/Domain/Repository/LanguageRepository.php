@@ -15,13 +15,10 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Class BuildingRepository
- *
- * @package JWeiland\Telephonedirectory\Domain\Repository
+ * Repository to get individual Queries for Languages
  */
 class LanguageRepository extends Repository
 {

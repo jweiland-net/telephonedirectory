@@ -15,13 +15,10 @@ namespace JWeiland\Telephonedirectory\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * Class LanguageSkill
- *
- * @package JWeiland\Telephonedirectory\Domain\Model
+ * Class which contains all setters and getters for LanguageSkill
  */
 class LanguageSkill extends AbstractEntity
 {

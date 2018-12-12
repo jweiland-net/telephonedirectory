@@ -14,14 +14,11 @@ namespace JWeiland\Telephonedirectory\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Class InterpreterController
- *
- * @package JWeiland\Telephonedirectory\Controller
  */
 class InterpreterController extends ActionController
 {

@@ -14,7 +14,6 @@ namespace JWeiland\Telephonedirectory\Task;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
@@ -31,9 +30,7 @@ use TYPO3\CMS\Frontend\Page\PageRepository;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
- * Class SendMailToEmployeeTask
- *
- * @package JWeiland\Telephonedirectory\Task
+ * Send a mail to employee to re-check his data
  */
 class SendMailToEmployeeTask extends AbstractTask
 {

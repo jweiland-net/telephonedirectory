@@ -14,14 +14,11 @@ namespace JWeiland\Telephonedirectory\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
- * Class IsEmailUniqueViewHelper
- *
- * @package JWeiland\Telephonedirectory\ViewHelpers
+ * ViewHelper to check, if an email is unique in employee table
  */
 class IsEmailUniqueViewHelper extends AbstractViewHelper
 {

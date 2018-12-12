@@ -14,16 +14,13 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Class EmployeeRepository
- *
- * @package JWeiland\Telephonedirectory\Domain\Repository
+ * Repository to get individual Queries for Employees
  */
 class EmployeeRepository extends Repository
 {
