@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office',
+        'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_language',
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,15 +17,15 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime'
         ],
-        'searchFields' => 'title,subject_field,',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_office.gif'
+        'searchFields' => 'title',
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_language.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, code, token, department, subject_field'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title'
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, code, token, department, subject_field,
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
@@ -63,8 +63,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_telephonedirectory_domain_model_office',
-                'foreign_table_where' => 'AND tx_telephonedirectory_domain_model_office.pid=###CURRENT_PID### AND tx_telephonedirectory_domain_model_office.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_telephonedirectory_domain_model_language',
+                'foreign_table_where' => 'AND tx_telephonedirectory_domain_model_language.pid=###CURRENT_PID### AND tx_telephonedirectory_domain_model_language.sys_language_uid IN (-1,0)',
                 'fieldWizard' => [
                     'selectIcons' => [
                         'disabled' => true,
@@ -141,52 +141,11 @@ return [
         ],
         'title' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.title',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_language.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ]
-        ],
-        'code' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.code',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ]
-        ],
-        'token' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.token',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ]
-        ],
-        'department' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.department',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_telephonedirectory_domain_model_department',
-                'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_department.title',
-                'minitems' => 0,
-                'maxitems' => 1
-            ]
-        ],
-        'subject_field' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.subject_field',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
-                'minitems' => 1,
-                'maxitems' => 1
             ]
         ]
     ],
