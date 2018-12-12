@@ -1,6 +1,7 @@
-{namespace maps2=JWeiland\Maps2\ViewHelpers}
-
-<div class="clearfix tx-telephonedirectory">
+<div
+	xmlns:maps2="http://typo3.org/ns/JWeiland/Maps2/ViewHelpers"
+	class="clearfix tx-telephonedirectory"
+>
 	<f:if condition="{employee.image}">
 		<div class="grid_4 floatleft">
 			<div class="gridright">
@@ -55,7 +56,7 @@
 				</dd>
 				<f:for each="{employee.languageSkill}" as="skill">
 					<dl>
-						<dd class="noborder grid_6 floatleft nomargin">{skill.language}:</dd>
+						<dd class="noborder grid_6 floatleft nomargin">{skill.language.title}:</dd>
 						<dd class="noborder grid_6 floatleft nomargin">
 							<dl>
 								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>

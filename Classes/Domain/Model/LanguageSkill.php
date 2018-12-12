@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 /*
@@ -27,9 +28,9 @@ class LanguageSkill extends AbstractEntity
     /**
      * Language
      *
-     * @var string
+     * @var \JWeiland\Telephonedirectory\Domain\Model\Language
      */
-    protected $language = '';
+    protected $language;
 
     /**
      * writing
@@ -62,9 +63,9 @@ class LanguageSkill extends AbstractEntity
     /**
      * Returns the language
      *
-     * @return string
+     * @return Language
      */
-    public function getLanguage(): string
+    public function getLanguage()
     {
         return $this->language;
     }
@@ -72,10 +73,10 @@ class LanguageSkill extends AbstractEntity
     /**
      * Sets the language
      *
-     * @param string $language
+     * @param Language $language
      * @return void
      */
-    public function setLanguage(string $language)
+    public function setLanguage(Language $language)
     {
         $this->language = $language;
     }
