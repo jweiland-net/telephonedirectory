@@ -216,29 +216,38 @@
 				<source>Skill</source>
 				<target>Kenntnisse</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.0">
 				<source>None</source>
 				<target>Keine</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.4">
 				<source>Native language</source>
 				<target>Muttersprache</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.3">
 				<source>Fluent</source>
 				<target>Flüssig</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.2">
 				<source>Good</source>
 				<target>Gut</target>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.1">
 				<source>Basic knowledge</source>
 				<target>Grundkenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
 				<source>Infotext</source>
 				<target>Infotext</target>
+			</trans-unit>
+
+			<trans-unit id="tx_telephonedirectory_domain_model_language">
+				<source>Language</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_language.title">
+				<source>Title</source>
+				<target>Titel</target>
 			</trans-unit>
 		</body>
 	</file>

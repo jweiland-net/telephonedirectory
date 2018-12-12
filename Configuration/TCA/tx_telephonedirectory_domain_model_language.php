@@ -1,32 +1,8 @@
 <?php
-
-$languageSkills = [
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.0',
-        '0'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.1',
-        '1'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.2',
-        '2'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.3',
-        '3'
-    ],
-    [
-        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.4',
-        '4'
-    ]
-];
-
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill',
-        'label' => 'language',
+        'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_language',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -42,15 +18,15 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime'
         ],
-        'searchFields' => 'language,what,skill,infotext,',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_languageskill.gif'
+        'searchFields' => 'title',
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_language.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, language, what, skill, infotext'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title'
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, language, speaking, writing, infotext,
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
@@ -164,45 +140,13 @@ return [
                 ],
             ]
         ],
-        'language' => [
+        'title' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.language',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_language.title',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_telephonedirectory_domain_model_language'
-            ]
-        ],
-        'speaking' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.speak',
-            'config' => [
-                'type' => 'radio',
-                'items' => $languageSkills
-            ]
-        ],
-        'writing' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.write',
-            'config' => [
-                'type' => 'radio',
-                'items' => $languageSkills
-            ]
-        ],
-        'infotext' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.infotext',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
+                'type' => 'input',
+                'size' => 30,
                 'eval' => 'trim'
-            ]
-        ],
-        'employee' => [
-            'config' => [
-                'type' => 'passthrough',
-                'foreign_table' => 'tx_telephonedirectory_domain_model_employee'
             ]
         ]
     ],
