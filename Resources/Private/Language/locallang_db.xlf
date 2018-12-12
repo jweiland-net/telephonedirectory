@@ -164,19 +164,19 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
 				<source>Skill</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.0">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
 				<source>None</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.4">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
 				<source>Native language</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.3">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
 				<source>Fluent</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.2">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
 				<source>Good</source>
 			</trans-unit>
-			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.1">
+			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
 				<source>Basic knowledge</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
