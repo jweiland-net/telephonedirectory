@@ -41,7 +41,7 @@ class Building extends AbstractEntity
      *
      * @var string
      */
-    protected $house_number = '';
+    protected $houseNumber = '';
 
     /**
      * Zip
@@ -112,17 +112,17 @@ class Building extends AbstractEntity
      */
     public function getHouseNumber(): string
     {
-        return $this->house_number;
+        return $this->houseNumber;
     }
 
     /**
      * Sets house number
      *
-     * @param string $house_number
+     * @param string $houseNumber
      */
-    public function setHouseNumber(string $house_number)
+    public function setHouseNumber(string $houseNumber)
     {
-        $this->house_number = $house_number;
+        $this->houseNumber = $houseNumber;
     }
 
     /**

@@ -14,6 +14,8 @@ namespace JWeiland\Telephonedirectory\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -67,7 +69,7 @@ class Employee extends AbstractEntity
      *
      * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
      */
-    protected $subjectField = '';
+    protected $subjectField;
 
     /**
      * company
@@ -229,11 +231,7 @@ class Employee extends AbstractEntity
      */
     protected function initStorageObjects()
     {
-        /**
-         * Do not modify this method!
-         * It will be rewritten on each save in the extension builder
-         * You may modify the constructor of this class instead
-         */
+        $this->additionalFunction = new ObjectStorage();
         $this->languageSkill = new ObjectStorage();
     }
 
@@ -378,7 +376,7 @@ class Employee extends AbstractEntity
      */
     public function setSubjectField(SubjectField $subjectField)
     {
-        $this->languageSkill = $subjectField;
+        $this->subjectField = $subjectField;
     }
 
     /**
@@ -463,6 +461,26 @@ class Employee extends AbstractEntity
     public function setAdditionalFunction(ObjectStorage $additionalFunction)
     {
         $this->additionalFunction = $additionalFunction;
+    }
+
+    /**
+     * Add a new additional function
+     *
+     * @param Category $additionalFunction
+     */
+    public function addAdditionalFunction(Category $additionalFunction)
+    {
+        $this->additionalFunction->attach($additionalFunction);
+    }
+
+    /**
+     * Remove an additional function
+     *
+     * @param Category $additionalFunction
+     */
+    public function removeAdditionalFunction(Category $additionalFunction)
+    {
+        $this->additionalFunction->detach($additionalFunction);
     }
 
     /**
