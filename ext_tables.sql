@@ -25,7 +25,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	pager varchar(255) DEFAULT '' NOT NULL,
 	fax varchar(255) DEFAULT '' NOT NULL,
 	image varchar(255) DEFAULT '' NOT NULL,
-	regular_attendance TEXT DEFAULT '' NOT NULL,
+	regular_attendance text DEFAULT '' NOT NULL,
 	language_skill int(11) unsigned DEFAULT '0' NOT NULL,
 	pc_fax varchar(255) DEFAULT '' NOT NULL,
 	additional_informations text DEFAULT '' NOT NULL,

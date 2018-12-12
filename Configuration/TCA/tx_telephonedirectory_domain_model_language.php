@@ -6,7 +6,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
         'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
@@ -64,8 +63,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_telephonedirectory_domain_model_languageskill',
-                'foreign_table_where' => 'AND tx_telephonedirectory_domain_model_languageskill.pid=###CURRENT_PID### AND tx_telephonedirectory_domain_model_languageskill.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_telephonedirectory_domain_model_language',
+                'foreign_table_where' => 'AND tx_telephonedirectory_domain_model_language.pid=###CURRENT_PID### AND tx_telephonedirectory_domain_model_language.sys_language_uid IN (-1,0)',
                 'fieldWizard' => [
                     'selectIcons' => [
                         'disabled' => true,
