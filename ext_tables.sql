@@ -230,8 +230,8 @@ CREATE TABLE tx_telephonedirectory_domain_model_languageskill (
 	employee int(11) unsigned DEFAULT '0' NOT NULL,
 	language int(11) unsigned DEFAULT '0' NOT NULL,
 
-	writing int(11) DEFAULT '0' NOT NULL,
-	speaking int(11) DEFAULT '0' NOT NULL,
+	writing varchar(32) DEFAULT '' NOT NULL,
+	speaking varchar(32) DEFAULT '' NOT NULL,
 	infotext text NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
