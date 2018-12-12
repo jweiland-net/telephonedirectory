@@ -23,7 +23,7 @@
 		"source": "https://github.com/jweiland-net/telephonedirectory"
 	},
 	"require": {
-		"typo3/cms-core": "^8.7",
+		"typo3/cms-core": "^8.7 || ^9.5",
 		"jweiland/maps2": "^4.2"
 	},
 	"require-dev": {
