@@ -7,6 +7,10 @@ if (!defined('TYPO3_MODE')) {
 if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('maps2')) {
     \JWeiland\Maps2\Tca\Maps2Registry::getInstance()->add(
         'telephonedirectory',
-        'tx_telephonedirectory_domain_model_building'
+        'tx_telephonedirectory_domain_model_building',
+        [
+            'fieldList' => 'tx_maps2_uid',
+            'position' => 'after:city'
+        ]
     );
 }
