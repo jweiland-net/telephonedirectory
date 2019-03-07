@@ -226,11 +226,11 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
 				<source>Fluent</source>
-				<target>Flüssig</target>
+				<target>fließend</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
 				<source>Good</source>
-				<target>Gut</target>
+				<target>gut</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
 				<source>Basic knowledge</source>
