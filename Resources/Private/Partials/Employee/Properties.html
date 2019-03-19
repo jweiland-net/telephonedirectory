@@ -21,8 +21,8 @@
 			<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
-			<dd>
-				<f:if condition="{employee.additionalFunction}">
+			<f:if condition="{employee.additionalFunction}">
+				<dd>
 					<dl>
 						<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
 						<f:for each="{employee.additionalFunction}" as="additional_function">
@@ -31,8 +31,8 @@
 							</dd>
 						</f:for>
 					</dl>
-				</f:if>
-			</dd>
+				</dd>
+			</f:if>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
 			<f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
 		</dl>
@@ -49,18 +49,18 @@
 			<f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
 		</dl>
 		<f:if condition="{employee.languageSkill}">
-			<dl class="extdl marginbottom2 borderbottom clearfix">
+			<dl class="extdl marginbottom2 clearfix">
 
-				<dd class="nomargin noborder">
+				<dd class="nomargin">
 					<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill"/>:
 				</dd>
 				<f:for each="{employee.languageSkill}" as="skill">
-					<dl>
+					<dl class="clearfix borderbottom">
 						<dd class="noborder grid_6 floatleft nomargin">{skill.language.title}:</dd>
 						<dd class="noborder grid_6 floatleft nomargin">
-							<dl>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking}"/>
+							<dl class="nomargin">
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing, additionalClasses: 'nomargin noborder'}"/>
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking, additionalClasses: 'nomargin noborder'}"/>
 							</dl>
 						</dd>
 					</dl>
