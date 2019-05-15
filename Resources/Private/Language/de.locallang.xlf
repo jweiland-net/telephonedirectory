@@ -176,19 +176,19 @@
 				<target>Kenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
-				<source>Native language</source>
+				<source>native language</source>
 				<target>Muttersprache</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
-				<source>Fluent</source>
-				<target>Flüssig</target>
+				<source>fluent</source>
+				<target>flüssig</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
-				<source>Good</source>
-				<target>Gut</target>
+				<source>good</source>
+				<target>gut</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
-				<source>Basic knowledge</source>
+				<source>basic knowledge</source>
 				<target>Grundkenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">

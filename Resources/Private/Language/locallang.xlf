@@ -149,16 +149,16 @@
 				<source>Skill</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
-				<source>Native language</source>
+				<source>native language</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
-				<source>Fluent</source>
+				<source>fluent</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
-				<source>Good</source>
+				<source>good</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
-				<source>Basic knowledge</source>
+				<source>basic knowledge</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
 				<source>Infotext</source>

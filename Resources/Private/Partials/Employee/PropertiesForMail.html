@@ -44,8 +44,8 @@
 						<dd>{skill.language}:</dd>
 						<dd>
 							<dl>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking}"/>
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}'}"/>
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}'}"/>
 							</dl>
 						</dd>
 					</dl>

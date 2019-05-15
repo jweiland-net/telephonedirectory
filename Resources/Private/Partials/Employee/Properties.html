@@ -59,8 +59,8 @@
 						<dd class="noborder grid_6 floatleft nomargin">{skill.language.title}:</dd>
 						<dd class="noborder grid_6 floatleft nomargin">
 							<dl class="nomargin">
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing, additionalClasses: 'nomargin noborder'}"/>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking, additionalClasses: 'nomargin noborder'}"/>
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}', additionalClasses: 'nomargin noborder'}"/>
+								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}', additionalClasses: 'nomargin noborder'}"/>
 							</dl>
 						</dd>
 					</dl>
