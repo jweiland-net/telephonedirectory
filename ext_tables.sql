@@ -148,10 +148,10 @@ CREATE TABLE tx_telephonedirectory_domain_model_building (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
-	street varchar(30) DEFAULT '' NOT NULL,
-	house_number varchar(6) DEFAULT '' NOT NULL,
-	zip varchar(10) DEFAULT '' NOT NULL,
-	city varchar(30) DEFAULT '' NOT NULL,
+	street varchar(64) DEFAULT '' NOT NULL,
+	house_number varchar(32) DEFAULT '' NOT NULL,
+	zip varchar(16) DEFAULT '' NOT NULL,
+	city varchar(32) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
