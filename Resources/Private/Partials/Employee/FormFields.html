@@ -1,66 +1,96 @@
 <div class="extdiv">
-	<label for="firstName">
-	<f:translate key="tx_telephonedirectory_domain_model_employee.first_name" />
+	<label for="telephonedirectoryFirstName">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.first_name" />
 	</label>
-	<f:form.textfield property="firstName" />
+	<f:form.textfield id="telephonedirectoryFirstName" property="firstName" />
 </div>
 <div class="extdiv">
-	<label for="lastName">
+	<label for="telephonedirectoryLastName">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.last_name" />
 	</label>
-	<f:form.textfield property="lastName" />
+	<f:form.textfield id="telephonedirectoryLastName" property="lastName" />
 </div>
 <div class="extdiv">
-	<label for="nameAdditions">
+	<label for="telephonedirectoryNameAdditions">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.name_additions" />
 	</label>
-	<f:form.textfield property="nameAdditions" />
+	<f:form.textfield id="telephonedirectoryNameAdditions" property="nameAdditions" />
 </div>
 <div class="extdiv">
-	<label for="telephone1">
+	<label for="telephonedirectoryTelephone1">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.telephone1" />
 	</label>
-	<f:form.textfield property="telephone1" />
+	<f:form.textfield id="telephonedirectoryTelephone1" property="telephone1" />
 </div>
 <div class="extdiv">
-	<label for="telephone2">
+	<label for="telephonedirectoryTelephone2">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.telephone2" />
 	</label>
-	<f:form.textfield property="telephone2" />
+	<f:form.textfield id="telephonedirectoryTelephone2" property="telephone2" />
 </div>
 <div class="extdiv">
-	<label for="telephone3">
+	<label for="telephonedirectoryTelephone3">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.telephone3" />
 	</label>
-	<f:form.textfield property="telephone3" />
+	<f:form.textfield id="telephonedirectoryTelephone3" property="telephone3" />
 </div>
 <div class="extdiv">
-	<label for="mobile">
+	<label for="telephonedirectoryMobile">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.mobile" />
 	</label>
-		<f:form.textfield property="mobile" />
+		<f:form.textfield id="telephonedirectoryMobile" property="mobile" />
 </div>
 <div class="extdiv">
-	<label for="fax">
+	<label for="telephonedirectoryFax">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.fax" />
 	</label>
-	<f:form.textfield property="fax" />
+	<f:form.textfield id="telephonedirectoryFax" property="fax" />
 </div>
 <div class="extdiv">
-	<label for="email">
+	<label for="telephonedirectoryEmail">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.email" />
 	</label>
-	<f:form.textfield property="email" />
+	<f:form.textfield id="telephonedirectoryEmail" property="email" />
 </div>
 <div class="extdiv">
-	<label for="additionalInformations">
+	<label for="telephonedirectoryAdditionalInformations">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.additional_informations" />
 	</label>
-	<f:form.textfield property="additionalInformations" />
+	<f:form.textfield id="telephonedirectoryAdditionalInformations" property="additionalInformations" />
 </div>
 <div class="extdiv">
-	<label for="regularAttendance">
+	<label for="telephonedirectoryRegularAttendance">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.regular_attendance" />
 	</label>
-	<f:form.textfield property="regularAttendance" />
+	<f:form.textfield id="telephonedirectoryRegularAttendance" property="regularAttendance" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectoryOffice">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.office" />
+	</label>
+	<f:form.select id="telephonedirectoryOffice" property="office" options="{offices}" optionLabelField="title" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectoryBuilding">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.building" />
+	</label>
+	<f:form.select id="telephonedirectoryBuilding" property="building" options="{buildings}" optionLabelField="title" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectoryDepartment">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.department" />
+	</label>
+	<f:form.select id="telephonedirectoryDepartment" property="department" options="{departments}" optionLabelField="title" />
+</div>
+<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" />
+
+<f:render partial="Employee/LanguageSkill" arguments="{_all}"/>
+<div class="input-group">
+	<input type="button" value="Add" data-action="add" data-source="telephonedirectoryLanguageSkill###UID###" data-prepend="telephonedirectoryLanguageSkills" />
+</div>
+
+<div id="telephonedirectoryLanguageSkills" data-count="{f:count(subject: '{employee.languageSkill}')}">
+	<f:for each="{employee.languageSkill}" as="languageSkill" iteration="iterator">
+		<f:render partial="Employee/LanguageSkill" arguments="{_all}"/>
+	</f:for>
 </div>

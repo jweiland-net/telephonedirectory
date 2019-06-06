@@ -14,14 +14,17 @@ namespace JWeiland\Telephonedirectory\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Repository\BuildingRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
+use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -243,12 +246,28 @@ class EmployeeController extends ActionController
             $controlAuthToken = GeneralUtility::stdAuthCode($employee);
 
             if ($authToken === $controlAuthToken) {
-                $this->view->assign('employee', $employee);
-                $this->view->assign('buildings', $this->buildingRepository->findAll());
-                $this->view->assign('departments', $this->departmentRepository->findAll());
-                $this->view->assign('offices', $this->officeRepository->findAll());
+                $languageRepository = $this->objectManager->get(LanguageRepository::class);
+
+                $this->view->assignMultiple(
+                    [
+                        'employee' => $employee,
+                        'buildings' => $this->buildingRepository->findAll(),
+                        'departments' => $this->departmentRepository->findAll(),
+                        'offices' => $this->officeRepository->findAll(),
+                        'languages' => $languageRepository->findAll(),
+                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect()
+                    ]
+                );
             }
         }
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowProperties('languageSkill');
+        $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->forProperty('languageSkill.*')->allowProperties('language', 'writing', 'speaking');
+        $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowCreationForSubProperty('languageSkill.*');
+        $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowModificationForSubProperty('languageSkill.*');
     }
 
     /**
@@ -265,10 +284,8 @@ class EmployeeController extends ActionController
      */
     public function updateAction(Employee $employee)
     {
-        $employee->setHidden(true);
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
-        $this->redirect('list');
     }
 
     /**
@@ -284,7 +301,7 @@ class EmployeeController extends ActionController
         GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData($employee, $this->getContent($employee));
 
         $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
-        $this->redirect('list');
+        $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
     }
 
     /**

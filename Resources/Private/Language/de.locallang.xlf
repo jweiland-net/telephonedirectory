@@ -236,6 +236,10 @@
 				<source>An email was send to employee to edit this entry</source>
 				<target>Es wurde eine Mail an die dem Datensatz hinterlegte E-Mail-Adresse mit einem Link zum Bearbeiten des Datensatzes gesendet.</target>
 			</trans-unit>
+			<trans-unit id="optionSelectPrependLabel">
+				<source>--- Select ---</source>
+				<target>--- Bitte Auswählen ---</target>
+			</trans-unit>
 
 			<trans-unit id="email.subject">
 				<source>Edit entry</source>

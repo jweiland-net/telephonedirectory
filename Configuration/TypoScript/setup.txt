@@ -26,13 +26,13 @@ plugin.tx_telephonedirectory {
     }
 
     settings {
-        pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
-        pageBrowser {
-            itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
-            insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
-            insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
-            maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
-        }
+      pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
+      pageBrowser {
+          itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
+          insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
+          insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
+          maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
+      }
     }
 }
 
@@ -47,3 +47,7 @@ plugin.tx_telephonedirectory._CSS_DEFAULT_STYLE (
 		border: 1px #FF0000 solid;
 	}
 )
+
+page.includeJSFooterlibs {
+  telephonedirectoryEditAction = EXT:telephonedirectory/Resources/Public/JavaScript/EditAction.js
+}

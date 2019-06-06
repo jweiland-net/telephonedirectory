@@ -194,6 +194,9 @@
 			<trans-unit id="emailWasSend">
 				<source>An email was send to employee to edit this entry</source>
 			</trans-unit>
+			<trans-unit id="optionSelectPrependLabel">
+				<source>--- Select ---</source>
+			</trans-unit>
 
 			<trans-unit id="email.subject">
 				<source>Edit entry</source>

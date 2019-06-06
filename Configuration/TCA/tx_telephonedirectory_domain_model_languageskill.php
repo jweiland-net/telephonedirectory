@@ -153,28 +153,7 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.speak',
             'config' => [
                 'type' => 'radio',
-                'items' => [
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
-                        '0'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
-                        'native'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
-                        'fluent'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
-                        'good'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
-                        'basic'
-                    ]
-                ]
+                'items' => \JWeiland\Telephonedirectory\Utility\LanguageSkillUtility::getLanguageSkills()
             ]
         ],
         'writing' => [
@@ -182,28 +161,7 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.write',
             'config' => [
                 'type' => 'radio',
-                'items' => [
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
-                        '0'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
-                        'native'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
-                        'fluent'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
-                        'good'
-                    ],
-                    [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
-                        'basic'
-                    ]
-                ]
+                'items' => \JWeiland\Telephonedirectory\Utility\LanguageSkillUtility::getLanguageSkills()
             ]
         ],
         'infotext' => [
