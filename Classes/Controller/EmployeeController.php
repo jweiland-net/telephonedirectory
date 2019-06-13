@@ -286,6 +286,7 @@ class EmployeeController extends ActionController
     {
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
+        $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
     }
 
     /**
