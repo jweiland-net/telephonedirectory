@@ -181,7 +181,7 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
 				<source>fluent</source>
-				<target>flüssig</target>
+				<target>fließend</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
 				<source>good</source>
