@@ -201,7 +201,10 @@ return [
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
                 'minitems' => 0,
-                'maxitems' => 1
+                'maxitems' => 1,
+                'items' => [
+                    ['', 0]
+                ]
             ]
         ],
         'company' => [
@@ -210,7 +213,10 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'items' => [
+                    ['', 0]
+                ]
             ]
         ],
         'room_number' => [
@@ -345,7 +351,10 @@ return [
                 'foreign_table' => 'tx_telephonedirectory_domain_model_office',
                 'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_office.title',
                 'minitems' => 1,
-                'maxitems' => 1
+                'maxitems' => 1,
+                'items' => [
+                    ['', 0]
+                ]
             ]
         ],
         'building' => [
@@ -357,7 +366,10 @@ return [
                 'foreign_table' => 'tx_telephonedirectory_domain_model_building',
                 'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_building.title',
                 'minitems' => 1,
-                'maxitems' => 1
+                'maxitems' => 1,
+                'items' => [
+                    ['', 0]
+                ]
             ]
         ],
         'department' => [
@@ -369,7 +381,10 @@ return [
                 'foreign_table' => 'tx_telephonedirectory_domain_model_department',
                 'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_department.title',
                 'minitems' => 0,
-                'maxitems' => 1
+                'maxitems' => 1,
+                'items' => [
+                    ['', 0]
+                ]
             ]
         ],
         'language_skill' => [
