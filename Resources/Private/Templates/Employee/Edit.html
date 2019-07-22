@@ -6,7 +6,7 @@
 
 	<f:render partial="FormErrors" arguments="{object:Employee}"/>
 
-	<f:form class="extform" action="update" name="employee" object="{employee}" >
+	<f:form enctype="multipart/form-data" class="extform" action="update" name="employee" object="{employee}" >
 		<f:render partial="Employee/FormFields" arguments="{_all}" />
 		<div class="submitwrap formindent">
 			<f:form.submit value="{f:translate(key: 'save')}" />

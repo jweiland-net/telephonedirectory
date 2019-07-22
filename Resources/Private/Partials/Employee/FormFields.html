@@ -1,4 +1,16 @@
 <div class="extdiv">
+	<label>
+		<f:translate key="tx_telephonedirectory_domain_model_employee.title" />
+	</label>
+	<div class="input-group">
+		<f:form.radio id="telephonedirectoryTitle1" value="1" property="title" />
+		<f:translate key="tx_telephonedirectory_domain_model_employee.title.1" />
+
+		<f:form.radio id="telephonedirectoryTitle0" value="0" property="title" />
+		<f:translate key="tx_telephonedirectory_domain_model_employee.title.0" />
+	</div>
+</div>
+<div class="extdiv">
 	<label for="telephonedirectoryFirstName">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.first_name" />
 	</label>
@@ -20,7 +32,7 @@
 	<label for="telephonedirectoryTelephone1">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.telephone1" />
 	</label>
-	<f:form.textfield id="telephonedirectoryTelephone1" property="telephone1" />
+	<f:form.textfield required="required" id="telephonedirectoryTelephone1" property="telephone1" />
 </div>
 <div class="extdiv">
 	<label for="telephonedirectoryTelephone2">
@@ -65,29 +77,50 @@
 	<f:form.textfield id="telephonedirectoryRegularAttendance" property="regularAttendance" />
 </div>
 <div class="extdiv">
+	<label for="telephonedirectoryFunction">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.function" />
+	</label>
+	<f:form.textfield id="telephonedirectoryFunction" property="function" />
+</div>
+<div class="extdiv">
 	<label for="telephonedirectoryOffice">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.office" />
 	</label>
-	<f:form.select id="telephonedirectoryOffice" property="office" options="{offices}" optionLabelField="title" />
-</div>
-<div class="extdiv">
-	<label for="telephonedirectoryBuilding">
-		<f:translate key="tx_telephonedirectory_domain_model_employee.building" />
-	</label>
-	<f:form.select id="telephonedirectoryBuilding" property="building" options="{buildings}" optionLabelField="title" />
+	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryOffice" property="office" options="{offices}" optionLabelField="title" />
 </div>
 <div class="extdiv">
 	<label for="telephonedirectoryDepartment">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.department" />
 	</label>
-	<f:form.select id="telephonedirectoryDepartment" property="department" options="{departments}" optionLabelField="title" />
+	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryDepartment" property="department" options="{departments}" optionLabelField="title" />
 </div>
-<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" />
+<div class="extdiv">
+	<label for="telephonedirectoryBuilding">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.building" />
+	</label>
+	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryBuilding" property="building" options="{buildings}" optionLabelField="title" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectorySubjectField">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.subject_field" />
+	</label>
+	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectorySubjectField" property="subjectField" options="{subjectFields}" optionLabelField="title" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectoryRoomNumber">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.room_number" />
+	</label>
+	<f:form.textfield id="telephonedirectoryRoomNumber" property="roomNumber" />
+</div>
+
+<div class="extdiv">
+	<span><f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" /></span>
+	<div class="input-group">
+		<input type="button" value="Add" data-action="add" data-source="telephonedirectoryLanguageSkill###UID_CONTAINER###" data-prepend="telephonedirectoryLanguageSkills" />
+	</div>
+</div>
 
 <f:render partial="Employee/LanguageSkill" arguments="{_all}"/>
-<div class="input-group">
-	<input type="button" value="Add" data-action="add" data-source="telephonedirectoryLanguageSkill###UID###" data-prepend="telephonedirectoryLanguageSkills" />
-</div>
 
 <div id="telephonedirectoryLanguageSkills" data-count="{f:count(subject: '{employee.languageSkill}')}">
 	<f:for each="{employee.languageSkill}" as="languageSkill" iteration="iterator">

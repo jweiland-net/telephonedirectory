@@ -16,6 +16,7 @@ namespace JWeiland\Telephonedirectory\Domain\Model;
  */
 
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -203,9 +204,9 @@ class Employee extends AbstractEntity
     /**
      * image
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected $image = '';
+    protected $image;
 
     /**
      * Language Skill
@@ -374,7 +375,7 @@ class Employee extends AbstractEntity
      * @param SubjectField $subjectField
      * @return void
      */
-    public function setSubjectField(SubjectField $subjectField)
+    public function setSubjectField(SubjectField $subjectField = null)
     {
         $this->subjectField = $subjectField;
     }
@@ -468,7 +469,7 @@ class Employee extends AbstractEntity
      *
      * @param Category $additionalFunction
      */
-    public function addAdditionalFunction(Category $additionalFunction)
+    public function addAdditionalFunction(Category $additionalFunction = null)
     {
         $this->additionalFunction->attach($additionalFunction);
     }
@@ -779,9 +780,9 @@ class Employee extends AbstractEntity
     /**
      * Returns the image
      *
-     * @return string $image
+     * @return FileReference $image
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
@@ -789,10 +790,10 @@ class Employee extends AbstractEntity
     /**
      * Sets the image
      *
-     * @param string $image
+     * @param FileReference $image
      * @return void
      */
-    public function setImage(string $image)
+    public function setImage(FileReference $image = null)
     {
         $this->image = $image;
     }

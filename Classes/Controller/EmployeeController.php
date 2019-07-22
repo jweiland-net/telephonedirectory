@@ -23,6 +23,7 @@ use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -247,11 +248,13 @@ class EmployeeController extends ActionController
 
             if ($authToken === $controlAuthToken) {
                 $languageRepository = $this->objectManager->get(LanguageRepository::class);
+                $subjectFieldRepository = $this->objectManager->get(SubjectFieldRepository::class);
 
                 $this->view->assignMultiple(
                     [
                         'employee' => $employee,
                         'buildings' => $this->buildingRepository->findAll(),
+                        'subjectFields' => $subjectFieldRepository->findAll(),
                         'departments' => $this->departmentRepository->findAll(),
                         'offices' => $this->officeRepository->findAll(),
                         'languages' => $languageRepository->findAll(),

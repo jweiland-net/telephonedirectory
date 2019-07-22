@@ -15,7 +15,7 @@
 	<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.speaking}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Speak" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][speaking]" options="{languageSkills}" />
 
 	<div data-additional-controls="true">
-		<input type="button" value="Remove" data-action="remove" data-target="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
 		<input type="button" value="Add" data-action="add" data-source="telephonedirectoryLanguageSkill###UID_CONTAINER###" data-after="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
+		<input type="button" value="Remove" data-action="remove" data-target="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
 	</div>
 </div>

@@ -27,9 +27,13 @@
 				<source>Mr.</source>
 				<target>Herr</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+				<source>Regular attendance</source>
+				<target>Regelmäßige Anwesenheitszeiten</target>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
 				<source>Name additions</source>
-				<target>Namenszusatz</target>
+				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
 				<source>Subject Field</source>
