@@ -253,6 +253,11 @@
 				<source>Click following link to edit entry:</source>
 				<target>Klicken Sie auf den nachfolgenden Link, um den Eintrag zu bearbeiten:</target>
 			</trans-unit>
+
+			<trans-unit id="sendMailToContact">
+				<source>To change your Data, please contact</source>
+				<target>Zum Ändern der Daten wenden Sie sich bitte an</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

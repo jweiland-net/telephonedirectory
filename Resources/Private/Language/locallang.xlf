@@ -204,6 +204,10 @@
 			<trans-unit id="email.text">
 				<source>Click following link to edit entry:</source>
 			</trans-unit>
+
+			<trans-unit id="sendMailToContact">
+				<source>To change your Data, please contact</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -30,7 +30,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -195,12 +194,7 @@ class EmployeeController extends ActionController
      */
     public function showAction(Employee $employee)
     {
-        /** @var ConfigurationUtility $configurationUtility */
-        $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
-        $config = $configurationUtility->getCurrentConfiguration('telephonedirectory');
-
-        $this->view->assign('contactName', $config['emailFromName']['value']);
-        $this->view->assign('contactEmail', $config['emailFromAddress']['value']);
+        $this->view->assign('contactEmail', $this->extConf->getEmailContact());
         $this->view->assign('employee', $employee);
     }
 

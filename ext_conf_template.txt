@@ -1,3 +1,5 @@
+# cat=basic; type=string; label = LLL:EXT:telephonedirectory/Resources/Private/Language/ExtConf.xlf:emailContact
+emailContact =
 # cat=basic; type=string; label = LLL:EXT:telephonedirectory/Resources/Private/Language/ExtConf.xlf:emailFromAddress
 emailFromAddress =
 # cat=basic; type=string; label = LLL:EXT:telephonedirectory/Resources/Private/Language/ExtConf.xlf:emailFromName

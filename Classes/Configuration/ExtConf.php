@@ -23,6 +23,13 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     /**
+     * email of contact
+     *
+     * @var string
+     */
+    protected $emailContact = '';
+
+    /**
      * email from address
      *
      * @var string
@@ -53,6 +60,30 @@ class ExtConf implements SingletonInterface
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailContact(): string
+    {
+        if (empty($this->emailContact)) {
+            $senderMail = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
+            if (empty($senderMail)) {
+                throw new \Exception('You have forgotten to set a sender email address in extension configuration or in install tool');
+            }
+
+            return $senderMail;
+        }
+        return $this->emailContact;
+    }
+
+    /**
+     * @param string $emailContact
+     */
+    public function setEmailContact(string $emailContact)
+    {
+        $this->emailContact = $emailContact;
     }
 
     /**

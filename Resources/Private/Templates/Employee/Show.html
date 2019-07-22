@@ -8,15 +8,17 @@
 
 	<f:render partial="Employee/Properties" arguments="{employee: employee}" />
 
-	<f:if condition="{employee.isCatchAllMail}}">
+	<f:if condition="{employee.email}">
 		<f:then>
-			<p><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord" arguments="{0: contactName, 1: contactEmail}" /></p>
-		</f:then>
-		<f:else>
 			<p class="align-right info-box">
 				<f:link.action action="sendEditMail" arguments="{employee: employee}">
 					<span><f:translate key="editYourRecord"/></span><span aria-hidden="true" class="icon-arrowright"></span>
 				</f:link.action>
+			</p>
+		</f:then>
+		<f:else>
+			<p class="align-right info-box">
+				<f:translate key="sendMailToContact" /> <f:link.email email="{contactEmail}">{contactEmail}</f:link.email>
 			</p>
 		</f:else>
 	</f:if>
