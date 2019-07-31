@@ -105,7 +105,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function setWritingWithBooleanResultsInString()
     {
-        $this->subject->setWriting(TRUE);
+        $this->subject->setWriting(true);
         $this->assertSame('1', $this->subject->getWriting());
     }
 
@@ -147,7 +147,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function setSpeakingWithBooleanResultsInString()
     {
-        $this->subject->setSpeaking(TRUE);
+        $this->subject->setSpeaking(true);
         $this->assertSame('1', $this->subject->getSpeaking());
     }
 
@@ -189,7 +189,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function setInfotextWithBooleanResultsInString()
     {
-        $this->subject->setInfotext(TRUE);
+        $this->subject->setInfotext(true);
         $this->assertSame('1', $this->subject->getInfotext());
     }
 

@@ -83,7 +83,7 @@ class OfficeTest extends UnitTestCase
      */
     public function setTitleWithBooleanResultsInString()
     {
-        $this->subject->setTitle(TRUE);
+        $this->subject->setTitle(true);
         $this->assertSame('1', $this->subject->getTitle());
     }
 
@@ -125,7 +125,7 @@ class OfficeTest extends UnitTestCase
      */
     public function setCodeWithBooleanResultsInString()
     {
-        $this->subject->setCode(TRUE);
+        $this->subject->setCode(true);
         $this->assertSame('1', $this->subject->getCode());
     }
 
@@ -167,7 +167,7 @@ class OfficeTest extends UnitTestCase
      */
     public function setTokenWithBooleanResultsInString()
     {
-        $this->subject->setToken(TRUE);
+        $this->subject->setToken(true);
         $this->assertSame('1', $this->subject->getToken());
     }
 

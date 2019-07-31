@@ -102,7 +102,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      *
      * @param array $submittedData An array containing the data submitted by the add/edit task form
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
-     * @return bool TRUE if validation was ok (or selected class is not relevant), FALSE otherwise
+     * @return bool true if validation was ok (or selected class is not relevant), false otherwise
      */
     public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule): bool
     {
