@@ -47,7 +47,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString() {
+    public function getTitleInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getTitle()
@@ -57,7 +58,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle() {
+    public function setTitleSetsTitle()
+    {
         $this->subject->setTitle('foo bar');
 
         $this->assertSame(
@@ -69,7 +71,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithIntegerResultsInString() {
+    public function setTitleWithIntegerResultsInString()
+    {
         $this->subject->setTitle(123);
         $this->assertSame('123', $this->subject->getTitle());
     }
@@ -77,7 +80,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithBooleanResultsInString() {
+    public function setTitleWithBooleanResultsInString()
+    {
         $this->subject->setTitle(TRUE);
         $this->assertSame('1', $this->subject->getTitle());
     }
@@ -85,7 +89,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStreetInitiallyReturnsEmptyString() {
+    public function getStreetInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getStreet()
@@ -95,7 +100,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStreetSetsStreet() {
+    public function setStreetSetsStreet()
+    {
         $this->subject->setStreet('foo bar');
 
         $this->assertSame(
@@ -107,7 +113,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStreetWithIntegerResultsInString() {
+    public function setStreetWithIntegerResultsInString()
+    {
         $this->subject->setStreet(123);
         $this->assertSame('123', $this->subject->getStreet());
     }
@@ -115,7 +122,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStreetWithBooleanResultsInString() {
+    public function setStreetWithBooleanResultsInString()
+    {
         $this->subject->setStreet(TRUE);
         $this->assertSame('1', $this->subject->getStreet());
     }
@@ -123,7 +131,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getHouseNumberInitiallyReturnsEmptyString() {
+    public function getHouseNumberInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getHouseNumber()
@@ -133,7 +142,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setHouseNumberSetsHouseNumber() {
+    public function setHouseNumberSetsHouseNumber()
+    {
         $this->subject->setHouseNumber('foo bar');
 
         $this->assertSame(
@@ -145,7 +155,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setHouseNumberWithIntegerResultsInString() {
+    public function setHouseNumberWithIntegerResultsInString()
+    {
         $this->subject->setHouseNumber(123);
         $this->assertSame('123', $this->subject->getHouseNumber());
     }
@@ -153,7 +164,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setHouseNumberWithBooleanResultsInString() {
+    public function setHouseNumberWithBooleanResultsInString()
+    {
         $this->subject->setHouseNumber(TRUE);
         $this->assertSame('1', $this->subject->getHouseNumber());
     }
@@ -161,7 +173,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getZipInitiallyReturnsEmptyString() {
+    public function getZipInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getZip()
@@ -171,7 +184,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setZipSetsZip() {
+    public function setZipSetsZip()
+    {
         $this->subject->setZip('foo bar');
 
         $this->assertSame(
@@ -183,7 +197,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setZipWithIntegerResultsInString() {
+    public function setZipWithIntegerResultsInString()
+    {
         $this->subject->setZip(123);
         $this->assertSame('123', $this->subject->getZip());
     }
@@ -191,7 +206,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setZipWithBooleanResultsInString() {
+    public function setZipWithBooleanResultsInString()
+    {
         $this->subject->setZip(TRUE);
         $this->assertSame('1', $this->subject->getZip());
     }
@@ -199,7 +215,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCityInitiallyReturnsEmptyString() {
+    public function getCityInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getCity()
@@ -209,7 +226,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCitySetsCity() {
+    public function setCitySetsCity()
+    {
         $this->subject->setCity('foo bar');
 
         $this->assertSame(
@@ -221,7 +239,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCityWithIntegerResultsInString() {
+    public function setCityWithIntegerResultsInString()
+    {
         $this->subject->setCity(123);
         $this->assertSame('123', $this->subject->getCity());
     }
@@ -229,7 +248,8 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCityWithBooleanResultsInString() {
+    public function setCityWithBooleanResultsInString()
+    {
         $this->subject->setCity(TRUE);
         $this->assertSame('1', $this->subject->getCity());
     }
@@ -237,14 +257,16 @@ class BuildingTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTxMaps2UidInitiallyReturnsNull() {
+    public function getTxMaps2UidInitiallyReturnsNull()
+    {
         $this->assertNull($this->subject->getTxMaps2Uid());
     }
 
     /**
      * @test
      */
-    public function setTxMaps2UidSetsTxMaps2Uid() {
+    public function setTxMaps2UidSetsTxMaps2Uid()
+    {
         $instance = new PoiCollection();
         $this->subject->setTxMaps2Uid($instance);
 

@@ -46,7 +46,8 @@ class LanguageTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString() {
+    public function getTitleInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getTitle()
@@ -56,7 +57,8 @@ class LanguageTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle() {
+    public function setTitleSetsTitle()
+    {
         $this->subject->setTitle('foo bar');
 
         $this->assertSame(
@@ -68,7 +70,8 @@ class LanguageTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithIntegerResultsInString() {
+    public function setTitleWithIntegerResultsInString()
+    {
         $this->subject->setTitle(123);
         $this->assertSame('123', $this->subject->getTitle());
     }
@@ -76,7 +79,8 @@ class LanguageTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithBooleanResultsInString() {
+    public function setTitleWithBooleanResultsInString()
+    {
         $this->subject->setTitle(TRUE);
         $this->assertSame('1', $this->subject->getTitle());
     }
