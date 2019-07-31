@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Service;
 
 /*
@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Service;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -26,15 +27,10 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EmailService
 {
     /**
-     * extConf
-     *
      * @var ExtConf
      */
     protected $extConf;
 
-    /**
-     * EmailService constructor
-     */
     public function __construct()
     {
         $this->extConf = GeneralUtility::makeInstance(ExtConf::class);
@@ -45,9 +41,6 @@ class EmailService
      *
      * @param Employee $employee
      * @param string $content
-     *
-     * @return void
-     *
      * @throws \Exception
      */
     public function informEmployeeAboutTheirData(Employee $employee, $content)

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Utility;
 
 /*
@@ -15,13 +15,16 @@ namespace JWeiland\Telephonedirectory\Utility;
  * The TYPO3 project - inspiring people to share!
  */
 
-use In2code\Powermail\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class LanguageSkillUtility
  */
 class LanguageSkillUtility
 {
+    /**
+     * @var array
+     */
     protected static $languageSkills = [
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
@@ -45,6 +48,9 @@ class LanguageSkillUtility
         ]
     ];
 
+    /**
+     * @var array
+     */
     protected static $languageSkillsForFluidSelect = [];
 
     public static function getLanguageSkills(): array

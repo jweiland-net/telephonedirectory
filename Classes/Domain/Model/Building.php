@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 /*
@@ -23,50 +23,36 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Building extends AbstractEntity
 {
     /**
-     * Title
-     *
      * @var string
      */
     protected $title = '';
 
     /**
-     * Street
-     *
      * @var string
      */
     protected $street = '';
 
     /**
-     * House number
-     *
      * @var string
      */
     protected $houseNumber = '';
 
     /**
-     * Zip
-     *
      * @var string
      */
     protected $zip = '';
 
     /**
-     * City
-     *
      * @var string
      */
     protected $city = '';
 
     /**
-     * Poi collection
-     *
      * @var \JWeiland\Maps2\Domain\Model\PoiCollection
      */
     protected $txMaps2Uid;
 
     /**
-     * Returns the title
-     *
      * @return string
      */
     public function getTitle(): string
@@ -75,10 +61,7 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets the title
-     *
      * @param string $title
-     * @return void
      */
     public function setTitle(string $title)
     {
@@ -86,8 +69,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns street
-     *
      * @return string
      */
     public function getStreet(): string
@@ -96,8 +77,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets street
-     *
      * @param string $street
      */
     public function setStreet(string $street)
@@ -106,8 +85,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns house number
-     *
      * @return string
      */
     public function getHouseNumber(): string
@@ -116,8 +93,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets house number
-     *
      * @param string $houseNumber
      */
     public function setHouseNumber(string $houseNumber)
@@ -126,8 +101,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns zip
-     *
      * @return string
      */
     public function getZip(): string
@@ -136,8 +109,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets zip
-     *
      * @param string $zip
      */
     public function setZip(string $zip)
@@ -146,8 +117,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns city
-     *
      * @return string
      */
     public function getCity(): string
@@ -156,8 +125,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets city
-     *
      * @param string $city
      */
     public function setCity(string $city)
@@ -166,8 +133,6 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Returns the txMaps2Uid
-     *
      * @return PoiCollection $txMaps2Uid
      */
     public function getTxMaps2Uid()
@@ -176,10 +141,7 @@ class Building extends AbstractEntity
     }
 
     /**
-     * Sets the txMaps2Uid
-     *
      * @param PoiCollection $txMaps2Uid
-     * @return void
      */
     public function setTxMaps2Uid(PoiCollection $txMaps2Uid)
     {

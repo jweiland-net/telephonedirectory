@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
 /*
@@ -14,6 +14,8 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -22,11 +24,11 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class LanguageSkillRepository extends Repository
 {
     /**
-     * Returns all languageskills that are connected to a employee record
+     * Returns all languageSkills that are connected to a employee record
      *
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
-    public function findAllWithEmployeeRelation()
+    public function findAllWithEmployeeRelation(): QueryResultInterface
     {
         $query = $this->createQuery();
 

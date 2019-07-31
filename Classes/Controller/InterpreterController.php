@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 /*
@@ -14,11 +14,12 @@ namespace JWeiland\Telephonedirectory\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * Class InterpreterController
+ * Controller to list language skills
  */
 class InterpreterController extends ActionController
 {
@@ -28,10 +29,7 @@ class InterpreterController extends ActionController
     protected $languageSkillRepository;
 
     /**
-     * inject languageSkillRepository
-     *
      * @param  LanguageSkillRepository $languageSkillRepository
-     * @return void
      */
     public function injectLanguageSkillRepository(LanguageSkillRepository $languageSkillRepository)
     {
@@ -39,9 +37,7 @@ class InterpreterController extends ActionController
     }
 
     /**
-     * preprocessing of all actions
-     *
-     * @return void
+     * Pre-Processing of all actions
      */
     public function initializeAction()
     {
@@ -53,9 +49,7 @@ class InterpreterController extends ActionController
     }
 
     /**
-     * action list
-     *
-     * @return void
+     * Action list
      */
     public function listAction()
     {
