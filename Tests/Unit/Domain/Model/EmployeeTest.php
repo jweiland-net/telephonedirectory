@@ -21,6 +21,7 @@ use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -958,39 +959,23 @@ class EmployeeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getImageInitiallyReturnsEmptyString() {
+    public function getImageInitiallyReturnsNull()
+    {
+        $this->assertNull($this->subject->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function setImageSetsImage()
+    {
+        $instance = new FileReference();
+        $this->subject->setImage($instance);
+
         $this->assertSame(
-            '',
+            $instance,
             $this->subject->getImage()
         );
-    }
-
-    /**
-     * @test
-     */
-    public function setImageSetsImage() {
-        $this->subject->setImage('foo bar');
-
-        $this->assertSame(
-            'foo bar',
-            $this->subject->getImage()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setImageWithIntegerResultsInString() {
-        $this->subject->setImage(123);
-        $this->assertSame('123', $this->subject->getImage());
-    }
-
-    /**
-     * @test
-     */
-    public function setImageWithBooleanResultsInString() {
-        $this->subject->setImage(true);
-        $this->assertSame('1', $this->subject->getImage());
     }
 
     /**
