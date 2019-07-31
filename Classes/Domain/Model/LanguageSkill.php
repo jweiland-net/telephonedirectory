@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
@@ -23,44 +23,32 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class LanguageSkill extends AbstractEntity
 {
     /**
-     * Language
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Language
      */
     protected $language;
 
     /**
-     * writing
-     *
      * @var string
      */
     protected $writing = '';
 
     /**
-     * speaking
-     *
      * @var string
      */
     protected $speaking = '';
 
     /**
-     * Infotext
-     *
      * @var string
      */
     protected $infotext = '';
 
     /**
-     * Employee
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Employee
      */
     protected $employee;
 
     /**
-     * Returns the language
-     *
-     * @return Language
+     * @return Language|null
      */
     public function getLanguage()
     {
@@ -68,19 +56,14 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Sets the language
-     *
-     * @param Language $language
-     * @return void
+     * @param Language|null $language
      */
-    public function setLanguage(Language $language)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
     }
 
     /**
-     * Returns writing
-     *
      * @return string
      */
     public function getWriting(): string
@@ -89,10 +72,7 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Sets writing
-     *
      * @param string $writing
-     * @return void
      */
     public function setWriting(string $writing)
     {
@@ -100,8 +80,6 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Returns speaking
-     *
      * @return string
      */
     public function getSpeaking(): string
@@ -110,10 +88,7 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Sets speaking
-     *
      * @param string $speaking
-     * @return void
      */
     public function setSpeaking(string $speaking)
     {
@@ -121,8 +96,6 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Returns the infotext
-     *
      * @return string
      */
     public function getInfotext(): string
@@ -131,10 +104,7 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Sets the infotext
-     *
      * @param string $infotext
-     * @return void
      */
     public function setInfotext(string $infotext)
     {
@@ -142,9 +112,7 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Returns the employee
-     *
-     * @return Employee $employee
+     * @return Employee|null $employee
      */
     public function getEmployee()
     {
@@ -152,12 +120,9 @@ class LanguageSkill extends AbstractEntity
     }
 
     /**
-     * Sets the employee
-     *
-     * @param Employee $employee
-     * @return void
+     * @param Employee|null $employee
      */
-    public function setEmployee($employee)
+    public function setEmployee($employee = null)
     {
         $this->employee = $employee;
     }
