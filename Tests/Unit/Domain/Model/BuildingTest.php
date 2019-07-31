@@ -82,7 +82,7 @@ class BuildingTest extends UnitTestCase
      */
     public function setTitleWithBooleanResultsInString()
     {
-        $this->subject->setTitle(TRUE);
+        $this->subject->setTitle(true);
         $this->assertSame('1', $this->subject->getTitle());
     }
 
@@ -124,7 +124,7 @@ class BuildingTest extends UnitTestCase
      */
     public function setStreetWithBooleanResultsInString()
     {
-        $this->subject->setStreet(TRUE);
+        $this->subject->setStreet(true);
         $this->assertSame('1', $this->subject->getStreet());
     }
 
@@ -166,7 +166,7 @@ class BuildingTest extends UnitTestCase
      */
     public function setHouseNumberWithBooleanResultsInString()
     {
-        $this->subject->setHouseNumber(TRUE);
+        $this->subject->setHouseNumber(true);
         $this->assertSame('1', $this->subject->getHouseNumber());
     }
 
@@ -208,7 +208,7 @@ class BuildingTest extends UnitTestCase
      */
     public function setZipWithBooleanResultsInString()
     {
-        $this->subject->setZip(TRUE);
+        $this->subject->setZip(true);
         $this->assertSame('1', $this->subject->getZip());
     }
 
@@ -250,7 +250,7 @@ class BuildingTest extends UnitTestCase
      */
     public function setCityWithBooleanResultsInString()
     {
-        $this->subject->setCity(TRUE);
+        $this->subject->setCity(true);
         $this->assertSame('1', $this->subject->getCity());
     }
 

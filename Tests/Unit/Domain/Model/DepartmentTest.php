@@ -81,7 +81,7 @@ class DepartmentTest extends UnitTestCase
      */
     public function setTitleWithBooleanResultsInString()
     {
-        $this->subject->setTitle(TRUE);
+        $this->subject->setTitle(true);
         $this->assertSame('1', $this->subject->getTitle());
     }
 }
