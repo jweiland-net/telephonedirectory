@@ -164,6 +164,6 @@ class ExtConf implements SingletonInterface
      */
     public function setAdditionalFunctionsParentCategoryUid($additionalFunctionsParentCategoryUid)
     {
-        $this->additionalFunctionsParentCategoryUid = (int) $additionalFunctionsParentCategoryUid;
+        $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
     }
 }
