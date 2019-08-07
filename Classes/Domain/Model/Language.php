@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
@@ -23,15 +23,11 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Language extends AbstractEntity
 {
     /**
-     * Language
-     *
      * @var string
      */
     protected $title = '';
 
     /**
-     * Gets Title
-     *
      * @return string
      */
     public function getTitle(): string
@@ -40,10 +36,7 @@ class Language extends AbstractEntity
     }
 
     /**
-     * Sets Title
-     *
      * @param string $title
-     * @return void
      */
     public function setTitle(string $title)
     {

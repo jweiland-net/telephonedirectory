@@ -48,14 +48,16 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLanguageInitiallyReturnsNull() {
+    public function getLanguageInitiallyReturnsNull()
+    {
         $this->assertNull($this->subject->getLanguage());
     }
 
     /**
      * @test
      */
-    public function setLanguageSetsLanguage() {
+    public function setLanguageSetsLanguage()
+    {
         $instance = new Language();
         $this->subject->setLanguage($instance);
 
@@ -68,7 +70,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function getWritingInitiallyReturnsEmptyString() {
+    public function getWritingInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getWriting()
@@ -78,7 +81,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setWritingSetsWriting() {
+    public function setWritingSetsWriting()
+    {
         $this->subject->setWriting('foo bar');
 
         $this->assertSame(
@@ -90,7 +94,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setWritingWithIntegerResultsInString() {
+    public function setWritingWithIntegerResultsInString()
+    {
         $this->subject->setWriting(123);
         $this->assertSame('123', $this->subject->getWriting());
     }
@@ -98,15 +103,17 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setWritingWithBooleanResultsInString() {
-        $this->subject->setWriting(TRUE);
+    public function setWritingWithBooleanResultsInString()
+    {
+        $this->subject->setWriting(true);
         $this->assertSame('1', $this->subject->getWriting());
     }
 
     /**
      * @test
      */
-    public function getSpeakingInitiallyReturnsEmptyString() {
+    public function getSpeakingInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getSpeaking()
@@ -116,7 +123,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSpeakingSetsSpeaking() {
+    public function setSpeakingSetsSpeaking()
+    {
         $this->subject->setSpeaking('foo bar');
 
         $this->assertSame(
@@ -128,7 +136,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSpeakingWithIntegerResultsInString() {
+    public function setSpeakingWithIntegerResultsInString()
+    {
         $this->subject->setSpeaking(123);
         $this->assertSame('123', $this->subject->getSpeaking());
     }
@@ -136,15 +145,17 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSpeakingWithBooleanResultsInString() {
-        $this->subject->setSpeaking(TRUE);
+    public function setSpeakingWithBooleanResultsInString()
+    {
+        $this->subject->setSpeaking(true);
         $this->assertSame('1', $this->subject->getSpeaking());
     }
 
     /**
      * @test
      */
-    public function getInfotextInitiallyReturnsEmptyString() {
+    public function getInfotextInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getInfotext()
@@ -154,7 +165,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInfotextSetsInfotext() {
+    public function setInfotextSetsInfotext()
+    {
         $this->subject->setInfotext('foo bar');
 
         $this->assertSame(
@@ -166,7 +178,8 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInfotextWithIntegerResultsInString() {
+    public function setInfotextWithIntegerResultsInString()
+    {
         $this->subject->setInfotext(123);
         $this->assertSame('123', $this->subject->getInfotext());
     }
@@ -174,22 +187,25 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInfotextWithBooleanResultsInString() {
-        $this->subject->setInfotext(TRUE);
+    public function setInfotextWithBooleanResultsInString()
+    {
+        $this->subject->setInfotext(true);
         $this->assertSame('1', $this->subject->getInfotext());
     }
 
     /**
      * @test
      */
-    public function getEmployeeInitiallyReturnsNull() {
+    public function getEmployeeInitiallyReturnsNull()
+    {
         $this->assertNull($this->subject->getEmployee());
     }
 
     /**
      * @test
      */
-    public function setEmployeeSetsEmployee() {
+    public function setEmployeeSetsEmployee()
+    {
         $instance = new Employee();
         $this->subject->setEmployee($instance);
 

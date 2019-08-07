@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\ViewHelpers;
 
 /*
@@ -16,7 +16,7 @@ namespace JWeiland\Telephonedirectory\ViewHelpers;
  */
 
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * ViewHelper to check, if an email is unique in employee table
@@ -29,8 +29,6 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
     protected $employeeRepository;
 
     /**
-     * Injects employee repository
-     *
      * @param EmployeeRepository $employeeRepository
      */
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository)
@@ -39,12 +37,25 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
     }
 
     /**
-     * implements a vievHelper which checks if a given email address is unique in DB
+     * Initialize all arguments.
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument(
+            'email',
+            'string',
+            'Sets the email address which should be checked for duplication',
+            false,
+            ''
+        );
+    }
+
+    /**
+     * Implements a ViewHelper which checks if a given email address is unique in DB
      *
-     * @param string $email
      * @return bool
      */
-    public function render($email = ''): bool
+    public function render(): bool
     {
         if (empty($email)) {
             return false;

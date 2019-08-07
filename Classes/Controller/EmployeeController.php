@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 /*
@@ -35,48 +35,36 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * Class EmployeeController
+ * Main controller to list and show employees
  */
 class EmployeeController extends ActionController
 {
     /**
-     * employeeRepository
-     *
      * @var EmployeeRepository
      */
     protected $employeeRepository;
 
     /**
-     * buildingRepository
-     *
      * @var BuildingRepository
      */
     protected $buildingRepository;
 
     /**
-     * departmentRepository
-     *
      * @var DepartmentRepository
      */
     protected $departmentRepository;
 
     /**
-     * officeRepository
-     *
      * @var OfficeRepository
      */
     protected $officeRepository;
 
     /**
-     * extConf
-     *
      * @var ExtConf
      */
     protected $extConf;
 
     /**
-     * Injects employee repository
-     *
      * @param EmployeeRepository $employeeRepository
      */
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository)
@@ -85,8 +73,6 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * Injects building repository
-     *
      * @param BuildingRepository $buildingRepository
      */
     public function injectBuildingRepository(BuildingRepository $buildingRepository)
@@ -95,8 +81,6 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * Injects department repository
-     *
      * @param DepartmentRepository $departmentRepository
      */
     public function injectDepartmentRepository(DepartmentRepository $departmentRepository)
@@ -105,8 +89,6 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * Injects office repository
-     *
      * @param OfficeRepository $officeRepository
      */
     public function injectOfficeRepository(OfficeRepository $officeRepository)
@@ -115,8 +97,6 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * Injects ext conf
-     *
      * @param ExtConf $extConf
      */
     public function injectExtConf(ExtConf $extConf)
@@ -125,23 +105,19 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * preprocessing of all actions
-     *
-     * @return void
+     * Pre-Processing of all actions
      */
     public function initializeAction()
     {
         // if this value was not set, then it will be filled with 0
-        // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to NULL
+        // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to null
         if (empty($this->settings['pidOfDetailPage'])) {
             $this->settings['pidOfDetailPage'] = null;
         }
     }
 
     /**
-     * action list
-     *
-     * @return void
+     * Action list
      */
     public function listAction()
     {
@@ -151,12 +127,10 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * if an office is set, f:form.select changes name to [office][__identity]
+     * If an office is set, f:form.select changes name to [office][__identity]
      * The following request works, but if customer changes office back to "" an empty __identity was send
      * Now extbase tries to get an object of a non given UID which results in multiple errors
      * Thats why we remove this request here
-     *
-     * @return void
      */
     public function initializeSearchAction()
     {
@@ -169,11 +143,10 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action list
+     * Action list
      *
      * @param Office $office
      * @param string $search
-     * @return void
      */
     public function searchAction(Office $office = null, $search = '')
     {
@@ -189,10 +162,9 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action show
+     * Action show
      *
      * @param Employee $employee
-     * @return void
      */
     public function showAction(Employee $employee)
     {
@@ -201,11 +173,10 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action new
+     * Action new
      *
      * @param Employee $newEmployee
      * @dontvalidate $newEmployee
-     * @return void
      */
     public function newAction(Employee $newEmployee = null)
     {
@@ -213,12 +184,10 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action create
+     * Action create
      *
      * @param Employee $newEmployee
-     *
      * @return void
-     *
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
@@ -231,10 +200,9 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action edit
+     * Action edit
      *
      * @param Employee $employee
-     * @return void
      */
     public function editAction(Employee $employee)
     {
@@ -279,12 +247,9 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * action update
+     * Action update
      *
      * @param Employee $employee
-     *
-     * @return void
-     *
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -298,10 +263,9 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * send a mail with link to edit this entry
+     * Aend a mail with link to edit this entry
      *
      * @param Employee $employee
-     *
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
@@ -314,12 +278,12 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * get content for mailing
+     * Get content for mailing
      *
      * @param Employee $employee
      * @return string
      */
-    protected function getContent(Employee $employee)
+    protected function getContent(Employee $employee): string
     {
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
         $view = $this->objectManager->get(StandaloneView::class);

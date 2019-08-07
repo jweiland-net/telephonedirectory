@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 /*
@@ -31,194 +31,140 @@ class Employee extends AbstractEntity
     protected $hidden = true;
 
     /**
-     * title
-     *
      * @var int
      */
     protected $title = 0;
 
     /**
-     * First name
-     *
      * @var string
      */
     protected $firstName = '';
 
     /**
-     * Last name
-     *
      * @var string
      */
     protected $lastName = '';
 
     /**
-     * Name Additions
-     *
      * @var string
      */
     protected $nameAdditions = '';
 
     /**
-     * is catch all mail
-     *
      * @var bool
      */
     protected $isCatchAllMail = false;
 
     /**
-     * Subject Field
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
      */
     protected $subjectField;
 
     /**
-     * company
-     *
      * @var string
      */
     protected $company = '';
 
     /**
-     * roomNumber
-     *
      * @var string
      */
     protected $roomNumber = '';
 
     /**
-     * function
-     *
      * @var string
      */
     protected $function = '';
 
     /**
-     * additionalFunction
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      */
     protected $additionalFunction = '';
 
     /**
-     * Telephone 1
-     *
      * @var string
      */
     protected $telephone1 = '';
 
     /**
-     * Telephone 2
-     *
      * @var string
      */
     protected $telephone2 = '';
 
     /**
-     * Telephone 3
-     *
      * @var string
      */
     protected $telephone3 = '';
 
     /**
-     * Mobile
-     *
      * @var string
      */
     protected $mobile = '';
 
     /**
-     * pager
-     *
      * @var string
      */
     protected $pager = '';
 
     /**
-     * Fax
-     *
      * @var string
      */
     protected $fax = '';
 
     /**
-     * Pc Fax
-     *
      * @var string
      */
     protected $pcFax = '';
 
     /**
-     * E-Mail
      * @var string
      * @validate EmailAddress
      */
     protected $email = '';
 
     /**
-     * Additional Informations
-     *
      * @var string
      */
     protected $additionalInformations = '';
 
     /**
-     * Regular attendance
-     *
      * @var string
      */
     protected $regularAttendance = '';
 
     /**
-     * send HTML-Mail?
-     *
      * @var bool
      */
     protected $moduleSysDmailHtml = true;
 
     /**
-     * Office
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Office
      * @lazy
      */
     protected $office;
 
     /**
-     * Building
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Building
      * @lazy
      */
     protected $building;
 
     /**
-     * Department
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Department
      * @lazy
      */
     protected $department;
 
     /**
-     * image
-     *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $image;
 
     /**
-     * Language Skill
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\LanguageSkill>
      * @lazy
      */
     protected $languageSkill;
 
-    /**
-     * __construct
-     */
     public function __construct()
     {
         //Do not remove the next line: It would break the functionality
@@ -227,8 +173,6 @@ class Employee extends AbstractEntity
 
     /**
      * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
-     *
-     * @return void
      */
     protected function initStorageObjects()
     {
@@ -237,8 +181,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns hidden
-     *
      * @return bool
      */
     public function isHidden(): bool
@@ -247,8 +189,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets hidden
-     *
      * @param bool $hidden
      */
     public function setHidden(bool $hidden)
@@ -257,8 +197,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns title
-     *
      * @return int
      */
     public function getTitle(): int
@@ -267,8 +205,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets title
-     *
      * @param int $title
      */
     public function setTitle(int $title)
@@ -277,8 +213,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the firstName
-     *
      * @return string
      */
     public function getFirstName(): string
@@ -287,10 +221,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the firstName
-     *
      * @param string $firstName
-     * @return void
      */
     public function setFirstName(string $firstName)
     {
@@ -298,8 +229,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the lastName
-     *
      * @return string
      */
     public function getLastName(): string
@@ -308,10 +237,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the lastName
-     *
      * @param string $lastName
-     * @return void
      */
     public function setLastName(string $lastName)
     {
@@ -319,8 +245,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the nameAdditions
-     *
      * @return string
      */
     public function getNameAdditions(): string
@@ -329,10 +253,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the nameAdditions
-     *
      * @param string $nameAdditions
-     * @return void
      */
     public function setNameAdditions(string $nameAdditions)
     {
@@ -340,8 +261,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns is catch all mail
-     *
      * @return bool
      */
     public function getIsCatchAllMail(): bool
@@ -350,8 +269,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Gets is catch all mail
-     *
      * @param bool $isCatchAllMail
      */
     public function setIsCatchAllMail(bool $isCatchAllMail)
@@ -360,8 +277,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the subject field
-     *
      * @return SubjectField
      */
     public function getSubjectField()
@@ -370,10 +285,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the subject field
-     *
      * @param SubjectField $subjectField
-     * @return void
      */
     public function setSubjectField(SubjectField $subjectField = null)
     {
@@ -381,8 +293,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the company
-     *
      * @return string $company
      */
     public function getCompany(): string
@@ -391,10 +301,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the company
-     *
      * @param string $company
-     * @return void
      */
     public function setCompany(string $company)
     {
@@ -402,8 +309,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the roomNumber
-     *
      * @return string
      */
     public function getRoomNumber(): string
@@ -412,10 +317,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the roomNumber
-     *
      * @param string $roomNumber
-     * @return void
      */
     public function setRoomNumber(string $roomNumber)
     {
@@ -423,8 +325,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the function
-     *
      * @return string
      */
     public function getFunction(): string
@@ -433,10 +333,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the function
-     *
      * @param string $function
-     * @return void
      */
     public function setFunction(string $function)
     {
@@ -444,8 +341,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the additionalFunction
-     *
      * @return ObjectStorage
      */
     public function getAdditionalFunction()
@@ -454,10 +349,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the additionalFunction
-     *
      * @param ObjectStorage $additionalFunction
-     * @return void
      */
     public function setAdditionalFunction(ObjectStorage $additionalFunction)
     {
@@ -465,8 +357,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Add a new additional function
-     *
      * @param Category $additionalFunction
      */
     public function addAdditionalFunction(Category $additionalFunction = null)
@@ -475,8 +365,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Remove an additional function
-     *
      * @param Category $additionalFunction
      */
     public function removeAdditionalFunction(Category $additionalFunction)
@@ -485,8 +373,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the telephone1
-     *
      * @return string
      */
     public function getTelephone1(): string
@@ -495,10 +381,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the telephone1
-     *
      * @param string $telephone1
-     * @return void
      */
     public function setTelephone1(string $telephone1)
     {
@@ -506,8 +389,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the telephone2
-     *
      * @return string
      */
     public function getTelephone2(): string
@@ -516,10 +397,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the telephone2
-     *
      * @param string $telephone2
-     * @return void
      */
     public function setTelephone2(string $telephone2)
     {
@@ -527,8 +405,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the telephone3
-     *
      * @return string
      */
     public function getTelephone3(): string
@@ -537,10 +413,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the telephone3
-     *
      * @param string $telephone3
-     * @return void
      */
     public function setTelephone3(string $telephone3)
     {
@@ -548,8 +421,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the mobile
-     *
      * @return string
      */
     public function getMobile(): string
@@ -558,10 +429,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the mobile
-     *
      * @param string $mobile
-     * @return void
      */
     public function setMobile(string $mobile)
     {
@@ -569,8 +437,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the pager
-     *
      * @return string
      */
     public function getPager(): string
@@ -579,10 +445,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the pager
-     *
      * @param string $pager
-     * @return void
      */
     public function setPager(string $pager)
     {
@@ -590,8 +453,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the fax
-     *
      * @return string
      */
     public function getFax(): string
@@ -600,10 +461,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the fax
-     *
      * @param string $fax
-     * @return void
      */
     public function setFax(string $fax)
     {
@@ -611,8 +469,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the pcFax
-     *
      * @return string $pcFax
      */
     public function getPcFax(): string
@@ -621,10 +477,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the pcFax
-     *
      * @param string $pcFax
-     * @return void
      */
     public function setPcFax(string $pcFax)
     {
@@ -632,8 +485,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the email
-     *
      * @return string
      */
     public function getEmail(): string
@@ -642,10 +493,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the email
-     *
      * @param string $email
-     * @return void
      */
     public function setEmail(string $email)
     {
@@ -653,8 +501,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the additionalInformations
-     *
      * @return string
      */
     public function getAdditionalInformations(): string
@@ -663,10 +509,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the additionalInformations
-     *
      * @param string $additionalInformations
-     * @return void
      */
     public function setAdditionalInformations(string $additionalInformations)
     {
@@ -674,8 +517,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns regular attendance
-     *
      * @return string
      */
     public function getRegularAttendance(): string
@@ -684,8 +525,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets regular attendance
-     *
      * @param string $regularAttendance
      */
     public function setRegularAttendance(string $regularAttendance)
@@ -694,8 +533,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the moduleSysDmailHtml
-     *
      * @return bool
      */
     public function getModuleSysDmailHtml(): bool
@@ -704,10 +541,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the moduleSysDmailHtml
-     *
      * @param bool $moduleSysDmailHtml
-     * @return void
      */
     public function setModuleSysDmailHtml(bool $moduleSysDmailHtml)
     {
@@ -715,8 +549,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the office
-     *
      * @return Office
      */
     public function getOffice()
@@ -725,10 +557,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the office
-     *
-     * @param Office $office
-     * @return void
+     * @param Office|null $office
      */
     public function setOffice(Office $office = null)
     {
@@ -736,8 +565,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the building
-     *
      * @return Building
      */
     public function getBuilding()
@@ -746,10 +573,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the building
-     *
-     * @param Building $building
-     * @return void
+     * @param Building|null $building
      */
     public function setBuilding(Building $building = null)
     {
@@ -757,8 +581,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the department
-     *
      * @return Department
      */
     public function getDepartment()
@@ -767,10 +589,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the department
-     *
      * @param Department $department
-     * @return void
      */
     public function setDepartment(Department $department = null)
     {
@@ -778,8 +597,6 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the image
-     *
      * @return FileReference $image
      */
     public function getImage()
@@ -788,10 +605,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Sets the image
-     *
      * @param FileReference $image
-     * @return void
      */
     public function setImage(FileReference $image = null)
     {
@@ -801,10 +615,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Adds a LanguageSkill
-     *
      * @param LanguageSkill $languageSkill
-     * @return void
      */
     public function addLanguageSkill(LanguageSkill $languageSkill = null)
     {
@@ -812,10 +623,7 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Removes a LanguageSkill
-     *
-     * @param LanguageSkill $languageSkillToRemove The LanguageSkill to be removed
-     * @return void
+     * @param LanguageSkill $languageSkillToRemove
      */
     public function removeLanguageSkill(LanguageSkill $languageSkillToRemove)
     {
@@ -823,20 +631,15 @@ class Employee extends AbstractEntity
     }
 
     /**
-     * Returns the languageSkill
-     *
      * @return ObjectStorage
      */
-    public function getLanguageSkill()
+    public function getLanguageSkill(): ObjectStorage
     {
         return $this->languageSkill;
     }
 
     /**
-     * Sets the languageSkill
-     *
      * @param ObjectStorage $languageSkill
-     * @return void
      */
     public function setLanguageSkill(ObjectStorage $languageSkill = null)
     {

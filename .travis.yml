@@ -3,17 +3,21 @@ language: php
 jobs:
   include:
     - stage: test
-      php: 7.0
-      env: TYPO3_VERSION=^8
+      php: "7.0"
+      env:
+        - TYPO3_VERSION=^8
     - stage: test
-      php: 7.1
-      env: TYPO3_VERSION=^8
+      php: "7.1"
+      env:
+        - TYPO3_VERSION=^8
     - stage: test
-      php: 7.2
-      env: TYPO3_VERSION=^8
+      php: "7.2"
+      env:
+        - TYPO3_VERSION=^8
     - stage: test
-      php: 7.2
-      env: TYPO3_VERSION=^9
+      php: "7.2"
+      env:
+        - TYPO3_VERSION=^9
 
 sudo: false
 
@@ -31,7 +35,7 @@ notifications:
     on_success: change
     on_failure: always
     rooms:
-      - secure: "vswi5Un8JoT6mjxu0HFPh9HLo8cLB1qAZHRvsP81k240+Tvpc5Y0mQyvDcQoM1dqGxZaHbZElgdIT3iKL2tecNsOgIFH6k5LhSoebFHirIqtdqD6Ci4VHv35aTuawjky/NrYDfx7jjENYkNpVCyNEqzzM4HcaBQ4Qna9moJRpeJnOi0vJx7YSa397YHIqWb9IRgnBzTVHIjQg3HHMx2EIvVDyRfjkZRgyNIGE1OCuiDevnxT3V2AUSToAGQ1Zr/qHiCIC8CXDJM9o8J6+w9clY2JHS3sdq0nnwlKAfQF830dGA/BkN9vQDo/mZKuJlTXhwxG9rmf3uJBLHm8IfJhmxPogvghEMRhIrDWPgcEIzywE8uII9pbyCLmMlCoC+OnvaKA24nEm81eua1SLIUO17trlH5KUgBcmY/9CI/CQNbTFKVcZoQCMKZrUKQiZHdKK94QNC2DqtlgZeNpgDsmm3coR+q3O2piQBmuBdrITFcssOG0RdLG8glj3eGwpgNm/NRwszM9tYDlg6CjesGqyqNCg/NGjTWQCO2fUj+RtbwkCrBauwjCrFwqAMF0H2BIX1pGvyP3b4IkoFxPe4rigDBRwVJfuxUz6KO57w+icZAnA8wg8SYj0me2wfP6hZ1PnTvAugr24akgo2Zwk6AE//EFwcbwNMPIhb88CSbwFNM="
+      - secure: "Do3Lp1YG0XWkDqTzk5yKqv6MUYNGlVf371L5lJneXUI1HXlapgKqViMXfgGr4nRDdo8QeYykMxcOkfuploSgN81p4HtEKa9c6VX4qXRirjifQdgdpo7aZK2t6TnaM21kqs8UEKRIxCvxSZa7PhBvnTuXGOpaVisXQATzOVc9/OomYRKb3vgFu99DGW84FfzG0DCJfye8Ep/svM46uRs9c2np1urYu+Daxez4BP5hqCovv/oFLOs1cOlJDUeyYv+bRSpFzN0ej1KLanqf2cbNiv69iVxyvxprD/pFWVyrskMIy8fXtgv93RJwOk822afpN6SuZ6RXkED3ToIeUheXU9jeqmv6K5qqDvJk9XwAoXijOkac+puCf/dzaDmFOSIhFp7yy3x8+onuT9kIwFAL2+uSSlry/VWawtZp33458lBCZgO8nqJK9RE5ubiBUA7irFkPLxoVbs3W5qdF9fyAh2qvdUFkbOyQphCEWnNQ4n8uJHq9lZK2lveY4EBkN6iYW+okgWf+FV35JMFYGX67oMfE5gY8EWPaikqikKM+Vqs7WTo1CirI/qMNTx4V041HMDVLi8oMTJCeCtFB8S9BYNrokXCyMaxgQFaZFBR6gNpWu5N1r6xRYBAjDxX4tPF7yDdfWGt0xhTtPi6SNjDyrQhcq1cW53HX5zaSOCPZqJE="
 
 before_install:
   - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
@@ -45,7 +49,7 @@ install:
   - composer require typo3/minimal=$TYPO3_VERSION
   - kill %1
   - mkdir -p .Build/public/typo3conf/ext/
-  - if [ ! -L .Build/public/typo3conf/ext/telephonedirectory ]; then ln -snvf ../../../../. .Build/public/typo3conf/ext/telephonedirectory; fi
+  - if [ ! -L .Build/public/typo3conf/ext/sponsoring ]; then ln -snvf ../../../../. .Build/public/typo3conf/ext/sponsoring; fi
   - echo 'date.timezone = "Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - git checkout composer.json
   - export TYPO3_PATH_ROOT=$PWD/.Build/public
@@ -72,4 +76,4 @@ script:
     echo "Running PHP Coding Standards Fixer checks";
     echo;
     echo;
-    .Build/bin/php-cs-fixer fix Classes --config=Build/.php_cs.php --dry-run --using-cache=no -v --diff;
+    .Build/bin/php-cs-fixer fix --config=Build/.php_cs.php --dry-run --using-cache=no -v --diff;
