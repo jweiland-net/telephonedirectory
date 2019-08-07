@@ -37,6 +37,15 @@ class ExtConf implements SingletonInterface
      */
     protected $emailFromName = '';
 
+    /**
+     * @var int
+     */
+    protected $additionalFunctionsParentCategoryUid = 0;
+
+    /**
+     * constructor of this class
+     * This method reads the global configuration and calls the setter methods
+     */
     public function __construct()
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['telephonedirectory'])) {
@@ -130,5 +139,21 @@ class ExtConf implements SingletonInterface
     public function setEmailFromName(string $emailFromName)
     {
         $this->emailFromName = $emailFromName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAdditionalFunctionsParentCategoryUid(): int
+    {
+        return $this->additionalFunctionsParentCategoryUid;
+    }
+
+    /**
+     * @param int $additionalFunctionsParentCategoryUid
+     */
+    public function setAdditionalFunctionsParentCategoryUid($additionalFunctionsParentCategoryUid)
+    {
+        $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
     }
 }

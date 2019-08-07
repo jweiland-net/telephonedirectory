@@ -9,6 +9,9 @@
 			<trans-unit id="emailFromName" xml:space="preserve">
 				<source>email from name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
 			</trans-unit>
+			<trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve">
+				<source>The uid of the category containing the additional functions</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -609,7 +609,9 @@ class Employee extends AbstractEntity
      */
     public function setImage(FileReference $image = null)
     {
-        $this->image = $image;
+        if ($image) {
+            $this->image = $image;
+        }
     }
 
     /**

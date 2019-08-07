@@ -329,11 +329,14 @@ return [
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'image',
                 [
-                    'uploadfolder' => 'uploads/tx_telephonedirectory',
                     'minitems' => 0,
-                    'maxitems' => 1
-                ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                    'maxitems' => 1,
+                    'foreign_match_fields' => [
+                        'fieldname' => 'image',
+                        'tablenames' => 'tx_telephonedirectory_domain_model_employee',
+                        'table_local' => 'sys_file'
+                    ]
+                ]
             )
         ],
         'module_sys_dmail_html' => [
