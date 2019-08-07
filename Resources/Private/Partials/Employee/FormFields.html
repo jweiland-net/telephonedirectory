@@ -65,6 +65,12 @@
 	<f:form.textfield id="telephonedirectoryEmail" property="email" />
 </div>
 <div class="extdiv">
+	<label for="telephonedirectoryFunction">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.function" />
+	</label>
+	<f:form.textfield id="telephonedirectoryFunction" property="function" />
+</div>
+<div class="extdiv">
 	<label for="telephonedirectoryAdditionalInformations">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.additional_informations" />
 	</label>
@@ -83,6 +89,24 @@
 	<f:form.textfield id="telephonedirectoryFunction" property="function" />
 </div>
 <div class="extdiv">
+	<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" />
+	<div>
+		<f:for each="{additionalFunctions}" as="additionalFunction">
+			<div>
+				<f:form.checkbox
+					property="additionalFunction"
+					id="additionalFunction{additionalFunction.uid}"
+					value="{additionalFunction.uid}"
+					multiple="true"
+				/>
+				<label for="additionalFunction{additionalFunction.uid}">
+					{additionalFunction.title}
+				</label>
+			</div>
+		</f:for>
+	</div>
+</div>
+<div class="extdiv">
 	<label for="telephonedirectoryOffice">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.office" />
 	</label>
@@ -95,22 +119,28 @@
 	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryDepartment" property="department" options="{departments}" optionLabelField="title" />
 </div>
 <div class="extdiv">
-	<label for="telephonedirectoryBuilding">
-		<f:translate key="tx_telephonedirectory_domain_model_employee.building" />
-	</label>
-	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryBuilding" property="building" options="{buildings}" optionLabelField="title" />
-</div>
-<div class="extdiv">
 	<label for="telephonedirectorySubjectField">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.subject_field" />
 	</label>
 	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectorySubjectField" property="subjectField" options="{subjectFields}" optionLabelField="title" />
 </div>
 <div class="extdiv">
+	<label for="telephonedirectoryBuilding">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.building" />
+	</label>
+	<f:form.select prependOptionLabel="" prependOptionValue="" id="telephonedirectoryBuilding" property="building" options="{buildings}" optionLabelField="title" />
+</div>
+<div class="extdiv">
 	<label for="telephonedirectoryRoomNumber">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.room_number" />
 	</label>
 	<f:form.textfield id="telephonedirectoryRoomNumber" property="roomNumber" />
+</div>
+<div class="extdiv">
+	<label for="telephonedirectoryImage">
+		<f:translate key="tx_telephonedirectory_domain_model_employee.image" />
+	</label>
+	<f:form.upload property="image" id="telephonedirectoryImage" />
 </div>
 
 <div class="extdiv">

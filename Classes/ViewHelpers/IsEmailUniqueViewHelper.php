@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 

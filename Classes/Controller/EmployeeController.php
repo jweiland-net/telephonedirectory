@@ -24,10 +24,12 @@ use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
+use JWeiland\Telephonedirectory\Property\TypeConverter\UploadOneFileConverter;
 use JWeiland\Telephonedirectory\Service\EmailService;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -243,6 +245,7 @@ class EmployeeController extends ActionController
             if ($authToken === $controlAuthToken) {
                 $languageRepository = $this->objectManager->get(LanguageRepository::class);
                 $subjectFieldRepository = $this->objectManager->get(SubjectFieldRepository::class);
+                $categoryRepository = $this->objectManager->get(CategoryRepository::class);
 
                 $this->view->assignMultiple(
                     [
@@ -252,7 +255,8 @@ class EmployeeController extends ActionController
                         'departments' => $this->departmentRepository->findAll(),
                         'offices' => $this->officeRepository->findAll(),
                         'languages' => $languageRepository->findAll(),
-                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect()
+                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
+                        'additionalFunctions' => $categoryRepository->findByParent($this->extConf->getAdditionalFunctionsParentCategoryUid())
                     ]
                 );
             }
@@ -265,6 +269,13 @@ class EmployeeController extends ActionController
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->forProperty('languageSkill.*')->allowProperties('language', 'writing', 'speaking');
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowCreationForSubProperty('languageSkill.*');
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowModificationForSubProperty('languageSkill.*');
+
+        /** @var UploadOneFileConverter $oneFileTypeConverter */
+        $oneFileTypeConverter = $this->objectManager->get(UploadOneFileConverter::class);
+        $this->arguments->getArgument('employee')
+            ->getPropertyMappingConfiguration()
+            ->forProperty('image')
+            ->setTypeConverter($oneFileTypeConverter);
     }
 
     /**
