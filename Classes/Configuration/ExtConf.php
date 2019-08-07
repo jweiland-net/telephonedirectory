@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Configuration;
 
 /*
@@ -23,22 +23,16 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     /**
-     * email of contact
-     *
      * @var string
      */
     protected $emailContact = '';
 
     /**
-     * email from address
-     *
      * @var string
      */
     protected $emailFromAddress = '';
 
     /**
-     * email from name
-     *
      * @var string
      */
     protected $emailFromName = '';
@@ -54,14 +48,19 @@ class ExtConf implements SingletonInterface
      */
     public function __construct()
     {
-        // get global configuration
-        $extConf = \unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['telephonedirectory']);
-        if (\is_array($extConf) && \count($extConf)) {
-            // call setter method foreach configuration entry
-            foreach ($extConf as $key => $value) {
-                $methodName = 'set' . \ucfirst($key);
-                if (\method_exists($this, $methodName)) {
-                    $this->$methodName($value);
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['telephonedirectory'])) {
+            // get global configuration
+            $extConf = \unserialize(
+                $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['telephonedirectory'],
+                ['allowed_classes' => false]
+            );
+            if (\is_array($extConf) && \count($extConf)) {
+                // call setter method foreach configuration entry
+                foreach ($extConf as $key => $value) {
+                    $methodName = 'set' . \ucfirst($key);
+                    if (\method_exists($this, $methodName)) {
+                        $this->$methodName($value);
+                    }
                 }
             }
         }
@@ -69,6 +68,7 @@ class ExtConf implements SingletonInterface
 
     /**
      * @return string
+     * @throws \Exception
      */
     public function getEmailContact(): string
     {
@@ -92,8 +92,6 @@ class ExtConf implements SingletonInterface
     }
 
     /**
-     * getter for email from address
-     *
      * @throws \Exception
      * @return string
      */
@@ -111,10 +109,7 @@ class ExtConf implements SingletonInterface
     }
 
     /**
-     * setter for email from address
-     *
      * @param string $emailFromAddress
-     * @return void
      */
     public function setEmailFromAddress(string $emailFromAddress)
     {
@@ -122,8 +117,6 @@ class ExtConf implements SingletonInterface
     }
 
     /**
-     * getter for email from name
-     *
      * @throws \Exception
      * @return string
      */
@@ -141,10 +134,7 @@ class ExtConf implements SingletonInterface
     }
 
     /**
-     * setter for emailFromName
-     *
      * @param string $emailFromName
-     * @return void
      */
     public function setEmailFromName(string $emailFromName)
     {

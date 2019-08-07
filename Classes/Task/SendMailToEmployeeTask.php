@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Task;
 
 /*
@@ -14,6 +14,8 @@ namespace JWeiland\Telephonedirectory\Task;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Service\EmailService;
@@ -22,7 +24,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -40,27 +41,27 @@ class SendMailToEmployeeTask extends AbstractTask
     protected $objectManager;
 
     /**
-     * Storage pid
-     *
+     * @var ExtConf
+     */
+    protected $extConf;
+
+    /**
      * @var string
      */
     public $storagePid = '';
 
     /**
-     * Detail view pid
-     *
      * @var string
      */
     public $detailViewPid = '';
 
     /**
-     * Executes task
-     *
      * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
         $this->objectManager = $this->getObjectManager();
+        $this->extConf = $this->objectManager->get(ExtConf::class);
         $employeeRepository = $this->getObjectManager()->get(EmployeeRepository::class);
         $emailService = GeneralUtility::makeInstance(EmailService::class);
 
@@ -84,7 +85,7 @@ class SendMailToEmployeeTask extends AbstractTask
      * @param Employee $employee
      * @return string
      */
-    protected function generateContent(Employee $employee)
+    protected function generateContent(Employee $employee): string
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
@@ -118,13 +119,10 @@ class SendMailToEmployeeTask extends AbstractTask
         ];
         $link = $contentObjectRenderer->typoLink_URL($linkConf);
 
-        $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
-        $config = $configurationUtility->getCurrentConfiguration('telephonedirectory');
-
         $view->assign('link', $link);
         $view->assign('employee', $employee);
-        $view->assign('contactName', $config['emailFromName']['value']);
-        $view->assign('contactEmail', $config['emailFromAddress']['value']);
+        $view->assign('contactName', $this->extConf->getEmailFromName());
+        $view->assign('contactEmail', $this->extConf->getEmailFromAddress());
 
         unset($GLOBALS['TSFE']);
 
@@ -136,7 +134,7 @@ class SendMailToEmployeeTask extends AbstractTask
      *
      * @return ObjectManager
      */
-    public function getObjectManager()
+    public function getObjectManager(): ObjectManager
     {
         if (!$this->objectManager) {
             $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);

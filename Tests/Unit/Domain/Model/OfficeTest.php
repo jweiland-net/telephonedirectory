@@ -48,7 +48,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString() {
+    public function getTitleInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getTitle()
@@ -58,7 +59,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle() {
+    public function setTitleSetsTitle()
+    {
         $this->subject->setTitle('foo bar');
 
         $this->assertSame(
@@ -70,7 +72,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithIntegerResultsInString() {
+    public function setTitleWithIntegerResultsInString()
+    {
         $this->subject->setTitle(123);
         $this->assertSame('123', $this->subject->getTitle());
     }
@@ -78,15 +81,17 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithBooleanResultsInString() {
-        $this->subject->setTitle(TRUE);
+    public function setTitleWithBooleanResultsInString()
+    {
+        $this->subject->setTitle(true);
         $this->assertSame('1', $this->subject->getTitle());
     }
 
     /**
      * @test
      */
-    public function getCodeInitiallyReturnsEmptyString() {
+    public function getCodeInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getCode()
@@ -96,7 +101,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCodeSetsCode() {
+    public function setCodeSetsCode()
+    {
         $this->subject->setCode('foo bar');
 
         $this->assertSame(
@@ -108,7 +114,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCodeWithIntegerResultsInString() {
+    public function setCodeWithIntegerResultsInString()
+    {
         $this->subject->setCode(123);
         $this->assertSame('123', $this->subject->getCode());
     }
@@ -116,15 +123,17 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCodeWithBooleanResultsInString() {
-        $this->subject->setCode(TRUE);
+    public function setCodeWithBooleanResultsInString()
+    {
+        $this->subject->setCode(true);
         $this->assertSame('1', $this->subject->getCode());
     }
 
     /**
      * @test
      */
-    public function getTokenInitiallyReturnsEmptyString() {
+    public function getTokenInitiallyReturnsEmptyString()
+    {
         $this->assertSame(
             '',
             $this->subject->getToken()
@@ -134,7 +143,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTokenSetsToken() {
+    public function setTokenSetsToken()
+    {
         $this->subject->setToken('foo bar');
 
         $this->assertSame(
@@ -146,7 +156,8 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTokenWithIntegerResultsInString() {
+    public function setTokenWithIntegerResultsInString()
+    {
         $this->subject->setToken(123);
         $this->assertSame('123', $this->subject->getToken());
     }
@@ -154,22 +165,25 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTokenWithBooleanResultsInString() {
-        $this->subject->setToken(TRUE);
+    public function setTokenWithBooleanResultsInString()
+    {
+        $this->subject->setToken(true);
         $this->assertSame('1', $this->subject->getToken());
     }
 
     /**
      * @test
      */
-    public function getDepartmentInitiallyReturnsNull() {
+    public function getDepartmentInitiallyReturnsNull()
+    {
         $this->assertNull($this->subject->getDepartment());
     }
 
     /**
      * @test
      */
-    public function setDepartmentSetsDepartment() {
+    public function setDepartmentSetsDepartment()
+    {
         $instance = new Department();
         $this->subject->setDepartment($instance);
 
@@ -182,14 +196,16 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSubjectFieldInitiallyReturnsNull() {
+    public function getSubjectFieldInitiallyReturnsNull()
+    {
         $this->assertNull($this->subject->getSubjectField());
     }
 
     /**
      * @test
      */
-    public function setSubjectFieldSetsSubjectField() {
+    public function setSubjectFieldSetsSubjectField()
+    {
         $instance = new SubjectField();
         $this->subject->setSubjectField($instance);
 

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
 /*
@@ -15,7 +15,7 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 use JWeiland\Telephonedirectory\Domain\Model\Office;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -24,13 +24,13 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class EmployeeRepository extends Repository
 {
     /**
-     * search
+     * Search
      *
      * @param Office $office
      * @param string $search
-     * @return array|QueryInterface
+     * @return QueryResultInterface
      */
-    public function findBySearch(Office $office = null, $search = '')
+    public function findBySearch(Office $office = null, $search = ''): QueryResultInterface
     {
         $query = $this->createQuery();
 

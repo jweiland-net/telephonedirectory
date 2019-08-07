@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 /*
@@ -22,43 +22,31 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Office extends AbstractEntity
 {
     /**
-     * Title
-     *
      * @var string
      */
     protected $title = '';
 
     /**
-     * Code
-     *
      * @var string
      */
     protected $code = '';
 
     /**
-     * Token
-     *
      * @var string
      */
     protected $token = '';
 
     /**
-     * Department
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\Department
      */
     protected $department;
 
     /**
-     * Subject field
-     *
      * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
      */
     protected $subjectField;
 
     /**
-     * Returns the title
-     *
      * @return string
      */
     public function getTitle(): string
@@ -67,10 +55,7 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Sets the title
-     *
      * @param string $title
-     * @return void
      */
     public function setTitle(string $title)
     {
@@ -78,8 +63,6 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Gets code
-     *
      * @return string
      */
     public function getCode(): string
@@ -88,8 +71,6 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Sets code
-     *
      * @param string $code
      */
     public function setCode(string $code)
@@ -98,8 +79,6 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Gets token
-     *
      * @return string
      */
     public function getToken(): string
@@ -108,8 +87,6 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Sets token
-     *
      * @param string $token
      */
     public function setToken(string $token)
@@ -118,9 +95,7 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Gets department
-     *
-     * @return Department
+     * @return Department|null
      */
     public function getDepartment()
     {
@@ -128,9 +103,7 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Sets department
-     *
-     * @param Department $department
+     * @param Department|null $department
      */
     public function setDepartment(Department $department)
     {
@@ -138,9 +111,7 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Gets subject field
-     *
-     * @return SubjectField
+     * @return SubjectField|null
      */
     public function getSubjectField()
     {
@@ -148,11 +119,9 @@ class Office extends AbstractEntity
     }
 
     /**
-     * Sets subject field
-     *
-     * @param SubjectField $subjectField
+     * @param SubjectField|null $subjectField
      */
-    public function setSubjectField(SubjectField $subjectField)
+    public function setSubjectField(SubjectField $subjectField = null)
     {
         $this->subjectField = $subjectField;
     }

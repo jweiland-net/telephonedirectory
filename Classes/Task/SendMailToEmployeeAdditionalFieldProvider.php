@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace JWeiland\Telephonedirectory\Task;
 
 /*
@@ -60,7 +60,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
      * @return array A two dimensional array, array('Identifier' => array('fieldId' => array('code' => '', 'label' => '', 'cshKey' => '', 'cshLabel' => ''))
      */
-    public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule)
+    public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule): array
     {
         $additionalFields = [];
 
@@ -102,9 +102,9 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      *
      * @param array $submittedData An array containing the data submitted by the add/edit task form
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
-     * @return bool TRUE if validation was ok (or selected class is not relevant), FALSE otherwise
+     * @return bool true if validation was ok (or selected class is not relevant), false otherwise
      */
-    public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule)
+    public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule): bool
     {
         $submittedData['storagePid'] = \trim($submittedData['storagePid']);
         $submittedData['detailViewPid'] = \trim($submittedData['detailViewPid']);
@@ -117,7 +117,6 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
      *
      * @param array $submittedData An array containing the data submitted by the add/edit task form
      * @param AbstractTask|SendMailToEmployeeTask $task Reference to the scheduler backend module
-     * @return void
      */
     public function saveAdditionalFields(array $submittedData, AbstractTask $task)
     {
