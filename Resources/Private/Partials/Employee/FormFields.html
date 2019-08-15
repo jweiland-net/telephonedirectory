@@ -89,18 +89,18 @@
 	<f:form.textfield id="telephonedirectoryFunction" property="function" />
 </div>
 <div class="extdiv">
-	<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" />
-	<div>
+	<label for="telephonedirectory-extdiv-check"><f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" /></label>
+	<div id="telephonedirectory-extdiv-check" class="form-radio-check">
 		<f:for each="{additionalFunctions}" as="additionalFunction">
 			<div>
-				<f:form.checkbox
-					property="additionalFunction"
-					id="additionalFunction{additionalFunction.uid}"
-					value="{additionalFunction.uid}"
-					multiple="true"
-				/>
 				<label for="additionalFunction{additionalFunction.uid}">
-					{additionalFunction.title}
+					<f:form.checkbox
+						property="additionalFunction"
+						id="additionalFunction{additionalFunction.uid}"
+						value="{additionalFunction.uid}"
+						multiple="true"
+					/>
+					<span>{additionalFunction.title}</span>
 				</label>
 			</div>
 		</f:for>
