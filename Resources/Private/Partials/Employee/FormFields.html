@@ -92,15 +92,17 @@
 	<label for="telephonedirectory-extdiv-check"><f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" /></label>
 	<div id="telephonedirectory-extdiv-check" class="form-radio-check">
 		<f:for each="{additionalFunctions}" as="additionalFunction">
-			<label for="additionalFunction{additionalFunction.uid}">
-				<f:form.checkbox
-					property="additionalFunction"
-					id="additionalFunction{additionalFunction.uid}"
-					value="{additionalFunction.uid}"
-					multiple="true"
-				/>
-				<span>{additionalFunction.title}</span>
-			</label>
+			<div>
+				<label for="additionalFunction{additionalFunction.uid}">
+					<f:form.checkbox
+						property="additionalFunction"
+						id="additionalFunction{additionalFunction.uid}"
+						value="{additionalFunction.uid}"
+						multiple="true"
+					/>
+					<span>{additionalFunction.title}</span>
+				</label>
+			</div>
 		</f:for>
 	</div>
 </div>
