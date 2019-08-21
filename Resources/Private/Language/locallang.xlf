@@ -137,10 +137,10 @@
 				<source>What</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
-				<source>Speak</source>
+				<source>Spoken Skills</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
-				<source>Write</source>
+				<source>Written Skills</source>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
 				<source>Speak and Write</source>
@@ -207,6 +207,18 @@
 
 			<trans-unit id="sendMailToContact">
 				<source>To change your Data, please contact</source>
+			</trans-unit>
+
+			<trans-unit id="sendMailToContact">
+				<source>To change your Data, please contact</source>
+			</trans-unit>
+
+			<trans-unit id="add">
+				<source>Add</source>
+			</trans-unit>
+
+			<trans-unit id="remove">
+				<source>Remove</source>
 			</trans-unit>
 		</body>
 	</file>

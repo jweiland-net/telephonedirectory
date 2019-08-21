@@ -1,21 +1,27 @@
 <div id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID_CONTAINER###')}" class="extdiv {f:if(condition: '{languageSkill}', else: 'hidden')}">
-	<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Language">
-		<f:translate key="tx_telephonedirectory_domain_model_languageskill.language" />
-	</label>
-	<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.language.uid}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Language" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][language]" prependOptionLabel="{f:translate(key: 'optionSelectPrependLabel')}" options="{languages}" optionLabelField="title" />
+	<div class="marginbottom">
+		<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Language">
+			<f:translate key="tx_telephonedirectory_domain_model_languageskill.language" />
+		</label>
+		<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.language.uid}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Language" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][language]" prependOptionLabel="{f:translate(key: 'optionSelectPrependLabel')}" options="{languages}" optionLabelField="title" />
+	</div>
 
-	<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Write">
-		<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill.write" />
-	</label>
-	<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.writing}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Write" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][writing]" options="{languageSkills}" />
+	<div class="marginbottom">
+		<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Write">
+			<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill.write" />
+		</label>
+		<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.writing}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Write" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][writing]" options="{languageSkills}" />
+	</div>
 
-	<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Speak">
-		<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill.speak" />
-	</label>
-	<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.speaking}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Speak" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][speaking]" options="{languageSkills}" />
+	<div class="marginbottom">
+		<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Speak">
+			<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill.speak" />
+		</label>
+		<f:form.select disabled="{f:if(condition: '{languageSkill}', else: 'disabled')}" value="{languageSkill.speaking}" id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Speak" name="employee[languageSkill][{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}][speaking]" options="{languageSkills}" />
+	</div>
 
-	<div data-additional-controls="true">
-		<input type="button" value="Add" data-action="add" data-source="telephonedirectoryLanguageSkill###UID_CONTAINER###" data-after="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
-		<input type="button" value="Remove" data-action="remove" data-target="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
+	<div class="additional-controls" data-additional-controls="true">
+		<input type="button" value="{f:translate(key: 'add')}" data-action="add" data-source="telephonedirectoryLanguageSkill###UID_CONTAINER###" data-after="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
+		<input type="button" value="{f:translate(key: 'remove')}" data-action="remove" data-target="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
 	</div>
 </div>
