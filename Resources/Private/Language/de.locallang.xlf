@@ -112,12 +112,12 @@
 				<target>Sprachkenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.speak">
-				<source>Speak</source>
-				<target>Sprache</target>
+				<source>Spoken Skills</source>
+				<target>Sprachekenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.write">
-				<source>Write</source>
-				<target>Schrift</target>
+				<source>Written Skills</source>
+				<target>Schriftkenntnisse</target>
 			</trans-unit>
 
 			<trans-unit id="tx_telephonedirectory_domain_model_office">
@@ -257,6 +257,16 @@
 			<trans-unit id="sendMailToContact">
 				<source>To change your Data, please contact</source>
 				<target>Zum Ändern der Daten wenden Sie sich bitte an</target>
+			</trans-unit>
+
+			<trans-unit id="add">
+				<source>Add</source>
+				<target>Hinzufügen</target>
+			</trans-unit>
+
+			<trans-unit id="remove">
+				<source>Remove</source>
+				<target>Entfernen</target>
 			</trans-unit>
 		</body>
 	</file>
