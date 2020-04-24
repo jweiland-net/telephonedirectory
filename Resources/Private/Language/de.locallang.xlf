@@ -113,7 +113,7 @@
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.speak">
 				<source>Spoken Skills</source>
-				<target>Sprachekenntnisse</target>
+				<target>Sprachkenntnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.write">
 				<source>Written Skills</source>
