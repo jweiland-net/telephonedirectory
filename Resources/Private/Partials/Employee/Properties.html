@@ -3,13 +3,13 @@
 	class="clearfix tx-telephonedirectory"
 >
 	<f:if condition="{employee.image}">
-		<div class="grid_4 floatleft">
+		<div class="grid_3 floatleft">
 			<div class="gridright">
 				<f:image image="{employee.image}" alt="{employee.firstName} {employee.lastName}" width="152"/>
 			</div>
 		</div>
 	</f:if>
-	<div class="{f:if(condition: employee.image, then: 'floatleft grid_8')}">
+	<div class="{f:if(condition: employee.image, then: 'floatleft grid_9')}">
 		<h2 class="noborder">
 			<f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
 			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
