@@ -1,18 +1,13 @@
 <?php
-namespace JWeiland\Events2\Tests\Unit\Domain\Model;
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Events2\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Department;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
@@ -50,7 +45,7 @@ class OfficeTest extends UnitTestCase
      */
     public function getTitleInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getTitle()
         );
@@ -63,7 +58,7 @@ class OfficeTest extends UnitTestCase
     {
         $this->subject->setTitle('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getTitle()
         );
@@ -75,7 +70,7 @@ class OfficeTest extends UnitTestCase
     public function setTitleWithIntegerResultsInString()
     {
         $this->subject->setTitle(123);
-        $this->assertSame('123', $this->subject->getTitle());
+        self::assertSame('123', $this->subject->getTitle());
     }
 
     /**
@@ -84,7 +79,7 @@ class OfficeTest extends UnitTestCase
     public function setTitleWithBooleanResultsInString()
     {
         $this->subject->setTitle(true);
-        $this->assertSame('1', $this->subject->getTitle());
+        self::assertSame('1', $this->subject->getTitle());
     }
 
     /**
@@ -92,7 +87,7 @@ class OfficeTest extends UnitTestCase
      */
     public function getCodeInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getCode()
         );
@@ -105,7 +100,7 @@ class OfficeTest extends UnitTestCase
     {
         $this->subject->setCode('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getCode()
         );
@@ -117,7 +112,7 @@ class OfficeTest extends UnitTestCase
     public function setCodeWithIntegerResultsInString()
     {
         $this->subject->setCode(123);
-        $this->assertSame('123', $this->subject->getCode());
+        self::assertSame('123', $this->subject->getCode());
     }
 
     /**
@@ -126,7 +121,7 @@ class OfficeTest extends UnitTestCase
     public function setCodeWithBooleanResultsInString()
     {
         $this->subject->setCode(true);
-        $this->assertSame('1', $this->subject->getCode());
+        self::assertSame('1', $this->subject->getCode());
     }
 
     /**
@@ -134,7 +129,7 @@ class OfficeTest extends UnitTestCase
      */
     public function getTokenInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getToken()
         );
@@ -147,7 +142,7 @@ class OfficeTest extends UnitTestCase
     {
         $this->subject->setToken('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getToken()
         );
@@ -159,7 +154,7 @@ class OfficeTest extends UnitTestCase
     public function setTokenWithIntegerResultsInString()
     {
         $this->subject->setToken(123);
-        $this->assertSame('123', $this->subject->getToken());
+        self::assertSame('123', $this->subject->getToken());
     }
 
     /**
@@ -168,7 +163,7 @@ class OfficeTest extends UnitTestCase
     public function setTokenWithBooleanResultsInString()
     {
         $this->subject->setToken(true);
-        $this->assertSame('1', $this->subject->getToken());
+        self::assertSame('1', $this->subject->getToken());
     }
 
     /**
@@ -176,7 +171,7 @@ class OfficeTest extends UnitTestCase
      */
     public function getDepartmentInitiallyReturnsNull()
     {
-        $this->assertNull($this->subject->getDepartment());
+        self::assertNull($this->subject->getDepartment());
     }
 
     /**
@@ -187,7 +182,7 @@ class OfficeTest extends UnitTestCase
         $instance = new Department();
         $this->subject->setDepartment($instance);
 
-        $this->assertSame(
+        self::assertSame(
             $instance,
             $this->subject->getDepartment()
         );
@@ -198,7 +193,7 @@ class OfficeTest extends UnitTestCase
      */
     public function getSubjectFieldInitiallyReturnsNull()
     {
-        $this->assertNull($this->subject->getSubjectField());
+        self::assertNull($this->subject->getSubjectField());
     }
 
     /**
@@ -209,7 +204,7 @@ class OfficeTest extends UnitTestCase
         $instance = new SubjectField();
         $this->subject->setSubjectField($instance);
 
-        $this->assertSame(
+        self::assertSame(
             $instance,
             $this->subject->getSubjectField()
         );

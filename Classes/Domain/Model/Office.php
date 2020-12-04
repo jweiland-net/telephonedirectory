@@ -1,19 +1,16 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Domain\Model;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -46,83 +43,58 @@ class Office extends AbstractEntity
      */
     protected $subjectField;
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * @param string $code
-     */
-    public function setCode(string $code)
+    public function setCode(string $code): self
     {
         $this->code = $code;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getToken(): string
     {
         return $this->token;
     }
 
-    /**
-     * @param string $token
-     */
-    public function setToken(string $token)
+    public function setToken(string $token): self
     {
         $this->token = $token;
+        return $this;
     }
 
-    /**
-     * @return Department|null
-     */
-    public function getDepartment()
+    public function getDepartment(): ?Department
     {
         return $this->department;
     }
 
-    /**
-     * @param Department|null $department
-     */
-    public function setDepartment(Department $department)
+    public function setDepartment(Department $department): self
     {
         $this->department = $department;
+        return $this;
     }
 
-    /**
-     * @return SubjectField|null
-     */
-    public function getSubjectField()
+    public function getSubjectField(): ?SubjectField
     {
         return $this->subjectField;
     }
 
-    /**
-     * @param SubjectField|null $subjectField
-     */
-    public function setSubjectField(SubjectField $subjectField = null)
+    public function setSubjectField(SubjectField $subjectField): self
     {
         $this->subjectField = $subjectField;
+        return $this;
     }
 }

@@ -1,19 +1,15 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Domain\Model;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -34,6 +30,11 @@ class Employee extends AbstractEntity
      * @var int
      */
     protected $title = 0;
+
+    /**
+     * @var string
+     */
+    protected $pathSegment = '';
 
     /**
      * @var string
@@ -117,7 +118,7 @@ class Employee extends AbstractEntity
 
     /**
      * @var string
-     * @validate EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
     protected $email = '';
 
@@ -138,511 +139,394 @@ class Employee extends AbstractEntity
 
     /**
      * @var \JWeiland\Telephonedirectory\Domain\Model\Office
-     * @lazy
      */
     protected $office;
 
     /**
      * @var \JWeiland\Telephonedirectory\Domain\Model\Building
-     * @lazy
      */
     protected $building;
 
     /**
      * @var \JWeiland\Telephonedirectory\Domain\Model\Department
-     * @lazy
      */
     protected $department;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $image;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\LanguageSkill>
-     * @lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $languageSkill;
 
     public function __construct()
     {
-        //Do not remove the next line: It would break the functionality
+        // Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
 
-    /**
-     * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
-     */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->additionalFunction = new ObjectStorage();
         $this->languageSkill = new ObjectStorage();
+        $this->image = new ObjectStorage();
     }
 
-    /**
-     * @return bool
-     */
     public function isHidden(): bool
     {
         return $this->hidden;
     }
 
-    /**
-     * @param bool $hidden
-     */
-    public function setHidden(bool $hidden)
+    public function setHidden(bool $hidden): self
     {
         $this->hidden = $hidden;
+        return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getTitle(): int
     {
         return $this->title;
     }
 
-    /**
-     * @param int $title
-     */
-    public function setTitle(int $title)
+    public function setTitle(int $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
+    public function getPathSegment(): string
+    {
+        return $this->pathSegment;
+    }
+
+    public function setPathSegment(string $pathSegment): self
+    {
+        $this->pathSegment = $pathSegment;
+        return $this;
+    }
+
     public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName(string $firstName)
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param string $lastName
-     */
-    public function setLastName(string $lastName)
+    public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getNameAdditions(): string
     {
         return $this->nameAdditions;
     }
 
-    /**
-     * @param string $nameAdditions
-     */
-    public function setNameAdditions(string $nameAdditions)
+    public function setNameAdditions(string $nameAdditions): self
     {
         $this->nameAdditions = $nameAdditions;
+        return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getIsCatchAllMail(): bool
     {
         return $this->isCatchAllMail;
     }
 
-    /**
-     * @param bool $isCatchAllMail
-     */
-    public function setIsCatchAllMail(bool $isCatchAllMail)
+    public function setIsCatchAllMail(bool $isCatchAllMail): self
     {
         $this->isCatchAllMail = $isCatchAllMail;
+        return $this;
     }
 
-    /**
-     * @return SubjectField
-     */
-    public function getSubjectField()
+    public function getSubjectField(): ?SubjectField
     {
-        return $this->subjectField;
+        return $this->subjectField ?: null;
     }
 
-    /**
-     * @param SubjectField $subjectField
-     */
-    public function setSubjectField(SubjectField $subjectField = null)
+    public function setSubjectField(?SubjectField $subjectField): self
     {
-        $this->subjectField = $subjectField;
+        $this->subjectField = $subjectField ?: 0;
+        return $this;
     }
 
-    /**
-     * @return string $company
-     */
     public function getCompany(): string
     {
         return $this->company;
     }
 
-    /**
-     * @param string $company
-     */
-    public function setCompany(string $company)
+    public function setCompany(string $company): self
     {
         $this->company = $company;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRoomNumber(): string
     {
         return $this->roomNumber;
     }
 
-    /**
-     * @param string $roomNumber
-     */
-    public function setRoomNumber(string $roomNumber)
+    public function setRoomNumber(string $roomNumber): self
     {
         $this->roomNumber = $roomNumber;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getFunction(): string
     {
         return $this->function;
     }
 
-    /**
-     * @param string $function
-     */
-    public function setFunction(string $function)
+    public function setFunction(string $function): self
     {
         $this->function = $function;
+        return $this;
     }
 
-    /**
-     * @return ObjectStorage
-     */
-    public function getAdditionalFunction()
+    public function getAdditionalFunction(): ObjectStorage
     {
         return $this->additionalFunction;
     }
 
-    /**
-     * @param ObjectStorage $additionalFunction
-     */
-    public function setAdditionalFunction(ObjectStorage $additionalFunction)
+    public function setAdditionalFunction(ObjectStorage $additionalFunction): self
     {
         $this->additionalFunction = $additionalFunction;
+        return $this;
     }
 
-    /**
-     * @param Category $additionalFunction
-     */
-    public function addAdditionalFunction(Category $additionalFunction = null)
+    public function addAdditionalFunction(Category $additionalFunction): self
     {
         $this->additionalFunction->attach($additionalFunction);
+        return $this;
     }
 
-    /**
-     * @param Category $additionalFunction
-     */
-    public function removeAdditionalFunction(Category $additionalFunction)
+    public function removeAdditionalFunction(Category $additionalFunction): self
     {
         $this->additionalFunction->detach($additionalFunction);
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTelephone1(): string
     {
         return $this->telephone1;
     }
 
-    /**
-     * @param string $telephone1
-     */
-    public function setTelephone1(string $telephone1)
+    public function setTelephone1(string $telephone1): self
     {
         $this->telephone1 = $telephone1;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTelephone2(): string
     {
         return $this->telephone2;
     }
 
-    /**
-     * @param string $telephone2
-     */
-    public function setTelephone2(string $telephone2)
+    public function setTelephone2(string $telephone2): self
     {
         $this->telephone2 = $telephone2;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTelephone3(): string
     {
         return $this->telephone3;
     }
 
-    /**
-     * @param string $telephone3
-     */
-    public function setTelephone3(string $telephone3)
+    public function setTelephone3(string $telephone3): self
     {
         $this->telephone3 = $telephone3;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getMobile(): string
     {
         return $this->mobile;
     }
 
-    /**
-     * @param string $mobile
-     */
-    public function setMobile(string $mobile)
+    public function setMobile(string $mobile): self
     {
         $this->mobile = $mobile;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPager(): string
     {
         return $this->pager;
     }
 
-    /**
-     * @param string $pager
-     */
-    public function setPager(string $pager)
+    public function setPager(string $pager): self
     {
         $this->pager = $pager;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getFax(): string
     {
         return $this->fax;
     }
 
-    /**
-     * @param string $fax
-     */
-    public function setFax(string $fax)
+    public function setFax(string $fax): self
     {
         $this->fax = $fax;
+        return $this;
     }
 
-    /**
-     * @return string $pcFax
-     */
     public function getPcFax(): string
     {
         return $this->pcFax;
     }
 
-    /**
-     * @param string $pcFax
-     */
-    public function setPcFax(string $pcFax)
+    public function setPcFax(string $pcFax): self
     {
         $this->pcFax = $pcFax;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAdditionalInformations(): string
     {
         return $this->additionalInformations;
     }
 
-    /**
-     * @param string $additionalInformations
-     */
-    public function setAdditionalInformations(string $additionalInformations)
+    public function setAdditionalInformations(string $additionalInformations): self
     {
         $this->additionalInformations = $additionalInformations;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRegularAttendance(): string
     {
         return $this->regularAttendance;
     }
 
-    /**
-     * @param string $regularAttendance
-     */
-    public function setRegularAttendance(string $regularAttendance)
+    public function setRegularAttendance(string $regularAttendance): self
     {
         $this->regularAttendance = $regularAttendance;
+        return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getModuleSysDmailHtml(): bool
     {
         return $this->moduleSysDmailHtml;
     }
 
-    /**
-     * @param bool $moduleSysDmailHtml
-     */
-    public function setModuleSysDmailHtml(bool $moduleSysDmailHtml)
+    public function setModuleSysDmailHtml(bool $moduleSysDmailHtml): self
     {
         $this->moduleSysDmailHtml = $moduleSysDmailHtml;
+        return $this;
     }
 
-    /**
-     * @return Office
-     */
-    public function getOffice()
+    public function getOffice(): ?Office
     {
-        return $this->office;
+        return $this->office ?: null;
     }
 
-    /**
-     * @param Office|null $office
-     */
-    public function setOffice(Office $office = null)
+    public function setOffice(Office $office = null): self
     {
-        $this->office = $office;
+        $this->office = $office ?: 0;
+        return $this;
     }
 
-    /**
-     * @return Building
-     */
-    public function getBuilding()
+    public function getBuilding(): ?Building
     {
-        return $this->building;
+        return $this->building ?: null;
     }
 
-    /**
-     * @param Building|null $building
-     */
-    public function setBuilding(Building $building = null)
+    public function setBuilding(Building $building): self
     {
-        $this->building = $building;
+        $this->building = $building ?: 0;
+        return $this;
     }
 
-    /**
-     * @return Department
-     */
-    public function getDepartment()
+    public function getDepartment(): ?Department
     {
-        return $this->department;
+        return $this->department ?: null;
     }
 
-    /**
-     * @param Department $department
-     */
-    public function setDepartment(Department $department = null)
+    public function setDepartment(?Department $department): self
     {
-        $this->department = $department;
+        $this->department = $department ?: 0;
+        return $this;
     }
 
-    /**
-     * @return FileReference $image
-     */
-    public function getImage()
+    public function getFirstImage(): ?FileReference
+    {
+        $this->image->rewind();
+        return $this->image->current() ?: null;
+    }
+
+    public function getImage(): ObjectStorage
     {
         return $this->image;
     }
 
-    /**
-     * @param FileReference $image
-     */
-    public function setImage(FileReference $image = null)
+    public function setImage(ObjectStorage $image): self
     {
-        if ($image) {
-            $this->image = $image;
-        }
+        $this->image = $image;
+        return $this;
     }
 
-    /**
-     * @param LanguageSkill $languageSkill
-     */
-    public function addLanguageSkill(LanguageSkill $languageSkill = null)
+    public function addLanguageSkill(LanguageSkill $languageSkill): self
     {
         $this->languageSkill->attach($languageSkill);
+        return $this;
     }
 
-    /**
-     * @param LanguageSkill $languageSkillToRemove
-     */
-    public function removeLanguageSkill(LanguageSkill $languageSkillToRemove)
+    public function removeLanguageSkill(LanguageSkill $languageSkillToRemove): self
     {
         $this->languageSkill->detach($languageSkillToRemove);
+        return $this;
     }
 
-    /**
-     * @return ObjectStorage
-     */
     public function getLanguageSkill(): ObjectStorage
     {
         return $this->languageSkill;
     }
 
-    /**
-     * @param ObjectStorage $languageSkill
-     */
-    public function setLanguageSkill(ObjectStorage $languageSkill = null)
+    public function setLanguageSkill(ObjectStorage $languageSkill): self
     {
         $this->languageSkill = $languageSkill;
+        return $this;
+    }
+
+    /**
+     * Helper method to build a baseRecord for path_segment
+     * Needed in PathSegmentHelper
+     *
+     * @return array
+     */
+    public function getBaseRecordForPathSegment(): array
+    {
+        return [
+            'uid' => $this->getUid(),
+            'pid' => $this->getPid(),
+            'first_name' => $this->getFirstName(),
+            'last_name' => $this->getLastName()
+        ];
     }
 }

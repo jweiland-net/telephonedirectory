@@ -75,6 +75,12 @@
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.image">
 				<source>Image</source>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.path_segment">
+				<source>Segment for URL</source>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.office">
 				<source>Office</source>
 			</trans-unit>

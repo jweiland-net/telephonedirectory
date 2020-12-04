@@ -1,19 +1,15 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Controller;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
@@ -67,7 +63,7 @@ class EmployeeController extends ActionController
     /**
      * @param EmployeeRepository $employeeRepository
      */
-    public function injectEmployeeRepository(EmployeeRepository $employeeRepository)
+    public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
         $this->employeeRepository = $employeeRepository;
     }
@@ -75,7 +71,7 @@ class EmployeeController extends ActionController
     /**
      * @param BuildingRepository $buildingRepository
      */
-    public function injectBuildingRepository(BuildingRepository $buildingRepository)
+    public function injectBuildingRepository(BuildingRepository $buildingRepository): void
     {
         $this->buildingRepository = $buildingRepository;
     }
@@ -83,7 +79,7 @@ class EmployeeController extends ActionController
     /**
      * @param DepartmentRepository $departmentRepository
      */
-    public function injectDepartmentRepository(DepartmentRepository $departmentRepository)
+    public function injectDepartmentRepository(DepartmentRepository $departmentRepository): void
     {
         $this->departmentRepository = $departmentRepository;
     }
@@ -91,7 +87,7 @@ class EmployeeController extends ActionController
     /**
      * @param OfficeRepository $officeRepository
      */
-    public function injectOfficeRepository(OfficeRepository $officeRepository)
+    public function injectOfficeRepository(OfficeRepository $officeRepository): void
     {
         $this->officeRepository = $officeRepository;
     }
@@ -99,15 +95,12 @@ class EmployeeController extends ActionController
     /**
      * @param ExtConf $extConf
      */
-    public function injectExtConf(ExtConf $extConf)
+    public function injectExtConf(ExtConf $extConf): void
     {
         $this->extConf = $extConf;
     }
 
-    /**
-     * Pre-Processing of all actions
-     */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         // if this value was not set, then it will be filled with 0
         // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to null
@@ -116,10 +109,7 @@ class EmployeeController extends ActionController
         }
     }
 
-    /**
-     * Action list
-     */
-    public function listAction()
+    public function listAction(): void
     {
         $employees = $this->employeeRepository->findAll();
         $this->view->assign('employees', $employees);
@@ -132,7 +122,7 @@ class EmployeeController extends ActionController
      * Now extbase tries to get an object of a non given UID which results in multiple errors
      * Thats why we remove this request here
      */
-    public function initializeSearchAction()
+    public function initializeSearchAction(): void
     {
         if ($this->request->hasArgument('office')) {
             $office = $this->request->getArgument('office');
@@ -142,13 +132,7 @@ class EmployeeController extends ActionController
         }
     }
 
-    /**
-     * Action list
-     *
-     * @param Office $office
-     * @param string $search
-     */
-    public function searchAction(Office $office = null, $search = '')
+    public function searchAction(Office $office = null, $search = ''): void
     {
         if ($office instanceof Office || !empty($search)) {
             $employees = $this->employeeRepository->findBySearch($office, $search);
@@ -161,50 +145,25 @@ class EmployeeController extends ActionController
         $this->view->assign('offices', $this->officeRepository->findAll());
     }
 
-    /**
-     * Action show
-     *
-     * @param Employee $employee
-     */
-    public function showAction(Employee $employee)
+    public function showAction(Employee $employee): void
     {
         $this->view->assign('contactEmail', $this->extConf->getEmailContact());
         $this->view->assign('employee', $employee);
     }
 
-    /**
-     * Action new
-     *
-     * @param Employee $newEmployee
-     * @dontvalidate $newEmployee
-     */
-    public function newAction(Employee $newEmployee = null)
+    public function newAction(Employee $newEmployee = null): void
     {
         $this->view->assign('newEmployee', $newEmployee);
     }
 
-    /**
-     * Action create
-     *
-     * @param Employee $newEmployee
-     * @return void
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     */
-    public function createAction(Employee $newEmployee)
+    public function createAction(Employee $newEmployee): void
     {
         $this->employeeRepository->add($newEmployee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeCreated', 'telephonedirectory'));
         $this->redirect('list');
     }
 
-    /**
-     * Action edit
-     *
-     * @param Employee $employee
-     */
-    public function editAction(Employee $employee)
+    public function editAction(Employee $employee): void
     {
         if (!$employee->getIsCatchAllMail()) {
             $authToken = $this->request->getArgument('authToken');
@@ -231,7 +190,7 @@ class EmployeeController extends ActionController
         }
     }
 
-    public function initializeUpdateAction()
+    public function initializeUpdateAction(): void
     {
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowProperties('languageSkill');
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->forProperty('languageSkill.*')->allowProperties('language', 'writing', 'speaking');
@@ -246,16 +205,7 @@ class EmployeeController extends ActionController
             ->setTypeConverter($oneFileTypeConverter);
     }
 
-    /**
-     * Action update
-     *
-     * @param Employee $employee
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     */
-    public function updateAction(Employee $employee)
+    public function updateAction(Employee $employee): void
     {
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
@@ -263,13 +213,13 @@ class EmployeeController extends ActionController
     }
 
     /**
-     * Aend a mail with link to edit this entry
+     * Send a mail with link to edit this entry
      *
      * @param Employee $employee
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function sendEditMailAction(Employee $employee)
+    public function sendEditMailAction(Employee $employee): void
     {
         GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData($employee, $this->getContent($employee));
 

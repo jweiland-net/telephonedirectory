@@ -1,19 +1,15 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Controller;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -31,15 +27,12 @@ class InterpreterController extends ActionController
     /**
      * @param  LanguageSkillRepository $languageSkillRepository
      */
-    public function injectLanguageSkillRepository(LanguageSkillRepository $languageSkillRepository)
+    public function injectLanguageSkillRepository(LanguageSkillRepository $languageSkillRepository): void
     {
         $this->languageSkillRepository = $languageSkillRepository;
     }
 
-    /**
-     * Pre-Processing of all actions
-     */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         // if this value was not set, then it will be filled with 0
         // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to null
@@ -48,10 +41,7 @@ class InterpreterController extends ActionController
         }
     }
 
-    /**
-     * Action list
-     */
-    public function listAction()
+    public function listAction(): void
     {
         $skills = $this->languageSkillRepository->findAllWithEmployeeRelation();
         $this->view->assign('skills', $skills);

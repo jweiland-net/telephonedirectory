@@ -99,6 +99,14 @@
 				<source>Image</source>
 				<target>Bild</target>
 			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.images">
+				<source>Images</source>
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="tx_telephonedirectory_domain_model_employee.path_segment">
+				<source>Segment for URL</source>
+				<target>Abschnitt für URL</target>
+			</trans-unit>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee.office">
 				<source>Office</source>
 				<target>Amt</target>

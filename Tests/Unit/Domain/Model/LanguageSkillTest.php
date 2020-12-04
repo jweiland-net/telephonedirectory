@@ -1,18 +1,13 @@
 <?php
-namespace JWeiland\Events2\Tests\Unit\Domain\Model;
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Events2\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Language;
@@ -50,7 +45,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function getLanguageInitiallyReturnsNull()
     {
-        $this->assertNull($this->subject->getLanguage());
+        self::assertNull($this->subject->getLanguage());
     }
 
     /**
@@ -61,7 +56,7 @@ class LanguageSkillTest extends UnitTestCase
         $instance = new Language();
         $this->subject->setLanguage($instance);
 
-        $this->assertSame(
+        self::assertSame(
             $instance,
             $this->subject->getLanguage()
         );
@@ -72,7 +67,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function getWritingInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getWriting()
         );
@@ -85,7 +80,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         $this->subject->setWriting('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getWriting()
         );
@@ -97,7 +92,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setWritingWithIntegerResultsInString()
     {
         $this->subject->setWriting(123);
-        $this->assertSame('123', $this->subject->getWriting());
+        self::assertSame('123', $this->subject->getWriting());
     }
 
     /**
@@ -106,7 +101,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setWritingWithBooleanResultsInString()
     {
         $this->subject->setWriting(true);
-        $this->assertSame('1', $this->subject->getWriting());
+        self::assertSame('1', $this->subject->getWriting());
     }
 
     /**
@@ -114,7 +109,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function getSpeakingInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getSpeaking()
         );
@@ -127,7 +122,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         $this->subject->setSpeaking('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getSpeaking()
         );
@@ -139,7 +134,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setSpeakingWithIntegerResultsInString()
     {
         $this->subject->setSpeaking(123);
-        $this->assertSame('123', $this->subject->getSpeaking());
+        self::assertSame('123', $this->subject->getSpeaking());
     }
 
     /**
@@ -148,7 +143,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setSpeakingWithBooleanResultsInString()
     {
         $this->subject->setSpeaking(true);
-        $this->assertSame('1', $this->subject->getSpeaking());
+        self::assertSame('1', $this->subject->getSpeaking());
     }
 
     /**
@@ -156,7 +151,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function getInfotextInitiallyReturnsEmptyString()
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->subject->getInfotext()
         );
@@ -169,7 +164,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         $this->subject->setInfotext('foo bar');
 
-        $this->assertSame(
+        self::assertSame(
             'foo bar',
             $this->subject->getInfotext()
         );
@@ -181,7 +176,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setInfotextWithIntegerResultsInString()
     {
         $this->subject->setInfotext(123);
-        $this->assertSame('123', $this->subject->getInfotext());
+        self::assertSame('123', $this->subject->getInfotext());
     }
 
     /**
@@ -190,7 +185,7 @@ class LanguageSkillTest extends UnitTestCase
     public function setInfotextWithBooleanResultsInString()
     {
         $this->subject->setInfotext(true);
-        $this->assertSame('1', $this->subject->getInfotext());
+        self::assertSame('1', $this->subject->getInfotext());
     }
 
     /**
@@ -198,7 +193,7 @@ class LanguageSkillTest extends UnitTestCase
      */
     public function getEmployeeInitiallyReturnsNull()
     {
-        $this->assertNull($this->subject->getEmployee());
+        self::assertNull($this->subject->getEmployee());
     }
 
     /**
@@ -209,7 +204,7 @@ class LanguageSkillTest extends UnitTestCase
         $instance = new Employee();
         $this->subject->setEmployee($instance);
 
-        $this->assertSame(
+        self::assertSame(
             $instance,
             $this->subject->getEmployee()
         );

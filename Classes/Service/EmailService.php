@@ -1,19 +1,15 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Service;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
@@ -43,7 +39,7 @@ class EmailService
      * @param string $content
      * @throws \Exception
      */
-    public function informEmployeeAboutTheirData(Employee $employee, $content)
+    public function informEmployeeAboutTheirData(Employee $employee, string $content): void
     {
         /** @var MailMessage $mail */
         $mail = GeneralUtility::makeInstance(MailMessage::class);
@@ -51,7 +47,15 @@ class EmailService
         $mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $mail->setTo($employee->getEmail(), $employee->getFirstName() . ' ' . $employee->getLastName());
         $mail->setSubject(LocalizationUtility::translate('email.subject', 'telephonedirectory'));
-        $mail->setBody((string)$content, 'text/html');
+
+        if (method_exists($mail, 'addPart')) {
+            // TYPO3 < 10 (Swift_Message)
+            $mail->setBody($content, 'text/html');
+        } else {
+            // TYPO3 >= 10 (Symfony Mail)
+            $mail->html($content);
+        }
+
         $mail->send();
     }
 }

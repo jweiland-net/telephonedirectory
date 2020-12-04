@@ -24,11 +24,11 @@ return [
         'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_employee.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, is_catch_all_mail, first_name, last_name, name_additions, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, image, office, building, department, language_skill'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, path_segment, is_catch_all_mail, first_name, last_name, name_additions, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, image, office, building, department, language_skill'
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, first_name, last_name, name_additions, is_catch_all_mail, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, regular_attendance, image, office, building, department, language_skill,
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, path_segment, title, first_name, last_name, name_additions, is_catch_all_mail, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, regular_attendance, image, office, building, department, language_skill,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
@@ -41,14 +41,14 @@ return [
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'special' => 'languages',
                 'items' => [
                     [
-                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
                         'flags-multiple'
                     ],
@@ -59,7 +59,7 @@ return [
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -84,10 +84,30 @@ return [
         ],
         'hidden' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
                 'default' => 0
+            ]
+        ],
+        'path_segment' => [
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.path_segment',
+            'displayCond' => 'VERSION:IS:false',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['first_name', 'last_name'],
+                    // Do not add pageSlug, as we add pageSlug on our own in RouteEnhancer
+                    'prefixParentPageSlug' => false,
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '-'
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
             ]
         ],
         'cruser_id' => [

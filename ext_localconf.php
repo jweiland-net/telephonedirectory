@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(function ($extKey) {
+call_user_func(static function ($extKey) {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask::class] = [
         'extension' => $extKey,
         'title' => 'Send email to every employee about their current data',
@@ -34,4 +34,7 @@ call_user_func(function ($extKey) {
             'Employee' => 'search, create, update, sendEditMail'
         ]
     );
-}, $_EXTKEY);
+
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSlug']
+        = \JWeiland\Telephonedirectory\Updater\TelephonedirectorySlugUpdater::class;
+}, 'telephonedirectory');

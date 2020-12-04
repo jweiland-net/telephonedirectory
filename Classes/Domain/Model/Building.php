@@ -1,19 +1,16 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Telephonedirectory\Domain\Model;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Telephonedirectory\Domain\Model;
+
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -52,99 +49,69 @@ class Building extends AbstractEntity
      */
     protected $txMaps2Uid;
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getStreet(): string
     {
         return $this->street;
     }
 
-    /**
-     * @param string $street
-     */
-    public function setStreet(string $street)
+    public function setStreet(string $street): self
     {
         $this->street = $street;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getHouseNumber(): string
     {
         return $this->houseNumber;
     }
 
-    /**
-     * @param string $houseNumber
-     */
-    public function setHouseNumber(string $houseNumber)
+    public function setHouseNumber(string $houseNumber): self
     {
         $this->houseNumber = $houseNumber;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getZip(): string
     {
         return $this->zip;
     }
 
-    /**
-     * @param string $zip
-     */
-    public function setZip(string $zip)
+    public function setZip(string $zip): self
     {
         $this->zip = $zip;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): string
     {
         return $this->city;
     }
 
-    /**
-     * @param string $city
-     */
-    public function setCity(string $city)
+    public function setCity(string $city): self
     {
         $this->city = $city;
+        return $this;
     }
 
-    /**
-     * @return PoiCollection $txMaps2Uid
-     */
-    public function getTxMaps2Uid()
+    public function getTxMaps2Uid(): ?PoiCollection
     {
         return $this->txMaps2Uid;
     }
 
-    /**
-     * @param PoiCollection $txMaps2Uid
-     */
-    public function setTxMaps2Uid(PoiCollection $txMaps2Uid)
+    public function setTxMaps2Uid(PoiCollection $txMaps2Uid): self
     {
         $this->txMaps2Uid = $txMaps2Uid;
+        return $this;
     }
 }

@@ -1,20 +1,16 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the package jweiland/telephonedirectory.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
-/*
- * This file is part of the telephonedirectory project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -47,83 +43,58 @@ class LanguageSkill extends AbstractEntity
      */
     protected $employee;
 
-    /**
-     * @return Language|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?Language
     {
         return $this->language;
     }
 
-    /**
-     * @param Language|null $language
-     */
-    public function setLanguage(Language $language = null)
+    public function setLanguage(Language $language): self
     {
         $this->language = $language;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getWriting(): string
     {
         return $this->writing;
     }
 
-    /**
-     * @param string $writing
-     */
-    public function setWriting(string $writing)
+    public function setWriting(string $writing): self
     {
         $this->writing = $writing;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSpeaking(): string
     {
         return $this->speaking;
     }
 
-    /**
-     * @param string $speaking
-     */
-    public function setSpeaking(string $speaking)
+    public function setSpeaking(string $speaking): self
     {
         $this->speaking = $speaking;
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getInfotext(): string
     {
         return $this->infotext;
     }
 
-    /**
-     * @param string $infotext
-     */
-    public function setInfotext(string $infotext)
+    public function setInfotext(string $infotext): self
     {
         $this->infotext = $infotext;
+        return $this;
     }
 
-    /**
-     * @return Employee|null $employee
-     */
-    public function getEmployee()
+    public function getEmployee(): ?Employee
     {
         return $this->employee;
     }
 
-    /**
-     * @param Employee|null $employee
-     */
-    public function setEmployee($employee = null)
+    public function setEmployee(Employee $employee): self
     {
         $this->employee = $employee;
+        return $this;
     }
 }

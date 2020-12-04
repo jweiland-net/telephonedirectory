@@ -6,6 +6,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title TINYINT(1) DEFAULT '0' NOT NULL,
+	path_segment varchar(2048) DEFAULT '' NOT NULL,
 	first_name varchar(255) DEFAULT '' NOT NULL,
 	last_name varchar(255) DEFAULT '' NOT NULL,
 	name_additions varchar(255) DEFAULT '' NOT NULL,
@@ -13,8 +14,8 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	function varchar(255) DEFAULT '' NOT NULL,
 	office int(11) unsigned DEFAULT '0',
 	company varchar(255) DEFAULT '' NOT NULL,
-	department int(11) unsigned DEFAULT '0',
-	building int(11) unsigned DEFAULT '0',
+	department int(11) unsigned DEFAULT '0' NOT NULL,
+	building int(11) unsigned DEFAULT '0' NOT NULL,
 	subject_field int(11) unsigned DEFAULT '0' NOT NULL,
 	room_number varchar(255) DEFAULT '' NOT NULL,
 	telephone1 varchar(255) DEFAULT '' NOT NULL,

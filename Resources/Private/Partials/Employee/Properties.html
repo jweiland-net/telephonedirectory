@@ -2,14 +2,14 @@
 	xmlns:maps2="http://typo3.org/ns/JWeiland/Maps2/ViewHelpers"
 	class="clearfix tx-telephonedirectory"
 >
-	<f:if condition="{employee.image}">
+	<f:if condition="{employee.firstImage}">
 		<div class="grid_3 floatleft">
 			<div class="gridright">
-				<f:image image="{employee.image}" alt="{employee.firstName} {employee.lastName}" width="152"/>
+				<f:image image="{employee.firstImage}" alt="{employee.firstName} {employee.lastName}" width="152"/>
 			</div>
 		</div>
 	</f:if>
-	<div class="{f:if(condition: employee.image, then: 'floatleft grid_9')}">
+	<div class="{f:if(condition: employee.firstImage, then: 'floatleft grid_9')}">
 		<h2 class="noborder">
 			<f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
 			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
