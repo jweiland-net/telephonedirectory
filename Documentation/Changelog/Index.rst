@@ -10,7 +10,7 @@ Version 3.0.0
 -------------
 Breaking
 ########
-- getImage now returns a ObjectStorage use getFirstImage (firstImage instead of image in fluid)
+- getImage now returns an ObjectStorage use getFirstImage instead to retrieve employee image (firstImage instead of image in fluid)
 
 Changes
 ########
