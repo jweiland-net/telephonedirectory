@@ -9,8 +9,14 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('maps2')) {
         'telephonedirectory',
         'tx_telephonedirectory_domain_model_building',
         [
-            'fieldList' => 'tx_maps2_uid',
-            'position' => 'after:city'
+            'addressColumns' => ['street', 'house_number', 'zip', 'city'],
+            'defaultCountry' => 'Germany',
+            'synchronizeColumns' => [
+                [
+                    'foreignColumnName' => 'title',
+                    'poiCollectionColumnName' => 'title'
+                ]
+            ]
         ]
     );
 }
