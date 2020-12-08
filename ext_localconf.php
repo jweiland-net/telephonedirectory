@@ -18,7 +18,7 @@ call_user_func(static function ($extKey) {
             'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
         ], // non-cacheable actions
         [
-            'Employee' => 'search, create, update, sendEditMail'
+            'Employee' => 'search, edit, create, update, sendEditMail'
         ]
     );
 
@@ -31,7 +31,7 @@ call_user_func(static function ($extKey) {
         ], // non-cacheable actions
         [
             'Interpreter' => '',
-            'Employee' => 'search, create, update, sendEditMail'
+            'Employee' => 'search, edit, create, update, sendEditMail'
         ]
     );
 

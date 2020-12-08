@@ -20,13 +20,15 @@ use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
-use JWeiland\Telephonedirectory\Property\TypeConverter\UploadOneFileConverter;
+use JWeiland\Telephonedirectory\Property\TypeConverter\UploadMultipleFilesConverter;
 use JWeiland\Telephonedirectory\Service\EmailService;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Property\TypeConverterInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -197,12 +199,13 @@ class EmployeeController extends ActionController
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowCreationForSubProperty('languageSkill.*');
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowModificationForSubProperty('languageSkill.*');
 
-        /** @var UploadOneFileConverter $oneFileTypeConverter */
-        $oneFileTypeConverter = $this->objectManager->get(UploadOneFileConverter::class);
-        $this->arguments->getArgument('employee')
-            ->getPropertyMappingConfiguration()
-            ->forProperty('image')
-            ->setTypeConverter($oneFileTypeConverter);
+        $employeeMappingConfiguration = $this->arguments
+            ->getArgument('employee')
+            ->getPropertyMappingConfiguration();
+
+        /** @var Employee $persistedEmployee */
+        $persistedEmployee = $this->employeeRepository->findByIdentifier($this->request->getArgument('employee')['__identity']);
+        $this->assignMediaTypeConverter('image', $employeeMappingConfiguration, $persistedEmployee->getImage());
     }
 
     public function updateAction(Employee $employee): void
@@ -256,5 +259,46 @@ class EmployeeController extends ActionController
         $view->assign('employee', $employee);
 
         return $view->render();
+    }
+
+    /**
+     * Currently only "image" are allowed properties.
+     *
+     * @param string $property
+     * @param MvcPropertyMappingConfiguration $propertyMappingConfigurationForEmployee
+     * @param mixed $converterOptionValue
+     */
+    protected function assignMediaTypeConverter(
+        string $property,
+        MvcPropertyMappingConfiguration $propertyMappingConfigurationForEmployee,
+        $converterOptionValue
+    ): void {
+        if ($property === 'image') {
+            $className = UploadMultipleFilesConverter::class;
+            $converterOptionName = 'IMAGES';
+        } else {
+            return;
+        }
+
+        /** @var TypeConverterInterface $typeConverter */
+        $typeConverter = $this->objectManager->get($className);
+        $propertyMappingConfigurationForMediaFiles = $propertyMappingConfigurationForEmployee
+            ->forProperty($property)
+            ->setTypeConverter($typeConverter);
+
+        $propertyMappingConfigurationForMediaFiles->setTypeConverterOption(
+            $className,
+            'settings',
+            $this->settings
+        );
+
+        if (!empty($converterOptionValue)) {
+            // Do not use setTypeConverterOptions() as this will remove all existing options
+            $propertyMappingConfigurationForMediaFiles->setTypeConverterOption(
+                $className,
+                $converterOptionName,
+                $converterOptionValue
+            );
+        }
     }
 }
