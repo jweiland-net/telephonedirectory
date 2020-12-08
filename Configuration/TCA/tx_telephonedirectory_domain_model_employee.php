@@ -97,7 +97,7 @@ return [
                 'type' => 'slug',
                 'size' => 50,
                 'generatorOptions' => [
-                    'fields' => ['first_name', 'last_name'],
+                    'fields' => ['first_name', 'last_name', 'uid'],
                     // Do not add pageSlug, as we add pageSlug on our own in RouteEnhancer
                     'prefixParentPageSlug' => false,
                     'fieldSeparator' => '-',
