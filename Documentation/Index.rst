@@ -38,7 +38,7 @@ a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
 
 **Community Documentation**
 
-This documentation is community documentation for the TYPO3 extension {extension.name}
+This documentation is community documentation for the TYPO3 extension telephonedirectory
 
 It is maintained as part of this third party extension.
 
