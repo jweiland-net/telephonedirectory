@@ -16,6 +16,8 @@ $EM_CONF[$_EXTKEY] = [
             'maps2' => '8.0.0-8.9.99'
         ],
         'conflicts' => [],
-        'suggests' => []
+        'suggests' => [
+            'checkfaluploads' => ''
+        ]
     ]
 ];

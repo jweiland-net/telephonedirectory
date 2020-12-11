@@ -1,3 +1,7 @@
+<html lang="en"
+			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+			xmlns:c="http://typo3.org/ns/JWeiland/Checkfaluploads/ViewHelpers"
+			data-namespace-typo3-fluid="true">
 <div class="extdiv">
 	<label>
 		<f:translate key="tx_telephonedirectory_domain_model_employee.title" />
@@ -136,12 +140,23 @@
 	</label>
 	<f:form.textfield id="telephonedirectoryRoomNumber" property="roomNumber" />
 </div>
+
 <div class="extdiv">
 	<label for="telephonedirectoryImage">
 		<f:translate key="tx_telephonedirectory_domain_model_employee.image" />
 	</label>
 	<f:form.upload property="image.0" id="telephonedirectoryImage" />
 </div>
+
+<f:if condition="{checkFalUploadEnabled}">
+	<div class="extdiv">
+		<label for="telephonedirectoryImage">
+			{c:imageRightsMessage()}
+		</label>
+		<f:form.checkbox property="image.0.rights" checked="" value="1" />
+	</div>
+</f:if>
+
 
 <div class="extdiv">
 	<label><f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" /></label>
@@ -157,3 +172,4 @@
 		<f:render partial="Employee/LanguageSkill" arguments="{_all}"/>
 	</f:for>
 </div>
+</html>

@@ -185,7 +185,8 @@ class EmployeeController extends ActionController
                         'offices' => $this->officeRepository->findAll(),
                         'languages' => $languageRepository->findAll(),
                         'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $categoryRepository->findByParent($this->extConf->getAdditionalFunctionsParentCategoryUid())
+                        'additionalFunctions' => $categoryRepository->findByParent($this->extConf->getAdditionalFunctionsParentCategoryUid()),
+                        'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads')
                     ]
                 );
             }

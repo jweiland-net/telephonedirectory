@@ -16,6 +16,7 @@ use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Error\Error;
@@ -144,6 +145,13 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                     ),
                     1605617456
                 );
+            }
+
+            if (
+                ExtensionManagementUtility::isLoaded('checkfaluploads')
+                && $error = $this->getFalUploadService()->checkFile($uploadedFile)
+            ) {
+                return $error;
             }
 
             $this->emitPostCheckFileReference($source, $key, $alreadyPersistedImage, $uploadedFile);
@@ -313,5 +321,13 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
             'postCheckFileReference',
             [$source, $key, $alreadyPersistedImage, $uploadedFile]
         );
+    }
+
+    protected function getFalUploadService(): FalUploadService
+    {
+        if ($this->falUploadService === null) {
+            $this->falUploadService = GeneralUtility::makeInstance(FalUploadService::class);
+        }
+        return $this->falUploadService;
     }
 }
