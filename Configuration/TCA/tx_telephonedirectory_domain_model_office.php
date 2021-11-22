@@ -25,7 +25,7 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, code, token, department, subject_field,
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, code, token, departments, subject_fields,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
@@ -166,27 +166,32 @@ return [
                 'eval' => 'trim'
             ]
         ],
-        'department' => [
+        'departments' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.department',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_telephonedirectory_domain_model_department',
+                'MM' => 'tx_telephonedirectory_office_mm',
+                'MM_match_fields' => [
+                    'fieldname' => 'departments'
+                ],
                 'foreign_table' => 'tx_telephonedirectory_domain_model_department',
-                'foreign_table_where' => 'ORDER BY tx_telephonedirectory_domain_model_department.title',
-                'minitems' => 0,
-                'maxitems' => 1
             ]
         ],
-        'subject_field' => [
+        'subject_fields' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office.subject_field',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_telephonedirectory_domain_model_subjectfield',
+                'MM' => 'tx_telephonedirectory_office_mm',
+                'MM_match_fields' => [
+                    'fieldname' => 'subject_fields'
+                ],
                 'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
-                'minitems' => 1,
-                'maxitems' => 1
             ]
         ]
     ],

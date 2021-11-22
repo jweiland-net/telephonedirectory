@@ -72,7 +72,9 @@ CREATE TABLE tx_telephonedirectory_domain_model_office (
 	code varchar(30) DEFAULT '' NOT NULL,
 	token varchar(30) DEFAULT '' NOT NULL,
 	department int(11) unsigned DEFAULT '0',
+	departments int(11) unsigned DEFAULT '0',
 	subject_field int(11) unsigned DEFAULT '0' NOT NULL,
+	subject_fields int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -101,6 +103,22 @@ CREATE TABLE tx_telephonedirectory_domain_model_office (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
+);
+
+#
+# Table structure for table 'tx_telephonedirectory_office_mm'
+#
+CREATE TABLE tx_telephonedirectory_office_mm
+(
+	uid_local int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+	tablenames varchar(255) DEFAULT '' NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+	sorting int(11) DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) DEFAULT '0' NOT NULL,
+
+	KEY uid_local_foreign (uid_local,uid_foreign),
+	KEY uid_foreign_tablefield (uid_foreign,tablenames(40),fieldname(3),sorting_foreign)
 );
 
 #

@@ -37,4 +37,10 @@ call_user_func(static function ($extKey) {
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSlug']
         = \JWeiland\Telephonedirectory\Updater\TelephonedirectorySlugUpdater::class;
+
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateDepartmentToDepartments']
+        = \JWeiland\Telephonedirectory\Updater\DepartmentToDepartmentsUpdater::class;
+
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSubjectFieldToSubjectFields']
+        = \JWeiland\Telephonedirectory\Updater\SubjectFieldToSubjectFieldsUpdater::class;
 }, 'telephonedirectory');
