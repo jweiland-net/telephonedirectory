@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Class which contains all setters and getters for Office
@@ -34,14 +35,20 @@ class Office extends AbstractEntity
     protected $token = '';
 
     /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Department
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\Department>
      */
-    protected $department;
+    protected $departments;
 
     /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\SubjectField>
      */
-    protected $subjectField;
+    protected $subjectFields;
+
+    public function __construct()
+    {
+        $this->departments = new ObjectStorage();
+        $this->subjectFields = new ObjectStorage();
+    }
 
     public function getTitle(): string
     {
@@ -76,25 +83,69 @@ class Office extends AbstractEntity
         return $this;
     }
 
-    public function getDepartment(): ?Department
+    public function getSubjectField(): ?SubjectField
     {
-        return $this->department;
+        return $this->subjectFields[0];
     }
 
-    public function setDepartment(Department $department): self
+    /**
+     * @deprecated Either use addSubjectField or setSubjectFields
+     */
+    public function setSubjectField(SubjectField $subjectField): self
     {
-        $this->department = $department;
+        return $this->addSubjectField($subjectField);
+    }
+
+    public function addSubjectField(SubjectField $subjectField): self
+    {
+        if (!$this->subjectFields->contains($subjectField)) {
+            $this->subjectFields->attach($subjectField);
+        }
+
         return $this;
     }
 
-    public function getSubjectField(): ?SubjectField
+    public function getSubjectFields(): ObjectStorage
     {
-        return $this->subjectField;
+        return $this->subjectFields;
     }
 
-    public function setSubjectField(SubjectField $subjectField): self
+    public function setSubjectFields(ObjectStorage $subjectFields): self
     {
-        $this->subjectField = $subjectField;
+        $this->subjectFields = $subjectFields;
+        return $this;
+    }
+
+    public function getDepartment(): ?Department
+    {
+        return $this->departments[0];
+    }
+
+    /**
+     * @deprecated Either use addDepartment or setDepartments
+     */
+    public function setDepartment(Department $department): self
+    {
+        return $this->addDepartment($department);
+    }
+
+    public function addDepartment(Department $department): self
+    {
+        if (!$this->departments->contains($department)) {
+            $this->departments->attach($department);
+        }
+
+        return $this;
+    }
+
+    public function getDepartments(): ObjectStorage
+    {
+        return $this->departments;
+    }
+
+    public function setDepartments(ObjectStorage $departments): self
+    {
+        $this->departments = $departments;
         return $this;
     }
 }
