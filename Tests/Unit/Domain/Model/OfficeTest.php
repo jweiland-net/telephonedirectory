@@ -13,6 +13,7 @@ use JWeiland\Telephonedirectory\Domain\Model\Department;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Test case.
@@ -191,6 +192,29 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
+    public function setDepartmentsSetsDepartments()
+    {
+        $departments = new ObjectStorage();
+        $departments->attach(new Department());
+        $departments->attach(new Department());
+
+        $this->subject->setDepartments($departments);
+
+        self::assertNotCount(0, $this->subject->getDepartments());
+    }
+
+    /**
+     * @test
+     */
+    public function addDeparmentAddsDeparment()
+    {
+        $this->subject->addDepartment(new Department());
+        self::assertNotCount(0, $this->subject->getDepartments());
+    }
+
+    /**
+     * @test
+     */
     public function getSubjectFieldInitiallyReturnsNull()
     {
         self::assertNull($this->subject->getSubjectField());
@@ -208,5 +232,28 @@ class OfficeTest extends UnitTestCase
             $instance,
             $this->subject->getSubjectField()
         );
+    }
+
+    /**
+     * @test
+     */
+    public function setSubjectFieldsSetsSubjectFields()
+    {
+        $subjectFields = new ObjectStorage();
+        $subjectFields->attach(new SubjectField());
+        $subjectFields->attach(new SubjectField());
+
+        $this->subject->setSubjectFields($subjectFields);
+
+        self::assertNotCount(0, $this->subject->getSubjectFields());
+    }
+
+    /**
+     * @test
+     */
+    public function addSubjectFieldAddsSubjectField()
+    {
+        $this->subject->addSubjectField(new SubjectField());
+        self::assertNotCount(0, $this->subject->getSubjectFields());
     }
 }

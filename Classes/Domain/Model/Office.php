@@ -44,6 +44,12 @@ class Office extends AbstractEntity
      */
     protected $subjectFields;
 
+    public function __construct()
+    {
+        $this->departments = new ObjectStorage();
+        $this->subjectFields = new ObjectStorage();
+    }
+
     public function getTitle(): string
     {
         return $this->title;
