@@ -71,9 +71,7 @@ CREATE TABLE tx_telephonedirectory_domain_model_office (
 	title varchar(255) DEFAULT '' NOT NULL,
 	code varchar(30) DEFAULT '' NOT NULL,
 	token varchar(30) DEFAULT '' NOT NULL,
-	department int(11) unsigned DEFAULT '0',
 	departments int(11) unsigned DEFAULT '0',
-	subject_field int(11) unsigned DEFAULT '0' NOT NULL,
 	subject_fields int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,

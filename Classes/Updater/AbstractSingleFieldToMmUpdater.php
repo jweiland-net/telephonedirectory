@@ -33,6 +33,16 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
     public function updateNecessary(): bool
     {
         $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->getTableName());
+
+        $schemaManager = $queryBuilder->getConnection()->getSchemaManager();
+        if ($schemaManager === null) {
+            return false;
+        }
+
+        if (!array_key_exists($this->getOldFieldName(), $schemaManager->listTableColumns($this->getTableName()))) {
+            return false;
+        }
+
         $queryBuilder->getRestrictions()->removeAll();
         $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
