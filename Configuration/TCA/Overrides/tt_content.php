@@ -4,13 +4,13 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'JWeiland.telephonedirectory',
+    'Telephonedirectory',
     'Telephone',
     'Telephone: Main'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'JWeiland.telephonedirectory',
+    'Telephonedirectory',
     'Interpreter',
     'Telephone: Interpreter'
 );

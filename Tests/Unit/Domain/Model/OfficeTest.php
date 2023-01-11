@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the package jweiland/telephonedirectory.
  *
@@ -25,18 +27,12 @@ class OfficeTest extends UnitTestCase
      */
     protected $subject;
 
-    /**
-     * set up.
-     */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subject = new Office();
     }
 
-    /**
-     * tear down.
-     */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->subject);
     }
@@ -44,7 +40,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString()
+    public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -55,7 +51,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle()
+    public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
 
@@ -68,25 +64,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleWithIntegerResultsInString()
-    {
-        $this->subject->setTitle(123);
-        self::assertSame('123', $this->subject->getTitle());
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleWithBooleanResultsInString()
-    {
-        $this->subject->setTitle(true);
-        self::assertSame('1', $this->subject->getTitle());
-    }
-
-    /**
-     * @test
-     */
-    public function getCodeInitiallyReturnsEmptyString()
+    public function getCodeInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -97,7 +75,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCodeSetsCode()
+    public function setCodeSetsCode(): void
     {
         $this->subject->setCode('foo bar');
 
@@ -110,25 +88,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCodeWithIntegerResultsInString()
-    {
-        $this->subject->setCode(123);
-        self::assertSame('123', $this->subject->getCode());
-    }
-
-    /**
-     * @test
-     */
-    public function setCodeWithBooleanResultsInString()
-    {
-        $this->subject->setCode(true);
-        self::assertSame('1', $this->subject->getCode());
-    }
-
-    /**
-     * @test
-     */
-    public function getTokenInitiallyReturnsEmptyString()
+    public function getTokenInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -139,7 +99,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTokenSetsToken()
+    public function setTokenSetsToken(): void
     {
         $this->subject->setToken('foo bar');
 
@@ -152,25 +112,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTokenWithIntegerResultsInString()
-    {
-        $this->subject->setToken(123);
-        self::assertSame('123', $this->subject->getToken());
-    }
-
-    /**
-     * @test
-     */
-    public function setTokenWithBooleanResultsInString()
-    {
-        $this->subject->setToken(true);
-        self::assertSame('1', $this->subject->getToken());
-    }
-
-    /**
-     * @test
-     */
-    public function getDepartmentInitiallyReturnsNull()
+    public function getDepartmentInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getDepartment());
     }
@@ -178,7 +120,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setDepartmentSetsDepartment()
+    public function setDepartmentSetsDepartment(): void
     {
         $instance = new Department();
         $this->subject->setDepartment($instance);
@@ -192,7 +134,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setDepartmentsSetsDepartments()
+    public function setDepartmentsSetsDepartments(): void
     {
         $departments = new ObjectStorage();
         $departments->attach(new Department());
@@ -206,7 +148,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function addDeparmentAddsDeparment()
+    public function addDeparmentAddsDeparment(): void
     {
         $this->subject->addDepartment(new Department());
         self::assertNotCount(0, $this->subject->getDepartments());
@@ -215,7 +157,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSubjectFieldInitiallyReturnsNull()
+    public function getSubjectFieldInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getSubjectField());
     }
@@ -223,7 +165,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSubjectFieldSetsSubjectField()
+    public function setSubjectFieldSetsSubjectField(): void
     {
         $instance = new SubjectField();
         $this->subject->setSubjectField($instance);
@@ -237,7 +179,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSubjectFieldsSetsSubjectFields()
+    public function setSubjectFieldsSetsSubjectFields(): void
     {
         $subjectFields = new ObjectStorage();
         $subjectFields->attach(new SubjectField());
@@ -251,7 +193,7 @@ class OfficeTest extends UnitTestCase
     /**
      * @test
      */
-    public function addSubjectFieldAddsSubjectField()
+    public function addSubjectFieldAddsSubjectField(): void
     {
         $this->subject->addSubjectField(new SubjectField());
         self::assertNotCount(0, $this->subject->getSubjectFields());

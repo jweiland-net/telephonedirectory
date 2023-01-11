@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the package jweiland/telephonedirectory.
  *
@@ -22,18 +24,12 @@ class SubjectFieldTest extends UnitTestCase
      */
     protected $subject;
 
-    /**
-     * set up.
-     */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subject = new SubjectField();
     }
 
-    /**
-     * tear down.
-     */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->subject);
     }
@@ -41,7 +37,7 @@ class SubjectFieldTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString()
+    public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -52,7 +48,7 @@ class SubjectFieldTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle()
+    public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
 
@@ -60,23 +56,5 @@ class SubjectFieldTest extends UnitTestCase
             'foo bar',
             $this->subject->getTitle()
         );
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleWithIntegerResultsInString()
-    {
-        $this->subject->setTitle(123);
-        self::assertSame('123', $this->subject->getTitle());
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleWithBooleanResultsInString()
-    {
-        $this->subject->setTitle(true);
-        self::assertSame('1', $this->subject->getTitle());
     }
 }

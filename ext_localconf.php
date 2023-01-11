@@ -3,35 +3,35 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(static function ($extKey) {
+call_user_func(static function () {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask::class] = [
-        'extension' => $extKey,
+        'extension' => 'telephonedirectory',
         'title' => 'Send email to every employee about their current data',
         'description' => 'Send email to every employee about their current data',
         'additionalFields' => \JWeiland\Telephonedirectory\Task\SendMailToEmployeeAdditionalFieldProvider::class
     ];
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'JWeiland.' . $extKey,
+        'Telephonedirectory',
         'Telephone',
         [
-            'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
+            \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail'
         ], // non-cacheable actions
         [
-            'Employee' => 'search, edit, create, update, sendEditMail'
+            \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'search, edit, create, update, sendEditMail'
         ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'JWeiland.' . $extKey,
+        'Telephonedirectory',
         'Interpreter',
         [
-            'Interpreter' => 'list',
-            'Employee' => 'list, search, show, new, create, edit, update, sendEditMail'
+            \JWeiland\Telephonedirectory\Controller\InterpreterController::class => 'list',
+            \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail'
         ], // non-cacheable actions
         [
-            'Interpreter' => '',
-            'Employee' => 'search, edit, create, update, sendEditMail'
+            \JWeiland\Telephonedirectory\Controller\InterpreterController::class => '',
+            \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'search, edit, create, update, sendEditMail'
         ]
     );
 
@@ -43,4 +43,4 @@ call_user_func(static function ($extKey) {
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSubjectFieldToSubjectFields']
         = \JWeiland\Telephonedirectory\Updater\SubjectFieldToSubjectFieldsUpdater::class;
-}, 'telephonedirectory');
+});

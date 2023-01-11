@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the package jweiland/telephonedirectory.
  *
@@ -24,18 +26,12 @@ class LanguageSkillTest extends UnitTestCase
      */
     protected $subject;
 
-    /**
-     * set up.
-     */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subject = new LanguageSkill();
     }
 
-    /**
-     * tear down.
-     */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->subject);
     }
@@ -43,7 +39,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLanguageInitiallyReturnsNull()
+    public function getLanguageInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getLanguage());
     }
@@ -51,7 +47,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLanguageSetsLanguage()
+    public function setLanguageSetsLanguage(): void
     {
         $instance = new Language();
         $this->subject->setLanguage($instance);
@@ -65,7 +61,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function getWritingInitiallyReturnsEmptyString()
+    public function getWritingInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -76,7 +72,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setWritingSetsWriting()
+    public function setWritingSetsWriting(): void
     {
         $this->subject->setWriting('foo bar');
 
@@ -89,25 +85,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setWritingWithIntegerResultsInString()
-    {
-        $this->subject->setWriting(123);
-        self::assertSame('123', $this->subject->getWriting());
-    }
-
-    /**
-     * @test
-     */
-    public function setWritingWithBooleanResultsInString()
-    {
-        $this->subject->setWriting(true);
-        self::assertSame('1', $this->subject->getWriting());
-    }
-
-    /**
-     * @test
-     */
-    public function getSpeakingInitiallyReturnsEmptyString()
+    public function getSpeakingInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -118,7 +96,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSpeakingSetsSpeaking()
+    public function setSpeakingSetsSpeaking(): void
     {
         $this->subject->setSpeaking('foo bar');
 
@@ -131,25 +109,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSpeakingWithIntegerResultsInString()
-    {
-        $this->subject->setSpeaking(123);
-        self::assertSame('123', $this->subject->getSpeaking());
-    }
-
-    /**
-     * @test
-     */
-    public function setSpeakingWithBooleanResultsInString()
-    {
-        $this->subject->setSpeaking(true);
-        self::assertSame('1', $this->subject->getSpeaking());
-    }
-
-    /**
-     * @test
-     */
-    public function getInfotextInitiallyReturnsEmptyString()
+    public function getInfotextInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -160,7 +120,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInfotextSetsInfotext()
+    public function setInfotextSetsInfotext(): void
     {
         $this->subject->setInfotext('foo bar');
 
@@ -173,25 +133,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInfotextWithIntegerResultsInString()
-    {
-        $this->subject->setInfotext(123);
-        self::assertSame('123', $this->subject->getInfotext());
-    }
-
-    /**
-     * @test
-     */
-    public function setInfotextWithBooleanResultsInString()
-    {
-        $this->subject->setInfotext(true);
-        self::assertSame('1', $this->subject->getInfotext());
-    }
-
-    /**
-     * @test
-     */
-    public function getEmployeeInitiallyReturnsNull()
+    public function getEmployeeInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getEmployee());
     }
@@ -199,7 +141,7 @@ class LanguageSkillTest extends UnitTestCase
     /**
      * @test
      */
-    public function setEmployeeSetsEmployee()
+    public function setEmployeeSetsEmployee(): void
     {
         $instance = new Employee();
         $this->subject->setEmployee($instance);
