@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
 use JWeiland\Telephonedirectory\Domain\Model\Office;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -20,14 +21,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class EmployeeRepository extends Repository
 {
-    /**
-     * Search
-     *
-     * @param Office $office
-     * @param string $search
-     * @return QueryResultInterface
-     */
-    public function findBySearch(Office $office = null, $search = ''): QueryResultInterface
+    public function findBySearch(Office $office = null, string $search = ''): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -35,7 +29,7 @@ class EmployeeRepository extends Repository
         if ($office instanceof Office) {
             $constraintAnd[] = $query->equals('office', $office);
         }
-        if (!empty($search)) {
+        if ($search !== '') {
             $constraintOr = [];
             $constraintOr[] = $query->like('firstName', '%' . $search . '%');
             $constraintOr[] = $query->like('lastName', '%' . $search . '%');
@@ -43,5 +37,14 @@ class EmployeeRepository extends Repository
         }
 
         return $query->matching($query->logicalAnd($constraintAnd))->execute();
+    }
+
+    public function findEmployees(string $csvListOfIdentifiers): QueryResultInterface
+    {
+        $query = $this->createQuery();
+
+        $employeeIdentifiers = GeneralUtility::intExplode(',', $csvListOfIdentifiers, true);
+
+        return $query->matching($query->in('uid', $employeeIdentifiers))->execute();
     }
 }

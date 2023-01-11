@@ -35,6 +35,15 @@ call_user_func(static function () {
         ]
     );
 
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Telephonedirectory',
+        'ShowRecords',
+        [
+            \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'showRecords'
+        ], // non-cacheable actions
+        []
+    );
+
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSlug']
         = \JWeiland\Telephonedirectory\Updater\TelephonedirectorySlugUpdater::class;
 

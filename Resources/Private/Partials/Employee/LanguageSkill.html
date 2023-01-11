@@ -1,3 +1,7 @@
+<html lang="en"
+			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
 <div id="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID_CONTAINER###')}" class="extdiv {f:if(condition: '{languageSkill}', else: 'hidden')}">
 	<div class="marginbottom">
 		<label for="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}Language">
@@ -24,3 +28,4 @@
 		<input type="button" value="{f:translate(key: 'remove')}" data-action="remove" data-target="telephonedirectoryLanguageSkill{f:if(condition: '{languageSkill}', then: '{iterator.index}', else: '###UID###')}" />
 	</div>
 </div>
+</html>

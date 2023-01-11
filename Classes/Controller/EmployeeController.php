@@ -62,41 +62,26 @@ class EmployeeController extends ActionController
      */
     protected $extConf;
 
-    /**
-     * @param EmployeeRepository $employeeRepository
-     */
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
         $this->employeeRepository = $employeeRepository;
     }
 
-    /**
-     * @param BuildingRepository $buildingRepository
-     */
     public function injectBuildingRepository(BuildingRepository $buildingRepository): void
     {
         $this->buildingRepository = $buildingRepository;
     }
 
-    /**
-     * @param DepartmentRepository $departmentRepository
-     */
     public function injectDepartmentRepository(DepartmentRepository $departmentRepository): void
     {
         $this->departmentRepository = $departmentRepository;
     }
 
-    /**
-     * @param OfficeRepository $officeRepository
-     */
     public function injectOfficeRepository(OfficeRepository $officeRepository): void
     {
         $this->officeRepository = $officeRepository;
     }
 
-    /**
-     * @param ExtConf $extConf
-     */
     public function injectExtConf(ExtConf $extConf): void
     {
         $this->extConf = $extConf;
@@ -134,7 +119,7 @@ class EmployeeController extends ActionController
         }
     }
 
-    public function searchAction(Office $office = null, $search = ''): void
+    public function searchAction(Office $office = null, string $search = ''): void
     {
         if ($office instanceof Office || !empty($search)) {
             $employees = $this->employeeRepository->findBySearch($office, $search);
@@ -151,6 +136,16 @@ class EmployeeController extends ActionController
     {
         $this->view->assign('contactEmail', $this->extConf->getEmailContact());
         $this->view->assign('employee', $employee);
+    }
+
+    public function showRecordsAction(): void
+    {
+        $this->view->assignMultiple([
+            'contactEmail' => $this->extConf->getEmailContact(),
+            'employees' => $this->employeeRepository->findEmployees(
+                $this->settings['showRecords'] ?? ''
+            )
+        ]);
     }
 
     public function newAction(Employee $newEmployee = null): void

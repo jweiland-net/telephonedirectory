@@ -14,3 +14,15 @@ if (!defined('TYPO3_MODE')) {
     'Interpreter',
     'Telephone: Interpreter'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Telephonedirectory',
+    'ShowRecords',
+    'Telephone: Show Records'
+);
+
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['telephonedirectory_showrecords'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'telephonedirectory_showrecords',
+    'FILE:EXT:telephonedirectory/Configuration/FlexForms/ShowRecords.xml'
+);
