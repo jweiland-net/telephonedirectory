@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Task;
 
-use TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface;
+use TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
  * Provider to add some further input fields to scheduler task
  */
-class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProviderInterface
+class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldProvider
 {
     /**
      * This fields can not be empty!
@@ -62,7 +62,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
         $additionalFields = [];
 
         if (empty($taskInfo['storagePid'])) {
-            if ($schedulerModule->CMD === 'edit') {
+            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
                 $taskInfo['storagePid'] = $task->storagePid;
             } else {
                 $taskInfo['storagePid'] = '';
@@ -70,7 +70,7 @@ class SendMailToEmployeeAdditionalFieldProvider implements AdditionalFieldProvid
         }
 
         if (empty($taskInfo['detailViewPid'])) {
-            if ($schedulerModule->CMD === 'edit') {
+            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
                 $taskInfo['detailViewPid'] = $task->detailViewPid;
             } else {
                 $taskInfo['detailViewPid'] = '';

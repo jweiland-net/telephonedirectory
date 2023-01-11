@@ -23,10 +23,11 @@
 		"source": "https://github.com/jweiland-net/telephonedirectory"
 	},
 	"require": {
-		"typo3/cms-core": "^9.5 || ^10.4",
+		"typo3/cms-core": "^10.4.33 || ^11.5.20",
 		"jweiland/maps2": ">=8.0.0"
 	},
 	"require-dev": {
+		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^2.0",
 		"nimut/testing-framework": "^5.0"
 	},
