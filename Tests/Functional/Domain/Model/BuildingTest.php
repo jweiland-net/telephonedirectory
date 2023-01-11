@@ -9,30 +9,42 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Events2\Tests\Unit\Domain\Model;
+namespace JWeiland\Events2\Tests\Functional\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Telephonedirectory\Domain\Model\Building;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 
 /**
  * Test case.
  */
-class BuildingTest extends UnitTestCase
+class BuildingTest extends FunctionalTestCase
 {
     /**
      * @var Building
      */
     protected $subject;
 
+    /**
+     * @var string[]
+     */
+    protected $testExtensionsToLoad = [
+        'typo3conf/ext/telephonedirectory',
+        'typo3conf/ext/maps2'
+    ];
+
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Building();
     }
 
     protected function tearDown(): void
     {
         unset($this->subject);
+
+        parent::tearDown();
     }
 
     /**
