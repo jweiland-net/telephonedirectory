@@ -29,3 +29,8 @@ mod.wizards.newContentElement.wizardItems.plugins {
     }
   }
 }
+
+# Add CType Preview
+mod.web_layout.tt_content.preview.list.telephonedirectory_telephone = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html
+mod.web_layout.tt_content.preview.list.telephonedirectory_showrecords = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html
+mod.web_layout.tt_content.preview.list.telephonedirectory_interpreter = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html
