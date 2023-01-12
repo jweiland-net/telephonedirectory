@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Events2\Tests\Unit\Domain\Model;
+namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Department;
 use JWeiland\Telephonedirectory\Domain\Model\Office;

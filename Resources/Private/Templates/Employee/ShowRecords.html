@@ -6,5 +6,9 @@
 
 <f:section name="main">
 	<f:flashMessages />
+
+	<f:for each="{employees}" as="employee">
+		<f:render partial="Employee/Properties" arguments="{employee: employee}" />
+	</f:for>
 </f:section>
 </html>

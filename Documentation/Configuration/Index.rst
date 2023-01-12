@@ -1,4 +1,5 @@
-.. include:: ../Includes.txt
+.. include:: /Includes.rst.txt
+
 
 .. _configuration:
 
@@ -13,6 +14,6 @@ Use your own fluid templates
 
 To use custom fluid templates you can set following constants:
 
-* plugin.tx_telephonedirectory.view.templateRootPath
-* plugin.tx_telephonedirectory.view.partialRootPath
-* plugin.tx_telephonedirectory.view.layoutRootPath
+*   plugin.tx_telephonedirectory.view.templateRootPath
+*   plugin.tx_telephonedirectory.view.partialRootPath
+*   plugin.tx_telephonedirectory.view.layoutRootPath

@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Events2\Tests\Functional\Domain\Model;
+namespace JWeiland\Telephonedirectory\Tests\Functional\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Telephonedirectory\Domain\Model\Building;

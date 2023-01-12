@@ -1,0 +1,27 @@
+<T3DataStructure>
+	<sheets>
+		<sDEFAULT>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.showRecords>
+						<TCEforms>
+							<label>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:showRecords</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tx_telephonedirectory_domain_model_employee</allowed>
+								<size>7</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+							</config>
+						</TCEforms>
+					</settings.showRecords>
+				</el>
+			</ROOT>
+		</sDEFAULT>
+	</sheets>
+</T3DataStructure>

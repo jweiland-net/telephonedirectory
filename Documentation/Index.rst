@@ -1,64 +1,58 @@
-.. every .rst file should include Includes.txt
-.. use correct path!
+.. include:: /Includes.rst.txt
 
-.. include:: Includes.txt
-
-.. Every manual should have a start label for cross-referencing to
-.. start page. Do not remove this!
 
 .. _start:
 
-=============================================================
+==================
 Telephonedirectory
-=============================================================
+==================
+
+:Extension key:
+    telephonedirectory
+
+:Package name:
+    jweiland/telephonedirectory
 
 :Version:
-   |release|
+    |release|
 
 :Language:
-   en
+    en
 
-:Authors:
-   Markus Kugler
-
-:Email:
-   projects@jweiland.net
+:Author:
+    Stefan Froemken
 
 :License:
-   This extension documentation is published under the
-   `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
-   license
+    This document is published under the
+    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+    license.
+
+:Rendered:
+    |today|
+
+----
 
 With `telephonedirectory` you can organize your contact persons and buildings.
 
-**TYPO3**
+----
 
-The content of this document is related to TYPO3 CMS,
-a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
+**Table of Contents:**
 
-**Community Documentation**
+..  toctree::
+    :maxdepth: 2
+    :titlesonly:
 
-This documentation is community documentation for the TYPO3 extension telephonedirectory
+    Introduction/Index
+    Installation/Index
+    Configuration/Index
+    AdministratorManual/Index
+    KnownProblems/Index
+    Changelog/Index
 
-It is maintained as part of this third party extension.
+..  Meta Menu
 
-If you find an error or something is missing, please:
-`Report a Problem <https://github.com/jweiland-net/telephonedirectory/issues>`__
+..  toctree::
+    :hidden:
 
-**Extension Manual**
-
-This documentation is for the TYPO3 extension <telephonedirectory>.
-
-**For Contributors**
-
-You are welcome to help improve this guide.
-Just click on "Edit me on GitHub" on the top right to submit your change request.
-
-.. toctree::
-   :maxdepth: 3
-
-   Introduction/Index
-   Configuration/Index
-   KnownProblems/Index
-   Changelog/Index
-   Sitemap
+    Sitemap
+    genindex

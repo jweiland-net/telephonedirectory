@@ -58,45 +58,60 @@ class EmployeeController extends ActionController
     protected $officeRepository;
 
     /**
+     * @var LanguageRepository
+     */
+    protected $languageRepository;
+
+    /**
+     * @var SubjectFieldRepository
+     */
+    protected $subjectFieldRepository;
+
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
      * @var ExtConf
      */
     protected $extConf;
 
-    /**
-     * @param EmployeeRepository $employeeRepository
-     */
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
         $this->employeeRepository = $employeeRepository;
     }
 
-    /**
-     * @param BuildingRepository $buildingRepository
-     */
     public function injectBuildingRepository(BuildingRepository $buildingRepository): void
     {
         $this->buildingRepository = $buildingRepository;
     }
 
-    /**
-     * @param DepartmentRepository $departmentRepository
-     */
     public function injectDepartmentRepository(DepartmentRepository $departmentRepository): void
     {
         $this->departmentRepository = $departmentRepository;
     }
 
-    /**
-     * @param OfficeRepository $officeRepository
-     */
     public function injectOfficeRepository(OfficeRepository $officeRepository): void
     {
         $this->officeRepository = $officeRepository;
     }
 
-    /**
-     * @param ExtConf $extConf
-     */
+    public function injectLanguageRepository(LanguageRepository $languageRepository): void
+    {
+        $this->languageRepository = $languageRepository;
+    }
+
+    public function injectSubjectFieldRepository(SubjectFieldRepository $subjectFieldRepository): void
+    {
+        $this->subjectFieldRepository = $subjectFieldRepository;
+    }
+
+    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function injectExtConf(ExtConf $extConf): void
     {
         $this->extConf = $extConf;
@@ -134,7 +149,7 @@ class EmployeeController extends ActionController
         }
     }
 
-    public function searchAction(Office $office = null, $search = ''): void
+    public function searchAction(Office $office = null, string $search = ''): void
     {
         if ($office instanceof Office || !empty($search)) {
             $employees = $this->employeeRepository->findBySearch($office, $search);
@@ -151,6 +166,16 @@ class EmployeeController extends ActionController
     {
         $this->view->assign('contactEmail', $this->extConf->getEmailContact());
         $this->view->assign('employee', $employee);
+    }
+
+    public function showRecordsAction(): void
+    {
+        $this->view->assignMultiple([
+            'contactEmail' => $this->extConf->getEmailContact(),
+            'employees' => $this->employeeRepository->findEmployees(
+                $this->settings['showRecords'] ?? ''
+            )
+        ]);
     }
 
     public function newAction(Employee $newEmployee = null): void
@@ -172,20 +197,18 @@ class EmployeeController extends ActionController
             $controlAuthToken = GeneralUtility::stdAuthCode($employee);
 
             if ($authToken === $controlAuthToken) {
-                $languageRepository = $this->objectManager->get(LanguageRepository::class);
-                $subjectFieldRepository = $this->objectManager->get(SubjectFieldRepository::class);
-                $categoryRepository = $this->objectManager->get(CategoryRepository::class);
-
                 $this->view->assignMultiple(
                     [
                         'employee' => $employee,
                         'buildings' => $this->buildingRepository->findAll(),
-                        'subjectFields' => $subjectFieldRepository->findAll(),
+                        'subjectFields' => $this->subjectFieldRepository->findAll(),
                         'departments' => $this->departmentRepository->findAll(),
                         'offices' => $this->officeRepository->findAll(),
-                        'languages' => $languageRepository->findAll(),
+                        'languages' => $this->languageRepository->findAll(),
                         'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $categoryRepository->findByParent($this->extConf->getAdditionalFunctionsParentCategoryUid()),
+                        'additionalFunctions' => $this->categoryRepository->findByParent(
+                            $this->extConf->getAdditionalFunctionsParentCategoryUid()
+                        ),
                         'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads')
                     ]
                 );
@@ -239,9 +262,10 @@ class EmployeeController extends ActionController
      */
     protected function getContent(Employee $employee): string
     {
-        /** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
-        $view = $this->objectManager->get(StandaloneView::class);
-        $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setTemplatePathAndFilename(
+            'EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html'
+        );
         $view->setControllerContext($this->getControllerContext());
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
@@ -282,7 +306,7 @@ class EmployeeController extends ActionController
         }
 
         /** @var TypeConverterInterface $typeConverter */
-        $typeConverter = $this->objectManager->get($className);
+        $typeConverter = GeneralUtility::makeInstance($className);
         $propertyMappingConfigurationForMediaFiles = $propertyMappingConfigurationForEmployee
             ->forProperty($property)
             ->setTypeConverter($typeConverter);
