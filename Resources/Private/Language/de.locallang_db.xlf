@@ -3,6 +3,33 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
+			<trans-unit id="plugin.telephonedirectory.employees.title">
+				<source>Telephone: Show employees</source>
+				<target>Telefon: Zeige Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="plugin.telephonedirectory.employees.description">
+				<source>Use this plugin to list, view and search employees</source>
+				<target>Verwende dieses Plugin, um Mitarbeiter aufzulisten, anzuzeigen und zu durchsuchen</target>
+			</trans-unit>
+
+			<trans-unit id="plugin.telephonedirectory.individual-employees.title">
+				<source>Telephone: Show selection of employees</source>
+				<target>Telefon: Zeige Auswahl an Mitarbeitern</target>
+			</trans-unit>
+			<trans-unit id="plugin.telephonedirectory.individual-employees.description">
+				<source>Use this plugin to list only selected employees</source>
+				<target>Verwende dieses Plugin, um nur ausgewählte Mitarbeiter auflisten zu lassen</target>
+			</trans-unit>
+
+			<trans-unit id="plugin.telephonedirectory.interpreter.title">
+				<source>Telephone: Grouped by language skill</source>
+				<target>Telefon: Gruppiert nach Sprachkompetenz</target>
+			</trans-unit>
+			<trans-unit id="plugin.telephonedirectory.interpreter.description">
+				<source>Use this plugin to list employees grouped by their language skills</source>
+				<target>Verwende dieses Plugin, um Mitarbeiter gruppiert nach ihrer Spachkompetenz aufzulisten</target>
+			</trans-unit>
+
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
 				<source>Employee</source>
 				<target>Mitarbeiter</target>
