@@ -45,6 +45,7 @@ With `telephonedirectory` you can organize your contact persons and buildings.
     Introduction/Index
     Installation/Index
     Configuration/Index
+    AdministratorManual/Index
     KnownProblems/Index
     Changelog/Index
 
