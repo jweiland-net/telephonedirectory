@@ -1,0 +1,36 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+  elements {
+    telephonedirectory_employees {
+      iconIdentifier = ext-telephonedirectory-employees-wizard-icon
+      title = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.employees.title
+      description = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.employees.description
+      tt_content_defValues {
+        CType = list
+        list_type = telephonedirectory_telephone
+      }
+    }
+    telephonedirectory_individual_employees {
+      iconIdentifier = ext-telephonedirectory-individual-employees-wizard-icon
+      title = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.individual-employees.title
+      description = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.individual-employees.description
+      tt_content_defValues {
+        CType = list
+        list_type = telephonedirectory_showrecords
+      }
+    }
+    telephonedirectory_interpreter {
+      iconIdentifier = ext-telephonedirectory-interpreter-wizard-icon
+      title = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.interpreter.title
+      description = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.interpreter.description
+      tt_content_defValues {
+        CType = list
+        list_type = telephonedirectory_interpreter
+      }
+    }
+  }
+}
+
+# Add CType Preview
+mod.web_layout.tt_content.preview.list.telephonedirectory_telephone = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html
+mod.web_layout.tt_content.preview.list.telephonedirectory_showrecords = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html
+mod.web_layout.tt_content.preview.list.telephonedirectory_interpreter = EXT:telephonedirectory/Resources/Private/Templates/PluginPreview/Telephonedirectory.html

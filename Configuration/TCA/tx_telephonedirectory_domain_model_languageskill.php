@@ -18,7 +18,7 @@ return [
             'endtime' => 'endtime'
         ],
         'searchFields' => 'language,what,skill,infotext,',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_languageskill.gif'
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_languageskill.svg'
     ],
     'types' => [
         '1' => [

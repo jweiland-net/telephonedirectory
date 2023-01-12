@@ -18,7 +18,7 @@ return [
             'endtime' => 'endtime'
         ],
         'searchFields' => 'title,subject_field,',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_office.gif'
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_office.svg'
     ],
     'types' => [
         '1' => [
