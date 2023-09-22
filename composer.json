@@ -4,7 +4,7 @@
 	"description": "Telephone Directory",
 	"license": "GPL-2.0-or-later",
 	"keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
-	"homepage": "http://www.jweiland.net",
+	"homepage": "https://jweiland.net",
 	"authors": [
 		{
 			"name": "Stefan Froemken",
@@ -31,6 +31,9 @@
 		"friendsofphp/php-cs-fixer": "^3.0",
 		"nimut/testing-framework": "^6.0",
 		"phpspec/prophecy-phpunit": "^2.0"
+	},
+	"replace": {
+		"typo3-ter/telephonedirectory": "self.version"
 	},
 	"autoload": {
 		"psr-4": {
