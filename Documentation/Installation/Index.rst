@@ -1,7 +1,7 @@
-.. include:: /Includes.rst.txt
+..  include:: /Includes.rst.txt
 
 
-.. _installation:
+..  _installation:
 
 ============
 Installation
@@ -15,9 +15,9 @@ Composer
 
 You can install `telephonedirectory` with following shell command:
 
-.. code-block:: bash
+..  code-block:: bash
 
-   composer req jweiland/telephonedirectory
+    composer req jweiland/telephonedirectory
 
 Extensionmanager
 ----------------
@@ -25,22 +25,22 @@ Extensionmanager
 If you want to install `telephonedirectory` traditionally with Extensionmanager,
 follow these steps:
 
-#. Visit ExtensionManager
+#.  Visit ExtensionManager
 
-#. Switch over to `Get Extensions`
+#.  Switch over to `Get Extensions`
 
-#. Search for `telephonedirectory`
+#.  Search for `telephonedirectory`
 
-#. Install extension
+#.  Install extension
 
 DEV Version (GIT)
 -----------------
 
 You can install the latest DEV Version with following GIT command:
 
-.. code-block:: bash
+..  code-block:: bash
 
-   git clone https://github.com/jweiland-net/telephonedirectory.git
+    git clone https://github.com/jweiland-net/telephonedirectory.git
 
 Scheduler Task
 ==============
