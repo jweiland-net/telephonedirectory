@@ -22,7 +22,6 @@
 		"jweiland/maps2": ">=8.0.0"
 	},
 	"require-dev": {
-		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^3.0",
 		"nimut/testing-framework": "^6.0",
 		"phpspec/prophecy-phpunit": "^2.0"
