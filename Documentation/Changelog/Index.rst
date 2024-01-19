@@ -1,11 +1,16 @@
-.. include:: /Includes.rst.txt
+..  include:: /Includes.rst.txt
 
 
-.. _changelog:
+..  _changelog:
 
 ==========
 Change log
 ==========
+
+Version 4.0.1
+=============
+
+*   Add module_sys_dmail_category to employee
 
 Version 4.0.0
 =============

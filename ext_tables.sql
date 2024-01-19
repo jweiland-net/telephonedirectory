@@ -27,7 +27,8 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee (
 	language_skill int(11) unsigned DEFAULT '0' NOT NULL,
 	pc_fax varchar(255) DEFAULT '' NOT NULL,
 	additional_informations text DEFAULT '' NOT NULL,
-	module_sys_dmail_html tinyint(4) unsigned DEFAULT '1' NOT NULL
+	module_sys_dmail_html tinyint(4) unsigned DEFAULT '1' NOT NULL,
+	module_sys_dmail_category int(10) unsigned DEFAULT '0' NOT NULL
 );
 
 #

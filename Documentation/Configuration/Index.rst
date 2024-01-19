@@ -1,13 +1,13 @@
-.. include:: /Includes.rst.txt
+..  include:: /Includes.rst.txt
 
 
-.. _configuration:
+..  _configuration:
 
 =============
 Configuration
 =============
 
-.. _custom_fluid_templates:
+..  _custom_fluid_templates:
 
 Use your own fluid templates
 ============================
