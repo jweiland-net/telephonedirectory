@@ -11,9 +11,10 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Configuration;
 
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class with all properties of Extensionmanager Configuration
@@ -40,75 +41,100 @@ class ExtConf implements SingletonInterface
      */
     protected $additionalFunctionsParentCategoryUid = 0;
 
-    public function __construct()
+    public function __construct(ExtensionConfiguration $extensionConfiguration)
     {
-        // get global configuration
-        $extConf = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('telephonedirectory');
-        if (is_array($extConf) && count($extConf)) {
-            // call setter method foreach configuration entry
-            foreach ($extConf as $key => $value) {
-                $methodName = 'set' . ucfirst($key);
-                if (method_exists($this, $methodName)) {
-                    $this->$methodName($value);
+        try {
+            $extConf = $extensionConfiguration->get('telephonedirectory');
+            if (is_array($extConf)) {
+                foreach ($extConf as $key => $value) {
+                    $methodName = 'set' . ucfirst($key);
+                    if (method_exists($this, $methodName)) {
+                        $this->$methodName($value);
+                    }
                 }
             }
+        } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $e) {
         }
     }
 
+    /**
+     * @throws \Exception
+     */
     public function getEmailContact(): string
     {
-        if (empty($this->emailContact)) {
-            $senderMail = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
-            if (empty($senderMail)) {
-                throw new \Exception('You have forgotten to set a sender email address in extension configuration or in install tool');
+        if ($this->emailContact === '') {
+            $fallbackEmailContact = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
+            if ($fallbackEmailContact === '') {
+                throw new \Exception(
+                    'You have forgotten to set a sender email address in extension configuration or in install tool',
+                    1706178058
+                );
             }
 
-            return $senderMail;
+            return $fallbackEmailContact;
         }
+
         return $this->emailContact;
     }
 
     public function setEmailContact(string $emailContact): self
     {
         $this->emailContact = $emailContact;
+
         return $this;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function getEmailFromAddress(): string
     {
-        if (empty($this->emailFromAddress)) {
-            $senderMail = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
-            if (empty($senderMail)) {
-                throw new \Exception('You have forgotten to set a sender email address in extension configuration or in install tool');
+        if ($this->emailFromAddress === '') {
+            $fallbackEmailFromAddress = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
+            if ($fallbackEmailFromAddress === '') {
+                throw new \Exception(
+                    'You have forgotten to set a sender email address in extension configuration or in install tool',
+                    1706178074
+                );
             }
 
-            return $senderMail;
+            return $fallbackEmailFromAddress;
         }
+
         return $this->emailFromAddress;
     }
 
     public function setEmailFromAddress(string $emailFromAddress): self
     {
         $this->emailFromAddress = $emailFromAddress;
+
         return $this;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function getEmailFromName(): string
     {
-        if (empty($this->emailFromName)) {
-            $senderName = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
-            if (empty($senderName)) {
-                throw new \Exception('You have forgotten to set a sender name in extension configuration or in install tool');
+        if ($this->emailFromName) {
+            $fallbackEmailFromName = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
+            if ($fallbackEmailFromName === '') {
+                throw new \Exception(
+                    'You have forgotten to set a sender name in extension configuration or in install tool',
+                    1706178086
+                );
             }
 
-            return $senderName;
+            return $fallbackEmailFromName;
         }
+
         return $this->emailFromName;
     }
 
     public function setEmailFromName(string $emailFromName): self
     {
         $this->emailFromName = $emailFromName;
+
         return $this;
     }
 
@@ -120,6 +146,7 @@ class ExtConf implements SingletonInterface
     public function setAdditionalFunctionsParentCategoryUid($additionalFunctionsParentCategoryUid): self
     {
         $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
+
         return $this;
     }
 }
