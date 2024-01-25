@@ -7,6 +7,16 @@
 Change log
 ==========
 
+Version 4.1.0
+=============
+
+*   Remove all extbase stuff from scheduler task
+*   Remove TSFE and ContentObjectRenderer from scheduler task
+*   Add factory to retrieve employee as plain array with all sub-properties
+*   Replace deprecated authToken with HashService
+*   Use correct indents in html files
+*   Use Site router to build URLs for frontend
+
 Version 4.0.1
 =============
 
