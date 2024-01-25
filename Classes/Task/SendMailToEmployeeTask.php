@@ -64,8 +64,12 @@ class SendMailToEmployeeTask extends AbstractTask
         $extConf = GeneralUtility::makeInstance(ExtConf::class);
 
         $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
-        $view->setPartialRootPaths([10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/']);
+        $view->setTemplatePathAndFilename(
+            ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html'
+        );
+        $view->setPartialRootPaths([
+            ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/'
+        ]);
 
         if (!$GLOBALS['TT'] instanceof TimeTracker) {
             $GLOBALS['TT'] = GeneralUtility::makeInstance(TimeTracker::class);
@@ -96,7 +100,7 @@ class SendMailToEmployeeTask extends AbstractTask
         $view->assign('link', $link);
         $view->assign('employee', $employee);
         $view->assign('contactName', $extConf->getEmailFromName());
-        $view->assign('contactEmail', $extConf->getEmailFromAddress());
+        $view->assign('contactEmail', $extConf->getEmailContact());
 
         unset($GLOBALS['TSFE']);
 

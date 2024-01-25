@@ -10,7 +10,10 @@
 
 <f:if condition="{employee.isCatchAllMail}}">
     <f:then>
-        <p><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord" arguments="{0: contactName, 1: contactEmail}"/></p>
+        <p>
+            <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord"
+                         arguments="{0: contactName, 1: contactEmail}"/>
+        </p>
     </f:then>
     <f:else>
         <p>
