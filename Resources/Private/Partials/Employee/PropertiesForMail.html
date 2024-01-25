@@ -5,7 +5,7 @@
 <div>
     <div>
         <h2>
-            <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
+            <f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}" extensionName="telephonedirectory"/>
             <f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
             {employee.firstName}
             {employee.lastName}
@@ -16,7 +16,9 @@
         <f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
         <f:if condition="{employee.additionalFunction}">
             <dl>
-                <dd><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.additional_function"/>:</dd>
+                <dd>
+                    <f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" extensionName="telephonedirectory"/>:
+                </dd>
                 <f:for each="{employee.additionalFunction}" as="additional_function">
                     <dd>{additional_function.title}</dd>
                 </f:for>
@@ -38,14 +40,14 @@
             <f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
         </dl>
         <f:if condition="{employee.languageSkill}">
-            <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.language_skill"/>:
+            <f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" extensionName="telephonedirectory"/>:
             <f:for each="{employee.languageSkill}" as="skill">
                 <dl>
                     <dd>{skill.language.title}:</dd>
                     <dd>
                         <dl>
-                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}'}"/>
-                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}'}"/>
+                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\', extensionName=\'telephonedirectory\')}'}"/>
+                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\', extensionName=\'telephonedirectory\')}'}"/>
                         </dl>
                     </dd>
                 </dl>

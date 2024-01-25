@@ -21,35 +21,6 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
 class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldProvider
 {
     /**
-     * This fields can not be empty!
-     *
-     * @var array
-     */
-    protected $requiredFields = [
-        'name',
-        'city',
-        'country',
-        'apiKey'
-    ];
-
-    /**
-     * Fields to insert from task if empty
-     *
-     * @var array
-     */
-    protected $insertFields = [
-        'name',
-        'city',
-        'country',
-        'apiKey',
-        'errorNotification',
-        'emailSenderName',
-        'emailSender',
-        'emailReceiver',
-        'recordStoragePage'
-    ];
-
-    /**
      * Gets additional fields to render in the form to add/edit a task
      *
      * @param array $taskInfo Values of the fields from the add/edit task form
@@ -117,7 +88,7 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
      */
     public function saveAdditionalFields(array $submittedData, AbstractTask $task)
     {
-        $task->storagePid = $submittedData['storagePid'];
-        $task->detailViewPid = $submittedData['detailViewPid'];
+        $task->storagePid = (int)$submittedData['storagePid'];
+        $task->detailViewPid = (int)$submittedData['detailViewPid'];
     }
 }

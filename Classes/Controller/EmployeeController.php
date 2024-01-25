@@ -28,7 +28,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Property\TypeConverterInterface;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -77,6 +79,16 @@ class EmployeeController extends ActionController
      */
     protected $extConf;
 
+    /**
+     * @var HashService
+     */
+    protected $hashService;
+
+    /**
+     * @var EmailService
+     */
+    protected $emailService;
+
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
         $this->employeeRepository = $employeeRepository;
@@ -117,6 +129,16 @@ class EmployeeController extends ActionController
         $this->extConf = $extConf;
     }
 
+    public function injectHashService(HashService $hashService): void
+    {
+        $this->hashService = $hashService;
+    }
+
+    public function injectEmailService(EmailService $emailService): void
+    {
+        $this->emailService = $emailService;
+    }
+
     public function initializeAction(): void
     {
         // if this value was not set, then it will be filled with 0
@@ -137,7 +159,7 @@ class EmployeeController extends ActionController
      * If an office is set, f:form.select changes name to [office][__identity]
      * The following request works, but if customer changes office back to "" an empty __identity was send
      * Now extbase tries to get an object of a non given UID which results in multiple errors
-     * Thats why we remove this request here
+     * That's why we remove this request here
      */
     public function initializeSearchAction(): void
     {
@@ -193,10 +215,9 @@ class EmployeeController extends ActionController
     public function editAction(Employee $employee): void
     {
         if (!$employee->getIsCatchAllMail()) {
-            $authToken = $this->request->getArgument('authToken');
-            $controlAuthToken = GeneralUtility::stdAuthCode($employee);
+            $hash = $this->request->getArgument('hash');
 
-            if ($authToken === $controlAuthToken) {
+            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $hash)) {
                 $this->view->assignMultiple(
                     [
                         'employee' => $employee,
@@ -242,23 +263,28 @@ class EmployeeController extends ActionController
     /**
      * Send a mail with link to edit this entry
      *
-     * @param Employee $employee
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws StopActionException
      */
     public function sendEditMailAction(Employee $employee): void
     {
-        GeneralUtility::makeInstance(EmailService::class)->informEmployeeAboutTheirData($employee, $this->getContent($employee));
+        try {
+            $this->emailService->informEmployeeAboutTheirData(
+                [
+                    'email' => $employee->getEmail(),
+                    'firstName' => $employee->getFirstName(),
+                    'lastName' => $employee->getLastName(),
+                ],
+                $this->getContent($employee)
+            );
+            $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
+        } catch (\Exception $e) {
+        }
 
-        $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
         $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
     }
 
     /**
      * Get content for mailing
-     *
-     * @param Employee $employee
-     * @return string
      */
     protected function getContent(Employee $employee): string
     {
@@ -273,7 +299,7 @@ class EmployeeController extends ActionController
             'edit',
             [
                 'parameter' => $this->settings['pidOfDetailPage'],
-                'authToken' => GeneralUtility::stdAuthCode($employee),
+                'hash' => $this->hashService->generateHmac('Employee:' . $employee->getUid()),
                 'action' => 'edit',
                 'controller' => 'Employee',
                 'employee' => $employee->getUid()
@@ -289,8 +315,6 @@ class EmployeeController extends ActionController
     /**
      * Currently only "image" are allowed properties.
      *
-     * @param string $property
-     * @param MvcPropertyMappingConfiguration $propertyMappingConfigurationForEmployee
      * @param mixed $converterOptionValue
      */
     protected function assignMediaTypeConverter(

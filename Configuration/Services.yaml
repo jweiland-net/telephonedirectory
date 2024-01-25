@@ -6,3 +6,31 @@ services:
 
   JWeiland\Telephonedirectory\:
     resource: '../Classes/*'
+
+  # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
+  JWeiland\Telephonedirectory\Service\EmailService:
+    public: true
+
+  # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
+  JWeiland\Telephonedirectory\Repository\EmployeeFactory:
+    public: true;
+    arguments: [!tagged_iterator { tag: 'telephonedirectory.add_record_to_employee' }]
+
+  JWeiland\Telephonedirectory\Repository\Handler\AddAdditionalFunctionsToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'
+  JWeiland\Telephonedirectory\Repository\Handler\AddBuildingToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'
+  JWeiland\Telephonedirectory\Repository\Handler\AddDepartmentToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'
+  JWeiland\Telephonedirectory\Repository\Handler\AddLanguageSkillsToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'
+  JWeiland\Telephonedirectory\Repository\Handler\AddOfficeToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'
+  JWeiland\Telephonedirectory\Repository\Handler\AddSubjectFieldToEmployee:
+    tags:
+      - name: 'telephonedirectory.add_record_to_employee'

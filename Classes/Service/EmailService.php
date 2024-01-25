@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
-use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -27,35 +26,32 @@ class EmailService
      */
     protected $extConf;
 
-    public function __construct()
+    public function __construct(ExtConf $extConf)
     {
-        $this->extConf = GeneralUtility::makeInstance(ExtConf::class);
+        $this->extConf = $extConf;
     }
 
     /**
      * Sends an email to an employee about their current data and an edit link
      *
-     * @param Employee $employee
-     * @param string $content
      * @throws \Exception
      */
-    public function informEmployeeAboutTheirData(Employee $employee, string $content): void
+    public function informEmployeeAboutTheirData(array $employee, string $content): void
     {
-        /** @var MailMessage $mail */
-        $mail = GeneralUtility::makeInstance(MailMessage::class);
-
-        $mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
-        $mail->setTo($employee->getEmail(), $employee->getFirstName() . ' ' . $employee->getLastName());
-        $mail->setSubject(LocalizationUtility::translate('email.subject', 'telephonedirectory'));
-
-        if (method_exists($mail, 'addPart')) {
-            // TYPO3 < 10 (Swift_Message)
-            $mail->setBody($content, 'text/html');
-        } else {
-            // TYPO3 >= 10 (Symfony Mail)
-            $mail->html($content);
+        if (!isset($employee['email'], $employee['firstName'], $employee['lastName'])) {
+            return;
         }
 
-        $mail->send();
+        if (GeneralUtility::validEmail($employee['email'])) {
+            $mail = GeneralUtility::makeInstance(MailMessage::class);
+
+            $mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
+            $mail->setTo($employee['email'], $employee['firstName'] . ' ' . $employee['lastName']);
+            $mail->setSubject(LocalizationUtility::translate('email.subject', 'telephonedirectory'));
+
+            $mail->html($content);
+
+            $mail->send();
+        }
     }
 }

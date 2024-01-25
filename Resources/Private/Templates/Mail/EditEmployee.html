@@ -8,7 +8,7 @@
 
 <f:render partial="Employee/PropertiesForMail" arguments="{employee: employee}"/>
 
-<f:if condition="{employee.isCatchAllMail}}">
+<f:if condition="{employee.is_catch_all_mail}}">
     <f:then>
         <p>
             <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord"
