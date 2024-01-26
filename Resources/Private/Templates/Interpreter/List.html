@@ -1,48 +1,54 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
-	<f:flashMessages />
+    <f:flashMessages/>
 
-	<f:if condition="{skills}">
-		<f:then>
-			<div class="list scroll-container">
-				<f:groupedFor each="{skills}" as="groupedSkillsByLanguage" groupBy="language" groupKey="language">
-					<h2>{language}</h2>
+    <f:if condition="{skills}">
+        <f:then>
+            <div class="list scroll-container">
+                <f:groupedFor each="{skills}" as="groupedSkillsByLanguage" groupBy="language" groupKey="language">
+                    <h2>{language}</h2>
 
-					<f:groupedFor each="{groupedSkillsByLanguage}" as="groupedSkillsByEmployee" groupBy="employee" groupKey="employee">
-						<f:if condition="{employee}">
-						<div class="marginbottom borderbottom grid_12 scroll-item clearfix">
-							<h3><f:link.action action="show" controller="Employee" pluginName="Telephone" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
-								<f:if condition="{employee.nameAdditions}">{employee.nameAdditions} </f:if>{employee.lastName}, {employee.firstName} </f:link.action></h3>
-							<div class="grid_6 floatleft">{employee.office.title}
-								<f:if condition="{employee.telephone1}"><br/><span aria-hidden="true" class="icon-phone_pf"></span>{employee.telephone1}
-								</f:if>
-							</div>
-							<div class="grid_6 floatleft">
-								<dl class="nomargin">
-									<dt><f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" />:</dt>
-									<f:for each="{groupedSkillsByEmployee}" as="skill">
-										<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>
-										<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking}"/>
-										</dd>
-									</f:for>
-								</dl>
-							</div>
-
-						</div>
-						</f:if>
-					</f:groupedFor>
-					<br /><br />
-				</f:groupedFor>
-			</div>
-		</f:then>
-		<f:else>
-			<div class="noResults"><f:translate key="noResults" /></div>
-		</f:else>
-	</f:if>
+                    <f:groupedFor each="{groupedSkillsByLanguage}" as="groupedSkillsByEmployee" groupBy="employee" groupKey="employee">
+                        <f:if condition="{employee}">
+                            <div class="marginbottom borderbottom grid_12 scroll-item clearfix">
+                                <h3>
+                                    <f:link.action action="show" controller="Employee" pluginName="Telephone" pageUid="{settings.pidOfDetailPage}" arguments="{employee: employee}" title="{employee.lastName}">
+                                        <f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
+                                        {employee.lastName}, {employee.firstName}
+                                    </f:link.action>
+                                </h3>
+                                <div class="grid_6 floatleft">{employee.office.title}
+                                    <f:if condition="{employee.telephone1}"><br/>
+                                        <span aria-hidden="true" class="icon-phone_pf"></span>
+                                        {employee.telephone1}
+                                    </f:if>
+                                </div>
+                                <div class="grid_6 floatleft">
+                                    <dl class="nomargin">
+                                        <dt><f:translate key="tx_telephonedirectory_domain_model_employee.language_skill"/>:</dt>
+                                        <f:for each="{groupedSkillsByEmployee}" as="skill">
+                                            <dd>
+                                                <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: skill.writing}"/>
+                                                <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: skill.speaking}"/>
+                                            </dd>
+                                        </f:for>
+                                    </dl>
+                                </div>
+                            </div>
+                        </f:if>
+                    </f:groupedFor>
+                    <br><br>
+                </f:groupedFor>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="noResults"><f:translate key="noResults"/></div>
+        </f:else>
+    </f:if>
 </f:section>
 </html>

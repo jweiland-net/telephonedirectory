@@ -12,17 +12,15 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Task;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
-use JWeiland\Telephonedirectory\Domain\Model\Employee;
-use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use JWeiland\Telephonedirectory\Repository\EmployeeFactory;
 use JWeiland\Telephonedirectory\Service\EmailService;
-use TYPO3\CMS\Core\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\TimeTracker\TimeTracker;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
 use TYPO3\CMS\Fluid\View\StandaloneView;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
@@ -31,26 +29,30 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
 class SendMailToEmployeeTask extends AbstractTask
 {
     /**
-     * @var string
+     * @var int
      */
-    public $storagePid = '';
+    public $storagePid = 0;
 
     /**
-     * @var string
+     * @var int
      */
-    public $detailViewPid = '';
+    public $detailViewPid = 0;
 
     public function execute(): bool
     {
-        $employeeRepository = GeneralUtility::makeInstance(EmployeeRepository::class);
-        $emailService = GeneralUtility::makeInstance(EmailService::class);
+        $emailService = $this->getEmailService();
+        $employeeFactory = $this->getEmployeeFactory();
 
-        /** @var QueryResultInterface|Employee[] $employees */
-        $employees = $employeeRepository->findByPid($this->storagePid);
-        $employees->getQuery()->getQuerySettings()->setRespectStoragePage(false);
-
-        foreach ($employees as $employee) {
-            $emailService->informEmployeeAboutTheirData($employee, $this->generateContent($employee));
+        foreach ($employeeFactory->getEmployees((string)$this->storagePid, true) as $employeeUid) {
+            try {
+                $employee = $employeeFactory->build($employeeUid);
+                $emailService->informEmployeeAboutTheirData(
+                    $employee,
+                    $this->generateContent($employee)
+                );
+            } catch (\Exception $e) {
+                return false;
+            }
         }
 
         return true;
@@ -58,48 +60,94 @@ class SendMailToEmployeeTask extends AbstractTask
 
     /**
      * Generates content for email
+     *
+     * @throws \Exception
      */
-    protected function generateContent(Employee $employee): string
+    protected function generateContent(array $employee): string
     {
-        $extConf = GeneralUtility::makeInstance(ExtConf::class);
-
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Templates/Mail/EditEmployee.html');
-        $view->setPartialRootPaths([10, ExtensionManagementUtility::extPath('telephonedirectory') . 'Resources/Private/Partials/']);
-
-        if (!$GLOBALS['TT'] instanceof TimeTracker) {
-            $GLOBALS['TT'] = GeneralUtility::makeInstance(TimeTracker::class);
-            $GLOBALS['TT']->start();
-        }
-
-        $GLOBALS['TSFE'] = GeneralUtility::makeInstance(TypoScriptFrontendController::class, $GLOBALS['TYPO3_CONF_VARS'], 1, 0);
-        $GLOBALS['TSFE']->sys_page = GeneralUtility::makeInstance(PageRepository::class);
-
-        $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $params = [
-            'tx_telephonedirectory_telephone' => [
-                'action' => 'edit',
-                'controller' => 'Employee',
-                'employee' => $employee->getUid(),
-                'authToken' => GeneralUtility::stdAuthCode($employee)
-            ]
-        ];
-        $linkConf = [
-            'parameter' => $this->detailViewPid,
-            'useCacheHash' => 1,
-            'forceAbsoluteUrl' => 1,
-            'additionalParams' => '&' . http_build_query($params),
-            'linkAccessRestrictedPages' => 1
-        ];
-        $link = $contentObjectRenderer->typoLink_URL($linkConf);
-
-        $view->assign('link', $link);
+        $view = $this->getView();
+        $view->assign('link', $this->getEditLink((int)$employee['uid']));
         $view->assign('employee', $employee);
-        $view->assign('contactName', $extConf->getEmailFromName());
-        $view->assign('contactEmail', $extConf->getEmailFromAddress());
-
-        unset($GLOBALS['TSFE']);
+        $view->assign('contactName', $this->getExtConf()->getEmailFromName());
+        $view->assign('contactEmail', $this->getExtConf()->getEmailContact());
 
         return $view->render();
+    }
+
+    private function getView(): StandaloneView
+    {
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+
+        $view->setTemplatePathAndFilename(
+            $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html')
+        );
+        $view->setPartialRootPaths([
+            $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Partials/'),
+        ]);
+
+        return $view;
+    }
+
+    /**
+     * @throws InvalidArgumentForHashGenerationException
+     */
+    private function getEditLink(int $employeeUid): string
+    {
+        $site = $this->getSite($this->detailViewPid);
+        if (!$site instanceof Site) {
+            return '';
+        }
+
+        return (string)$site->getRouter()->generateUri(
+            $this->detailViewPid,
+            [
+                'tx_telephonedirectory_telephone' => [
+                    'action' => 'edit',
+                    'controller' => 'Employee',
+                    'employee' => $employeeUid,
+                    'hash' => $this->getHashService()->generateHmac('Employee:' . $employeeUid)
+                ]
+            ]
+        );
+    }
+
+    private function getResolvedExtPath(string $filename): string
+    {
+        return GeneralUtility::getFileAbsFileName($filename);
+    }
+
+    private function getSite(int $pageUid): ?Site
+    {
+        try {
+            return $this->getSiteFinder()->getSiteByPageId($pageUid);
+        } catch (SiteNotFoundException $e) {
+        }
+
+        return null;
+    }
+
+    private function getSiteFinder(): SiteFinder
+    {
+        return GeneralUtility::makeInstance(SiteFinder::class);
+    }
+
+    private function getHashService(): HashService
+    {
+        return GeneralUtility::makeInstance(HashService::class);
+    }
+
+    private function getEmployeeFactory(): EmployeeFactory
+    {
+        return GeneralUtility::makeInstance(EmployeeFactory::class);
+    }
+
+    private function getEmailService(): EmailService
+    {
+        return GeneralUtility::makeInstance(EmailService::class);
+    }
+
+    private function getExtConf(): ExtConf
+    {
+        return GeneralUtility::makeInstance(ExtConf::class);
     }
 }

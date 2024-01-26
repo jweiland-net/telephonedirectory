@@ -1,17 +1,17 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
-	<f:flashMessages />
+    <f:flashMessages/>
 
-	<f:render partial="FormErrors" arguments="{object:Employee}"/>
+    <f:render partial="FormErrors" arguments="{object:Employee}"/>
 
-	<f:form action="create"  name="newEmployee" object="{newEmployee}">
-		<f:render partial="Employee/FormFields" />
-		<f:form.submit value="Create new" />
-	</f:form>
+    <f:form action="create" name="newEmployee" object="{newEmployee}">
+        <f:render partial="Employee/FormFields"/>
+        <f:form.submit value="Create new"/>
+    </f:form>
 </f:section>
 </html>

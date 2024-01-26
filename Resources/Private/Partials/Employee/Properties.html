@@ -1,77 +1,74 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			xmlns:maps2="http://typo3.org/ns/JWeiland/Maps2/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:maps2="http://typo3.org/ns/JWeiland/Maps2/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <div class="clearfix tx-telephonedirectory">
-	<f:if condition="{employee.firstImage}">
-		<div class="grid_3 floatleft">
-			<div class="gridright">
-				<f:image image="{employee.firstImage}" alt="{employee.firstName} {employee.lastName}" width="152"/>
-			</div>
-		</div>
-	</f:if>
-	<div class="{f:if(condition: employee.firstImage, then: 'floatleft grid_9')}">
-		<h2 class="noborder">
-			<f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
-			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
-			{employee.firstName}
-			{employee.lastName}
-		</h2>
-		<dl class="extdl marginbottom2">
-			<f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
-			<f:if condition="{employee.additionalFunction}">
-				<dd>
-					<dl>
-						<f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
-						<f:for each="{employee.additionalFunction}" as="additional_function">
-							<dd>
-								{additional_function.title}
-							</dd>
-						</f:for>
-					</dl>
-				</dd>
-			</f:if>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
-		</dl>
-		<dl class="extdl marginbottom2">
-			<f:render partial="Employee/SingleLine" arguments="{field: 'telephone1', value: employee.telephone1}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'telephone2', value: employee.telephone2}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'telephone3', value: employee.telephone3}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'mobile', value: employee.mobile}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'pager', value: employee.pager}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'fax', value: employee.fax}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'pc_fax', value: employee.pcFax}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'email', value: employee.email, email: 1}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'additional_informations', value: employee.additionalInformations}"/>
-			<f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
-		</dl>
-		<f:if condition="{employee.languageSkill}">
-			<dl class="extdl marginbottom2 clearfix">
-
-				<dd class="nomargin">
-					<f:translate key="tx_telephonedirectory_domain_model_employee.language_skill"/>:
-				</dd>
-				<f:for each="{employee.languageSkill}" as="skill">
-					<dl class="clearfix borderbottom">
-						<dd class="noborder grid_6 floatleft nomargin">{skill.language.title}:</dd>
-						<dd class="noborder grid_6 floatleft nomargin">
-							<dl class="nomargin">
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}', additionalClasses: 'nomargin noborder'}"/>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}', additionalClasses: 'nomargin noborder'}"/>
-							</dl>
-						</dd>
-					</dl>
-				</f:for>
-			</dl>
-		</f:if>
-		<f:if condition="{employee.building.txMaps2Uid}">
-			<maps2:widget.poiCollection poiCollection="{employee.building.txMaps2Uid}" override="{settings: {mapWidth: '100%', mapHeight: '300', zoom: '14'}}" />
-		</f:if>
-	</div>
+    <f:if condition="{employee.firstImage}">
+        <div class="grid_3 floatleft">
+            <div class="gridright">
+                <f:image image="{employee.firstImage}" alt="{employee.firstName} {employee.lastName}" width="152"/>
+            </div>
+        </div>
+    </f:if>
+    <div class="{f:if(condition: employee.firstImage, then: 'floatleft grid_9')}">
+        <h2 class="noborder">
+            <f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
+            <f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
+            {employee.firstName}
+            {employee.lastName}
+        </h2>
+        <dl class="extdl marginbottom2">
+            <f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
+            <f:if condition="{employee.additionalFunction}">
+                <dd>
+                    <dl>
+                        <f:translate key="tx_telephonedirectory_domain_model_employee.additional_function"/>:
+                        <f:for each="{employee.additionalFunction}" as="additional_function">
+                            <dd>{additional_function.title}</dd>
+                        </f:for>
+                    </dl>
+                </dd>
+            </f:if>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
+        </dl>
+        <dl class="extdl marginbottom2">
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone1', value: employee.telephone1}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone2', value: employee.telephone2}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone3', value: employee.telephone3}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'mobile', value: employee.mobile}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'pager', value: employee.pager}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'fax', value: employee.fax}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'pc_fax', value: employee.pcFax}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'email', value: employee.email, email: 1}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'additional_informations', value: employee.additionalInformations}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
+        </dl>
+        <f:if condition="{employee.languageSkill}">
+            <dl class="extdl marginbottom2 clearfix">
+                <dd class="nomargin">
+                    <f:translate key="tx_telephonedirectory_domain_model_employee.language_skill"/>:
+                </dd>
+                <f:for each="{employee.languageSkill}" as="skill">
+                    <dl class="clearfix borderbottom">
+                        <dd class="noborder grid_6 floatleft nomargin">{skill.language.title}:</dd>
+                        <dd class="noborder grid_6 floatleft nomargin">
+                            <dl class="nomargin">
+                                <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}', additionalClasses: 'nomargin noborder'}"/>
+                                <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}', additionalClasses: 'nomargin noborder'}"/>
+                            </dl>
+                        </dd>
+                    </dl>
+                </f:for>
+            </dl>
+        </f:if>
+        <f:if condition="{employee.building.txMaps2Uid}">
+            <maps2:widget.poiCollection poiCollection="{employee.building.txMaps2Uid}" override="{settings: {mapWidth: '100%', mapHeight: '300', zoom: '14'}}"/>
+        </f:if>
+    </div>
 </div>
 </html>

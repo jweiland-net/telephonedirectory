@@ -10,6 +10,12 @@ Upgrade
 If you update/upgrade `telephonedirectory` to a newer version, please read this
 section carefully!
 
+Upgrade to version 4.1.0
+========================
+
+As we have marked `storagePid` and `detailViewPid` in scheduler task as `int`
+you have to delete the task and re-create it.
+
 Upgrade to version 4.0.0
 ========================
 

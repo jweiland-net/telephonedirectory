@@ -1,58 +1,58 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <div>
-	<div>
-		<h2>
-			<f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.title.{employee.title}"/>
-			<f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
-			{employee.firstName}
-			{employee.lastName}
-		</h2>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
-		<f:if condition="{employee.additionalFunction}">
-			<dl>
-				<dd><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.additional_function"/>:</dd>
-				<f:for each="{employee.additionalFunction}" as="additional_function">
-					<dd>
-						{additional_function.title}
-					</dd>
-				</f:for>
-			</dl>
-		</f:if>
-		<dl>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
+    <div>
+        <h2>
+            <f:translate key="tx_telephonedirectory_domain_model_employee.title.{employee.title}" extensionName="telephonedirectory"/>
+            <f:if condition="{employee.nameAdditions}">{employee.nameAdditions}</f:if>
+            {employee.firstName}
+            {employee.lastName}
+        </h2>
+        <f:render partial="Employee/SingleLine" arguments="{field: 'office', value: employee.office.title}"/>
+        <f:render partial="Employee/SingleLine" arguments="{field: 'department', value: employee.department.title}"/>
+        <f:render partial="Employee/SingleLine" arguments="{field: 'subject_field', value: employee.subjectField.title}"/>
+        <f:render partial="Employee/SingleLine" arguments="{field: 'function', value: employee.function}"/>
+        <f:if condition="{employee.additionalFunction}">
+            <dl>
+                <dd>
+                    <f:translate key="tx_telephonedirectory_domain_model_employee.additional_function" extensionName="telephonedirectory"/>:
+                </dd>
+                <f:for each="{employee.additionalFunction}" as="additional_function">
+                    <dd>{additional_function.title}</dd>
+                </f:for>
+            </dl>
+        </f:if>
+        <dl>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'building', value: employee.building.title}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'room_number', value: employee.roomNumber}"/>
 
-		<f:render partial="Employee/SingleLine" arguments="{field: 'telephone1', value: employee.telephone1}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'telephone2', value: employee.telephone2}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'telephone3', value: employee.telephone3}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'mobile', value: employee.mobile}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'pager', value: employee.pager}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'fax', value: employee.fax}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'pc_fax', value: employee.pcFax}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'email', value: employee.email, email: 1}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'additional_informations', value: employee.additionalInformations}"/>
-		<f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
-		</dl>
-		<f:if condition="{employee.languageSkill}">
-			<f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:tx_telephonedirectory_domain_model_employee.language_skill"/>:
-				<f:for each="{employee.languageSkill}" as="skill">
-					<dl>
-						<dd>{skill.language.title}:</dd>
-						<dd>
-							<dl>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\')}'}"/>
-								<f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\')}'}"/>
-							</dl>
-						</dd>
-					</dl>
-				</f:for>
-		</f:if>
-	</div>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone1', value: employee.telephone1}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone2', value: employee.telephone2}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'telephone3', value: employee.telephone3}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'mobile', value: employee.mobile}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'pager', value: employee.pager}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'fax', value: employee.fax}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'pc_fax', value: employee.pcFax}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'email', value: employee.email, email: 1}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'additional_informations', value: employee.additionalInformations}"/>
+            <f:render partial="Employee/SingleLine" arguments="{field: 'regular_attendance', value: employee.regularAttendance}"/>
+        </dl>
+        <f:if condition="{employee.languageSkill}">
+            <f:translate key="tx_telephonedirectory_domain_model_employee.language_skill" extensionName="telephonedirectory"/>:
+            <f:for each="{employee.languageSkill}" as="skill">
+                <dl>
+                    <dd>{skill.language.title}:</dd>
+                    <dd>
+                        <dl>
+                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.speak', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.writing}\', extensionName=\'telephonedirectory\')}'}"/>
+                            <f:render partial="Employee/SingleLine" arguments="{field: 'language_skill.write', value: '{f:translate(key: \'tx_telephonedirectory_domain_model_languageskill.skill.{skill.speaking}\', extensionName=\'telephonedirectory\')}'}"/>
+                        </dl>
+                    </dd>
+                </dl>
+            </f:for>
+        </f:if>
+    </div>
 </div>
 </html>

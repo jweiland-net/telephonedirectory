@@ -1,26 +1,33 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <div class="extsearch gridright clearfix">
-	<f:form action="search" name="search">
-		<div class="grid_4 extsearchdiv">
-			<div class="gridright">
-				<f:form.select name="office" options="{offices}" value="{office}" optionValueField="uid" optionLabelField="title" sortByOptionLabel="1" prependOptionLabel="" prependOptionValue="0" />
-			</div>
-		</div>
-		<div class="grid_4 extsearchdiv">
-			<div class="gridright">
-				<f:form.textfield name="search" value="{search}" />
-			</div>
-		</div>
-		<div class="grid_4 extsearchdiv extsubmitdiv">
-			<div class="gridright">
-				<div class="submitwrap">
-					<f:form.submit value="{f:translate(key: 'search')}" />
-				</div>
-			</div>
-		</div>
-	</f:form>
+    <f:form action="search" name="search">
+        <div class="grid_4 extsearchdiv">
+            <div class="gridright">
+                <f:form.select name="office"
+                               options="{offices}"
+                               value="{office}"
+                               optionValueField="uid"
+                               optionLabelField="title"
+                               sortByOptionLabel="1"
+                               prependOptionLabel=""
+                               prependOptionValue="0"/>
+            </div>
+        </div>
+        <div class="grid_4 extsearchdiv">
+            <div class="gridright">
+                <f:form.textfield name="search" value="{search}"/>
+            </div>
+        </div>
+        <div class="grid_4 extsearchdiv extsubmitdiv">
+            <div class="gridright">
+                <div class="submitwrap">
+                    <f:form.submit value="{f:translate(key: 'search')}"/>
+                </div>
+            </div>
+        </div>
+    </f:form>
 </div>
 </html>
