@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-01-11T15:45:04Z" product-name="telephonedirectory" target-language="pt-PT">
+    <header/>
+    <body>
+      <trans-unit id="sheetGeneral" xml:space="preserve">
+				<source>General</source>
+			<target state="needs-translation">General</target></trans-unit>
+      <trans-unit id="showRecords" xml:space="preserve">
+				<source>Show Records</source>
+			<target state="needs-translation">Show Records</target></trans-unit>
+    </body>
+  </file>
+</xliff>
