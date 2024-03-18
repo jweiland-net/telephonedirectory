@@ -3,12 +3,12 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2023-01-11T15:45:04Z" product-name="telephonedirectory" target-language="de">
     <header/>
     <body>
-      <trans-unit id="sheetGeneral" xml:space="preserve">
+      <trans-unit id="sheetGeneral" xml:space="preserve" approved="yes">
 				<source>General</source>
-			<target state="translated">Allgemein</target></trans-unit>
-      <trans-unit id="showRecords" xml:space="preserve">
+			<target state="final">Allgemein</target></trans-unit>
+      <trans-unit id="showRecords" xml:space="preserve" approved="yes">
 				<source>Show Records</source>
-			<target state="needs-translation">Show Records</target></trans-unit>
+			<target state="final">Datensätze anzeigen</target></trans-unit>
     </body>
   </file>
 </xliff>
