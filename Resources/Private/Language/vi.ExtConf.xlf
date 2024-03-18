@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-08-23T13:20:00Z" product-name="pforum" target-language="vi">
+    <header/>
+    <body>
+      <trans-unit id="emailContact" xml:space="preserve">
+				<source>Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</source>
+			<target state="needs-translation">Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</target></trans-unit>
+      <trans-unit id="emailFromAddress" xml:space="preserve">
+				<source>Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
+			<target state="needs-translation">Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
+      <trans-unit id="emailFromName" xml:space="preserve">
+				<source>Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
+			<target state="needs-translation">Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
+      <trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve">
+				<source>The UID of the category containing the additional functions</source>
+			<target state="needs-translation">The UID of the category containing the additional functions</target></trans-unit>
+    </body>
+  </file>
+</xliff>
