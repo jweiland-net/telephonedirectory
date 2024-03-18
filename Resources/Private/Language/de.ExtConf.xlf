@@ -3,18 +3,18 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2013-08-23T13:20:00Z" product-name="pforum" target-language="de">
     <header/>
     <body>
-      <trans-unit id="emailContact" xml:space="preserve">
+      <trans-unit id="emailContact" xml:space="preserve" approved="yes">
 				<source>Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</source>
-			<target state="needs-translation">Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</target></trans-unit>
-      <trans-unit id="emailFromAddress" xml:space="preserve">
+			<target state="final">E-Mail-Kontakt: Wenn einem Mitarbeiter keine E-Mail-Adresse zugewiesen ist, wird ein Mailto-Link zu dieser E-Mail-Adresse angezeigt</target></trans-unit>
+      <trans-unit id="emailFromAddress" xml:space="preserve" approved="yes">
 				<source>Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
-			<target state="needs-translation">Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
-      <trans-unit id="emailFromName" xml:space="preserve">
+			<target state="final">E-Mail von Adresse: Die E-Mail-Adresse des Absenders. Falls nicht angegeben versucht die Erweiterung eine von INSTALL_TOOL zu erhalten.</target></trans-unit>
+      <trans-unit id="emailFromName" xml:space="preserve" approved="yes">
 				<source>Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
-			<target state="needs-translation">Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
-      <trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve">
+			<target state="final">E-Mail von Namen: Der Absender-E-Mail-Name. Falls nicht angegeben versucht die Erweiterung einen von INSTALL_TOOL zu erhalten.</target></trans-unit>
+      <trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve" approved="yes">
 				<source>The UID of the category containing the additional functions</source>
-			<target state="needs-translation">The UID of the category containing the additional functions</target></trans-unit>
+			<target state="final">Die Uid der Kategorie mit den zusätzlichen Funktionen</target></trans-unit>
     </body>
   </file>
 </xliff>
