@@ -1,14 +1,21 @@
 <?php
+
 if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-    'telephonedirectory',
-    'tx_telephonedirectory_domain_model_employee',
-    'additional_function',
-    [
-        'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.additional_function',
-        'exclude' => 1
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+$GLOBALS['TCA']['tx_telephonedirectory_domain_model_employee']['columns']['additional_function'] = [
+    'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:' .
+        'tx_telephonedirectory_domain_model_employee.additional_function',
+    'exclude' => 1,
+    'config' => [
+        'type' => 'category'
     ]
+];
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tx_telephonedirectory_domain_model_employee',
+    'additional_function'
 );
