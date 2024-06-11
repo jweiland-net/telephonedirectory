@@ -57,19 +57,4 @@ call_user_func(static function () {
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSubjectFieldToSubjectFields']
         = \JWeiland\Telephonedirectory\Updater\SubjectFieldToSubjectFieldsUpdater::class;
-
-    // Register SVG Icon Identifier
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    $svgIcons = [
-        'ext-telephonedirectory-employees-wizard-icon' => 'plugin_list_employees.svg',
-        'ext-telephonedirectory-individual-employees-wizard-icon' => 'plugin_list_individual_employees.svg',
-        'ext-telephonedirectory-interpreter-wizard-icon' => 'plugin_list_interpreter.svg',
-    ];
-    foreach ($svgIcons as $identifier => $fileName) {
-        $iconRegistry->registerIcon(
-            $identifier,
-            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:telephonedirectory/Resources/Public/Icons/' . $fileName]
-        );
-    }
 });
