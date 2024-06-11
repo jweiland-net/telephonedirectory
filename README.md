@@ -6,6 +6,7 @@
 [![License](http://poser.pugx.org/jweiland/telephonedirectory/license)](https://packagist.org/packages/jweiland/telephonedirectory)
 [![Total Downloads](https://poser.pugx.org/jweiland/telephonedirectory/downloads.svg)](https://packagist.org/packages/jweiland/telephonedirectory)
 [![Monthly Downloads](https://poser.pugx.org/jweiland/telephonedirectory/d/monthly)](https://packagist.org/packages/jweiland/telephonedirectory)
+
 ![Build Status](https://github.com/jweiland-net/telephonedirectory/actions/workflows/ci.yml/badge.svg)
 
 With `telephonedirectory` you can organize your contact persons and buildings.
