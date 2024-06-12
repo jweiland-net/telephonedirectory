@@ -15,6 +15,7 @@ use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Repository\BuildingRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\CategoryRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
@@ -23,9 +24,9 @@ use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
 use JWeiland\Telephonedirectory\Property\TypeConverter\UploadMultipleFilesConverter;
 use JWeiland\Telephonedirectory\Service\EmailService;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
@@ -39,55 +40,23 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class EmployeeController extends ActionController
 {
-    /**
-     * @var EmployeeRepository
-     */
-    protected $employeeRepository;
+    protected EmployeeRepository $employeeRepository;
 
-    /**
-     * @var BuildingRepository
-     */
-    protected $buildingRepository;
+    protected BuildingRepository $buildingRepository;
 
-    /**
-     * @var DepartmentRepository
-     */
-    protected $departmentRepository;
+    protected DepartmentRepository $departmentRepository;
 
-    /**
-     * @var OfficeRepository
-     */
-    protected $officeRepository;
+    protected OfficeRepository $officeRepository;
 
-    /**
-     * @var LanguageRepository
-     */
-    protected $languageRepository;
+    protected LanguageRepository $languageRepository;
 
-    /**
-     * @var SubjectFieldRepository
-     */
-    protected $subjectFieldRepository;
+    protected SubjectFieldRepository $subjectFieldRepository;
 
-    /**
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
+    protected CategoryRepository $categoryRepository;
 
-    /**
-     * @var ExtConf
-     */
-    protected $extConf;
+    protected ExtConf $extConf;
 
-    /**
-     * @var HashService
-     */
-    protected $hashService;
-
-    /**
-     * @var EmailService
-     */
-    protected $emailService;
+    protected EmailService $emailService;
 
     public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
@@ -119,10 +88,11 @@ class EmployeeController extends ActionController
         $this->subjectFieldRepository = $subjectFieldRepository;
     }
 
+    /**
     public function injectCategoryRepository(CategoryRepository $categoryRepository): void
     {
         $this->categoryRepository = $categoryRepository;
-    }
+    }**/
 
     public function injectExtConf(ExtConf $extConf): void
     {
@@ -148,11 +118,13 @@ class EmployeeController extends ActionController
         }
     }
 
-    public function listAction(): void
+    public function listAction(): ResponseInterface
     {
         $employees = $this->employeeRepository->findAll();
         $this->view->assign('employees', $employees);
         $this->view->assign('offices', $this->officeRepository->findAll());
+
+        return $this->htmlResponse();
     }
 
     /**
@@ -161,17 +133,17 @@ class EmployeeController extends ActionController
      * Now extbase tries to get an object of a non given UID which results in multiple errors
      * That's why we remove this request here
      */
-    public function initializeSearchAction(): void
+    public function initializeSearchAction()
     {
         if ($this->request->hasArgument('office')) {
             $office = $this->request->getArgument('office');
             if (isset($office['__identity']) && empty($office['__identity'])) {
-                $this->request->setArgument('office', '');
+                $this->request = $this->request->withArgument('office', '');
             }
         }
     }
 
-    public function searchAction(Office $office = null, string $search = ''): void
+    public function searchAction(Office $office = null, string $search = ''): ResponseInterface
     {
         if ($office instanceof Office || !empty($search)) {
             $employees = $this->employeeRepository->findBySearch($office, $search);
@@ -182,15 +154,19 @@ class EmployeeController extends ActionController
         }
         $this->view->assign('employees', $employees);
         $this->view->assign('offices', $this->officeRepository->findAll());
+
+        return $this->htmlResponse();
     }
 
-    public function showAction(Employee $employee): void
+    public function showAction(Employee $employee): ResponseInterface
     {
         $this->view->assign('contactEmail', $this->extConf->getEmailContact());
         $this->view->assign('employee', $employee);
+
+        return $this->htmlResponse();
     }
 
-    public function showRecordsAction(): void
+    public function showRecordsAction(): ResponseInterface
     {
         $this->view->assignMultiple([
             'contactEmail' => $this->extConf->getEmailContact(),
@@ -198,21 +174,27 @@ class EmployeeController extends ActionController
                 $this->settings['showRecords'] ?? ''
             )
         ]);
+
+        return $this->htmlResponse();
     }
 
-    public function newAction(Employee $newEmployee = null): void
+    public function newAction(Employee $newEmployee = null): ResponseInterface
     {
         $this->view->assign('newEmployee', $newEmployee);
+
+        return $this->htmlResponse();
     }
 
-    public function createAction(Employee $newEmployee): void
+    public function createAction(Employee $newEmployee): ResponseInterface
     {
         $this->employeeRepository->add($newEmployee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeCreated', 'telephonedirectory'));
         $this->redirect('list');
+
+        return $this->htmlResponse();
     }
 
-    public function editAction(Employee $employee): void
+    public function editAction(Employee $employee): ResponseInterface
     {
         if (!$employee->getIsCatchAllMail()) {
             $hash = $this->request->getArgument('hash');
@@ -235,9 +217,11 @@ class EmployeeController extends ActionController
                 );
             }
         }
+
+        return $this->htmlResponse();
     }
 
-    public function initializeUpdateAction(): void
+    public function initializeUpdateAction(): ResponseInterface
     {
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->allowProperties('languageSkill');
         $this->arguments->getArgument('employee')->getPropertyMappingConfiguration()->forProperty('languageSkill.*')->allowProperties('language', 'writing', 'speaking');
@@ -251,13 +235,16 @@ class EmployeeController extends ActionController
         /** @var Employee $persistedEmployee */
         $persistedEmployee = $this->employeeRepository->findByIdentifier($this->request->getArgument('employee')['__identity']);
         $this->assignMediaTypeConverter('image', $employeeMappingConfiguration, $persistedEmployee->getImage());
+
+        return $this->htmlResponse();
     }
 
-    public function updateAction(Employee $employee): void
+    public function updateAction(Employee $employee): ResponseInterface
     {
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
-        $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
+
+        return $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
     }
 
     /**
@@ -265,7 +252,7 @@ class EmployeeController extends ActionController
      *
      * @throws StopActionException
      */
-    public function sendEditMailAction(Employee $employee): void
+    public function sendEditMailAction(Employee $employee): ResponseInterface
     {
         try {
             $this->emailService->informEmployeeAboutTheirData(
@@ -280,7 +267,12 @@ class EmployeeController extends ActionController
         } catch (\Exception $e) {
         }
 
-        $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
+        return $this->redirect(
+            'show',
+            'Employee',
+            'telephonedirectory',
+            ['employee' => $employee]
+        );
     }
 
     /**
@@ -292,7 +284,7 @@ class EmployeeController extends ActionController
         $view->setTemplatePathAndFilename(
             'EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html'
         );
-        $view->setControllerContext($this->getControllerContext());
+        $view->setRequest($this->request);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
         $link = $this->uriBuilder->uriFor(
