@@ -345,18 +345,12 @@ return [
         'image' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.image',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'minitems' => 0,
-                    'maxitems' => 1,
-                    'foreign_match_fields' => [
-                        'fieldname' => 'image',
-                        'tablenames' => 'tx_telephonedirectory_domain_model_employee',
-                        'table_local' => 'sys_file'
-                    ]
-                ]
-            )
+            'config' => [
+                'type' => 'file',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'allowed' => 'common-image-types'
+            ],
         ],
         'module_sys_dmail_html' => [
             'config' => [
