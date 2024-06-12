@@ -1,4 +1,5 @@
-mod.wizards.newContentElement.wizardItems.plugins {
+mod.wizards.newContentElement.wizardItems.jweiland-ext-telephonedirectory {
+  header = LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:telephonedirectory.title
   elements {
     telephonedirectory_employees {
       iconIdentifier = ext-telephonedirectory-employees-wizard-icon
@@ -28,6 +29,7 @@ mod.wizards.newContentElement.wizardItems.plugins {
       }
     }
   }
+  show = *
 }
 
 # Add CType Preview

@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
 		<header/>
 		<body>
+			<trans-unit id="telephonedirectory.title">
+				<source>Telephone Directory</source>
+			</trans-unit>
 			<trans-unit id="plugin.telephonedirectory.employees.title">
 				<source>Telephone: Show employees</source>
 			</trans-unit>

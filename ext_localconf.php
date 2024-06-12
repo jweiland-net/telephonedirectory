@@ -33,13 +33,7 @@ call_user_func(static function () {
         'ShowRecords',
         [
             \JWeiland\Telephonedirectory\Controller\EmployeeController::class => 'showRecords'
-        ], // non-cacheable actions
-        []
-    );
-
-    // add telephonedirectory plugin to new element wizard
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:telephonedirectory/Configuration/TSconfig/ContentElementWizard.tsconfig">'
+        ]
     );
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask::class] = [
@@ -48,13 +42,4 @@ call_user_func(static function () {
         'description' => 'Send email to every employee about their current data',
         'additionalFields' => \JWeiland\Telephonedirectory\Task\SendMailToEmployeeAdditionalFieldProvider::class
     ];
-
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSlug']
-        = \JWeiland\Telephonedirectory\Updater\TelephonedirectorySlugUpdater::class;
-
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateDepartmentToDepartments']
-        = \JWeiland\Telephonedirectory\Updater\DepartmentToDepartmentsUpdater::class;
-
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['telephonedirectoryUpdateSubjectFieldToSubjectFields']
-        = \JWeiland\Telephonedirectory\Updater\SubjectFieldToSubjectFieldsUpdater::class;
 });
