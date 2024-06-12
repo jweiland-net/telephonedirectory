@@ -17,13 +17,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime'
         ],
+        'security' => [
+            'ignorePageTypeRestriction' => true
+        ],
         'searchFields' => 'language,what,skill,infotext,',
         'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_languageskill.svg'
     ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, language, speaking, writing, infotext,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
     ],
