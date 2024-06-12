@@ -34,10 +34,7 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
     {
         $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->getTableName());
 
-        $schemaManager = $queryBuilder->getConnection()->getSchemaManager();
-        if ($schemaManager === null) {
-            return false;
-        }
+        $schemaManager = $queryBuilder->getConnection()->createSchemaManager();
 
         if (!array_key_exists($this->getOldFieldName(), $schemaManager->listTableColumns($this->getTableName()))) {
             return false;
@@ -52,8 +49,8 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
             ->where(
                 $this->getStatementForAffectedRecords($queryBuilder)
             )
-            ->execute()
-            ->fetchColumn();
+            ->executeQuery()
+            ->fetchOne();
 
         return (bool)$recordsToUpdate;
     }
@@ -70,11 +67,11 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
             ->where(
                 $this->getStatementForAffectedRecords($queryBuilder)
             )
-            ->execute();
+            ->executeQuery();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->getTableName());
         $connectionMM = $this->getConnectionPool()->getConnectionForTable($this->getMmTableName());
-        while ($recordToUpdate = $statement->fetch()) {
+        while ($recordToUpdate = $statement->fetchAssociative()) {
             $uid = (int)$recordToUpdate['uid'];
             $connection->beginTransaction();
             $connectionMM->insert(
@@ -107,7 +104,7 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
 
     protected function getStatementForAffectedRecords(QueryBuilder $queryBuilder): CompositeExpression
     {
-        return $queryBuilder->expr()->andX(
+        return $queryBuilder->expr()->and(
             $queryBuilder->expr()->neq($this->getOldFieldName(), 0),
             $queryBuilder->expr()->eq($this->getNewFieldName(), 0)
         );

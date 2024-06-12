@@ -11,9 +11,12 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\UpgradeWizard;
 
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
+
 /**
  * Migrate subjectfield field to subjectfields field in office table
  */
+#[UpgradeWizard('telephonedirectoryUpdateSubjectFieldToSubjectFields')]
 class SubjectFieldToSubjectFieldsUpdater extends AbstractSingleFieldToMmUpdater
 {
     public function getIdentifier(): string

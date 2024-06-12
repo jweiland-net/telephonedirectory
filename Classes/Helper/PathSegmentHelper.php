@@ -27,20 +27,19 @@ class PathSegmentHelper
      */
     protected $slugHelper;
 
-    public function __construct(SlugHelper $slugHelper = null)
+    public function __construct()
     {
-        if ($slugHelper === null) {
-            // Add uid to slug, to prevent duplicates
-            $config = $GLOBALS['TCA']['tx_telephonedirectory_domain_model_employee']['columns']['path_segment']['config'];
-            $config['generatorOptions']['fields'] = ['first_name', 'last_name', 'uid'];
+        // Add uid to slug, to prevent duplicates
+        $config = $GLOBALS['TCA']['tx_telephonedirectory_domain_model_employee']['columns']['path_segment']['config'];
+        $config['generatorOptions']['fields'] = ['first_name', 'last_name', 'uid'];
 
-            $slugHelper = GeneralUtility::makeInstance(
-                SlugHelper::class,
-                'tx_telephonedirectory_domain_model_company',
-                'path_segment',
-                $config
-            );
-        }
+        $slugHelper = GeneralUtility::makeInstance(
+            SlugHelper::class,
+            'tx_telephonedirectory_domain_model_company',
+            'path_segment',
+            $config
+        );
+
         $this->slugHelper = $slugHelper;
     }
 

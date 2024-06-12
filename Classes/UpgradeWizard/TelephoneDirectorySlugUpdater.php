@@ -16,28 +16,21 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
  * Updater to fill empty slug columns of employee records
  */
-class TelephonedirectorySlugUpdater implements UpgradeWizardInterface
+#[UpgradeWizard('telephonedirectoryUpdateSlug')]
+class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
 {
-    /**
-     * @var string
-     */
-    protected $tableName = 'tx_telephonedirectory_domain_model_employee';
+    protected string $tableName = 'tx_telephonedirectory_domain_model_employee';
 
-    /**
-     * @var string
-     */
-    protected $fieldName = 'path_segment';
+    protected string $fieldName = 'path_segment';
 
-    /**
-     * @var PathSegmentHelper
-     */
-    protected $pathSegmentHelper;
+    protected ?PathSegmentHelper $pathSegmentHelper = null;
 
     public function __construct(PathSegmentHelper $pathSegmentHelper = null)
     {
@@ -85,8 +78,8 @@ class TelephonedirectorySlugUpdater implements UpgradeWizardInterface
                     )
                 )
             )
-            ->execute()
-            ->fetchColumn(0);
+            ->executeQuery()
+            ->fetchOne();
 
         return (bool)$amountOfRecordsWithEmptySlug;
     }
@@ -116,7 +109,7 @@ class TelephonedirectorySlugUpdater implements UpgradeWizardInterface
                     )
                 )
             )
-            ->execute();
+            ->executeStatement();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->tableName);
         while ($recordToUpdate = $statement->fetch()) {
