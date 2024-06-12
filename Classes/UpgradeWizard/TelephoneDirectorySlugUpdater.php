@@ -68,7 +68,7 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
             ->count('*')
             ->from($this->tableName)
             ->where(
-                $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         $this->fieldName,
                         $queryBuilder->createNamedParameter('', Connection::PARAM_STR)
@@ -99,7 +99,7 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
             ->select('uid', 'pid', 'first_name', 'last_name')
             ->from($this->tableName)
             ->where(
-                $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         $this->fieldName,
                         $queryBuilder->createNamedParameter('', Connection::PARAM_STR)

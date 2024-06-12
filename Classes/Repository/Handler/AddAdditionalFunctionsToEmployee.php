@@ -58,7 +58,7 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
                     'sc',
                     'sys_category_record_mm',
                     'sc_mm',
-                    (string)$queryBuilder->expr()->andX(
+                    (string)$queryBuilder->expr()->and(
                         $queryBuilder->expr()->eq(
                             'sc_mm.tablenames',
                             $queryBuilder->createNamedParameter(self::TABLE_NAME)
