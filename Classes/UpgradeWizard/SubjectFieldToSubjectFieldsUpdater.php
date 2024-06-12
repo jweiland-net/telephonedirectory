@@ -9,26 +9,26 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Updater;
+namespace JWeiland\Telephonedirectory\UpgradeWizard;
 
 /**
- * Migrate department field to departments field in office table
+ * Migrate subjectfield field to subjectfields field in office table
  */
-class DepartmentToDepartmentsUpdater extends AbstractSingleFieldToMmUpdater
+class SubjectFieldToSubjectFieldsUpdater extends AbstractSingleFieldToMmUpdater
 {
     public function getIdentifier(): string
     {
-        return 'telephonedirectoryUpdateDepartmentToDepartments';
+        return 'telephonedirectoryUpdateSubjectFieldToSubjectFields';
     }
 
     public function getTitle(): string
     {
-        return '[telephonedirectory] Update department to departments field';
+        return '[telephonedirectory] Update subjectfield to subjectfields field';
     }
 
     public function getDescription(): string
     {
-        return 'Migrate existing departments from the single department field to the departments field which allows usage of multiple departments';
+        return 'Migrate existing subjectfields from the single subjectfield field to the subjectfields field which allows usage of multiple subjectfields';
     }
 
     protected function getTableName(): string
@@ -43,11 +43,11 @@ class DepartmentToDepartmentsUpdater extends AbstractSingleFieldToMmUpdater
 
     protected function getOldFieldName(): string
     {
-        return 'department';
+        return 'subject_field';
     }
 
     protected function getNewFieldName(): string
     {
-        return 'departments';
+        return 'subject_fields';
     }
 }

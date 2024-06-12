@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Updater;
+namespace JWeiland\Telephonedirectory\UpgradeWizard;
 
 use JWeiland\Telephonedirectory\Helper\PathSegmentHelper;
 use TYPO3\CMS\Core\Database\Connection;
