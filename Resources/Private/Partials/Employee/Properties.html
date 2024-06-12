@@ -1,6 +1,5 @@
 <html lang="en"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-      xmlns:maps2="http://typo3.org/ns/JWeiland/Maps2/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <div class="clearfix tx-telephonedirectory">
@@ -65,9 +64,6 @@
                     </dl>
                 </f:for>
             </dl>
-        </f:if>
-        <f:if condition="{employee.building.txMaps2Uid}">
-            <maps2:widget.poiCollection poiCollection="{employee.building.txMaps2Uid}" override="{settings: {mapWidth: '100%', mapHeight: '300', zoom: '14'}}"/>
         </f:if>
     </div>
 </div>

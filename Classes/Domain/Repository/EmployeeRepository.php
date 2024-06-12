@@ -33,16 +33,15 @@ class EmployeeRepository extends Repository
             $constraintOr = [];
             $constraintOr[] = $query->like('firstName', '%' . $search . '%');
             $constraintOr[] = $query->like('lastName', '%' . $search . '%');
-            $constraintAnd[] = $query->logicalOr($constraintOr);
+            $constraintAnd[] = $query->logicalOr(...$constraintOr);
         }
 
-        return $query->matching($query->logicalAnd($constraintAnd))->execute();
+        return $query->matching($query->logicalAnd(...$constraintAnd))->execute();
     }
 
     public function findEmployees(string $csvListOfIdentifiers): QueryResultInterface
     {
         $query = $this->createQuery();
-
         $employeeIdentifiers = GeneralUtility::intExplode(',', $csvListOfIdentifiers, true);
 
         return $query->matching($query->in('uid', $employeeIdentifiers))->execute();
