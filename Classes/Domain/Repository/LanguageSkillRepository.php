@@ -27,15 +27,13 @@ class LanguageSkillRepository extends Repository
     public function findAllWithEmployeeRelation(): QueryResultInterface
     {
         $query = $this->createQuery();
-
         $query->matching(
             $query->logicalAnd(
-                [
                 $query->equals('employee.hidden', 0),
-                $query->equals('employee.deleted', 0)
-                ]
+                $query->equals('employee.deleted', 0),
             )
         );
+
         return $query->execute();
     }
 }
