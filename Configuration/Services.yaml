@@ -11,6 +11,12 @@ services:
   JWeiland\Telephonedirectory\Service\EmailService:
     public: true
 
+  # EventListeners
+  JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
     public: true;
