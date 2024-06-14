@@ -13,15 +13,9 @@ namespace JWeiland\Telephonedirectory\Utility;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-/**
- * Class LanguageSkillUtility
- */
 class LanguageSkillUtility
 {
-    /**
-     * @var array
-     */
-    protected static $languageSkills = [
+    protected static array $languageSkills = [
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
             '0'
@@ -44,10 +38,7 @@ class LanguageSkillUtility
         ]
     ];
 
-    /**
-     * @var array
-     */
-    protected static $languageSkillsForFluidSelect = [];
+    protected static array $languageSkillsForFluidSelect = [];
 
     public static function getLanguageSkills(): array
     {

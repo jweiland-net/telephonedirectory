@@ -14,21 +14,29 @@ namespace JWeiland\Telephonedirectory\Service;
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Send an information mail to employees email address
  */
 class EmailService
 {
-    /**
-     * @var ExtConf
-     */
-    protected $extConf;
+    protected ExtConf $extConf;
+    protected UriBuilder $uriBuilder;
+    protected array $settings = [];
 
-    public function __construct(ExtConf $extConf)
-    {
+    public function __construct(
+        ExtConf $extConf,
+        UriBuilder $uriBuilder,
+        array $settings,
+        protected readonly HashService $hashService
+    ) {
         $this->extConf = $extConf;
+        $this->uriBuilder = $uriBuilder;
+        $this->settings = $settings;
     }
 
     /**
@@ -53,5 +61,36 @@ class EmailService
 
             $mail->send();
         }
+    }
+
+    public function sendEditMail(Employee $employee, $request): void
+    {
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setTemplatePathAndFilename('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html');
+        $view->setRequest($request);
+
+        $this->uriBuilder->setCreateAbsoluteUri(true);
+        $link = $this->uriBuilder->uriFor(
+            'edit',
+            [
+                'parameter' => $this->settings['pidOfDetailPage'],
+                'hash' => $this->hashService->generateHmac('Employee:' . $employee->getUid()),
+                'action' => 'edit',
+                'controller' => 'Employee',
+                'employee' => $employee->getUid(),
+            ]
+        );
+
+        $view->assign('link', $link);
+        $view->assign('employee', $employee);
+
+        $this->informEmployeeAboutTheirData(
+            [
+                'email' => $employee->getEmail(),
+                'firstName' => $employee->getFirstName(),
+                'lastName' => $employee->getLastName(),
+            ],
+            $view->render()
+        );
     }
 }
