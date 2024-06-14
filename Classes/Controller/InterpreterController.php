@@ -11,39 +11,38 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Controller;
 
-use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
+use JWeiland\Telephonedirectory\Traits\InjectLanguageSkillRepositoryTrait;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Controller to list language skills
  */
-class InterpreterController extends ActionController
+class InterpreterController extends AbstractController
 {
-    /**
-     * @var LanguageSkillRepository
-     */
-    protected $languageSkillRepository;
-
-    /**
-     * @param  LanguageSkillRepository $languageSkillRepository
-     */
-    public function injectLanguageSkillRepository(LanguageSkillRepository $languageSkillRepository): void
-    {
-        $this->languageSkillRepository = $languageSkillRepository;
-    }
+    use InjectLanguageSkillRepositoryTrait;
 
     public function initializeAction(): void
     {
         // if this value was not set, then it will be filled with 0
-        // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to null
+        // but that is not good, because UriBuilder accepts 0 as pid,
+        // so it's better to set it to null
         if (empty($this->settings['pidOfDetailPage'])) {
             $this->settings['pidOfDetailPage'] = null;
         }
     }
 
-    public function listAction(): void
+    public function initializeListAction(): void
     {
-        $skills = $this->languageSkillRepository->findAllWithEmployeeRelation();
-        $this->view->assign('skills', $skills);
+        $this->emitInitializeControllerAction();
+    }
+
+    public function listAction(): ResponseInterface
+    {
+        $this->postProcessAndAssignFluidVariables([
+            'skills' => $this->languageSkillRepository->findAllWithEmployeeRelation(),
+        ]);
+
+        return $this->htmlResponse();
     }
 }
