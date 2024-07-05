@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Controller;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Traits\InitializeControllerActionTrait;
+use JWeiland\Telephonedirectory\Traits\InjectBuildingRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectCategoryRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectDepartmentRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectEmailServiceTrait;
@@ -35,6 +36,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EmployeeController extends AbstractController
 {
     use InjectCategoryRepositoryTrait;
+    use InjectBuildingRepositoryTrait;
     use InjectDepartmentRepositoryTrait;
     use InjectEmailServiceTrait;
     use InjectEmployeeRepositoryTrait;
