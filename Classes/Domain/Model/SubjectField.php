@@ -18,10 +18,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class SubjectField extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
 
     public function getTitle(): string
     {
@@ -31,6 +28,7 @@ class SubjectField extends AbstractEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 }

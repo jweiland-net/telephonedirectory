@@ -18,30 +18,15 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class LanguageSkill extends AbstractEntity
 {
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Language
-     */
-    protected $language;
+    protected Language $language;
 
-    /**
-     * @var string
-     */
-    protected $writing = '';
+    protected string $writing = '';
 
-    /**
-     * @var string
-     */
-    protected $speaking = '';
+    protected string $speaking = '';
 
-    /**
-     * @var string
-     */
-    protected $infotext = '';
+    protected string $infotext = '';
 
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Employee
-     */
-    protected $employee;
+    protected Employee $employee;
 
     public function getLanguage(): ?Language
     {
@@ -51,6 +36,7 @@ class LanguageSkill extends AbstractEntity
     public function setLanguage(Language $language): self
     {
         $this->language = $language;
+
         return $this;
     }
 
@@ -62,6 +48,7 @@ class LanguageSkill extends AbstractEntity
     public function setWriting(string $writing): self
     {
         $this->writing = $writing;
+
         return $this;
     }
 
@@ -73,6 +60,7 @@ class LanguageSkill extends AbstractEntity
     public function setSpeaking(string $speaking): self
     {
         $this->speaking = $speaking;
+
         return $this;
     }
 
@@ -84,6 +72,7 @@ class LanguageSkill extends AbstractEntity
     public function setInfotext(string $infotext): self
     {
         $this->infotext = $infotext;
+
         return $this;
     }
 
@@ -95,6 +84,7 @@ class LanguageSkill extends AbstractEntity
     public function setEmployee(Employee $employee): self
     {
         $this->employee = $employee;
+
         return $this;
     }
 }

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
-use JWeiland\Telephonedirectory\Event\InitializeControllerActionEvent;
 use JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent;
 use JWeiland\Telephonedirectory\Event\PreProcessControllerActionEvent;
 use JWeiland\Telephonedirectory\Traits\InitializeControllerActionTrait;

@@ -21,147 +21,74 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Employee extends AbstractEntity
 {
-    /**
-     * @var bool
-     */
-    protected $hidden = true;
+    protected bool $hidden = true;
 
-    /**
-     * @var int
-     */
-    protected $title = 0;
+    protected int $title = 0;
 
-    /**
-     * @var string
-     */
-    protected $pathSegment = '';
+    protected string $pathSegment = '';
 
-    /**
-     * @var string
-     */
-    protected $firstName = '';
+    protected string $firstName = '';
 
-    /**
-     * @var string
-     */
-    protected $lastName = '';
+    protected string $lastName = '';
 
-    /**
-     * @var string
-     */
-    protected $nameAdditions = '';
+    protected string $nameAdditions = '';
 
-    /**
-     * @var bool
-     */
-    protected $isCatchAllMail = false;
+    protected bool $isCatchAllMail = false;
 
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
-     */
-    protected $subjectField;
+    protected SubjectField $subjectField;
 
-    /**
-     * @var string
-     */
-    protected $company = '';
+    protected string $company = '';
 
-    /**
-     * @var string
-     */
-    protected $roomNumber = '';
+    protected string $roomNumber = '';
 
-    /**
-     * @var string
-     */
-    protected $function = '';
+    protected string $function = '';
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      */
-    protected $additionalFunction = '';
+    protected ObjectStorage $additionalFunction;
+
+    protected string $telephone1 = '';
+
+    protected string $telephone2 = '';
+
+    protected string $telephone3 = '';
+
+    protected string $mobile = '';
+
+    protected string $pager = '';
+
+    protected string $fax = '';
+
+    protected string $pcFax = '';
 
     /**
-     * @var string
-     */
-    protected $telephone1 = '';
-
-    /**
-     * @var string
-     */
-    protected $telephone2 = '';
-
-    /**
-     * @var string
-     */
-    protected $telephone3 = '';
-
-    /**
-     * @var string
-     */
-    protected $mobile = '';
-
-    /**
-     * @var string
-     */
-    protected $pager = '';
-
-    /**
-     * @var string
-     */
-    protected $fax = '';
-
-    /**
-     * @var string
-     */
-    protected $pcFax = '';
-
-    /**
-     * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
-    protected $email = '';
+    protected string $email = '';
 
-    /**
-     * @var string
-     */
-    protected $additionalInformations = '';
+    protected string $additionalInformations = '';
 
-    /**
-     * @var string
-     */
-    protected $regularAttendance = '';
+    protected string $regularAttendance = '';
 
-    /**
-     * @var bool
-     */
-    protected $moduleSysDmailHtml = true;
+    protected bool $moduleSysDmailHtml = true;
 
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Office
-     */
-    protected $office;
+    protected Office $office;
 
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Building
-     */
-    protected $building;
+    protected Building $building;
 
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Department
-     */
-    protected $department;
+    protected Department $department;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    protected $image;
+    protected ObjectStorage $image;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\LanguageSkill>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
-    protected $languageSkill;
+    protected ObjectStorage $languageSkill;
 
     public function __construct()
     {

@@ -19,30 +19,15 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class Building extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
 
-    /**
-     * @var string
-     */
-    protected $street = '';
+    protected string $street = '';
 
-    /**
-     * @var string
-     */
-    protected $houseNumber = '';
+    protected string $houseNumber = '';
 
-    /**
-     * @var string
-     */
-    protected $zip = '';
+    protected string $zip = '';
 
-    /**
-     * @var string
-     */
-    protected $city = '';
+    protected string $city = '';
 
     /**
      * @var \JWeiland\Maps2\Domain\Model\PoiCollection
@@ -57,6 +42,7 @@ class Building extends AbstractEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -68,6 +54,7 @@ class Building extends AbstractEntity
     public function setStreet(string $street): self
     {
         $this->street = $street;
+
         return $this;
     }
 
@@ -79,6 +66,7 @@ class Building extends AbstractEntity
     public function setHouseNumber(string $houseNumber): self
     {
         $this->houseNumber = $houseNumber;
+
         return $this;
     }
 
@@ -90,6 +78,7 @@ class Building extends AbstractEntity
     public function setZip(string $zip): self
     {
         $this->zip = $zip;
+
         return $this;
     }
 
@@ -101,6 +90,7 @@ class Building extends AbstractEntity
     public function setCity(string $city): self
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -112,6 +102,7 @@ class Building extends AbstractEntity
     public function setTxMaps2Uid(PoiCollection $txMaps2Uid): self
     {
         $this->txMaps2Uid = $txMaps2Uid;
+
         return $this;
     }
 }

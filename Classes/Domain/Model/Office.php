@@ -19,30 +19,21 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Office extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
 
-    /**
-     * @var string
-     */
-    protected $code = '';
+    protected string $code = '';
 
-    /**
-     * @var string
-     */
-    protected $token = '';
+    protected string $token = '';
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\Department>
      */
-    protected $departments;
+    protected ObjectStorage $departments;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\SubjectField>
      */
-    protected $subjectFields;
+    protected ObjectStorage $subjectFields;
 
     public function __construct()
     {
@@ -58,6 +49,7 @@ class Office extends AbstractEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -69,6 +61,7 @@ class Office extends AbstractEntity
     public function setCode(string $code): self
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -80,6 +73,7 @@ class Office extends AbstractEntity
     public function setToken(string $token): self
     {
         $this->token = $token;
+
         return $this;
     }
 
@@ -113,6 +107,7 @@ class Office extends AbstractEntity
     public function setSubjectFields(ObjectStorage $subjectFields): self
     {
         $this->subjectFields = $subjectFields;
+
         return $this;
     }
 
@@ -146,6 +141,7 @@ class Office extends AbstractEntity
     public function setDepartments(ObjectStorage $departments): self
     {
         $this->departments = $departments;
+
         return $this;
     }
 }
