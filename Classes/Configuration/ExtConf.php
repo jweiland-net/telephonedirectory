@@ -21,25 +21,10 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class ExtConf implements SingletonInterface
 {
-    /**
-     * @var string
-     */
-    protected $emailContact = '';
-
-    /**
-     * @var string
-     */
-    protected $emailFromAddress = '';
-
-    /**
-     * @var string
-     */
-    protected $emailFromName = '';
-
-    /**
-     * @var int
-     */
-    protected $additionalFunctionsParentCategoryUid = 0;
+    protected string $emailContact = '';
+    protected string $emailFromAddress = '';
+    protected string $emailFromName = '';
+    protected int $additionalFunctionsParentCategoryUid = 0;
 
     public function __construct(ExtensionConfiguration $extensionConfiguration)
     {
