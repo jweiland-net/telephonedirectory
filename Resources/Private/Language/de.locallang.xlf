@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z"
+		  product-name="telephonedirectory">
 		<header/>
 		<body>
 			<trans-unit id="tx_telephonedirectory_domain_model_employee">
@@ -238,7 +239,9 @@
 			</trans-unit>
 			<trans-unit id="emailWasSend">
 				<source>An email was send to employee to edit this entry</source>
-				<target>Es wurde eine Mail an die dem Datensatz hinterlegte E-Mail-Adresse mit einem Link zum Bearbeiten des Datensatzes gesendet.</target>
+				<target>Es wurde eine Mail an die dem Datensatz hinterlegte E-Mail-Adresse mit einem Link zum Bearbeiten
+					des Datensatzes gesendet.
+				</target>
 			</trans-unit>
 			<trans-unit id="optionSelectPrependLabel">
 				<source>--- Select ---</source>
@@ -253,20 +256,25 @@
 				<source>Click following link to edit entry:</source>
 				<target>Klicken Sie auf den nachfolgenden Link, um den Eintrag zu bearbeiten:</target>
 			</trans-unit>
-
 			<trans-unit id="sendMailToContact">
 				<source>To change your Data, please contact</source>
 				<target>Zum Ändern der Daten wenden Sie sich bitte an</target>
 			</trans-unit>
-
 			<trans-unit id="add">
 				<source>Add</source>
 				<target>Hinzufügen</target>
 			</trans-unit>
-
 			<trans-unit id="remove">
 				<source>Remove</source>
 				<target>Entfernen</target>
+			</trans-unit>
+			<trans-unit id="form.select.office">
+				<source>Select Office</source>
+				<target>Büro auswählen</target>
+			</trans-unit>
+			<trans-unit id="form.input.keyword">
+				<source>Keyword</source>
+				<source>Schlüsselwort</source>
 			</trans-unit>
 		</body>
 	</file>

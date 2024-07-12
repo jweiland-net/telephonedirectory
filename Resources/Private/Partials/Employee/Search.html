@@ -9,22 +9,26 @@
                 <f:form.select name="office"
                                options="{offices}"
                                value="{office}"
+                               class="form-control"
                                optionValueField="uid"
                                optionLabelField="title"
                                sortByOptionLabel="1"
-                               prependOptionLabel=""
+                               prependOptionLabel="{f:translate(extensionName: 'telephonedirectory', key: 'form.select.office')}"
                                prependOptionValue="0"/>
             </div>
         </div>
         <div class="grid_4 extsearchdiv">
             <div class="gridright">
-                <f:form.textfield name="search" value="{search}"/>
+                <f:form.textfield name="search"
+                                  value="{search}"
+                                  class="form-control"/>
             </div>
         </div>
         <div class="grid_4 extsearchdiv extsubmitdiv">
             <div class="gridright">
                 <div class="submitwrap">
-                    <f:form.submit value="{f:translate(key: 'search')}"/>
+                    <f:form.submit value="{f:translate(key: 'search')}"
+                                   class="form-control"/>
                 </div>
             </div>
         </div>
