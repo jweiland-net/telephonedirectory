@@ -38,7 +38,7 @@ class EmployeeController extends AbstractController
     use InjectCategoryRepositoryTrait;
     use InjectBuildingRepositoryTrait;
     use InjectDepartmentRepositoryTrait;
-    use InjectEmailServiceTrait;
+
     use InjectEmployeeRepositoryTrait;
     use InjectExtConfTrait;
     use InjectLanguageRepositoryTrait;

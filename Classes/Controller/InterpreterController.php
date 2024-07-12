@@ -13,7 +13,6 @@ namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Traits\InjectLanguageSkillRepositoryTrait;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Controller to list language skills
@@ -34,7 +33,12 @@ class InterpreterController extends AbstractController
 
     public function initializeListAction(): void
     {
-        $this->emitInitializeControllerAction();
+        $this->emitInitializeControllerAction(
+            $this->eventDispatcher,
+            $this->request,
+            $this->arguments,
+            $this->settings
+        );
     }
 
     public function listAction(): ResponseInterface

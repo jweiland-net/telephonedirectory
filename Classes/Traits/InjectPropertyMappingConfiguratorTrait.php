@@ -19,6 +19,6 @@ trait InjectPropertyMappingConfiguratorTrait
 
     public function injectPropertyMappingConfigurator(PropertyMappingConfigurator $propertyMappingConfigurator): void
     {
-        $this->$propertyMappingConfigurator = $propertyMappingConfigurator;
+        $this->propertyMappingConfigurator = $propertyMappingConfigurator;
     }
 }

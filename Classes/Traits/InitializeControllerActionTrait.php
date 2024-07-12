@@ -23,8 +23,7 @@ trait InitializeControllerActionTrait
         RequestInterface $request,
         Arguments $arguments,
         array $settings
-    ): void
-    {
+    ): void {
         $eventDispatcher->dispatch(
             new InitializeControllerActionEvent(
                 $request,
