@@ -15,7 +15,7 @@ use JWeiland\Telephonedirectory\Controller\EmployeeController;
 use JWeiland\Telephonedirectory\Controller\InterpreterController;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 
 /**
  * Pre process controller actions which does not assign any variables to view.
@@ -29,13 +29,13 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
 
     protected array $settings;
 
-    protected Request $request;
+    protected RequestInterface $request;
 
     public function __construct(
         ActionController $controller,
         ?Employee $employee,
         array $settings,
-        Request $request
+        RequestInterface $request
     ) {
         $this->controller = $controller;
         $this->employee = $employee;
@@ -58,7 +58,7 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
         return $this->controller;
     }
 
-    public function getRequest(): Request
+    public function getRequest(): RequestInterface
     {
         return $this->request;
     }

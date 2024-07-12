@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Event;
 
-use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 
 interface ControllerActionEventInterface
 {
-    public function getRequest(): Request;
+    public function getRequest(): RequestInterface;
 
     public function getControllerName(): string;
 
