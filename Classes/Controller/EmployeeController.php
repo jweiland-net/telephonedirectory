@@ -38,7 +38,7 @@ class EmployeeController extends AbstractController
     use InjectCategoryRepositoryTrait;
     use InjectBuildingRepositoryTrait;
     use InjectDepartmentRepositoryTrait;
-
+    use InjectEmailServiceTrait;
     use InjectEmployeeRepositoryTrait;
     use InjectExtConfTrait;
     use InjectLanguageRepositoryTrait;
@@ -226,7 +226,9 @@ class EmployeeController extends AbstractController
         $employeeMappingConfiguration = $this->arguments->getArgument('employee')->getPropertyMappingConfiguration();
         $this->propertyMappingConfigurator->configureEmployeeMapping($employeeMappingConfiguration);
 
-        $persistedEmployee = $this->employeeRepository->findByIdentifier($this->request->getArgument('employee')['__identity']);
+        $persistedEmployee = $this->employeeRepository->findByIdentifier(
+            $this->request->getArgument('employee')['__identity']
+        );
         $this->assignMediaTypeConverter(
             'image',
             $employeeMappingConfiguration,
