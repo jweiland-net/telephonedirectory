@@ -24,7 +24,8 @@
 	},
 	"require": {
 		"typo3/cms-core": "^12.4.16",
-		"jweiland/maps2": ">=11.0.0"
+		"jweiland/maps2": ">=11.0.0",
+		"jweiland/checkfaluploads": ">=4.0.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

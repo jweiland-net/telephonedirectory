@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
+use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
@@ -66,10 +67,13 @@ class EmailService
     public function sendEditMail(Employee $employee, $request): void
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
+        $view->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
         $view->setTemplatePathAndFilename('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html');
         $view->setRequest($request);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
+        $this->uriBuilder->setRequest($request);
         $link = $this->uriBuilder->uriFor(
             'edit',
             [
