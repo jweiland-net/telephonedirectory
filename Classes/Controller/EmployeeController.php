@@ -50,12 +50,7 @@ class EmployeeController extends AbstractController
 
     public function initializeListAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function listAction(): ResponseInterface
@@ -84,12 +79,7 @@ class EmployeeController extends AbstractController
             }
         }
 
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function searchAction(Office $office = null, string $search = ''): ResponseInterface
@@ -109,12 +99,7 @@ class EmployeeController extends AbstractController
 
     public function initializeShowAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function showAction(Employee $employee): ResponseInterface
@@ -127,12 +112,7 @@ class EmployeeController extends AbstractController
 
     public function initializeShowRecordsAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function showRecordsAction(): ResponseInterface
@@ -149,12 +129,7 @@ class EmployeeController extends AbstractController
 
     public function initializeNewAction()
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function newAction(Employee $newEmployee = null): ResponseInterface
@@ -167,12 +142,7 @@ class EmployeeController extends AbstractController
 
     public function initializeCreateAction()
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function createAction(Employee $newEmployee): ResponseInterface
@@ -186,19 +156,13 @@ class EmployeeController extends AbstractController
 
     public function initializeEditAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function editAction(Employee $employee): ResponseInterface
     {
         if (!$employee->getIsCatchAllMail()) {
             $hash = $this->request->getArgument('hash');
-
             if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $hash)) {
                 $this->view->assignMultiple(
                     [
@@ -236,12 +200,7 @@ class EmployeeController extends AbstractController
             $this->settings
         );
 
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function updateAction(Employee $employee): ResponseInterface
@@ -254,12 +213,7 @@ class EmployeeController extends AbstractController
 
     public function initializeSendEditMailAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings
-        );
+        $this->emitEventSignal();
     }
 
     public function sendEditMailAction(Employee $employee): ResponseInterface
@@ -275,6 +229,16 @@ class EmployeeController extends AbstractController
             'Employee',
             'telephonedirectory',
             ['employee' => $employee]
+        );
+    }
+
+    protected function emitEventSignal(): void
+    {
+        $this->emitInitializeControllerAction(
+            $this->eventDispatcher,
+            $this->request,
+            $this->arguments,
+            $this->settings
         );
     }
 }
