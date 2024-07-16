@@ -20,7 +20,7 @@ class PropertyMappingConfigurator
         $configuration->allowProperties('languageSkill');
         $configuration->forProperty('languageSkill.*')
             ->allowProperties('language', 'writing', 'speaking')
-            ->allowCreationForSubProperty('languageSkill.*')
-            ->allowModificationForSubProperty('languageSkill.*');
+            ->allowCreationForSubProperty('languageSkill.*');
+        $configuration->allowModificationForSubProperty('languageSkill.*');
     }
 }
