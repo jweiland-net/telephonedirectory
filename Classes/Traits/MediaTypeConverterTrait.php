@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Traits;
 
 use JWeiland\Telephonedirectory\Property\TypeConverter\UploadMultipleFilesConverter;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Property\TypeConverterInterface;
 
@@ -19,11 +20,6 @@ trait MediaTypeConverterTrait
 {
     /**
      * Currently only "image" are allowed properties.
-     *
-     * @param string $property
-     * @param MvcPropertyMappingConfiguration $propertyMappingConfigurationForEmployee
-     * @param mixed $converterOptionValue
-     * @param array $settings
      */
     protected function assignMediaTypeConverter(
         string $property,
