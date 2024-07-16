@@ -26,3 +26,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['telephonedir
     'telephonedirectory_showrecords',
     'FILE:EXT:telephonedirectory/Configuration/FlexForms/ShowRecords.xml'
 );
+
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['telephonedirectory_telephone'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'telephonedirectory_telephone',
+    'FILE:EXT:telephonedirectory/Configuration/FlexForms/General.xml'
+);

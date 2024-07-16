@@ -9,6 +9,15 @@
 			<trans-unit id="showRecords" xml:space="preserve">
 				<source>Show Records</source>
 			</trans-unit>
+			<trans-unit id="showGlossary" xml:space="preserve">
+				<source>Show Glossary</source>
+			</trans-unit>
+			<trans-unit id="office" xml:space="preserve">
+				<source>Restrict By Office</source>
+			</trans-unit>
+			<trans-unit id="allOffices" xml:space="preserve">
+				<source>All Offices</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

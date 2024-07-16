@@ -53,10 +53,11 @@ class EmployeeController extends AbstractController
         $this->emitEventSignal();
     }
 
-    public function listAction(): ResponseInterface
+    public function listAction(array $search = []): ResponseInterface
     {
+        $office = $this->settings['filterByOffice'] ?? null;
         $this->postProcessAndAssignFluidVariables([
-            'records' => $this->employeeRepository->findAll(),
+            'records' => $this->employeeRepository->findFilteredBy($office, $search),
             'offices' => $this->officeRepository->findAll(),
         ]);
 
@@ -91,7 +92,7 @@ class EmployeeController extends AbstractController
         } else {
             $employees = $this->employeeRepository->findAll();
         }
-        $this->view->assign('employees', $employees);
+        $this->view->assign('records', $employees);
         $this->view->assign('offices', $this->officeRepository->findAll());
 
         return $this->htmlResponse();

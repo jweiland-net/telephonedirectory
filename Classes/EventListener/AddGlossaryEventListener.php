@@ -55,7 +55,7 @@ class AddGlossaryEventListener extends AbstractControllerEventListener
             'extensionName' => 'telephonedirectory',
             'pluginName' => 'telephone',
             'controllerName' => 'Employee',
-            'column' => 'title',
+            'column' => 'last_name',
             'settings' => $event->getSettings(),
         ];
 

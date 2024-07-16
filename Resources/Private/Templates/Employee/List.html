@@ -6,8 +6,10 @@
 
 <f:section name="Main">
     <f:flashMessages/>
-
     <f:render partial="Employee/Search" arguments="{offices: offices, office: office, search: search}"/>
-    <f:render partial="Employee/List" arguments="{employees: employees}"/>
+    <f:render partial="Employee/List" arguments="{employees: records}"/>
+    <f:if condition="{settings.showGlossary}">
+        {glossary -> f:format.raw()}
+    </f:if>
 </f:section>
 </html>

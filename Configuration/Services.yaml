@@ -18,6 +18,11 @@ services:
     tags:
       - name: event.listener
         event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+  JWeiland\Telephonedirectory\EventListener\AddGlossaryEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+        after: JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener
 
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
