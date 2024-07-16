@@ -50,24 +50,24 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     /**
      * @var Folder
      */
-    protected $uploadFolder;
+    protected Folder $uploadFolder;
 
     /**
      * @var PropertyMappingConfigurationInterface
      */
-    protected $converterConfiguration = [];
+    protected array|PropertyMappingConfigurationInterface $converterConfiguration = [];
 
     /**
      * @var EventDispatcher
      */
-    protected $eventDispatcher;
+    protected EventDispatcher $eventDispatcher;
 
     /**
      * Do not inject this property, as EXT:checkfaluploads may not be loaded
      *
      * @var FalUploadService
      */
-    protected $falUploadService;
+    protected FalUploadService $falUploadService;
 
     public function __construct(EventDispatcher $eventDispatcher)
     {
@@ -244,7 +244,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function isValidUploadFile(array $uploadedFile): bool
     {
-        if ($uploadedFile['error'] === 4) {
+        if (isset($uploadedFile['error']) && $uploadedFile['error'] === 4) {
             return false;
         }
 
