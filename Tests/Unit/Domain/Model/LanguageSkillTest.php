@@ -14,7 +14,7 @@ namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Language;
 use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
