@@ -49,10 +49,12 @@
 		"typo3-ter/telephonedirectory": "self.version"
 	},
 	"config": {
+		"sort-packages": true,
 		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin",
 		"allow-plugins": {
-			"typo3/cms-composer-installers": true,
-			"typo3/class-alias-loader": true
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
 		}
 	},
 	"extra": {
@@ -63,17 +65,8 @@
 		}
 	},
 	"scripts": {
-		"php:fix": ".Build/vendor/bin/php-cs-fixer --config=Build/.php_cs.php fix Classes Tests",
+		"php:fix": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix Classes Tests",
 		"ci:php:lint": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:fixer": ".Build/vendor/bin/php-cs-fixer --config=Build/.php_cs.php fix --dry-run -v --show-progress=dots --diff Classes Tests",
-		"ci:tests:unit": "php .Build/vendor/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit",
-		"ci:tests:functional": "find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; php .Build/vendor/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml {}';",
-		"link-extension": [
-			"@php -r 'is_dir($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/\") || mkdir($extFolder, 0777, true);'",
-			"@php -r 'file_exists($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/telephonedirectory\") || symlink(__DIR__,$extFolder);'"
-		],
-		"post-autoload-dump": [
-			"@link-extension"
-		]
+		"ci:php:fixer": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix --dry-run -v --show-progress=dots --diff Classes Tests"
 	}
 }
