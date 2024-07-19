@@ -33,3 +33,4 @@ nbproject
 
 # Ignore composer stuff
 /composer.lock
+composer.json.testing
