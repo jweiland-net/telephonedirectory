@@ -11,8 +11,11 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Tests\Functional\Domain\Model;
 
+use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Telephonedirectory\Domain\Model\Building;
+use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -20,29 +23,38 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class BuildingTest extends FunctionalTestCase
 {
-    /**
-     * @var Building
-     */
-    protected $subject;
+    protected Building $subject;
+    protected EmployeeRepository $employeeRepository;
 
     /**
      * @var string[]
      */
-    protected $testExtensionsToLoad = [
-        'typo3conf/ext/telephonedirectory',
-        'typo3conf/ext/maps2'
+    protected array $testExtensionsToLoad = [
+        'jweiland/telephonedirectory',
+        'jweiland/maps2',
+        'jweiland/glossary2',
     ];
 
     protected function setUp(): void
     {
         parent::setUp();
 
+        // Create a mock for GlossaryService
+        $glossaryServiceMock = $this->getMockBuilder(GlossaryService::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        // Create an instance of EmployeeRepository and inject the mock service
+        $this->employeeRepository = GeneralUtility::makeInstance(EmployeeRepository::class);
+        $this->employeeRepository->injectGlossaryService($glossaryServiceMock);
+
+        // Initialize Building model
         $this->subject = new Building();
     }
 
     protected function tearDown(): void
     {
-        unset($this->subject);
+        unset($this->subject, $this->employeeRepository);
 
         parent::tearDown();
     }

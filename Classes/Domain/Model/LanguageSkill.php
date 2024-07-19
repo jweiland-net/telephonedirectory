@@ -18,7 +18,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class LanguageSkill extends AbstractEntity
 {
-    protected Language $language;
+    protected ?Language $language = null;
 
     protected string $writing = '';
 
@@ -26,7 +26,7 @@ class LanguageSkill extends AbstractEntity
 
     protected string $infotext = '';
 
-    protected Employee $employee;
+    protected ?Employee $employee = null;
 
     public function getLanguage(): ?Language
     {

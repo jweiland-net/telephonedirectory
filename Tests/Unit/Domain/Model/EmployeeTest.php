@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Building;
+use JWeiland\Telephonedirectory\Domain\Model\Category;
 use JWeiland\Telephonedirectory\Domain\Model\Department;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
-use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -27,10 +27,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class EmployeeTest extends UnitTestCase
 {
-    /**
-     * @var Employee
-     */
-    protected $subject;
+    protected Employee $subject;
 
     protected function setUp(): void
     {

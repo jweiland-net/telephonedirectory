@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class EmployeeRepository extends Repository
 {
-    protected GlossaryService $glossaryService;
+    protected ?GlossaryService $glossaryService = null;
 
     public function injectGlossaryService(GlossaryService $glossaryService): void
     {

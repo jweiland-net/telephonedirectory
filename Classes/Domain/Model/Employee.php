@@ -34,7 +34,7 @@ class Employee extends AbstractEntity
 
     protected bool $isCatchAllMail = false;
 
-    protected SubjectField $subjectField;
+    protected ?SubjectField $subjectField = null;
 
     protected string $company = '';
 
@@ -72,11 +72,11 @@ class Employee extends AbstractEntity
 
     protected bool $moduleSysDmailHtml = true;
 
-    protected Office $office;
+    protected ?Office $office = null;
 
-    protected Building $building;
+    protected ?Building $building = null;
 
-    protected Department $department;
+    protected ?Department $department = null;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
