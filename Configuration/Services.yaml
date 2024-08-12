@@ -6,6 +6,8 @@ services:
 
   JWeiland\Telephonedirectory\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
 
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Service\EmailService:
