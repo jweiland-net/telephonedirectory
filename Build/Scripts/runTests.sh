@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 #
-# TYPO3 core test runner based on docker and docker-compose.
+# TYPO3 core test runner based on docker and docker compose.
 #
 
 # Function to write a .env file in Build/testing-docker
-# This is read by docker-compose and vars defined here are
-# used in Build/testing-docker/docker-compose.yml
+# This is read by docker compose and vars defined here are
+# used in Build/testing-docker/docker compose.yml
 setUpDockerComposeDotEnv() {
     # Delete possibly existing local .env file if exists
     [ -e .env ] && rm .env
-    # Set up a new .env file for docker-compose
+    # Set up a new .env file for docker compose
     {
         echo "COMPOSE_PROJECT_NAME=local"
         # To prevent access rights of files created by the testing, the docker image later
-        # runs with the same user that is currently executing the script. docker-compose can't
+        # runs with the same user that is currently executing the script. docker compose can't
         # use $UID directly itself since it is a shell variable and not an env variable, so
         # we have to set it explicitly here.
         echo "HOST_UID=`id -u`"
@@ -63,7 +63,7 @@ jweiland telephonedirectory test runner. Execute unit test suite and some other 
 Also used by github for test execution.
 
 Recommended docker version is >=20.10 for xdebug break pointing to work reliably, and
-a recent docker-compose (tested >=1.21.2) is needed.
+a recent docker compose (tested >=1.21.2) is needed.
 
 Usage: $0 [options] [file]
 
@@ -148,9 +148,9 @@ Examples:
     ./Build/Scripts/runTests.sh
 EOF
 
-# Test if docker-compose exists, else exit out with error
-if ! type "docker-compose" > /dev/null; then
-  echo "This script relies on docker and docker-compose. Please install" >&2
+# Test if docker compose exists, else exit out with error
+if ! type "docker compose" > /dev/null; then
+  echo "This script relies on docker and docker compose. Please install" >&2
   exit 1
 fi
 
@@ -270,21 +270,21 @@ case ${TEST_SUITE} in
         case ${DBMS} in
             sqlite)
                 echo "Using driver: ${DATABASE_DRIVER}"
-                docker-compose run acceptance_cli_sqlite
+                docker compose run acceptance_cli_sqlite
                 SUITE_EXIT_CODE=$?
                 ;;
             mysql)
                 echo "Using driver: ${DATABASE_DRIVER}"
-                docker-compose run acceptance_cli_mysql80
+                docker compose run acceptance_cli_mysql80
                 SUITE_EXIT_CODE=$?
                 ;;
             mariadb)
                 echo "Using driver: ${DATABASE_DRIVER}"
-                docker-compose run acceptance_cli_mariadb10
+                docker compose run acceptance_cli_mariadb10
                 SUITE_EXIT_CODE=$?
                 ;;
             postgres)
-                docker-compose run acceptance_cli_postgres10
+                docker compose run acceptance_cli_postgres10
                 SUITE_EXIT_CODE=$?
                 ;;
             *)
@@ -293,7 +293,7 @@ case ${TEST_SUITE} in
                 echo "call \"./Build/Scripts/runTests.sh -h\" to display help and valid options" >&2
                 exit 1
         esac
-        docker-compose down
+        docker compose down
         ;;
     cgl)
         # Active dry-run for cgl needs not "-n" but specific options
@@ -301,9 +301,9 @@ case ${TEST_SUITE} in
             CGLCHECK_DRY_RUN="--dry-run --diff"
         fi
         setUpDockerComposeDotEnv
-        docker-compose run cgl
+        docker compose run cgl
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     clean)
         rm -rf ../../composer.lock ../../.Build/ ../../Tests/Acceptance/Support/_generated/ ../../composer.json.testing
@@ -314,11 +314,11 @@ case ${TEST_SUITE} in
         if [ -f "../../composer.json.testing" ]; then
             cp ../../composer.json ../../composer.json.orig
         fi
-        docker-compose run composer_update
+        docker compose run composer_update
         cp ../../composer.json ../../composer.json.testing
         mv ../../composer.json.orig ../../composer.json
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     functional)
         handleDbmsAndDriverOptions
@@ -326,16 +326,16 @@ case ${TEST_SUITE} in
         case ${DBMS} in
             mariadb)
                 echo "Using driver: ${DATABASE_DRIVER}"
-                docker-compose run functional_mariadb10
+                docker compose run functional_mariadb10
                 SUITE_EXIT_CODE=$?
                 ;;
             mysql)
                 echo "Using driver: ${DATABASE_DRIVER}"
-                docker-compose run functional_mysql80
+                docker compose run functional_mysql80
                 SUITE_EXIT_CODE=$?
                 ;;
             postgres)
-                docker-compose run functional_postgres10
+                docker compose run functional_postgres10
                 SUITE_EXIT_CODE=$?
                 ;;
             sqlite)
@@ -344,7 +344,7 @@ case ${TEST_SUITE} in
                 # root if docker creates it. Thank you, docker. We create the path beforehand
                 # to avoid permission issues.
                 mkdir -p ${ROOT_DIR}/Web/typo3temp/var/tests/functional-sqlite-dbs/
-                docker-compose run functional_sqlite
+                docker compose run functional_sqlite
                 SUITE_EXIT_CODE=$?
                 ;;
             *)
@@ -353,31 +353,31 @@ case ${TEST_SUITE} in
                 echo "${HELP}" >&2
                 exit 1
         esac
-        docker-compose down
+        docker compose down
         ;;
     lint)
         setUpDockerComposeDotEnv
-        docker-compose run lint
+        docker compose run lint
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     phpstan)
         setUpDockerComposeDotEnv
-        docker-compose run phpstan
+        docker compose run phpstan
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     phpstanGenerateBaseline)
         setUpDockerComposeDotEnv
-        docker-compose run phpstan_generate_baseline
+        docker compose run phpstan_generate_baseline
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     unit)
         setUpDockerComposeDotEnv
-        docker-compose run unit
+        docker compose run unit
         SUITE_EXIT_CODE=$?
-        docker-compose down
+        docker compose down
         ;;
     update)
         # pull typo3/core-testing-*:latest versions of those ones that exist locally
