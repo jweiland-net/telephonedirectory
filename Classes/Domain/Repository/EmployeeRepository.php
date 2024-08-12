@@ -42,7 +42,7 @@ class EmployeeRepository extends Repository
             $constraints[] = $query->equals('office', $office);
         }
 
-        if (isset($search['letter']) && $search['letter'] !== '') {
+        if (((string)$search['letter'] ?? '') !== '') {
             $constraints[] = $this->glossaryService->getLetterConstraintForExtbaseQuery(
                 $query,
                 'lastName',
