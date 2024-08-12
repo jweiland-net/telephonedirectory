@@ -30,7 +30,7 @@ nbproject
 .sass-cache
 .session
 *.log
-
+.env
 # Ignore composer stuff
 /composer.lock
 composer.json.testing
