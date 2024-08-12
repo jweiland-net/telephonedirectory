@@ -4,6 +4,11 @@ services:
     autoconfigure: true
     public: false
 
+  # Parameters
+  parameters:
+    telephonedirectory.email_service.settings:
+      pidOfDetailPage: 123
+
   JWeiland\Telephonedirectory\:
     resource: '../Classes/*'
     exclude:
@@ -29,7 +34,7 @@ services:
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
     public: true;
-    arguments: [!tagged_iterator { tag: 'telephonedirectory.add_record_to_employee' }]
+    arguments: [!tagged_iterator {tag: 'telephonedirectory.add_record_to_employee'}]
 
   JWeiland\Telephonedirectory\Repository\Handler\AddAdditionalFunctionsToEmployee:
     tags:
@@ -49,7 +54,3 @@ services:
   JWeiland\Telephonedirectory\Repository\Handler\AddSubjectFieldToEmployee:
     tags:
       - name: 'telephonedirectory.add_record_to_employee'
-
-parameters:
-  telephonedirectory.email_service.settings:
-    pidOfDetailPage: 123
