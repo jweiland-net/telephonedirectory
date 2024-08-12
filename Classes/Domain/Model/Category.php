@@ -22,7 +22,7 @@ class Category extends AbstractEntity
 
     protected string $description = '';
 
-    protected Category $parent;
+    protected ?Category $parent = null;
 
     public function getTitle(): string
     {
@@ -44,7 +44,7 @@ class Category extends AbstractEntity
         $this->description = $description;
     }
 
-    public function getParent(): Category
+    public function getParent(): ?Category
     {
         if ($this->parent instanceof LazyLoadingProxy) {
             $this->parent->_loadRealInstance();
@@ -52,7 +52,7 @@ class Category extends AbstractEntity
         return $this->parent;
     }
 
-    public function setParent(Category $parent): void
+    public function setParent(?Category $parent = null): void
     {
         $this->parent = $parent;
     }
