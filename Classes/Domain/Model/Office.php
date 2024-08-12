@@ -26,12 +26,12 @@ class Office extends AbstractEntity
     protected string $token = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\Department>
+     * @var ObjectStorage<Department>
      */
     protected ObjectStorage $departments;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\SubjectField>
+     * @var ObjectStorage<SubjectField>
      */
     protected ObjectStorage $subjectFields;
 
