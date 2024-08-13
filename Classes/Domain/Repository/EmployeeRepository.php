@@ -91,7 +91,7 @@ class EmployeeRepository extends Repository
 
         // Do not set any SELECT, ORDER BY, GROUP BY statement. It will be set by glossary2 API
         $queryBuilder
-            ->from($table, 'e')
+            ->from($table)
             ->where(
                 $queryBuilder->expr()->in(
                     'pid',
@@ -103,7 +103,7 @@ class EmployeeRepository extends Repository
             );
 
         if ($office) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.office', $office));
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('office', $office));
         }
 
         return $queryBuilder;
