@@ -29,7 +29,6 @@ return (new Config())
             ->in(__DIR__ . '/../../')
             ->exclude(__DIR__ . '/../../.Build')
             ->exclude(__DIR__ . '/../../var')
-            ->exclude(__DIR__ . '/../../ext_localconf.php')
     )
     ->setRiskyAllowed(true)
     ->setRules([
