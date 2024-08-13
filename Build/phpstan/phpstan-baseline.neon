@@ -1,2 +1,4 @@
 parameters:
 	ignoreErrors:
+		- '#Class "TYPO3\\CMS\\Scheduler\\AbstractAdditionalFieldProvider" not found#'
+		- '#Class "TYPO3\\CMS\\Scheduler\\Task\\AbstractTask" not found#'
