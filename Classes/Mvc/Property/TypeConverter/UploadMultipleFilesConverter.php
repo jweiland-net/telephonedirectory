@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Property\TypeConverter;
+namespace JWeiland\Telephonedirectory\Mvc\Property\TypeConverter;
 
 use JWeiland\Checkfaluploads\Service\FalUploadService;
 use JWeiland\Telephonedirectory\Event\PostCheckFileReferenceEvent;

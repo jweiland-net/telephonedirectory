@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Traits;
 
-use JWeiland\Telephonedirectory\Property\TypeConverter\UploadMultipleFilesConverter;
+use JWeiland\Telephonedirectory\Mvc\Property\TypeConverter\UploadMultipleFilesConverter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Property\TypeConverterInterface;
