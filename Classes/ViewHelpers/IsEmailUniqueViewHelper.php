@@ -42,7 +42,7 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
             'string',
             'Sets the email address which should be checked for duplication',
             false,
-            ''
+            '',
         );
     }
 

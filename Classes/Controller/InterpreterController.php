@@ -37,7 +37,7 @@ class InterpreterController extends AbstractController
             $this->eventDispatcher,
             $this->request,
             $this->arguments,
-            $this->settings
+            $this->settings,
         );
     }
 

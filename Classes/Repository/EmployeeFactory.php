@@ -65,8 +65,8 @@ class EmployeeFactory
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();
@@ -89,8 +89,8 @@ class EmployeeFactory
                 ->where(
                     $queryBuilder->expr()->in(
                         'pid',
-                        $queryBuilder->createNamedParameter($storages, Connection::PARAM_INT_ARRAY)
-                    )
+                        $queryBuilder->createNamedParameter($storages, Connection::PARAM_INT_ARRAY),
+                    ),
                 )
                 ->execute();
 

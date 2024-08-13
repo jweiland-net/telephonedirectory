@@ -1,10 +1,15 @@
 {
 	"name": "jweiland/telephonedirectory",
-	"type": "typo3-cms-extension",
 	"description": "Telephone Directory",
 	"license": "GPL-2.0-or-later",
-	"keywords": ["typo3", "TYPO3 CMS", "telephonedirectory", "telephone", "directory"],
-	"homepage": "https://jweiland.net",
+	"type": "typo3-cms-extension",
+	"keywords": [
+		"typo3",
+		"TYPO3 CMS",
+		"telephonedirectory",
+		"telephone",
+		"directory"
+	],
 	"authors": [
 		{
 			"name": "Stefan Froemken",
@@ -17,23 +22,31 @@
 			"role": "Senior Developer"
 		}
 	],
+	"homepage": "https://jweiland.net",
 	"support": {
 		"email": "projects@jweiland.net",
 		"issues": "https://github.com/jweiland-net/telephonedirectory/issues",
 		"source": "https://github.com/jweiland-net/telephonedirectory"
 	},
 	"require": {
-		"typo3/cms-core": "^12.4.16",
-		"jweiland/maps2": ">=11.0.0",
 		"jweiland/checkfaluploads": ">=4.0.0",
-		"jweiland/glossary2": ">=6.0.0"
+		"jweiland/glossary2": ">=6.0.0",
+		"jweiland/maps2": ">=11.0.0",
+		"typo3/cms-core": "^12.4.16"
 	},
 	"require-dev": {
-		"roave/security-advisories": "dev-latest",
+		"ergebnis/composer-normalize": "~2.42.0",
 		"friendsofphp/php-cs-fixer": "^3.14",
+		"phpstan/phpstan": "^1.10",
 		"phpunit/phpunit": "^9.6",
-		"typo3/coding-standards": "^0.6",
+		"roave/security-advisories": "dev-latest",
+		"typo3/cms-dashboard": "^12.4",
+		"typo3/cms-install": "^12.4",
+		"typo3/cms-reports": "^12.4",
 		"typo3/testing-framework": "^7.0.2"
+	},
+	"replace": {
+		"typo3-ter/telephonedirectory": "self.version"
 	},
 	"autoload": {
 		"psr-4": {
@@ -45,28 +58,26 @@
 			"JWeiland\\Telephonedirectory\\Tests\\": "Tests"
 		}
 	},
-	"replace": {
-		"typo3-ter/telephonedirectory": "self.version"
-	},
 	"config": {
-		"sort-packages": true,
-		"vendor-dir": ".Build/vendor",
-		"bin-dir": ".Build/bin",
 		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
-		}
+		},
+		"bin-dir": ".Build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
 	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "telephonedirectory",
 			"app-dir": ".Build",
-			"web-dir": ".Build/public"
+			"extension-key": "telephonedirectory",
+			"web-dir": ".Build/web"
 		}
 	},
 	"scripts": {
-		"php:fix": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix Classes Tests",
+		"ci:php:fixer": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix --dry-run -v --show-progress=dots --diff Classes Tests",
 		"ci:php:lint": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:fixer": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix --dry-run -v --show-progress=dots --diff Classes Tests"
+		"php:fix": ".Build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix Classes Tests"
 	}
 }

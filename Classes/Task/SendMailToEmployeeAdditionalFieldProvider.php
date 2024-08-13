@@ -52,14 +52,14 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
         $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
         $additionalFields[$fieldID] = [
             'code'     => $fieldCode,
-            'label'    => 'Storage pid'
+            'label'    => 'Storage pid',
         ];
 
         $fieldID = 'detailViewPid';
         $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
         $additionalFields[$fieldID] = [
             'code'     => $fieldCode,
-            'label'    => 'Detail View Pid'
+            'label'    => 'Detail View Pid',
         ];
 
         return $additionalFields;

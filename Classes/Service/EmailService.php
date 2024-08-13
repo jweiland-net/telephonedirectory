@@ -33,7 +33,7 @@ class EmailService
         ExtConf $extConf,
         UriBuilder $uriBuilder,
         array $settings,
-        protected readonly HashService $hashService
+        protected readonly HashService $hashService,
     ) {
         $this->extConf = $extConf;
         $this->uriBuilder = $uriBuilder;
@@ -82,7 +82,7 @@ class EmailService
                 'action' => 'edit',
                 'controller' => 'Employee',
                 'employee' => $employee->getUid(),
-            ]
+            ],
         );
 
         $view->assign('link', $link);
@@ -94,7 +94,7 @@ class EmailService
                 'firstName' => $employee->getFirstName(),
                 'lastName' => $employee->getLastName(),
             ],
-            $view->render()
+            $view->render(),
         );
     }
 }

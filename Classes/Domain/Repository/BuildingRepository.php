@@ -16,6 +16,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for Buildings
  */
-class BuildingRepository extends Repository
-{
-}
+class BuildingRepository extends Repository {}

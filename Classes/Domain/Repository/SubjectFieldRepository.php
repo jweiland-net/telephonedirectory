@@ -16,6 +16,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for SubjectFields
  */
-class SubjectFieldRepository extends Repository
-{
-}
+class SubjectFieldRepository extends Repository {}

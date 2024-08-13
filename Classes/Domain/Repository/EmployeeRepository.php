@@ -14,8 +14,8 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
 use Doctrine\DBAL\ArrayParameterType;
 use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -46,7 +46,7 @@ class EmployeeRepository extends Repository
             $constraints[] = $this->glossaryService->getLetterConstraintForExtbaseQuery(
                 $query,
                 'lastName',
-                $search['letter']
+                $search['letter'],
             );
         }
 
@@ -97,9 +97,9 @@ class EmployeeRepository extends Repository
                     'pid',
                     $queryBuilder->createNamedParameter(
                         $query->getQuerySettings()->getStoragePageIds(),
-                        ArrayParameterType::INTEGER
-                    )
-                )
+                        ArrayParameterType::INTEGER,
+                    ),
+                ),
             );
 
         if ($office) {

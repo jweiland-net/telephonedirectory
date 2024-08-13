@@ -121,7 +121,7 @@ class EmployeeController extends AbstractController
         $this->view->assignMultiple([
             'contactEmail' => $this->extConf->getEmailContact(),
             'employees' => $this->employeeRepository->findEmployees(
-                $this->settings['showRecords'] ?? ''
+                $this->settings['showRecords'] ?? '',
             ),
         ]);
 
@@ -175,10 +175,10 @@ class EmployeeController extends AbstractController
                         'languages' => $this->languageRepository->findAll(),
                         'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
                         'additionalFunctions' => $this->categoryRepository->findByParent(
-                            $this->extConf->getAdditionalFunctionsParentCategoryUid()
+                            $this->extConf->getAdditionalFunctionsParentCategoryUid(),
                         ),
                         'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
-                    ]
+                    ],
                 );
             }
         }
@@ -192,13 +192,13 @@ class EmployeeController extends AbstractController
         $this->propertyMappingConfigurator->configureEmployeeMapping($employeeMappingConfiguration);
 
         $persistedEmployee = $this->employeeRepository->findByIdentifier(
-            $this->request->getArgument('employee')['__identity']
+            $this->request->getArgument('employee')['__identity'],
         );
         $this->assignMediaTypeConverter(
             'image',
             $employeeMappingConfiguration,
             $persistedEmployee->getImage(),
-            $this->settings
+            $this->settings,
         );
 
         $this->emitEventSignal();
@@ -229,7 +229,7 @@ class EmployeeController extends AbstractController
             'show',
             'Employee',
             'telephonedirectory',
-            ['employee' => $employee]
+            ['employee' => $employee],
         );
     }
 
@@ -239,7 +239,7 @@ class EmployeeController extends AbstractController
             $this->eventDispatcher,
             $this->request,
             $this->arguments,
-            $this->settings
+            $this->settings,
         );
     }
 }

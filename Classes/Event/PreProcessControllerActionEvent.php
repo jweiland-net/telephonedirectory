@@ -35,7 +35,7 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
         ActionController $controller,
         ?Employee $employee,
         array $settings,
-        RequestInterface $request
+        RequestInterface $request,
     ) {
         $this->controller = $controller;
         $this->employee = $employee;

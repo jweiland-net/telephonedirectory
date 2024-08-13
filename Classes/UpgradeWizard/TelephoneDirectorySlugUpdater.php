@@ -71,12 +71,12 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
                 $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR)
+                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
                     ),
                     $queryBuilder->expr()->isNull(
-                        $this->fieldName
-                    )
-                )
+                        $this->fieldName,
+                    ),
+                ),
             )
             ->executeQuery()
             ->fetchOne();
@@ -102,12 +102,12 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
                 $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR)
+                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
                     ),
                     $queryBuilder->expr()->isNull(
-                        $this->fieldName
-                    )
-                )
+                        $this->fieldName,
+                    ),
+                ),
             )
             ->executeStatement();
 
@@ -119,12 +119,12 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
                     [
                         $this->fieldName => $this->pathSegmentHelper->generatePathSegment(
                             $recordToUpdate,
-                            (int)$recordToUpdate['pid']
-                        )
+                            (int)$recordToUpdate['pid'],
+                        ),
                     ],
                     [
-                        'uid' => (int)$recordToUpdate['uid']
-                    ]
+                        'uid' => (int)$recordToUpdate['uid'],
+                    ],
                 );
             }
         }
@@ -138,7 +138,7 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
     public function getPrerequisites(): array
     {
         return [
-            DatabaseUpdatedPrerequisite::class
+            DatabaseUpdatedPrerequisite::class,
         ];
     }
 

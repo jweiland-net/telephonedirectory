@@ -61,23 +61,23 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
                     (string)$queryBuilder->expr()->and(
                         $queryBuilder->expr()->eq(
                             'sc_mm.tablenames',
-                            $queryBuilder->createNamedParameter(self::TABLE_NAME)
+                            $queryBuilder->createNamedParameter(self::TABLE_NAME),
                         ),
                         $queryBuilder->expr()->eq(
                             'sc_mm.fieldname',
-                            $queryBuilder->createNamedParameter(self::COLUMN)
+                            $queryBuilder->createNamedParameter(self::COLUMN),
                         ),
                         $queryBuilder->expr()->eq(
                             'sc_mm.uid_local',
-                            $queryBuilder->quoteIdentifier('sc.uid')
-                        )
-                    )
+                            $queryBuilder->quoteIdentifier('sc.uid'),
+                        ),
+                    ),
                 )
                 ->where(
                     $queryBuilder->expr()->eq(
                         'sc_mm.uid_foreign',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->groupBy('sc.uid')
                 ->execute();

@@ -54,7 +54,7 @@ class LanguageSkillTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getLanguage()
+            $this->subject->getLanguage(),
         );
     }
 
@@ -65,7 +65,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getWriting()
+            $this->subject->getWriting(),
         );
     }
 
@@ -78,7 +78,7 @@ class LanguageSkillTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getWriting()
+            $this->subject->getWriting(),
         );
     }
 
@@ -89,7 +89,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getSpeaking()
+            $this->subject->getSpeaking(),
         );
     }
 
@@ -102,7 +102,7 @@ class LanguageSkillTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getSpeaking()
+            $this->subject->getSpeaking(),
         );
     }
 
@@ -113,7 +113,7 @@ class LanguageSkillTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getInfotext()
+            $this->subject->getInfotext(),
         );
     }
 
@@ -126,7 +126,7 @@ class LanguageSkillTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getInfotext()
+            $this->subject->getInfotext(),
         );
     }
 
@@ -148,7 +148,7 @@ class LanguageSkillTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getEmployee()
+            $this->subject->getEmployee(),
         );
     }
 }

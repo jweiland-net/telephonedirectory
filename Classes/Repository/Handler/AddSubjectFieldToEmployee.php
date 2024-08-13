@@ -54,8 +54,8 @@ class AddSubjectFieldToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($subjectFieldUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($subjectFieldUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();

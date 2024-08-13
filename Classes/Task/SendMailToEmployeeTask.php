@@ -48,7 +48,7 @@ class SendMailToEmployeeTask extends AbstractTask
                 $employee = $employeeFactory->build($employeeUid);
                 $emailService->informEmployeeAboutTheirData(
                     $employee,
-                    $this->generateContent($employee)
+                    $this->generateContent($employee),
                 );
             } catch (\Exception $e) {
                 return false;
@@ -79,7 +79,7 @@ class SendMailToEmployeeTask extends AbstractTask
         $view = GeneralUtility::makeInstance(StandaloneView::class);
 
         $view->setTemplatePathAndFilename(
-            $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html')
+            $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html'),
         );
         $view->setPartialRootPaths([
             $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Partials/'),
@@ -105,9 +105,9 @@ class SendMailToEmployeeTask extends AbstractTask
                     'action' => 'edit',
                     'controller' => 'Employee',
                     'employee' => $employeeUid,
-                    'hash' => $this->getHashService()->generateHmac('Employee:' . $employeeUid)
-                ]
-            ]
+                    'hash' => $this->getHashService()->generateHmac('Employee:' . $employeeUid),
+                ],
+            ],
         );
     }
 

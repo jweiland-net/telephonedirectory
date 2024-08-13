@@ -44,7 +44,7 @@ class OfficeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -57,7 +57,7 @@ class OfficeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -68,7 +68,7 @@ class OfficeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getCode()
+            $this->subject->getCode(),
         );
     }
 
@@ -81,7 +81,7 @@ class OfficeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getCode()
+            $this->subject->getCode(),
         );
     }
 
@@ -92,7 +92,7 @@ class OfficeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getToken()
+            $this->subject->getToken(),
         );
     }
 
@@ -105,7 +105,7 @@ class OfficeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getToken()
+            $this->subject->getToken(),
         );
     }
 
@@ -127,7 +127,7 @@ class OfficeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getDepartment()
+            $this->subject->getDepartment(),
         );
     }
 
@@ -172,7 +172,7 @@ class OfficeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getSubjectField()
+            $this->subject->getSubjectField(),
         );
     }
 

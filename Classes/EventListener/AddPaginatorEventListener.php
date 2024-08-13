@@ -42,7 +42,7 @@ class AddPaginatorEventListener
             $paginator = new QueryResultPaginator(
                 $event->getFluidVariables()['records'],
                 $this->getCurrentPage($event),
-                $this->getItemsPerPage($event)
+                $this->getItemsPerPage($event),
             );
 
             $event->addFluidVariable('actionName', $event->getActionName());
@@ -77,12 +77,12 @@ class AddPaginatorEventListener
         return
             array_key_exists(
                 $event->getControllerName(),
-                $this->allowedControllerActions
+                $this->allowedControllerActions,
             )
             && in_array(
                 $event->getActionName(),
                 $this->allowedControllerActions[$event->getControllerName()],
-                true
+                true,
             );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('TYPO3')) {
     die('Access denied.');
 }
@@ -14,11 +15,11 @@ call_user_func(static function () {
         'Telephonedirectory',
         'Telephone',
         [
-            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail'
+            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
         ],
         // non-cacheable actions
         [
-            EmployeeController::class => 'search, edit, create, update, sendEditMail'
+            EmployeeController::class => 'search, edit, create, update, sendEditMail',
         ],
     );
 
@@ -27,12 +28,12 @@ call_user_func(static function () {
         'Interpreter',
         [
             InterpreterController::class => 'list',
-            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail'
+            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
         ],
         // non-cacheable actions
         [
             InterpreterController::class => '',
-            EmployeeController::class => 'search, edit, create, update, sendEditMail'
+            EmployeeController::class => 'search, edit, create, update, sendEditMail',
         ],
     );
 
@@ -40,7 +41,7 @@ call_user_func(static function () {
         'Telephonedirectory',
         'ShowRecords',
         [
-            EmployeeController::class => 'showRecords'
+            EmployeeController::class => 'showRecords',
         ],
     );
 
@@ -48,6 +49,6 @@ call_user_func(static function () {
         'extension' => 'telephonedirectory',
         'title' => 'Send email to every employee about their current data',
         'description' => 'Send email to every employee about their current data',
-        'additionalFields' => SendMailToEmployeeAdditionalFieldProvider::class
+        'additionalFields' => SendMailToEmployeeAdditionalFieldProvider::class,
     ];
 });

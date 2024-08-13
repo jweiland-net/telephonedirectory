@@ -54,8 +54,8 @@ class AddOfficeToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($officeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($officeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();

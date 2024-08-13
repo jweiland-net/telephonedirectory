@@ -54,8 +54,8 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'employee',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute();
 
@@ -81,8 +81,8 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($languageUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($languageUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();

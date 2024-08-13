@@ -52,7 +52,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailContact === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender email address in extension configuration or in install tool',
-                    1706178058
+                    1706178058,
                 );
             }
 
@@ -79,7 +79,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailFromAddress === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender email address in extension configuration or in install tool',
-                    1706178074
+                    1706178074,
                 );
             }
 
@@ -106,7 +106,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailFromName === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender name in extension configuration or in install tool',
-                    1706178086
+                    1706178086,
                 );
             }
 

@@ -25,7 +25,7 @@ trait MediaTypeConverterTrait
         string $property,
         MvcPropertyMappingConfiguration $propertyMappingConfigurationForEmployee,
         mixed $converterOptionValue,
-        array $settings
+        array $settings,
     ): void {
         if ($property === 'image') {
             $className = UploadMultipleFilesConverter::class;
@@ -43,7 +43,7 @@ trait MediaTypeConverterTrait
         $propertyMappingConfigurationForMediaFiles->setTypeConverterOption(
             $className,
             'settings',
-            $settings
+            $settings,
         );
 
         if (!empty($converterOptionValue)) {
@@ -51,7 +51,7 @@ trait MediaTypeConverterTrait
             $propertyMappingConfigurationForMediaFiles->setTypeConverterOption(
                 $className,
                 $converterOptionName,
-                $converterOptionValue
+                $converterOptionValue,
             );
         }
     }

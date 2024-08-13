@@ -18,24 +18,24 @@ class LanguageSkillUtility
     protected static array $languageSkills = [
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
-            '0'
+            '0',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
-            'native'
+            'native',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
-            'fluent'
+            'fluent',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
-            'good'
+            'good',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
-            'basic'
-        ]
+            'basic',
+        ],
     ];
 
     protected static array $languageSkillsForFluidSelect = [];

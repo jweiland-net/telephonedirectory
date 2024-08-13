@@ -37,7 +37,7 @@ class PathSegmentHelper
             SlugHelper::class,
             'tx_telephonedirectory_domain_model_company',
             'path_segment',
-            $config
+            $config,
         );
 
         $this->slugHelper = $slugHelper;
@@ -45,11 +45,11 @@ class PathSegmentHelper
 
     public function generatePathSegment(
         array $baseRecord,
-        int $pid
+        int $pid,
     ): string {
         return $this->slugHelper->generate(
             $baseRecord,
-            $pid
+            $pid,
         );
     }
 
@@ -64,8 +64,8 @@ class PathSegmentHelper
         $employee->setPathSegment(
             $this->generatePathSegment(
                 $employee->getBaseRecordForPathSegment(),
-                $employee->getPid()
-            )
+                $employee->getPid(),
+            ),
         );
     }
 }

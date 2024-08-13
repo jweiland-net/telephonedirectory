@@ -54,8 +54,8 @@ class AddBuildingToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($buildingUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($buildingUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();

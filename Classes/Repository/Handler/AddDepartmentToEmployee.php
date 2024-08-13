@@ -54,8 +54,8 @@ class AddDepartmentToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($departmentUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($departmentUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();

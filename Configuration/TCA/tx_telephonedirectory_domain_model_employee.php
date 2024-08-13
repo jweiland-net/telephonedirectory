@@ -1,4 +1,12 @@
 <?php
+
+/*
+ * This file is part of the package jweiland/telephonedirectory.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee',
@@ -17,26 +25,26 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
-            'endtime' => 'endtime'
+            'endtime' => 'endtime',
         ],
         'security' => [
-            'ignorePageTypeRestriction' => true
+            'ignorePageTypeRestriction' => true,
         ],
         'searchFields' => 'first_name,last_name,name_additions,telephone1,telephone2,telephone3,mobile,fax,email,additional_informations',
         'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('telephonedirectory') . 'Configuration/TCA/Employee.php',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_employee.svg'
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_employee.svg',
     ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, path_segment, title, first_name, last_name, name_additions, is_catch_all_mail, company, room_number, function, additional_function, subject_field, telephone1, telephone2, telephone3, mobile, pager, fax, pc_fax, email, additional_informations, regular_attendance, image, office, building, department, language_skill,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
-            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
-        ]
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access',
+        ],
     ],
     'palettes' => [
         'access' => [
             'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
-        ]
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -50,11 +58,11 @@ return [
                     [
                         'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
-                        'flags-multiple'
+                        'flags-multiple',
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -73,21 +81,21 @@ return [
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'path_segment' => [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.path_segment',
@@ -101,37 +109,37 @@ return [
                     'prefixParentPageSlug' => false,
                     'fieldSeparator' => '-',
                     'replacements' => [
-                        '/' => '-'
+                        '/' => '-',
                     ],
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'unique',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'cruser_id' => [
             'label' => 'cruser_id',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'pid' => [
             'label' => 'pid',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'crdate' => [
             'label' => 'crdate',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'tstamp' => [
             'label' => 'tstamp',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -145,7 +153,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'endtime' => [
             'exclude' => true,
@@ -159,7 +167,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'title' => [
             'exclude' => 1,
@@ -169,14 +177,14 @@ return [
                 'items' => [
                     [
                         'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.0',
-                        0
+                        0,
                     ],
                     [
                         'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.1',
-                        1
-                    ]
-                ]
-            ]
+                        1,
+                    ],
+                ],
+            ],
         ],
         'first_name' => [
             'exclude' => 1,
@@ -184,8 +192,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, required'
-            ]
+                'eval' => 'trim, required',
+            ],
         ],
         'last_name' => [
             'exclude' => 1,
@@ -193,8 +201,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, required'
-            ]
+                'eval' => 'trim, required',
+            ],
         ],
         'name_additions' => [
             'exclude' => 1,
@@ -202,15 +210,15 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'is_catch_all_mail' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.is_catch_all_mail',
             'config' => [
-                'type' => 'check'
-            ]
+                'type' => 'check',
+            ],
         ],
         'subject_field' => [
             'exclude' => 1,
@@ -222,9 +230,9 @@ return [
                 'minitems' => 0,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0]
-                ]
-            ]
+                    ['', 0],
+                ],
+            ],
         ],
         'company' => [
             'exclude' => 1,
@@ -234,9 +242,9 @@ return [
                 'size' => 30,
                 'eval' => 'trim',
                 'items' => [
-                    ['', 0]
-                ]
-            ]
+                    ['', 0],
+                ],
+            ],
         ],
         'room_number' => [
             'exclude' => 1,
@@ -244,8 +252,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'function' => [
             'exclude' => 1,
@@ -253,15 +261,15 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'regular_attendance' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.regular_attendance',
             'config' => [
-                'type' => 'text'
-            ]
+                'type' => 'text',
+            ],
         ],
         'telephone1' => [
             'exclude' => 1,
@@ -269,8 +277,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, required'
-            ]
+                'eval' => 'trim, required',
+            ],
         ],
         'telephone2' => [
             'exclude' => 1,
@@ -278,8 +286,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'telephone3' => [
             'exclude' => 1,
@@ -287,8 +295,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'mobile' => [
             'exclude' => 1,
@@ -296,8 +304,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'pager' => [
             'exclude' => 1,
@@ -305,8 +313,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'fax' => [
             'exclude' => 1,
@@ -314,8 +322,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'pc_fax' => [
             'exclude' => 1,
@@ -323,8 +331,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'email' => [
             'exclude' => 1,
@@ -332,15 +340,15 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, email'
-            ]
+                'eval' => 'trim, email',
+            ],
         ],
         'additional_informations' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.additional_informations',
             'config' => [
-                'type' => 'text'
-            ]
+                'type' => 'text',
+            ],
         ],
         'image' => [
             'exclude' => 0,
@@ -349,13 +357,13 @@ return [
                 'type' => 'file',
                 'minitems' => 0,
                 'maxitems' => 1,
-                'allowed' => 'common-image-types'
+                'allowed' => 'common-image-types',
             ],
         ],
         'module_sys_dmail_html' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'office' => [
             'exclude' => 1,
@@ -368,9 +376,9 @@ return [
                 'minitems' => 1,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0]
-                ]
-            ]
+                    ['', 0],
+                ],
+            ],
         ],
         'building' => [
             'exclude' => 1,
@@ -383,9 +391,9 @@ return [
                 'minitems' => 1,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0]
-                ]
-            ]
+                    ['', 0],
+                ],
+            ],
         ],
         'department' => [
             'exclude' => 1,
@@ -398,9 +406,9 @@ return [
                 'minitems' => 0,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0]
-                ]
-            ]
+                    ['', 0],
+                ],
+            ],
         ],
         'language_skill' => [
             'exclude' => 1,
@@ -415,9 +423,9 @@ return [
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
-                ]
-            ]
-        ]
+                    'showAllLocalizationLink' => 1,
+                ],
+            ],
+        ],
     ],
 ];

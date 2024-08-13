@@ -22,14 +22,14 @@ trait InitializeControllerActionTrait
         EventDispatcherInterface $eventDispatcher,
         RequestInterface $request,
         Arguments $arguments,
-        array $settings
+        array $settings,
     ): void {
         $eventDispatcher->dispatch(
             new InitializeControllerActionEvent(
                 $request,
                 $arguments,
-                $settings
-            )
+                $settings,
+            ),
         );
     }
 }

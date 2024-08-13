@@ -452,7 +452,7 @@ class Employee extends AbstractEntity
             'uid' => $this->getUid(),
             'pid' => $this->getPid(),
             'first_name' => $this->getFirstName(),
-            'last_name' => $this->getLastName()
+            'last_name' => $this->getLastName(),
         ];
     }
 }

@@ -16,6 +16,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for Departments
  */
-class DepartmentRepository extends Repository
-{
-}
+class DepartmentRepository extends Repository {}

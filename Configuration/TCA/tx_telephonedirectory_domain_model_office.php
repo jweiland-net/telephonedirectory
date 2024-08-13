@@ -1,4 +1,12 @@
 <?php
+
+/*
+ * This file is part of the package jweiland/telephonedirectory.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_office',
@@ -15,25 +23,25 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
-            'endtime' => 'endtime'
+            'endtime' => 'endtime',
         ],
         'security' => [
-            'ignorePageTypeRestriction' => true
+            'ignorePageTypeRestriction' => true,
         ],
         'searchFields' => 'title,subject_field,',
-        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_office.svg'
+        'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_office.svg',
     ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, code, token, departments, subject_fields,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
-            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
-        ]
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access',
+        ],
     ],
     'palettes' => [
         'access' => [
             'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
-        ]
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -47,11 +55,11 @@ return [
                     [
                         'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
-                        'flags-multiple'
+                        'flags-multiple',
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -70,45 +78,45 @@ return [
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'cruser_id' => [
             'label' => 'cruser_id',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'pid' => [
             'label' => 'pid',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'crdate' => [
             'label' => 'crdate',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'tstamp' => [
             'label' => 'tstamp',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -122,7 +130,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'endtime' => [
             'exclude' => true,
@@ -136,7 +144,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'title' => [
             'exclude' => 1,
@@ -144,8 +152,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'code' => [
             'exclude' => 1,
@@ -153,8 +161,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'token' => [
             'exclude' => 1,
@@ -162,8 +170,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'departments' => [
             'exclude' => 1,
@@ -174,10 +182,10 @@ return [
                 'allowed' => 'tx_telephonedirectory_domain_model_department',
                 'MM' => 'tx_telephonedirectory_office_mm',
                 'MM_match_fields' => [
-                    'fieldname' => 'departments'
+                    'fieldname' => 'departments',
                 ],
                 'foreign_table' => 'tx_telephonedirectory_domain_model_department',
-            ]
+            ],
         ],
         'subject_fields' => [
             'exclude' => 1,
@@ -188,10 +196,10 @@ return [
                 'allowed' => 'tx_telephonedirectory_domain_model_subjectfield',
                 'MM' => 'tx_telephonedirectory_office_mm',
                 'MM_match_fields' => [
-                    'fieldname' => 'subject_fields'
+                    'fieldname' => 'subject_fields',
                 ],
                 'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
-            ]
-        ]
+            ],
+        ],
     ],
 ];

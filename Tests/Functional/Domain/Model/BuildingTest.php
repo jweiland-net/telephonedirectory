@@ -66,7 +66,7 @@ class BuildingTest extends FunctionalTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -79,7 +79,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -90,7 +90,7 @@ class BuildingTest extends FunctionalTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getStreet()
+            $this->subject->getStreet(),
         );
     }
 
@@ -103,7 +103,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getStreet()
+            $this->subject->getStreet(),
         );
     }
 
@@ -114,7 +114,7 @@ class BuildingTest extends FunctionalTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getHouseNumber()
+            $this->subject->getHouseNumber(),
         );
     }
 
@@ -127,7 +127,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getHouseNumber()
+            $this->subject->getHouseNumber(),
         );
     }
 
@@ -138,7 +138,7 @@ class BuildingTest extends FunctionalTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getZip()
+            $this->subject->getZip(),
         );
     }
 
@@ -151,7 +151,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getZip()
+            $this->subject->getZip(),
         );
     }
 
@@ -162,7 +162,7 @@ class BuildingTest extends FunctionalTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getCity()
+            $this->subject->getCity(),
         );
     }
 
@@ -175,7 +175,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getCity()
+            $this->subject->getCity(),
         );
     }
 
@@ -197,7 +197,7 @@ class BuildingTest extends FunctionalTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getTxMaps2Uid()
+            $this->subject->getTxMaps2Uid(),
         );
     }
 }
