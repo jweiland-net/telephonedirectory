@@ -52,7 +52,7 @@ class Category extends AbstractEntity
         return $this->parent;
     }
 
-    public function setParent(?Category $parent = null): void
+    public function setParent(?Category $parent): void
     {
         $this->parent = $parent;
     }
