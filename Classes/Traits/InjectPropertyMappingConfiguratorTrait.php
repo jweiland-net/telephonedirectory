@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Traits;
 
-use JWeiland\Telephonedirectory\Utility\PropertyMappingConfigurator;
+use JWeiland\Telephonedirectory\Mvc\Property\Mapping\PropertyMappingConfigurator;
 
 trait InjectPropertyMappingConfiguratorTrait
 {
