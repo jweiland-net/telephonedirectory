@@ -60,7 +60,7 @@ class EmployeeController extends AbstractController
     {
         $office = $this->settings['filterByOffice'] ?? null;
         $this->postProcessAndAssignFluidVariables([
-            'records' => $this->employeeRepository->findFilteredBy($office, $search),
+            'employees' => $this->employeeRepository->findFilteredBy($office, $search),
             'offices' => $this->officeRepository->findAll(),
         ]);
 
