@@ -385,7 +385,7 @@ class Employee extends AbstractEntity
 
     public function setBuilding(Building $building): self
     {
-        $this->building = $building ?: 0;
+        $this->building = $building;
         return $this;
     }
 

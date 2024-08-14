@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -60,7 +59,7 @@ class AddBuildingToEmployee implements ApplyRecordToEmployeeInterface
                 ->execute()
                 ->fetchAssociative();
             return is_array($buildingRecord) ? $this->lowerCamelCaseArrayKeys($buildingRecord) : [];
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

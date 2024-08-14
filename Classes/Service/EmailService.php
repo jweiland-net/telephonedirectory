@@ -15,6 +15,7 @@ use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -27,8 +28,15 @@ class EmailService
 {
     protected ExtConf $extConf;
     protected UriBuilder $uriBuilder;
+
+    /**
+     * @var array<string, mixed> $settings
+     */
     protected array $settings = [];
 
+    /**
+     * @param array<string, mixed> $settings
+     */
     public function __construct(
         ExtConf $extConf,
         UriBuilder $uriBuilder,
@@ -43,6 +51,7 @@ class EmailService
     /**
      * Sends an email to an employee about their current data and an edit link
      *
+     * @param array<string, mixed> $employee
      * @throws \Exception
      */
     public function informEmployeeAboutTheirData(array $employee, string $content): void
@@ -64,7 +73,7 @@ class EmailService
         }
     }
 
-    public function sendEditMail(Employee $employee, $request): void
+    public function sendEditMail(Employee $employee, RequestInterface $request): void
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);

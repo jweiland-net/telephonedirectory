@@ -48,12 +48,12 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
         return $this->controller;
     }
 
-    public function getEmployeeController(): EmployeeController
+    public function getEmployeeController(): ActionController
     {
         return $this->controller;
     }
 
-    public function getInterpretterController(): InterpreterController
+    public function getInterpretterController(): ActionController
     {
         return $this->controller;
     }

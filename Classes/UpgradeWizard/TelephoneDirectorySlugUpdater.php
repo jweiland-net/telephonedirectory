@@ -109,10 +109,10 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
                     ),
                 ),
             )
-            ->executeStatement();
+            ->executeQuery();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->tableName);
-        while ($recordToUpdate = $statement->fetch()) {
+        while ($recordToUpdate = $statement->fetchAssociative()) {
             if ((string)$recordToUpdate['first_name'] !== '' && (string)$recordToUpdate['last_name'] !== '') {
                 $connection->update(
                     $this->tableName,

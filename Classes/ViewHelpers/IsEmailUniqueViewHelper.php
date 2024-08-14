@@ -19,15 +19,9 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class IsEmailUniqueViewHelper extends AbstractViewHelper
 {
-    /**
-     * @var EmployeeRepository
-     */
-    protected $employeeRepository;
+    protected EmployeeRepository $employeeRepository;
 
-    /**
-     * @param EmployeeRepository $employeeRepository
-     */
-    public function injectEmployeeRepository(EmployeeRepository $employeeRepository)
+    public function injectEmployeeRepository(EmployeeRepository $employeeRepository): void
     {
         $this->employeeRepository = $employeeRepository;
     }
@@ -35,7 +29,7 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
     /**
      * Initialize all arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument(
             'email',

@@ -18,6 +18,9 @@ use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 
 trait InitializeControllerActionTrait
 {
+    /**
+     * @param array<string, mixed> $settings
+     */
     protected function emitInitializeControllerAction(
         EventDispatcherInterface $eventDispatcher,
         RequestInterface $request,

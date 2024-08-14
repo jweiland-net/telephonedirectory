@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /**
  * Class which contains all setters and getters for Category
@@ -29,7 +30,7 @@ class Category extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle($title): void
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -39,7 +40,7 @@ class Category extends AbstractEntity
         return $this->description;
     }
 
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }

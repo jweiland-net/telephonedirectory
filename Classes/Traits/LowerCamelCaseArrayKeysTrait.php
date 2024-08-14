@@ -18,6 +18,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 trait LowerCamelCaseArrayKeysTrait
 {
+    /**
+     * @param array<string, mixed> $arrayWithUnderscoredKeys
+     * @return array<string, mixed>
+     */
     public function lowerCamelCaseArrayKeys(array $arrayWithUnderscoredKeys): array
     {
         $arrayWithLowerCamelCaseKeys = [];

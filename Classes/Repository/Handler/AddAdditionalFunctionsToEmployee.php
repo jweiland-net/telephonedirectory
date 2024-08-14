@@ -87,7 +87,7 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
                 $additionalFunctions[$additionalFunction['uid']] = $this->lowerCamelCaseArrayKeys($additionalFunction);
             }
             return $additionalFunctions;
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

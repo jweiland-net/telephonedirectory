@@ -34,7 +34,12 @@ class ExtConf implements SingletonInterface
                 foreach ($extConf as $key => $value) {
                     $methodName = 'set' . ucfirst($key);
                     if (method_exists($this, $methodName)) {
-                        $this->$methodName($value);
+                        if ($methodName === 'setAdditionalFunctionsParentCategoryUid') {
+                            $this->setAdditionalFunctionsParentCategoryUid((int)$value);
+                        } elseif (method_exists($this, $methodName)) {
+                            // Ensure the method exists before calling it
+                            $this->$methodName($value);
+                        }
                     }
                 }
             }
@@ -128,9 +133,9 @@ class ExtConf implements SingletonInterface
         return $this->additionalFunctionsParentCategoryUid;
     }
 
-    public function setAdditionalFunctionsParentCategoryUid($additionalFunctionsParentCategoryUid): self
+    public function setAdditionalFunctionsParentCategoryUid(int $additionalFunctionsParentCategoryUid): self
     {
-        $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
+        $this->additionalFunctionsParentCategoryUid = $additionalFunctionsParentCategoryUid;
 
         return $this;
     }

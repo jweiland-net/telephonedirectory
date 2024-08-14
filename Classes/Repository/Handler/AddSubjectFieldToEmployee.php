@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -44,6 +43,9 @@ class AddSubjectFieldToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getSubjectFieldRecord((int)$employee[self::PROPERTY]);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getSubjectFieldRecord(int $subjectFieldUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);
@@ -60,7 +62,7 @@ class AddSubjectFieldToEmployee implements ApplyRecordToEmployeeInterface
                 ->execute()
                 ->fetchAssociative();
             return is_array($subjectFieldRecord) ? $this->lowerCamelCaseArrayKeys($subjectFieldRecord) : [];
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

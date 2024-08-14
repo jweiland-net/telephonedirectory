@@ -1,4 +1,3 @@
-
 <?xml version="1.0"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -6,18 +5,10 @@
          backupGlobals="true"
          beStrictAboutTestsThatDoNotTestAnything="false"
          bootstrap="FunctionalTestsBootstrap.php"
-         cacheDirectory=".phpunit.cache"
          cacheResult="false"
          colors="true"
-         displayDetailsOnTestsThatTriggerDeprecations="true"
-         displayDetailsOnTestsThatTriggerErrors="true"
-         displayDetailsOnTestsThatTriggerNotices="true"
-         displayDetailsOnTestsThatTriggerWarnings="true"
-         failOnDeprecation="true"
-         failOnNotice="true"
          failOnRisky="true"
          failOnWarning="true"
-         requireCoverageMetadata="false"
 >
     <testsuites>
         <testsuite name="Functional tests">

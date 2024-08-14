@@ -60,7 +60,7 @@ class AddOfficeToEmployee implements ApplyRecordToEmployeeInterface
                 ->execute()
                 ->fetchAssociative();
             return is_array($officeRecord) ? $this->lowerCamelCaseArrayKeys($officeRecord) : [];
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

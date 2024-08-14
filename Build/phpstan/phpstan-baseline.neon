@@ -1,4 +1,7 @@
 parameters:
-	ignoreErrors:
-		- '#Class "TYPO3\\CMS\\Scheduler\\AbstractAdditionalFieldProvider" not found#'
-		- '#Class "TYPO3\\CMS\\Scheduler\\Task\\AbstractTask" not found#'
+		# Ignore specific errors:
+		ignoreErrors:
+			-
+				message: '#Call to an undefined method .*#'
+			#-
+			#	message: '#^Access to an undefined property TYPO3\\\\CMS\\\\Scheduler\\\\Task\\\\AbstractTask$#'

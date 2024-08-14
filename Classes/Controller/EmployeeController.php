@@ -17,13 +17,13 @@ use JWeiland\Telephonedirectory\Traits\InitializeControllerActionTrait;
 use JWeiland\Telephonedirectory\Traits\InjectBuildingRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectCategoryRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectDepartmentRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectEmailServiceTrait;
 use JWeiland\Telephonedirectory\Traits\InjectEmployeeRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectExtConfTrait;
 use JWeiland\Telephonedirectory\Traits\InjectLanguageRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectOfficeRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectPropertyMappingConfiguratorTrait;
 use JWeiland\Telephonedirectory\Traits\InjectSubjectFieldRepositoryTrait;
+use JWeiland\Telephonedirectory\Traits\InjectTemplateServiceTrait;
 use JWeiland\Telephonedirectory\Traits\MediaTypeConverterTrait;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use Psr\Http\Message\ResponseInterface;
@@ -38,7 +38,6 @@ class EmployeeController extends AbstractController
     use InjectCategoryRepositoryTrait;
     use InjectBuildingRepositoryTrait;
     use InjectDepartmentRepositoryTrait;
-    use InjectEmailServiceTrait;
     use InjectEmployeeRepositoryTrait;
     use InjectExtConfTrait;
     use InjectLanguageRepositoryTrait;
@@ -46,6 +45,7 @@ class EmployeeController extends AbstractController
     use InjectPropertyMappingConfiguratorTrait;
     use InjectSubjectFieldRepositoryTrait;
     use InitializeControllerActionTrait;
+    use InjectTemplateServiceTrait;
     use MediaTypeConverterTrait;
 
     public function initializeListAction(): void
@@ -53,6 +53,9 @@ class EmployeeController extends AbstractController
         $this->emitEventSignal();
     }
 
+    /**
+     * @param array<string, mixed> $search
+     */
     public function listAction(array $search = []): ResponseInterface
     {
         $office = $this->settings['filterByOffice'] ?? null;
@@ -128,7 +131,7 @@ class EmployeeController extends AbstractController
         return $this->htmlResponse();
     }
 
-    public function initializeNewAction()
+    public function initializeNewAction(): void
     {
         $this->emitEventSignal();
     }
@@ -141,7 +144,7 @@ class EmployeeController extends AbstractController
         return $this->htmlResponse();
     }
 
-    public function initializeCreateAction()
+    public function initializeCreateAction(): void
     {
         $this->emitEventSignal();
     }
@@ -220,7 +223,7 @@ class EmployeeController extends AbstractController
     public function sendEditMailAction(Employee $employee): ResponseInterface
     {
         try {
-            $this->emailService->sendEditMail($employee, $this->request);
+            $this->templateRenderingService->sendEmployeeEditMail($employee, $this->request, $this->settings);
             $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
         } catch (\Exception $e) {
         }

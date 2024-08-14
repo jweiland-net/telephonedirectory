@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -65,7 +64,7 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 $languageSkills[$languageSkill['uid']] = $this->lowerCamelCaseArrayKeys($languageSkill);
             }
             return $languageSkills;
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];
@@ -87,7 +86,7 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->execute()
                 ->fetchAssociative();
             return is_array($languageRecord) ? $this->lowerCamelCaseArrayKeys($languageRecord) : [];
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

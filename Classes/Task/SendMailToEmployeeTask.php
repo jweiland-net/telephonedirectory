@@ -61,6 +61,7 @@ class SendMailToEmployeeTask extends AbstractTask
     /**
      * Generates content for email
      *
+     * @param array<string, mixed> $employee
      * @throws \Exception
      */
     protected function generateContent(array $employee): string

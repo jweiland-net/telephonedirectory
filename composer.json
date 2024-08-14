@@ -29,10 +29,15 @@
 		"source": "https://github.com/jweiland-net/telephonedirectory"
 	},
 	"require": {
+		"doctrine/dbal": "^3.8",
 		"jweiland/checkfaluploads": ">=4.0.0",
 		"jweiland/glossary2": ">=6.0.0",
 		"jweiland/maps2": ">=11.0.0",
-		"typo3/cms-core": "^12.4.16"
+		"typo3/cms-backend": "^12.4",
+		"typo3/cms-core": "^12.4.16",
+		"typo3/cms-extbase": "^12.4",
+		"typo3/cms-fluid": "^12.4",
+		"typo3/cms-scheduler": "^12.4"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "~2.42.0",
@@ -70,7 +75,6 @@
 	},
 	"extra": {
 		"typo3/cms": {
-			"app-dir": ".Build",
 			"extension-key": "telephonedirectory",
 			"web-dir": ".Build/web"
 		}

@@ -21,6 +21,9 @@ class AbstractController extends ActionController
 {
     use InitializeControllerActionTrait;
 
+    /**
+     * @param array<string, mixed> $variables
+     */
     protected function postProcessAndAssignFluidVariables(array $variables = []): void
     {
         /** @var PostProcessFluidVariablesEvent $event */

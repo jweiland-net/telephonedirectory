@@ -79,7 +79,10 @@ class Office extends AbstractEntity
 
     public function getSubjectField(): ?SubjectField
     {
-        return $this->subjectFields[0];
+        if ($this->subjectFields->count() > 0) {
+            return $this->subjectFields->current(); // Gets the first element
+        }
+        return null;
     }
 
     /**
@@ -113,7 +116,10 @@ class Office extends AbstractEntity
 
     public function getDepartment(): ?Department
     {
-        return $this->departments[0];
+        if ($this->departments->count() > 0) {
+            return $this->departments->current();
+        }
+        return null;
     }
 
     /**

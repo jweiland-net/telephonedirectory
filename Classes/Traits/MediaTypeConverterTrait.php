@@ -20,6 +20,8 @@ trait MediaTypeConverterTrait
 {
     /**
      * Currently only "image" are allowed properties.
+     *
+     * @param array<string, mixed> $settings
      */
     protected function assignMediaTypeConverter(
         string $property,
