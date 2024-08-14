@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -43,7 +45,7 @@ class Employee extends AbstractEntity
     protected string $function = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      */
     protected ObjectStorage $additionalFunction;
 
@@ -62,7 +64,7 @@ class Employee extends AbstractEntity
     protected string $pcFax = '';
 
     /**
-     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
+     * @Validate("EmailAddress")
      */
     protected string $email = '';
 
@@ -79,13 +81,13 @@ class Employee extends AbstractEntity
     protected ?Department $department = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected ObjectStorage $image;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\LanguageSkill>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @var ObjectStorage<LanguageSkill>
+     * @Lazy
      */
     protected ObjectStorage $languageSkill;
 

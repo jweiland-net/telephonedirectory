@@ -93,8 +93,9 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
     {
         // Ensure the task is of the expected type
         if ($task instanceof SendMailToEmployeeTask) {
-            $task->storagePid = (int) ($submittedData['storagePid'] ?? 0);
-            $task->detailViewPid = (int) ($submittedData['detailViewPid'] ?? 0);
+            $task->storagePid = (int)($submittedData['storagePid'] ?? 0);
+            $task->detailViewPid = (int)($submittedData['detailViewPid'] ?? 0);
+
         } else {
             // Handle cases where $task is not of the expected type
             throw new \InvalidArgumentException('The task is not an instance of SendMailToEmployeeTask.');
