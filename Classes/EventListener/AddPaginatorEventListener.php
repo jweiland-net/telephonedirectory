@@ -77,11 +77,11 @@ class AddPaginatorEventListener
         return
             array_key_exists(
                 $event->getControllerName(),
-                $this->allowedControllerActions,
+                self::ALLOWED_CONTROLLER_ACTIONS,
             )
             && in_array(
                 $event->getActionName(),
-                $this->allowedControllerActions[$event->getControllerName()],
+                self::ALLOWED_CONTROLLER_ACTIONS[$event->getControllerName()],
                 true,
             );
     }
