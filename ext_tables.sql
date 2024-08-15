@@ -104,6 +104,7 @@ CREATE TABLE tx_telephonedirectory_office_mm
 	sorting         int(11)      DEFAULT '0' NOT NULL,
 	sorting_foreign int(11)      DEFAULT '0' NOT NULL,
 
-	KEY             uid_local_foreign (uid_local,uid_foreign),
-	KEY             uid_foreign_tablefield (uid_foreign,tablenames(40),fieldname(3),sorting_foreign)
+	PRIMARY KEY     (fieldname,uid_local,uid_local),
+	KEY             uid_local (uid_local),
+	KEY             uid_foreign (uid_foreign)
 );
