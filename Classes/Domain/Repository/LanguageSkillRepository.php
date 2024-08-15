@@ -28,7 +28,7 @@ class LanguageSkillRepository extends Repository
         $query->matching(
             $query->logicalAnd(
                 $query->equals('employee.hidden', 0),
-                $query->equals('employee.deleted', 0),
+                $query->equals('employee.deleted', 0)
             ),
         );
 

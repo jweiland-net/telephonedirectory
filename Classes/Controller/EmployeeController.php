@@ -175,8 +175,8 @@ class EmployeeController extends AbstractController
                         'offices' => $this->officeRepository->findAll(),
                         'languages' => $this->languageRepository->findAll(),
                         'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $this->categoryRepository->findByParent(
-                            $this->extConf->getAdditionalFunctionsParentCategoryUid(),
+                        'additionalFunctions' => $this->categoryRepository->findBy(
+                            ['parent' => $this->extConf->getAdditionalFunctionsParentCategoryUid()]
                         ),
                         'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
                     ],

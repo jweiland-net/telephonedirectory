@@ -26,9 +26,6 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
         $this->employeeRepository = $employeeRepository;
     }
 
-    /**
-     * Initialize all arguments.
-     */
     public function initializeArguments(): void
     {
         $this->registerArgument(
@@ -48,8 +45,7 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
         if (empty($this->arguments['email'])) {
             return false;
         }
-        $amount = $this->employeeRepository->countByEmail($this->arguments['email']);
 
-        return $amount === 1;
+        return $this->employeeRepository->count(['email' => $this->arguments['email']]) === 1;
     }
 }

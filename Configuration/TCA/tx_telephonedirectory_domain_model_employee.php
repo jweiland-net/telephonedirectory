@@ -50,17 +50,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple',
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -70,7 +60,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_telephonedirectory_domain_model_employee',
                 'foreign_table_where' => 'AND tx_telephonedirectory_domain_model_employee.pid=###CURRENT_PID### AND tx_telephonedirectory_domain_model_employee.sys_language_uid IN (-1,0)',
@@ -139,10 +129,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 16,
-                'eval' => 'datetime,int',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
@@ -153,10 +141,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 16,
-                'eval' => 'datetime,int',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
@@ -170,12 +156,12 @@ return [
                 'type' => 'radio',
                 'items' => [
                     [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.0',
-                        0,
+                        'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.0',
+                        'value' => 0,
                     ],
                     [
-                        'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.1',
-                        1,
+                        'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.title.1',
+                        'value' => 1,
                     ],
                 ],
             ],
@@ -226,7 +212,7 @@ return [
                 'minitems' => 0,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
             ],
         ],
@@ -245,7 +231,7 @@ return [
                 'size' => 30,
                 'eval' => 'trim',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
             ],
         ],
@@ -379,7 +365,7 @@ return [
                 'minitems' => 1,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
             ],
         ],
@@ -394,7 +380,7 @@ return [
                 'minitems' => 1,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
             ],
         ],
@@ -409,7 +395,7 @@ return [
                 'minitems' => 0,
                 'maxitems' => 1,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
             ],
         ],
