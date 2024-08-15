@@ -22,6 +22,9 @@ class RecordPagination implements PaginationInterface
 
     protected readonly PaginatorInterface $paginator;
 
+    /**
+     * @var array<string, mixed> $arguments
+     */
     protected array $arguments = [];
 
     public function __construct(PaginatorInterface $paginator)
@@ -55,6 +58,9 @@ class RecordPagination implements PaginationInterface
         return $previousPage >= $this->getFirstPageNumber() ? $previousPage : null;
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getPreviousPageArguments(): ?array
     {
         $arguments = $this->arguments;
@@ -70,6 +76,9 @@ class RecordPagination implements PaginationInterface
         return $nextPage <= $this->paginator->getNumberOfPages() ? $nextPage : null;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getNextPageArguments(): ?array
     {
         $arguments = $this->arguments;
@@ -83,6 +92,9 @@ class RecordPagination implements PaginationInterface
         return 1;
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getFirstPageArguments(): ?array
     {
         $arguments = $this->arguments;
@@ -96,6 +108,9 @@ class RecordPagination implements PaginationInterface
         return $this->paginator->getNumberOfPages();
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getLastPageArguments(): ?array
     {
         $arguments = $this->arguments;
@@ -122,6 +137,9 @@ class RecordPagination implements PaginationInterface
         return $this->paginator->getKeyOfLastPaginatedItem() + 1;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPluginArguments(): array
     {
         $request = $this->getRequestFromGlobalScope();

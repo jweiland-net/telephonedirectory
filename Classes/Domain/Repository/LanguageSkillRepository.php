@@ -11,16 +11,21 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
+use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository to get individual Queries for LanguageSkills
+ *
+ *  @extends Repository<LanguageSkill>
  */
 class LanguageSkillRepository extends Repository
 {
     /**
      * Returns all languageSkills that are connected to an employee record
+     *
+     * @return QueryResultInterface<int, LanguageSkill>
      */
     public function findAllWithEmployeeRelation(): QueryResultInterface
     {

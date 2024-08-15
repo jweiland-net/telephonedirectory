@@ -43,6 +43,9 @@ class AddDepartmentToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getDepartmentRecord((int)$employee[self::PROPERTY]);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getDepartmentRecord(int $departmentUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);

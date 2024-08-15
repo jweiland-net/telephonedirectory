@@ -27,10 +27,16 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
 
     protected ?Employee $employee;
 
+    /**
+     * @var array<int, mixed>
+     */
     protected array $settings;
 
     protected RequestInterface $request;
 
+    /**
+     * @param array<int, mixed> $settings
+     */
     public function __construct(
         ActionController $controller,
         ?Employee $employee,
@@ -78,6 +84,9 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
         return $this->employee;
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     public function getSettings(): array
     {
         return $this->settings;

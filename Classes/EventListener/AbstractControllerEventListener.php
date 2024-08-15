@@ -20,20 +20,32 @@ class AbstractControllerEventListener
 {
     /**
      * Only execute this EventListener, if controller and action matches
+     *
+     * @var array<string, array<int, string>>
      */
     protected const ALLOWED_CONTROLLER_ACTIONS = [];
 
     protected function isValidRequest(ControllerActionEventInterface $event): bool
     {
+        $allowedControllerActions = $this->getAllowedControllerActions();
+
         return
             array_key_exists(
                 $event->getControllerName(),
-                self::ALLOWED_CONTROLLER_ACTIONS,
+                $allowedControllerActions,
             )
             && in_array(
                 $event->getActionName(),
-                self::ALLOWED_CONTROLLER_ACTIONS[$event->getControllerName()],
+                $allowedControllerActions[$event->getControllerName()],
                 true,
             );
+    }
+
+    /**
+     * @return array<string, array<int, string>>
+     */
+    protected function getAllowedControllerActions(): array
+    {
+        return self::ALLOWED_CONTROLLER_ACTIONS;
     }
 }

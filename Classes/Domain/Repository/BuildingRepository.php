@@ -11,9 +11,12 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
+use JWeiland\Telephonedirectory\Domain\Model\Building;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository to get individual Queries for Buildings
+ *
+ * @extends Repository<Building>
  */
 class BuildingRepository extends Repository {}

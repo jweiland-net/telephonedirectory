@@ -44,6 +44,9 @@ class AddGlossaryEventListener extends AbstractControllerEventListener
         }
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     protected function getOptions(PostProcessFluidVariablesEvent $event): array
     {
         $options = [

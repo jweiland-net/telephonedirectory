@@ -43,6 +43,9 @@ class AddBuildingToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getBuildingRecord((int)$employee[self::PROPERTY]);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getBuildingRecord(int $buildingUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);

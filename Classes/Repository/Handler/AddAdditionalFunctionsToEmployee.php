@@ -46,6 +46,9 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getAdditionalFunctionRecords((int)$employee['uid']);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getAdditionalFunctionRecords(int $employeeUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable('sys_category');

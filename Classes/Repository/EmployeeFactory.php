@@ -31,15 +31,21 @@ class EmployeeFactory
     private const TABLE_NAME = 'tx_telephonedirectory_domain_model_employee';
 
     /**
-     * @var ApplyRecordToEmployeeInterface[]
+     * @var iterable<ApplyRecordToEmployeeInterface>
      */
     private iterable $handlers;
 
+    /**
+     * @param iterable<ApplyRecordToEmployeeInterface> $handlers
+     */
     public function __construct(iterable $handlers)
     {
         $this->handlers = $handlers;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function build(int $employeeUid): array
     {
         $employee = $this->getEmployee($employeeUid);
@@ -53,6 +59,9 @@ class EmployeeFactory
         return $employee;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getEmployee(int $employeeUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);
@@ -75,6 +84,9 @@ class EmployeeFactory
         return [];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getEmployees(string $csvStorages, bool $onlyUid = false): array
     {
         $storages = GeneralUtility::intExplode(',', $csvStorages, true);

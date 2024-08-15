@@ -21,6 +21,8 @@ class PostCheckFileReferenceEvent
     /**
      * Array containing the original source (all files of $_FILES) of the request
      * just before PropertyMapping (UploadMultipleFilesConverter) will start
+     *
+     * @var array<string, mixed> $source
      */
     protected array $source;
 
@@ -38,9 +40,15 @@ class PostCheckFileReferenceEvent
     /**
      * This is the value of the currently looped uploaded file.
      * It contains one file out of $_FILES
+     *
+     * @var array<string, mixed> $uploadedFile
      */
     protected array $uploadedFile = [];
 
+    /**
+     * @param array<string, mixed> $source
+     * @param array<string, mixed> $uploadedFile
+     */
     public function __construct(
         array $source,
         int $key,
@@ -53,6 +61,9 @@ class PostCheckFileReferenceEvent
         $this->uploadedFile = $uploadedFile;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getSource(): array
     {
         return $this->source;
@@ -68,6 +79,9 @@ class PostCheckFileReferenceEvent
         return $this->alreadyPersistedImage;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getUploadedFile(): array
     {
         return $this->uploadedFile;
