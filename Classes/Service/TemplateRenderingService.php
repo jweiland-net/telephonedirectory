@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
@@ -20,22 +21,11 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class TemplateRenderingService implements EmailServiceInterface
 {
-    protected EmailServiceInterface $emailService;
-    protected StandaloneView $view;
-    protected UriBuilder $uriBuilder;
-    protected HashService $hashService;
-
     public function __construct(
-        EmployeeNotificationService $emailService,
-        StandaloneView $view,
-        UriBuilder $uriBuilder,
-        HashService $hashService,
-    ) {
-        $this->emailService = $emailService;
-        $this->view = $view;
-        $this->uriBuilder = $uriBuilder;
-        $this->hashService = $hashService;
-    }
+        protected EmployeeNotificationService $emailService,
+        protected UriBuilder $uriBuilder,
+        protected HashService $hashService,
+    ) {}
 
     /**
      * @param array<string, mixed> $settings
@@ -43,12 +33,13 @@ class TemplateRenderingService implements EmailServiceInterface
      */
     public function sendEmployeeEditMail(Employee $employee, RequestInterface $request, array $settings): void
     {
-        $this->view->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
-        $this->view->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
-        $this->view->setTemplatePathAndFilename(
+        $view = $this->getView();
+        $view->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
+        $view->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
+        $view->setTemplatePathAndFilename(
             'EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html',
         );
-        $this->view->setRequest($request);
+        $view->setRequest($request);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
         $this->uriBuilder->setRequest($request);
@@ -63,19 +54,22 @@ class TemplateRenderingService implements EmailServiceInterface
             ],
         );
 
-        $this->view->assign('link', $link);
-        $this->view->assign('employee', $employee);
-
-        $content = $this->view->render();
+        $view->assign('link', $link);
+        $view->assign('employee', $employee);
 
         $this->emailService->sendEmployeeNotification(
             $employee,
-            $content,
+            $view->render(),
         );
     }
 
     public function sendEmail(string $to, string $subject, string $content): void
     {
         $this->emailService->sendEmail($to, $subject, $content);
+    }
+
+    protected function getView(): StandaloneView
+    {
+        return GeneralUtility::makeInstance(StandaloneView::class);
     }
 }

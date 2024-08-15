@@ -26,7 +26,7 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
      * @param array<string, mixed> $taskInfo Values of the fields from the add/edit task form
      * @param AbstractTask|SendMailToEmployeeTask|null $task The task object being edited. Null when adding a task!
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
-     * @return array<string, mixed> A two dimensional array
+     * @return array<string, mixed> A two-dimensional array
      */
     public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule): array
     {

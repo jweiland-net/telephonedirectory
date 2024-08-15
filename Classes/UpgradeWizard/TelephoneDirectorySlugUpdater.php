@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\UpgradeWizard;
 
+use Doctrine\DBAL\Exception;
 use JWeiland\Telephonedirectory\Helper\PathSegmentHelper;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,22 +26,15 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 #[UpgradeWizard('telephonedirectoryUpdateSlug')]
 class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
 {
-    protected string $tableName = 'tx_telephonedirectory_domain_model_employee';
+    private const TABLE = 'tx_telephonedirectory_domain_model_employee';
 
-    protected string $fieldName = 'path_segment';
+    private const FIELD = 'path_segment';
 
-    protected ?PathSegmentHelper $pathSegmentHelper = null;
-
-    public function __construct(PathSegmentHelper $pathSegmentHelper = null)
-    {
-        $this->pathSegmentHelper = $pathSegmentHelper ?? GeneralUtility::makeInstance(PathSegmentHelper::class);
-    }
+    public function __construct(private readonly PathSegmentHelper $pathSegmentHelper) {}
 
     /**
      * Return the identifier for this wizard
      * This should be the same string as used in the ext_localconf class registration
-     *
-     * @return string
      */
     public function getIdentifier(): string
     {
@@ -60,21 +53,21 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
 
     public function updateNecessary(): bool
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->tableName);
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE);
         $queryBuilder->getRestrictions()->removeAll();
         $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
         $amountOfRecordsWithEmptySlug = $queryBuilder
             ->count('*')
-            ->from($this->tableName)
+            ->from(self::TABLE)
             ->where(
                 $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
-                        $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
+                        self::FIELD,
+                        $queryBuilder->createNamedParameter(''),
                     ),
                     $queryBuilder->expr()->isNull(
-                        $this->fieldName,
+                        self::FIELD,
                     ),
                 ),
             )
@@ -88,36 +81,37 @@ class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
      * Performs the accordant updates.
      *
      * @return bool Whether everything went smoothly or not
+     * @throws Exception
      */
     public function executeUpdate(): bool
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->tableName);
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE);
         $queryBuilder->getRestrictions()->removeAll();
         $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
         $statement = $queryBuilder
             ->select('uid', 'pid', 'first_name', 'last_name')
-            ->from($this->tableName)
+            ->from(self::TABLE)
             ->where(
                 $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
-                        $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
+                        self::FIELD,
+                        $queryBuilder->createNamedParameter(''),
                     ),
                     $queryBuilder->expr()->isNull(
-                        $this->fieldName,
+                        self::FIELD,
                     ),
                 ),
             )
             ->executeQuery();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable($this->tableName);
+        $connection = $this->getConnectionPool()->getConnectionForTable(self::TABLE);
         while ($recordToUpdate = $statement->fetchAssociative()) {
             if ((string)$recordToUpdate['first_name'] !== '' && (string)$recordToUpdate['last_name'] !== '') {
                 $connection->update(
-                    $this->tableName,
+                    self::TABLE,
                     [
-                        $this->fieldName => $this->pathSegmentHelper->generatePathSegment(
+                        self::FIELD => $this->pathSegmentHelper->generatePathSegment(
                             $recordToUpdate,
                             (int)$recordToUpdate['pid'],
                         ),

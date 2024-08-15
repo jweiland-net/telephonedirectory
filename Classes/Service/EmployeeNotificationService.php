@@ -16,12 +16,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class EmployeeNotificationService implements EmailServiceInterface
 {
-    protected BasicEmailService $emailService;
-
-    public function __construct(BasicEmailService $emailService)
-    {
-        $this->emailService = $emailService;
-    }
+    public function __construct(protected readonly BasicEmailService $emailService) {}
 
     public function sendEmployeeNotification(Employee $employee, string $content): void
     {

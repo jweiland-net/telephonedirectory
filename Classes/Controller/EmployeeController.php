@@ -13,7 +13,6 @@ namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
-use JWeiland\Telephonedirectory\Traits\InitializeControllerActionTrait;
 use JWeiland\Telephonedirectory\Traits\InjectBuildingRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectCategoryRepositoryTrait;
 use JWeiland\Telephonedirectory\Traits\InjectDepartmentRepositoryTrait;
@@ -44,13 +43,12 @@ class EmployeeController extends AbstractController
     use InjectOfficeRepositoryTrait;
     use InjectPropertyMappingConfiguratorTrait;
     use InjectSubjectFieldRepositoryTrait;
-    use InitializeControllerActionTrait;
     use InjectTemplateServiceTrait;
     use MediaTypeConverterTrait;
 
     public function initializeListAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     /**
@@ -83,7 +81,7 @@ class EmployeeController extends AbstractController
             }
         }
 
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function searchAction(Office $office = null, string $search = ''): ResponseInterface
@@ -103,7 +101,7 @@ class EmployeeController extends AbstractController
 
     public function initializeShowAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function showAction(Employee $employee): ResponseInterface
@@ -116,7 +114,7 @@ class EmployeeController extends AbstractController
 
     public function initializeShowRecordsAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function showRecordsAction(): ResponseInterface
@@ -133,7 +131,7 @@ class EmployeeController extends AbstractController
 
     public function initializeNewAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function newAction(Employee $newEmployee = null): ResponseInterface
@@ -146,7 +144,7 @@ class EmployeeController extends AbstractController
 
     public function initializeCreateAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function createAction(Employee $newEmployee): ResponseInterface
@@ -160,7 +158,7 @@ class EmployeeController extends AbstractController
 
     public function initializeEditAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function editAction(Employee $employee): ResponseInterface
@@ -204,7 +202,7 @@ class EmployeeController extends AbstractController
             $this->settings,
         );
 
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function updateAction(Employee $employee): ResponseInterface
@@ -212,12 +210,17 @@ class EmployeeController extends AbstractController
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
 
-        return $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
+        return $this->redirect(
+            'show',
+            'Employee',
+            'telephonedirectory',
+            ['employee' => $employee],
+        );
     }
 
     public function initializeSendEditMailAction(): void
     {
-        $this->emitEventSignal();
+        $this->initializeControllerAction();
     }
 
     public function sendEditMailAction(Employee $employee): ResponseInterface
@@ -233,16 +236,6 @@ class EmployeeController extends AbstractController
             'Employee',
             'telephonedirectory',
             ['employee' => $employee],
-        );
-    }
-
-    protected function emitEventSignal(): void
-    {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings,
         );
     }
 }

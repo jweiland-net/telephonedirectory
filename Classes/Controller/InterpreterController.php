@@ -33,12 +33,7 @@ class InterpreterController extends AbstractController
 
     public function initializeListAction(): void
     {
-        $this->emitInitializeControllerAction(
-            $this->eventDispatcher,
-            $this->request,
-            $this->arguments,
-            $this->settings,
-        );
+        $this->initializeControllerAction();
     }
 
     public function listAction(): ResponseInterface

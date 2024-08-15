@@ -57,7 +57,7 @@ class AddOfficeToEmployee implements ApplyRecordToEmployeeInterface
                         $queryBuilder->createNamedParameter($officeUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             return is_array($officeRecord) ? $this->lowerCamelCaseArrayKeys($officeRecord) : [];
         } catch (Exception $e) {

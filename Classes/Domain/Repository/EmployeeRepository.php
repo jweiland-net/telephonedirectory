@@ -26,6 +26,8 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class EmployeeRepository extends Repository
 {
+    private const TABLE = 'tx_telephonedirectory_domain_model_employee';
+
     protected GlossaryService $glossaryService;
 
     public function injectGlossaryService(GlossaryService $glossaryService): void
@@ -48,12 +50,6 @@ class EmployeeRepository extends Repository
                 'lastName',
                 $search['letter'],
             );
-        }
-
-        if (count($constraints) === 1) {
-            $query->matching(reset($constraints));
-        } elseif (count($constraints) >= 2) {
-            $query->matching($query->logicalAnd(...$constraints));
         }
 
         if ($constraints === []) {
@@ -84,14 +80,13 @@ class EmployeeRepository extends Repository
 
     public function getQueryBuilderToFindAllEntries(int $office = 0): QueryBuilder
     {
-        $table = 'tx_telephonedirectory_domain_model_employee';
         $query = $this->createQuery();
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($table);
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE);
         $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
 
         // Do not set any SELECT, ORDER BY, GROUP BY statement. It will be set by glossary2 API
         $queryBuilder
-            ->from($table)
+            ->from(self::TABLE)
             ->where(
                 $queryBuilder->expr()->in(
                     'pid',

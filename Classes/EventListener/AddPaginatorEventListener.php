@@ -20,7 +20,7 @@ class AddPaginatorEventListener
 {
     protected int $itemsPerPage = 15;
 
-    protected array $allowedControllerActions = [
+    protected const ALLOWED_CONTROLLER_ACTIONS = [
         'Employee' => [
             'list',
             'search',
@@ -77,11 +77,11 @@ class AddPaginatorEventListener
         return
             array_key_exists(
                 $event->getControllerName(),
-                $this->allowedControllerActions,
+                self::ALLOWED_CONTROLLER_ACTIONS,
             )
             && in_array(
                 $event->getActionName(),
-                $this->allowedControllerActions[$event->getControllerName()],
+                self::ALLOWED_CONTROLLER_ACTIONS[$event->getControllerName()],
                 true,
             );
     }

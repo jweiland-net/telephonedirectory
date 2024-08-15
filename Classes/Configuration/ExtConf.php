@@ -15,6 +15,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotCon
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
  * Class with all properties of Extensionmanager Configuration
@@ -22,28 +23,32 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     protected string $emailContact = '';
+
     protected string $emailFromAddress = '';
+
     protected string $emailFromName = '';
+
     protected int $additionalFunctionsParentCategoryUid = 0;
 
-    public function __construct(ExtensionConfiguration $extensionConfiguration)
+    public function __construct(readonly ExtensionConfiguration $extensionConfiguration)
     {
+        $extConf = [];
+
         try {
-            $extConf = $extensionConfiguration->get('telephonedirectory');
-            if (is_array($extConf)) {
-                foreach ($extConf as $key => $value) {
-                    $methodName = 'set' . ucfirst($key);
-                    if (method_exists($this, $methodName)) {
-                        if ($methodName === 'setAdditionalFunctionsParentCategoryUid') {
-                            $this->setAdditionalFunctionsParentCategoryUid((int)$value);
-                        } elseif (method_exists($this, $methodName)) {
-                            // Ensure the method exists before calling it
-                            $this->$methodName($value);
-                        }
-                    }
-                }
+            $extConf = (array)$extensionConfiguration->get('telephonedirectory');
+        } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $exception) {
+        }
+
+        if ($extConf === []) {
+            return;
+        }
+
+        // call setter method foreach configuration entry
+        foreach ($extConf as $key => $value) {
+            $methodName = 'set' . ucfirst($key);
+            if (method_exists($this, $methodName)) {
+                $this->$methodName($value);
             }
-        } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $e) {
         }
     }
 
@@ -67,11 +72,9 @@ class ExtConf implements SingletonInterface
         return $this->emailContact;
     }
 
-    public function setEmailContact(string $emailContact): self
+    public function setEmailContact(string $emailContact): void
     {
         $this->emailContact = $emailContact;
-
-        return $this;
     }
 
     /**
@@ -94,11 +97,9 @@ class ExtConf implements SingletonInterface
         return $this->emailFromAddress;
     }
 
-    public function setEmailFromAddress(string $emailFromAddress): self
+    public function setEmailFromAddress(string $emailFromAddress): void
     {
         $this->emailFromAddress = $emailFromAddress;
-
-        return $this;
     }
 
     /**
@@ -121,11 +122,9 @@ class ExtConf implements SingletonInterface
         return $this->emailFromName;
     }
 
-    public function setEmailFromName(string $emailFromName): self
+    public function setEmailFromName(string $emailFromName): void
     {
         $this->emailFromName = $emailFromName;
-
-        return $this;
     }
 
     public function getAdditionalFunctionsParentCategoryUid(): int
@@ -133,10 +132,10 @@ class ExtConf implements SingletonInterface
         return $this->additionalFunctionsParentCategoryUid;
     }
 
-    public function setAdditionalFunctionsParentCategoryUid(int $additionalFunctionsParentCategoryUid): self
+    public function setAdditionalFunctionsParentCategoryUid(string $additionalFunctionsParentCategoryUid): void
     {
-        $this->additionalFunctionsParentCategoryUid = $additionalFunctionsParentCategoryUid;
-
-        return $this;
+        if (MathUtility::canBeInterpretedAsInteger($additionalFunctionsParentCategoryUid)) {
+            $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
+        }
     }
 }

@@ -18,16 +18,16 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 
 class RecordPagination implements PaginationInterface
 {
-    protected string $pluginNamespace = 'tx_telephonedirectory_telephone';
+    protected const PLUGIN_NAMESPACE = 'tx_telephonedirectory_telephone';
 
-    protected PaginatorInterface $paginator;
+    protected readonly PaginatorInterface $paginator;
 
     protected array $arguments = [];
 
     public function __construct(PaginatorInterface $paginator)
     {
         $this->paginator = $paginator;
-        $pluginArguments = $this->getPluginArguments($this->pluginNamespace);
+        $pluginArguments = $this->getPluginArguments();
 
         foreach ($pluginArguments as $argumentName => $argument) {
             if ($argumentName[0] === '_' && $argumentName[1] === '_') {
@@ -122,11 +122,11 @@ class RecordPagination implements PaginationInterface
         return $this->paginator->getKeyOfLastPaginatedItem() + 1;
     }
 
-    public function getPluginArguments($pluginNamespace): array
+    public function getPluginArguments(): array
     {
         $request = $this->getRequestFromGlobalScope();
-        $getMergedWithPost = $request->getQueryParams()[$pluginNamespace] ?? [];
-        $postArgument = $request->getParsedBody()[$pluginNamespace] ?? [];
+        $getMergedWithPost = $request->getQueryParams()[self::PLUGIN_NAMESPACE] ?? [];
+        $postArgument = $request->getParsedBody()[self::PLUGIN_NAMESPACE] ?? [];
         ArrayUtility::mergeRecursiveWithOverrule($getMergedWithPost, $postArgument);
 
         return $getMergedWithPost;

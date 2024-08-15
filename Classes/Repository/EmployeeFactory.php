@@ -34,7 +34,7 @@ class EmployeeFactory
     /**
      * @var ApplyRecordToEmployeeInterface[]
      */
-    private $handlers;
+    private iterable $handlers;
 
     public function __construct(iterable $handlers)
     {
@@ -64,10 +64,10 @@ class EmployeeFactory
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                        $queryBuilder->createNamedParameter($employeeUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             return $this->lowerCamelCaseArrayKeys($employee);
         } catch (Exception $e) {
@@ -91,7 +91,7 @@ class EmployeeFactory
                         $queryBuilder->createNamedParameter($storages, Connection::PARAM_INT_ARRAY),
                     ),
                 )
-                ->execute();
+                ->executeQuery();
 
             $employees = [];
             while ($employee = $queryResult->fetchAssociative()) {

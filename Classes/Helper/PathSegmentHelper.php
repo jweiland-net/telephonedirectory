@@ -22,43 +22,22 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
  */
 class PathSegmentHelper
 {
-    /**
-     * @var SlugHelper
-     */
-    protected $slugHelper;
+    private const TABLE = 'tx_telephonedirectory_domain_model_employee';
 
-    public function __construct()
+    private const COLUMN = 'path_segment';
+
+    public function __construct(protected PersistenceManagerInterface $persistenceManager) {}
+
+    public function generatePathSegment(array $baseRecord, int $pid): string
     {
-        // Add uid to slug, to prevent duplicates
-        $config = $GLOBALS['TCA']['tx_telephonedirectory_domain_model_employee']['columns']['path_segment']['config'];
-        $config['generatorOptions']['fields'] = ['first_name', 'last_name', 'uid'];
-
-        $slugHelper = GeneralUtility::makeInstance(
-            SlugHelper::class,
-            'tx_telephonedirectory_domain_model_company',
-            'path_segment',
-            $config,
-        );
-
-        $this->slugHelper = $slugHelper;
-    }
-
-    public function generatePathSegment(
-        array $baseRecord,
-        int $pid,
-    ): string {
-        return $this->slugHelper->generate(
-            $baseRecord,
-            $pid,
-        );
+        return $this->getSlugHelper()->generate($baseRecord, $pid);
     }
 
     public function updatePathSegmentForEmployee(Employee $employee): void
     {
         // First of all, we have to check, if an UID is available
         if (!$employee->getUid()) {
-            $persistenceManager = GeneralUtility::makeInstance(PersistenceManagerInterface::class);
-            $persistenceManager->persistAll();
+            $this->persistenceManager->persistAll();
         }
 
         $employee->setPathSegment(
@@ -66,6 +45,20 @@ class PathSegmentHelper
                 $employee->getBaseRecordForPathSegment(),
                 $employee->getPid(),
             ),
+        );
+    }
+
+    protected function getSlugHelper(): SlugHelper
+    {
+        // Add uid to slug, to prevent duplicates
+        $config = $GLOBALS['TCA'][self::TABLE]['columns'][self::COLUMN]['config'];
+        $config['generatorOptions']['fields'] = ['first_name', 'last_name', 'uid'];
+
+        return GeneralUtility::makeInstance(
+            SlugHelper::class,
+            self::TABLE,
+            self::COLUMN,
+            $config,
         );
     }
 }

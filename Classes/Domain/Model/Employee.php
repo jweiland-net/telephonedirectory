@@ -93,15 +93,19 @@ class Employee extends AbstractEntity
 
     public function __construct()
     {
-        // Do not remove the next line: It would break the functionality
-        $this->initStorageObjects();
-    }
-
-    protected function initStorageObjects(): void
-    {
         $this->additionalFunction = new ObjectStorage();
         $this->languageSkill = new ObjectStorage();
         $this->image = new ObjectStorage();
+    }
+
+    /**
+     * Called again with initialize object, as fetching an entity from the DB does not use the constructor
+     */
+    protected function initializeObject(): void
+    {
+        $this->additionalFunction = $this->additionalFunction ?? new ObjectStorage();
+        $this->languageSkill = $this->languageSkill ?? new ObjectStorage();
+        $this->image = $this->image ?? new ObjectStorage();
     }
 
     public function isHidden(): bool
@@ -109,10 +113,9 @@ class Employee extends AbstractEntity
         return $this->hidden;
     }
 
-    public function setHidden(bool $hidden): self
+    public function setHidden(bool $hidden): void
     {
         $this->hidden = $hidden;
-        return $this;
     }
 
     public function getTitle(): int
@@ -120,10 +123,9 @@ class Employee extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle(int $title): self
+    public function setTitle(int $title): void
     {
         $this->title = $title;
-        return $this;
     }
 
     public function getPathSegment(): string
@@ -131,10 +133,9 @@ class Employee extends AbstractEntity
         return $this->pathSegment;
     }
 
-    public function setPathSegment(string $pathSegment): self
+    public function setPathSegment(string $pathSegment): void
     {
         $this->pathSegment = $pathSegment;
-        return $this;
     }
 
     public function getFirstName(): string
@@ -142,10 +143,9 @@ class Employee extends AbstractEntity
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(string $firstName): void
     {
         $this->firstName = $firstName;
-        return $this;
     }
 
     public function getLastName(): string
@@ -153,10 +153,9 @@ class Employee extends AbstractEntity
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    public function setLastName(string $lastName): void
     {
         $this->lastName = $lastName;
-        return $this;
     }
 
     public function getNameAdditions(): string
@@ -164,10 +163,9 @@ class Employee extends AbstractEntity
         return $this->nameAdditions;
     }
 
-    public function setNameAdditions(string $nameAdditions): self
+    public function setNameAdditions(string $nameAdditions): void
     {
         $this->nameAdditions = $nameAdditions;
-        return $this;
     }
 
     public function getIsCatchAllMail(): bool
@@ -175,21 +173,19 @@ class Employee extends AbstractEntity
         return $this->isCatchAllMail;
     }
 
-    public function setIsCatchAllMail(bool $isCatchAllMail): self
+    public function setIsCatchAllMail(bool $isCatchAllMail): void
     {
         $this->isCatchAllMail = $isCatchAllMail;
-        return $this;
     }
 
     public function getSubjectField(): ?SubjectField
     {
-        return $this->subjectField ?: null;
+        return $this->subjectField;
     }
 
-    public function setSubjectField(?SubjectField $subjectField): self
+    public function setSubjectField(?SubjectField $subjectField): void
     {
-        $this->subjectField = $subjectField ?: 0;
-        return $this;
+        $this->subjectField = $subjectField;
     }
 
     public function getCompany(): string
@@ -197,10 +193,9 @@ class Employee extends AbstractEntity
         return $this->company;
     }
 
-    public function setCompany(string $company): self
+    public function setCompany(string $company): void
     {
         $this->company = $company;
-        return $this;
     }
 
     public function getRoomNumber(): string
@@ -208,10 +203,9 @@ class Employee extends AbstractEntity
         return $this->roomNumber;
     }
 
-    public function setRoomNumber(string $roomNumber): self
+    public function setRoomNumber(string $roomNumber): void
     {
         $this->roomNumber = $roomNumber;
-        return $this;
     }
 
     public function getFunction(): string
@@ -219,10 +213,9 @@ class Employee extends AbstractEntity
         return $this->function;
     }
 
-    public function setFunction(string $function): self
+    public function setFunction(string $function): void
     {
         $this->function = $function;
-        return $this;
     }
 
     public function getAdditionalFunction(): ObjectStorage
@@ -230,22 +223,19 @@ class Employee extends AbstractEntity
         return $this->additionalFunction;
     }
 
-    public function setAdditionalFunction(ObjectStorage $additionalFunction): self
+    public function setAdditionalFunction(ObjectStorage $additionalFunction): void
     {
         $this->additionalFunction = $additionalFunction;
-        return $this;
     }
 
-    public function addAdditionalFunction(Category $additionalFunction): self
+    public function addAdditionalFunction(Category $additionalFunction): void
     {
         $this->additionalFunction->attach($additionalFunction);
-        return $this;
     }
 
-    public function removeAdditionalFunction(Category $additionalFunction): self
+    public function removeAdditionalFunction(Category $additionalFunction): void
     {
         $this->additionalFunction->detach($additionalFunction);
-        return $this;
     }
 
     public function getTelephone1(): string
@@ -253,10 +243,9 @@ class Employee extends AbstractEntity
         return $this->telephone1;
     }
 
-    public function setTelephone1(string $telephone1): self
+    public function setTelephone1(string $telephone1): void
     {
         $this->telephone1 = $telephone1;
-        return $this;
     }
 
     public function getTelephone2(): string
@@ -264,10 +253,9 @@ class Employee extends AbstractEntity
         return $this->telephone2;
     }
 
-    public function setTelephone2(string $telephone2): self
+    public function setTelephone2(string $telephone2): void
     {
         $this->telephone2 = $telephone2;
-        return $this;
     }
 
     public function getTelephone3(): string
@@ -275,10 +263,9 @@ class Employee extends AbstractEntity
         return $this->telephone3;
     }
 
-    public function setTelephone3(string $telephone3): self
+    public function setTelephone3(string $telephone3): void
     {
         $this->telephone3 = $telephone3;
-        return $this;
     }
 
     public function getMobile(): string
@@ -286,10 +273,9 @@ class Employee extends AbstractEntity
         return $this->mobile;
     }
 
-    public function setMobile(string $mobile): self
+    public function setMobile(string $mobile): void
     {
         $this->mobile = $mobile;
-        return $this;
     }
 
     public function getPager(): string
@@ -297,10 +283,9 @@ class Employee extends AbstractEntity
         return $this->pager;
     }
 
-    public function setPager(string $pager): self
+    public function setPager(string $pager): void
     {
         $this->pager = $pager;
-        return $this;
     }
 
     public function getFax(): string
@@ -308,10 +293,9 @@ class Employee extends AbstractEntity
         return $this->fax;
     }
 
-    public function setFax(string $fax): self
+    public function setFax(string $fax): void
     {
         $this->fax = $fax;
-        return $this;
     }
 
     public function getPcFax(): string
@@ -319,10 +303,9 @@ class Employee extends AbstractEntity
         return $this->pcFax;
     }
 
-    public function setPcFax(string $pcFax): self
+    public function setPcFax(string $pcFax): void
     {
         $this->pcFax = $pcFax;
-        return $this;
     }
 
     public function getEmail(): string
@@ -330,10 +313,9 @@ class Employee extends AbstractEntity
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-        return $this;
     }
 
     public function getAdditionalInformations(): string
@@ -341,10 +323,9 @@ class Employee extends AbstractEntity
         return $this->additionalInformations;
     }
 
-    public function setAdditionalInformations(string $additionalInformations): self
+    public function setAdditionalInformations(string $additionalInformations): void
     {
         $this->additionalInformations = $additionalInformations;
-        return $this;
     }
 
     public function getRegularAttendance(): string
@@ -352,10 +333,9 @@ class Employee extends AbstractEntity
         return $this->regularAttendance;
     }
 
-    public function setRegularAttendance(string $regularAttendance): self
+    public function setRegularAttendance(string $regularAttendance): void
     {
         $this->regularAttendance = $regularAttendance;
-        return $this;
     }
 
     public function getModuleSysDmailHtml(): bool
@@ -363,49 +343,45 @@ class Employee extends AbstractEntity
         return $this->moduleSysDmailHtml;
     }
 
-    public function setModuleSysDmailHtml(bool $moduleSysDmailHtml): self
+    public function setModuleSysDmailHtml(bool $moduleSysDmailHtml): void
     {
         $this->moduleSysDmailHtml = $moduleSysDmailHtml;
-        return $this;
     }
 
     public function getOffice(): ?Office
     {
-        return $this->office ?: null;
+        return $this->office;
     }
 
-    public function setOffice(Office $office = null): self
+    public function setOffice(Office $office = null): void
     {
-        $this->office = $office ?: 0;
-        return $this;
+        $this->office = $office;
     }
 
     public function getBuilding(): ?Building
     {
-        return $this->building ?: null;
+        return $this->building;
     }
 
-    public function setBuilding(Building $building): self
+    public function setBuilding(Building $building): void
     {
         $this->building = $building;
-        return $this;
     }
 
     public function getDepartment(): ?Department
     {
-        return $this->department ?: null;
+        return $this->department;
     }
 
-    public function setDepartment(?Department $department): self
+    public function setDepartment(?Department $department): void
     {
-        $this->department = $department ?: 0;
-        return $this;
+        $this->department = $department;
     }
 
     public function getFirstImage(): ?FileReference
     {
         $this->image->rewind();
-        return $this->image->current() ?: null;
+        return $this->image->current();
     }
 
     public function getImage(): ObjectStorage
@@ -413,22 +389,19 @@ class Employee extends AbstractEntity
         return $this->image;
     }
 
-    public function setImage(ObjectStorage $image): self
+    public function setImage(ObjectStorage $image): void
     {
         $this->image = $image;
-        return $this;
     }
 
-    public function addLanguageSkill(LanguageSkill $languageSkill): self
+    public function addLanguageSkill(LanguageSkill $languageSkill): void
     {
         $this->languageSkill->attach($languageSkill);
-        return $this;
     }
 
-    public function removeLanguageSkill(LanguageSkill $languageSkillToRemove): self
+    public function removeLanguageSkill(LanguageSkill $languageSkillToRemove): void
     {
         $this->languageSkill->detach($languageSkillToRemove);
-        return $this;
     }
 
     public function getLanguageSkill(): ObjectStorage
@@ -436,10 +409,9 @@ class Employee extends AbstractEntity
         return $this->languageSkill;
     }
 
-    public function setLanguageSkill(ObjectStorage $languageSkill): self
+    public function setLanguageSkill(ObjectStorage $languageSkill): void
     {
         $this->languageSkill = $languageSkill;
-        return $this;
     }
 
     /**
