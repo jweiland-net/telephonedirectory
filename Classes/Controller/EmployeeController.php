@@ -210,7 +210,12 @@ class EmployeeController extends AbstractController
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
 
-        return $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
+        return $this->redirect(
+            'show',
+            'Employee',
+            'telephonedirectory',
+            ['employee' => $employee],
+        );
     }
 
     public function initializeSendEditMailAction(): void

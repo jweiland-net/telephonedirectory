@@ -46,11 +46,9 @@ class Office extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     public function getCode(): string
@@ -58,11 +56,9 @@ class Office extends AbstractEntity
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(string $code): void
     {
         $this->code = $code;
-
-        return $this;
     }
 
     public function getToken(): string
@@ -70,11 +66,9 @@ class Office extends AbstractEntity
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken(string $token): void
     {
         $this->token = $token;
-
-        return $this;
     }
 
     public function getSubjectField(): ?SubjectField
@@ -82,24 +76,23 @@ class Office extends AbstractEntity
         if ($this->subjectFields->count() > 0) {
             return $this->subjectFields->current(); // Gets the first element
         }
+
         return null;
     }
 
     /**
      * @deprecated Either use addSubjectField or setSubjectFields
      */
-    public function setSubjectField(SubjectField $subjectField): self
+    public function setSubjectField(SubjectField $subjectField): void
     {
-        return $this->addSubjectField($subjectField);
+        $this->addSubjectField($subjectField);
     }
 
-    public function addSubjectField(SubjectField $subjectField): self
+    public function addSubjectField(SubjectField $subjectField): void
     {
         if (!$this->subjectFields->contains($subjectField)) {
             $this->subjectFields->attach($subjectField);
         }
-
-        return $this;
     }
 
     public function getSubjectFields(): ObjectStorage
@@ -107,11 +100,9 @@ class Office extends AbstractEntity
         return $this->subjectFields;
     }
 
-    public function setSubjectFields(ObjectStorage $subjectFields): self
+    public function setSubjectFields(ObjectStorage $subjectFields): void
     {
         $this->subjectFields = $subjectFields;
-
-        return $this;
     }
 
     public function getDepartment(): ?Department
@@ -125,18 +116,16 @@ class Office extends AbstractEntity
     /**
      * @deprecated Either use addDepartment or setDepartments
      */
-    public function setDepartment(Department $department): self
+    public function setDepartment(Department $department): void
     {
-        return $this->addDepartment($department);
+        $this->addDepartment($department);
     }
 
-    public function addDepartment(Department $department): self
+    public function addDepartment(Department $department): void
     {
         if (!$this->departments->contains($department)) {
             $this->departments->attach($department);
         }
-
-        return $this;
     }
 
     public function getDepartments(): ObjectStorage
@@ -144,10 +133,8 @@ class Office extends AbstractEntity
         return $this->departments;
     }
 
-    public function setDepartments(ObjectStorage $departments): self
+    public function setDepartments(ObjectStorage $departments): void
     {
         $this->departments = $departments;
-
-        return $this;
     }
 }

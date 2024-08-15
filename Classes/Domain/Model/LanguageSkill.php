@@ -33,11 +33,9 @@ class LanguageSkill extends AbstractEntity
         return $this->language;
     }
 
-    public function setLanguage(Language $language): self
+    public function setLanguage(Language $language): void
     {
         $this->language = $language;
-
-        return $this;
     }
 
     public function getWriting(): string
@@ -45,11 +43,9 @@ class LanguageSkill extends AbstractEntity
         return $this->writing;
     }
 
-    public function setWriting(string $writing): self
+    public function setWriting(string $writing): void
     {
         $this->writing = $writing;
-
-        return $this;
     }
 
     public function getSpeaking(): string
@@ -57,11 +53,9 @@ class LanguageSkill extends AbstractEntity
         return $this->speaking;
     }
 
-    public function setSpeaking(string $speaking): self
+    public function setSpeaking(string $speaking): void
     {
         $this->speaking = $speaking;
-
-        return $this;
     }
 
     public function getInfotext(): string
@@ -69,11 +63,9 @@ class LanguageSkill extends AbstractEntity
         return $this->infotext;
     }
 
-    public function setInfotext(string $infotext): self
+    public function setInfotext(string $infotext): void
     {
         $this->infotext = $infotext;
-
-        return $this;
     }
 
     public function getEmployee(): ?Employee
@@ -81,10 +73,8 @@ class LanguageSkill extends AbstractEntity
         return $this->employee;
     }
 
-    public function setEmployee(Employee $employee): self
+    public function setEmployee(Employee $employee): void
     {
         $this->employee = $employee;
-
-        return $this;
     }
 }

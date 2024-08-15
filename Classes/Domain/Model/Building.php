@@ -30,7 +30,7 @@ class Building extends AbstractEntity
     protected string $city = '';
 
     /**
-     * @var \JWeiland\Maps2\Domain\Model\PoiCollection
+     * @var PoiCollection
      */
     protected $txMaps2Uid;
 
@@ -39,11 +39,9 @@ class Building extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     public function getStreet(): string
@@ -51,11 +49,9 @@ class Building extends AbstractEntity
         return $this->street;
     }
 
-    public function setStreet(string $street): self
+    public function setStreet(string $street): void
     {
         $this->street = $street;
-
-        return $this;
     }
 
     public function getHouseNumber(): string
@@ -63,11 +59,9 @@ class Building extends AbstractEntity
         return $this->houseNumber;
     }
 
-    public function setHouseNumber(string $houseNumber): self
+    public function setHouseNumber(string $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
-
-        return $this;
     }
 
     public function getZip(): string
@@ -75,11 +69,9 @@ class Building extends AbstractEntity
         return $this->zip;
     }
 
-    public function setZip(string $zip): self
+    public function setZip(string $zip): void
     {
         $this->zip = $zip;
-
-        return $this;
     }
 
     public function getCity(): string
@@ -87,11 +79,9 @@ class Building extends AbstractEntity
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(string $city): void
     {
         $this->city = $city;
-
-        return $this;
     }
 
     public function getTxMaps2Uid(): ?PoiCollection
@@ -99,10 +89,8 @@ class Building extends AbstractEntity
         return $this->txMaps2Uid;
     }
 
-    public function setTxMaps2Uid(PoiCollection $txMaps2Uid): self
+    public function setTxMaps2Uid(PoiCollection $txMaps2Uid): void
     {
         $this->txMaps2Uid = $txMaps2Uid;
-
-        return $this;
     }
 }
