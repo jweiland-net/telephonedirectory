@@ -20,7 +20,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class LanguageSkillRepository extends Repository
 {
     /**
-     * Returns all languageSkills that are connected to a employee record
+     * Returns all languageSkills that are connected to an employee record
      */
     public function findAllWithEmployeeRelation(): QueryResultInterface
     {
@@ -28,7 +28,7 @@ class LanguageSkillRepository extends Repository
         $query->matching(
             $query->logicalAnd(
                 $query->equals('employee.hidden', 0),
-                $query->equals('employee.deleted', 0)
+                $query->equals('employee.deleted', 0),
             ),
         );
 

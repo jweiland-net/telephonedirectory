@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository;
 
-use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Repository\Handler\ApplyRecordToEmployeeInterface;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
