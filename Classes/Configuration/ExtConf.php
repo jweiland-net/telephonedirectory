@@ -107,7 +107,7 @@ class ExtConf implements SingletonInterface
      */
     public function getEmailFromName(): string
     {
-        if ($this->emailFromName) {
+        if ($this->emailFromName === '') {
             $fallbackEmailFromName = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
             if ($fallbackEmailFromName === '') {
                 throw new \Exception(

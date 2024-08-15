@@ -21,8 +21,7 @@ class EmployeeNotificationService implements EmailServiceInterface
     public function sendEmployeeNotification(Employee $employee, string $content): void
     {
         $subject = LocalizationUtility::translate('email.subject', 'telephonedirectory');
-        $to = $employee->getEmail();
-        $this->emailService->sendEmail($to, $subject, $content);
+        $this->emailService->sendEmail($employee->getEmail(), $subject, $content);
     }
 
     public function sendEmail(string $to, string $subject, string $content): void
