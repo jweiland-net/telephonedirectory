@@ -85,7 +85,7 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
     }
 
     /**
-     * @return array<int, mixed>
+     * @return array<mixed, mixed>
      */
     public function getSettings(): array
     {

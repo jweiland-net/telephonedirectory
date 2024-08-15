@@ -218,11 +218,17 @@ class Employee extends AbstractEntity
         $this->function = $function;
     }
 
+    /**
+     * @return ObjectStorage<Category>
+     */
     public function getAdditionalFunction(): ObjectStorage
     {
         return $this->additionalFunction;
     }
 
+    /**
+     * @param ObjectStorage<Category> $additionalFunction
+     */
     public function setAdditionalFunction(ObjectStorage $additionalFunction): void
     {
         $this->additionalFunction = $additionalFunction;

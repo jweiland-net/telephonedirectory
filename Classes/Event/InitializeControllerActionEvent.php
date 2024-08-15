@@ -59,7 +59,7 @@ class InitializeControllerActionEvent implements ControllerActionEventInterface
     }
 
     /**
-     * @return  array<int, mixed>
+     * @return  array<string, mixed>
      */
     public function getSettings(): array
     {
