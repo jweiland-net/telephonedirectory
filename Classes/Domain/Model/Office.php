@@ -41,6 +41,15 @@ class Office extends AbstractEntity
         $this->subjectFields = new ObjectStorage();
     }
 
+    /**
+     * Called again with initialize object, as fetching an entity from the DB does not use the constructor
+     */
+    public function initializeObject(): void
+    {
+        $this->departments = $this->departments ?? new ObjectStorage();
+        $this->subjectFields = $this->subjectFields ?? new ObjectStorage();
+    }
+
     public function getTitle(): string
     {
         return $this->title;

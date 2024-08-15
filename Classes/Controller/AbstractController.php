@@ -17,7 +17,7 @@ use JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent;
 use JWeiland\Telephonedirectory\Event\PreProcessControllerActionEvent;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class AbstractController extends ActionController
+abstract class AbstractController extends ActionController
 {
     protected function initializeControllerAction(): void
     {

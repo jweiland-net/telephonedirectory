@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Repository\Handler;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -56,10 +57,10 @@ class AddSubjectFieldToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($subjectFieldUid, \PDO::PARAM_INT),
+                        $queryBuilder->createNamedParameter($subjectFieldUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             return is_array($subjectFieldRecord) ? $this->lowerCamelCaseArrayKeys($subjectFieldRecord) : [];
         } catch (Exception $e) {

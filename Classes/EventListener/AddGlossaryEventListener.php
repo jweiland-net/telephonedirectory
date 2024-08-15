@@ -18,22 +18,17 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 
 class AddGlossaryEventListener extends AbstractControllerEventListener
 {
-    protected GlossaryService $glossaryService;
-
-    protected EmployeeRepository $employeeRepository;
-
-    protected array $allowedControllerActions = [
+    protected const ALLOWED_CONTROLLER_ACTIONS = [
         'Employee' => [
             'list',
             'search',
         ],
     ];
 
-    public function __construct(GlossaryService $glossaryService, EmployeeRepository $employeeRepository)
-    {
-        $this->glossaryService = $glossaryService;
-        $this->employeeRepository = $employeeRepository;
-    }
+    public function __construct(
+        protected GlossaryService $glossaryService,
+        protected EmployeeRepository $employeeRepository,
+    ) {}
 
     public function __invoke(PostProcessFluidVariablesEvent $event): void
     {

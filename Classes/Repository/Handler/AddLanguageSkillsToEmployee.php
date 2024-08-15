@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Repository\Handler;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -53,10 +54,10 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'employee',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                        $queryBuilder->createNamedParameter($employeeUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute();
+                ->executeQuery();
 
             $languageSkills = [];
             while ($languageSkill = $queryResult->fetchAssociative()) {
@@ -80,10 +81,10 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($languageUid, \PDO::PARAM_INT),
+                        $queryBuilder->createNamedParameter($languageUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             return is_array($languageRecord) ? $this->lowerCamelCaseArrayKeys($languageRecord) : [];
         } catch (Exception $e) {

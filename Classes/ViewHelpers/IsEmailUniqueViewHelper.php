@@ -42,8 +42,6 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
 
     /**
      * Implements a ViewHelper which checks if a given email address is unique in DB
-     *
-     * @return bool
      */
     public function render(): bool
     {

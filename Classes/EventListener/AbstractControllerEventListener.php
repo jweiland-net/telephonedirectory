@@ -19,20 +19,20 @@ use JWeiland\Telephonedirectory\Event\ControllerActionEventInterface;
 class AbstractControllerEventListener
 {
     /**
-     * Only execute this EventListener if controller and action matches
+     * Only execute this EventListener, if controller and action matches
      */
-    protected array $allowedControllerActions = [];
+    protected const ALLOWED_CONTROLLER_ACTIONS = [];
 
     protected function isValidRequest(ControllerActionEventInterface $event): bool
     {
         return
             array_key_exists(
                 $event->getControllerName(),
-                $this->allowedControllerActions,
+                self::ALLOWED_CONTROLLER_ACTIONS,
             )
             && in_array(
                 $event->getActionName(),
-                $this->allowedControllerActions[$event->getControllerName()],
+                self::ALLOWED_CONTROLLER_ACTIONS[$event->getControllerName()],
                 true,
             );
     }

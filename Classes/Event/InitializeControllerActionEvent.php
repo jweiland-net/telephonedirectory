@@ -25,11 +25,8 @@ class InitializeControllerActionEvent implements ControllerActionEventInterface
 
     protected array $settings = [];
 
-    public function __construct(
-        RequestInterface $request,
-        Arguments $arguments,
-        array $settings,
-    ) {
+    public function __construct(RequestInterface $request, Arguments $arguments, array $settings)
+    {
         $this->request = $request;
         $this->arguments = $arguments;
         $this->settings = $settings;

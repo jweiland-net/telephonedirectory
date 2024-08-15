@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Repository\Handler;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -53,10 +54,10 @@ class AddBuildingToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($buildingUid, \PDO::PARAM_INT),
+                        $queryBuilder->createNamedParameter($buildingUid, Connection::PARAM_INT),
                     ),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             return is_array($buildingRecord) ? $this->lowerCamelCaseArrayKeys($buildingRecord) : [];
         } catch (Exception $e) {

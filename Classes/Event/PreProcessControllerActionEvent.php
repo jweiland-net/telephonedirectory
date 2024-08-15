@@ -18,7 +18,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 
 /**
- * Pre process controller actions which does not assign any variables to view.
+ * Preprocess controller actions which does not assign any variables to view.
  * Often used by controller actions like "update" or "create" which redirects after success.
  */
 class PreProcessControllerActionEvent implements ControllerActionEventInterface
@@ -53,7 +53,7 @@ class PreProcessControllerActionEvent implements ControllerActionEventInterface
         return $this->controller;
     }
 
-    public function getInterpretterController(): ActionController
+    public function getInterpreterController(): ActionController
     {
         return $this->controller;
     }

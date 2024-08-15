@@ -23,11 +23,14 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 class ExtConf implements SingletonInterface
 {
     protected string $emailContact = '';
+
     protected string $emailFromAddress = '';
+
     protected string $emailFromName = '';
+
     protected int $additionalFunctionsParentCategoryUid = 0;
 
-    public function __construct(ExtensionConfiguration $extensionConfiguration)
+    public function __construct(readonly ExtensionConfiguration $extensionConfiguration)
     {
         $extConf = [];
 

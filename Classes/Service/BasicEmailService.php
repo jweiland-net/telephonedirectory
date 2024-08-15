@@ -17,24 +17,25 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class BasicEmailService implements EmailServiceInterface
 {
-    private string $fromName;
-    private string $fromAddress;
-
-    public function __construct(ExtConf $extConf)
-    {
-        $this->fromName = $extConf->getEmailFromName();
-        $this->fromAddress = $extConf->getEmailFromAddress();
-    }
-
     public function sendEmail(string $to, string $subject, string $content): void
     {
         if (GeneralUtility::validEmail($to)) {
-            $mail = GeneralUtility::makeInstance(MailMessage::class);
-            $mail->setFrom($this->fromAddress, $this->fromName);
+            $mail = $this->getMailMessage();
+            $mail->setFrom($this->getExtConf()->getEmailFromAddress(), $this->getExtConf()->getEmailFromName());
             $mail->setTo($to);
             $mail->setSubject($subject);
             $mail->html($content);
             $mail->send();
         }
+    }
+
+    protected function getExtConf(): ExtConf
+    {
+        return GeneralUtility::makeInstance(ExtConf::class);
+    }
+
+    protected function getMailMessage(): MailMessage
+    {
+        return GeneralUtility::makeInstance(MailMessage::class);
     }
 }

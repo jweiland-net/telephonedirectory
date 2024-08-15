@@ -93,15 +93,19 @@ class Employee extends AbstractEntity
 
     public function __construct()
     {
-        // Do not remove the next line: It would break the functionality
-        $this->initStorageObjects();
-    }
-
-    protected function initStorageObjects(): void
-    {
         $this->additionalFunction = new ObjectStorage();
         $this->languageSkill = new ObjectStorage();
         $this->image = new ObjectStorage();
+    }
+
+    /**
+     * Called again with initialize object, as fetching an entity from the DB does not use the constructor
+     */
+    protected function initializeObject(): void
+    {
+        $this->additionalFunction = $this->additionalFunction ?? new ObjectStorage();
+        $this->languageSkill = $this->languageSkill ?? new ObjectStorage();
+        $this->image = $this->image ?? new ObjectStorage();
     }
 
     public function isHidden(): bool
