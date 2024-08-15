@@ -65,7 +65,7 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 $languageSkills[$languageSkill['uid']] = $this->lowerCamelCaseArrayKeys($languageSkill);
             }
             return $languageSkills;
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];
@@ -87,7 +87,7 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
                 ->executeQuery()
                 ->fetchAssociative();
             return is_array($languageRecord) ? $this->lowerCamelCaseArrayKeys($languageRecord) : [];
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];

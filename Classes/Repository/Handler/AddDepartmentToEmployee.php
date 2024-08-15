@@ -60,7 +60,7 @@ class AddDepartmentToEmployee implements ApplyRecordToEmployeeInterface
                 ->executeQuery()
                 ->fetchAssociative();
             return is_array($departmentRecord) ? $this->lowerCamelCaseArrayKeys($departmentRecord) : [];
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];

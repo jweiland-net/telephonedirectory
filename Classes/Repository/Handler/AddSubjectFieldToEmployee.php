@@ -63,7 +63,7 @@ class AddSubjectFieldToEmployee implements ApplyRecordToEmployeeInterface
                 ->executeQuery()
                 ->fetchAssociative();
             return is_array($subjectFieldRecord) ? $this->lowerCamelCaseArrayKeys($subjectFieldRecord) : [];
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];

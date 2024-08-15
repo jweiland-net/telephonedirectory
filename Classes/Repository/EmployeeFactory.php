@@ -70,7 +70,7 @@ class EmployeeFactory
                 ->executeQuery()
                 ->fetchAssociative();
             return $this->lowerCamelCaseArrayKeys($employee);
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];
@@ -98,7 +98,7 @@ class EmployeeFactory
                 $employees[$employee['uid']] = $onlyUid ? $employee['uid'] : $this->lowerCamelCaseArrayKeys($employee);
             }
             return $employees;
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];

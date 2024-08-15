@@ -60,7 +60,7 @@ class AddBuildingToEmployee implements ApplyRecordToEmployeeInterface
                 ->executeQuery()
                 ->fetchAssociative();
             return is_array($buildingRecord) ? $this->lowerCamelCaseArrayKeys($buildingRecord) : [];
-        } catch (Exception $e) {
+        } catch (\Doctrine\DBAL\Exception $e) {
         }
 
         return [];
