@@ -94,6 +94,7 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'default' => 0,
             ],
         ],
@@ -218,6 +219,8 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee.is_catch_all_mail',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
             ],
         ],
         'subject_field' => [
