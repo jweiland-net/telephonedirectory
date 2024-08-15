@@ -23,7 +23,7 @@ class Category extends AbstractEntity
 
     protected string $description = '';
 
-    protected ?Category $parent = null;
+    protected Category|LazyLoadingProxy|null $parent = null;
 
     public function getTitle(): string
     {

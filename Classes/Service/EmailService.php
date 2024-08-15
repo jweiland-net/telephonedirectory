@@ -23,21 +23,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class EmailService
 {
-    /**
-     * @var array<string, mixed> $settings
-     */
-    protected array $settings = [];
-
-    /**
-     * @param array<string, mixed> $settings
-     */
-    public function __construct(
-        protected UriBuilder $uriBuilder,
-        protected readonly HashService $hashService,
-        array $settings,
-    ) {
-        $this->settings = $settings;
-    }
+    public function __construct(protected UriBuilder $uriBuilder, protected readonly HashService $hashService) {}
 
     /**
      * Sends an email to an employee about their current data and an edit link

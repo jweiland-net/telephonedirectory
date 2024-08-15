@@ -9,21 +9,22 @@ services:
     exclude:
       - '../Classes/Domain/Model/*'
 
-  # EventListeners
-  JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener:
-    tags:
-      - name: event.listener
-        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
-  JWeiland\Telephonedirectory\EventListener\AddGlossaryEventListener:
-    tags:
-      - name: event.listener
-        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
-        after: JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener
+  # Called by makeInstance in SendMailToEmployeeTask
+  JWeiland\Telephonedirectory\Configuration\ExtConf:
+    public: true
 
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
     public: true;
     arguments: [!tagged_iterator {tag: 'telephonedirectory.add_record_to_employee'}]
+
+  # Called by makeInstance in SendMailToEmployeeTask
+  JWeiland\Telephonedirectory\Service\EmailService:
+    public: true
+
+  # Ensure other services are properly configured
+  JWeiland\Telephonedirectory\Service\TemplateRenderingService:
+    public: true
 
   JWeiland\Telephonedirectory\Repository\Handler\AddAdditionalFunctionsToEmployee:
     tags:
@@ -49,6 +50,14 @@ services:
     alias: JWeiland\Telephonedirectory\Service\BasicEmailService
     public: true
 
-  # Ensure other services are properly configured
-  JWeiland\Telephonedirectory\Service\TemplateRenderingService:
-    public: true
+  # EventListeners
+  JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+
+  JWeiland\Telephonedirectory\EventListener\AddGlossaryEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+        after: JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener

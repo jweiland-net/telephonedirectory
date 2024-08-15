@@ -78,6 +78,15 @@ class EmployeeRepository extends Repository
         return $query->matching($query->logicalAnd(...$constraintAnd))->execute();
     }
 
+    public function findEmployees(string $csvListOfIdentifiers): QueryResultInterface
+    {
+        $query = $this->createQuery();
+
+        $employeeIdentifiers = GeneralUtility::intExplode(',', $csvListOfIdentifiers, true);
+
+        return $query->matching($query->in('uid', $employeeIdentifiers))->execute();
+    }
+
     public function getQueryBuilderToFindAllEntries(int $office = 0): QueryBuilder
     {
         $query = $this->createQuery();

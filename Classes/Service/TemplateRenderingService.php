@@ -46,11 +46,10 @@ class TemplateRenderingService implements EmailServiceInterface
         $link = $this->uriBuilder->uriFor(
             'edit',
             [
-                'parameter' => $settings['pidOfDetailPage'],
-                'hash' => $this->hashService->generateHmac('Employee:' . $employee->getUid()),
-                'action' => 'edit',
                 'controller' => 'Employee',
+                'action' => 'edit',
                 'employee' => $employee->getUid(),
+                'hash' => $this->hashService->generateHmac('Employee:' . $employee->getUid()),
             ],
         );
 

@@ -40,14 +40,14 @@ class AddPaginatorEventListener
     {
         if ($this->isValidRequest($event)) {
             $paginator = new QueryResultPaginator(
-                $event->getFluidVariables()['records'],
+                $event->getFluidVariables()['employees'],
                 $this->getCurrentPage($event),
                 $this->getItemsPerPage($event),
             );
 
             $event->addFluidVariable('actionName', $event->getActionName());
             $event->addFluidVariable('paginator', $paginator);
-            $event->addFluidVariable('records', $paginator->getPaginatedItems());
+            $event->addFluidVariable('employees', $paginator->getPaginatedItems());
             $event->addFluidVariable('pagination', new RecordPagination($paginator));
         }
     }
