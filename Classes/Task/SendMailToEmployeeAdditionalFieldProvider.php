@@ -32,38 +32,35 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
     {
         $additionalFields = [];
 
-        // Ensure $task is of the expected type
-        if ($task instanceof SendMailToEmployeeTask) {
-            if (empty($taskInfo['storagePid'])) {
-                if ((string)$schedulerModule->getCurrentAction() === 'edit') {
-                    $taskInfo['storagePid'] = $task->storagePid;
-                } else {
-                    $taskInfo['storagePid'] = '';
-                }
+        if (empty($taskInfo['storagePid'])) {
+            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
+                $taskInfo['storagePid'] = $task->storagePid;
+            } else {
+                $taskInfo['storagePid'] = '';
             }
-
-            if (empty($taskInfo['detailViewPid'])) {
-                if ((string)$schedulerModule->getCurrentAction() === 'edit') {
-                    $taskInfo['detailViewPid'] = $task->detailViewPid;
-                } else {
-                    $taskInfo['detailViewPid'] = '';
-                }
-            }
-
-            $fieldID = 'storagePid';
-            $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
-            $additionalFields[$fieldID] = [
-                'code'     => $fieldCode,
-                'label'    => 'Storage pid',
-            ];
-
-            $fieldID = 'detailViewPid';
-            $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
-            $additionalFields[$fieldID] = [
-                'code'     => $fieldCode,
-                'label'    => 'Detail View Pid',
-            ];
         }
+
+        if (empty($taskInfo['detailViewPid'])) {
+            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
+                $taskInfo['detailViewPid'] = $task->detailViewPid;
+            } else {
+                $taskInfo['detailViewPid'] = '';
+            }
+        }
+
+        $fieldID = 'storagePid';
+        $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
+        $additionalFields[$fieldID] = [
+            'code'     => $fieldCode,
+            'label'    => 'Storage pid',
+        ];
+
+        $fieldID = 'detailViewPid';
+        $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
+        $additionalFields[$fieldID] = [
+            'code'     => $fieldCode,
+            'label'    => 'Detail View Pid',
+        ];
 
         return $additionalFields;
     }
