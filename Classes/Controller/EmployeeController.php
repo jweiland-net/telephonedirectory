@@ -93,7 +93,7 @@ class EmployeeController extends AbstractController
         } else {
             $employees = $this->employeeRepository->findAll();
         }
-        $this->view->assign('records', $employees);
+        $this->view->assign('employees', $employees);
         $this->view->assign('offices', $this->officeRepository->findAll());
 
         return $this->htmlResponse();
