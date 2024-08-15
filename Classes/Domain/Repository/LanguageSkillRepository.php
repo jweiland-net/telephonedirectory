@@ -18,7 +18,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for LanguageSkills
  *
- *  @extends Repository<LanguageSkill>
+ * @extends Repository<LanguageSkill>
  */
 class LanguageSkillRepository extends Repository
 {
