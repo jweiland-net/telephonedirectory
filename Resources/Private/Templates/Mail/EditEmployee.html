@@ -3,7 +3,7 @@
       data-namespace-typo3-fluid="true">
 
 <p>
-    <f:translate key="email.text"/>
+    <f:translate key="email.text" extensionName="telephonedirectory"/>
 </p>
 
 <f:render partial="Employee/PropertiesForMail" arguments="{employee: employee}"/>
@@ -12,12 +12,16 @@
     <f:then>
         <p>
             <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:cantEditYourRecord"
+                         extensionName="telephonedirectory"
                          arguments="{0: contactName, 1: contactEmail}"/>
         </p>
     </f:then>
     <f:else>
         <p>
-            <a href="{link}"><f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:edit"/></a>
+            <a href="{link}">
+                <f:translate key="LLL:EXT:telephonedirectory/Resources/Private/Language/locallang.xlf:edit"
+                             extensionName="telephonedirectory"/>
+            </a>
         </p>
     </f:else>
 </f:if>
