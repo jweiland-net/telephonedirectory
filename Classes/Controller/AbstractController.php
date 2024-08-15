@@ -12,14 +12,23 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Controller;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
+use JWeiland\Telephonedirectory\Event\InitializeControllerActionEvent;
 use JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent;
 use JWeiland\Telephonedirectory\Event\PreProcessControllerActionEvent;
-use JWeiland\Telephonedirectory\Traits\InitializeControllerActionTrait;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class AbstractController extends ActionController
 {
-    use InitializeControllerActionTrait;
+    protected function initializeControllerAction(): void
+    {
+        $this->eventDispatcher->dispatch(
+            new InitializeControllerActionEvent(
+                $this->request,
+                $this->arguments,
+                $this->settings,
+            ),
+        );
+    }
 
     /**
      * @param array<string, mixed> $variables
