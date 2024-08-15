@@ -15,7 +15,6 @@ return [
         'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
@@ -116,12 +115,6 @@ return [
                 'fallbackCharacter' => '-',
                 'eval' => 'unique',
                 'default' => '',
-            ],
-        ],
-        'cruser_id' => [
-            'label' => 'cruser_id',
-            'config' => [
-                'type' => 'passthrough',
             ],
         ],
         'pid' => [
