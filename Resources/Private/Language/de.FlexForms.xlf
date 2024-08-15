@@ -9,6 +9,15 @@
       <trans-unit id="showRecords" xml:space="preserve" approved="yes">
 				<source>Show Records</source>
 			<target state="final">Datensätze anzeigen</target></trans-unit>
+      <trans-unit id="showGlossary" xml:space="preserve">
+				<source>Show Glossary</source>
+			<target state="needs-translation">Show Glossary</target></trans-unit>
+      <trans-unit id="office" xml:space="preserve">
+				<source>Restrict By Office</source>
+			<target state="needs-translation">Restrict By Office</target></trans-unit>
+      <trans-unit id="allOffices" xml:space="preserve">
+				<source>All Offices</source>
+			<target state="needs-translation">All Offices</target></trans-unit>
     </body>
   </file>
 </xliff>
