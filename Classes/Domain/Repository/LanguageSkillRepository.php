@@ -21,8 +21,6 @@ class LanguageSkillRepository extends Repository
 {
     /**
      * Returns all languageSkills that are connected to a employee record
-     *
-     * @return QueryResultInterface
      */
     public function findAllWithEmployeeRelation(): QueryResultInterface
     {
