@@ -13,47 +13,54 @@ namespace JWeiland\Telephonedirectory\Utility;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-/**
- * Class LanguageSkillUtility
- */
 class LanguageSkillUtility
 {
     /**
-     * @var array
+     * @var array<int, array{string, string}>
      */
-    protected static $languageSkills = [
+    protected static array $languageSkills = [
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
-            '0'
+            '0',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
-            'native'
+            'native',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
-            'fluent'
+            'fluent',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
-            'good'
+            'good',
         ],
         [
             'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
-            'basic'
-        ]
+            'basic',
+        ],
     ];
 
     /**
-     * @var array
+     * @var array<int, array{string, string}>
      */
-    protected static $languageSkillsForFluidSelect = [];
+    protected static array $languageSkillsForFluidSelect = [];
 
+    /**
+     * Returns an array of language skills.
+     *
+     * @return array<int, array{string, string}>
+     */
     public static function getLanguageSkills(): array
     {
         return self::$languageSkills;
     }
 
+    /**
+     * Returns an array of language skills for fluid select fields.
+     *
+     * @return array<int, array{string, string}>
+     */
     public static function getLanguageSkillsForFluidSelect(): array
     {
         if (!self::$languageSkillsForFluidSelect) {

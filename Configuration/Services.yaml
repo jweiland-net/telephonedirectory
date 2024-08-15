@@ -6,15 +6,24 @@ services:
 
   JWeiland\Telephonedirectory\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
 
-  # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
-  JWeiland\Telephonedirectory\Service\EmailService:
-    public: true
+  # EventListeners
+  JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+  JWeiland\Telephonedirectory\EventListener\AddGlossaryEventListener:
+    tags:
+      - name: event.listener
+        event: JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent
+        after: JWeiland\Telephonedirectory\EventListener\AddPaginatorEventListener
 
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
     public: true;
-    arguments: [!tagged_iterator { tag: 'telephonedirectory.add_record_to_employee' }]
+    arguments: [!tagged_iterator {tag: 'telephonedirectory.add_record_to_employee'}]
 
   JWeiland\Telephonedirectory\Repository\Handler\AddAdditionalFunctionsToEmployee:
     tags:
@@ -34,3 +43,12 @@ services:
   JWeiland\Telephonedirectory\Repository\Handler\AddSubjectFieldToEmployee:
     tags:
       - name: 'telephonedirectory.add_record_to_employee'
+
+  # Define alias for EmailServiceInterface
+  JWeiland\Telephonedirectory\Service\EmailServiceInterface:
+    alias: JWeiland\Telephonedirectory\Service\BasicEmailService
+    public: true
+
+  # Ensure other services are properly configured
+  JWeiland\Telephonedirectory\Service\TemplateRenderingService:
+    public: true

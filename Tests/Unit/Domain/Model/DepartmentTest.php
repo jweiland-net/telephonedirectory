@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Department;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
@@ -41,7 +41,7 @@ class DepartmentTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -54,7 +54,7 @@ class DepartmentTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 }

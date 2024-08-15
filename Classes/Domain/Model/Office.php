@@ -19,30 +19,21 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Office extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
+
+    protected string $code = '';
+
+    protected string $token = '';
 
     /**
-     * @var string
+     * @var ObjectStorage<Department>
      */
-    protected $code = '';
+    protected ObjectStorage $departments;
 
     /**
-     * @var string
+     * @var ObjectStorage<SubjectField>
      */
-    protected $token = '';
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\Department>
-     */
-    protected $departments;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\SubjectField>
-     */
-    protected $subjectFields;
+    protected ObjectStorage $subjectFields;
 
     public function __construct()
     {
@@ -58,6 +49,7 @@ class Office extends AbstractEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -69,6 +61,7 @@ class Office extends AbstractEntity
     public function setCode(string $code): self
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -80,12 +73,16 @@ class Office extends AbstractEntity
     public function setToken(string $token): self
     {
         $this->token = $token;
+
         return $this;
     }
 
     public function getSubjectField(): ?SubjectField
     {
-        return $this->subjectFields[0];
+        if ($this->subjectFields->count() > 0) {
+            return $this->subjectFields->current(); // Gets the first element
+        }
+        return null;
     }
 
     /**
@@ -113,12 +110,16 @@ class Office extends AbstractEntity
     public function setSubjectFields(ObjectStorage $subjectFields): self
     {
         $this->subjectFields = $subjectFields;
+
         return $this;
     }
 
     public function getDepartment(): ?Department
     {
-        return $this->departments[0];
+        if ($this->departments->count() > 0) {
+            return $this->departments->current();
+        }
+        return null;
     }
 
     /**
@@ -146,6 +147,7 @@ class Office extends AbstractEntity
     public function setDepartments(ObjectStorage $departments): self
     {
         $this->departments = $departments;
+
         return $this;
     }
 }

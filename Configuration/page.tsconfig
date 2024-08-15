@@ -1,0 +1,2 @@
+# Add telephonedirectory plugins to new content element wizard
+@import 'EXT:telephonedirectory/Configuration/TSconfig/ContentElementWizard.tsconfig'

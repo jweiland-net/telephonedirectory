@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Property\TypeConverter;
+namespace JWeiland\Telephonedirectory\Mvc\Property\TypeConverter;
 
 use JWeiland\Checkfaluploads\Service\FalUploadService;
 use JWeiland\Telephonedirectory\Event\PostCheckFileReferenceEvent;
@@ -50,24 +50,24 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     /**
      * @var Folder
      */
-    protected $uploadFolder;
+    protected Folder $uploadFolder;
 
     /**
      * @var PropertyMappingConfigurationInterface
      */
-    protected $converterConfiguration = [];
+    protected array|PropertyMappingConfigurationInterface $converterConfiguration = [];
 
     /**
      * @var EventDispatcher
      */
-    protected $eventDispatcher;
+    protected EventDispatcher $eventDispatcher;
 
     /**
      * Do not inject this property, as EXT:checkfaluploads may not be loaded
      *
      * @var FalUploadService
      */
-    protected $falUploadService;
+    protected FalUploadService $falUploadService;
 
     public function __construct(EventDispatcher $eventDispatcher)
     {
@@ -83,7 +83,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                 $uploadedFile['name'],
                 $uploadedFile['size'],
                 $uploadedFile['tmp_name'],
-                $uploadedFile['type']
+                $uploadedFile['type'],
             )) {
                 return false;
             }
@@ -96,14 +96,14 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         $source,
         string $targetType,
         array $convertedChildProperties = [],
-        PropertyMappingConfigurationInterface $configuration = null
+        PropertyMappingConfigurationInterface $configuration = null,
     ) {
         $this->initialize($configuration);
         $originalSource = $source;
         foreach ($originalSource as $key => $uploadedFile) {
             $alreadyPersistedImage = $this->getAlreadyPersistedFileReferenceByPosition(
                 $this->getAlreadyPersistedImages(),
-                $key
+                $key,
             );
 
             // If no file was uploaded use the already persisted one
@@ -122,7 +122,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
             if (!$uploadedFile['error'] === 0) {
                 return new Error(
                     LocalizationUtility::translate('error.upload', 'telephonedirectory') . $uploadedFile['error'],
-                    1605617462
+                    1605617462,
                 );
             }
 
@@ -134,10 +134,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                         'error.fileExtension',
                         'telephonedirectory',
                         [
-                            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-                        ]
+                            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+                        ],
                     ),
-                    1605617456
+                    1605617456,
                 );
             }
 
@@ -149,7 +149,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
             }
 
             $this->eventDispatcher->dispatch(
-                new PostCheckFileReferenceEvent($source, $key, $alreadyPersistedImage, $uploadedFile)
+                new PostCheckFileReferenceEvent($source, $key, $alreadyPersistedImage, $uploadedFile),
             );
         }
 
@@ -174,7 +174,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         if ($configuration === null) {
             throw new \Exception(
                 'Missing PropertyMapper configuration in UploadMultipleFilesConverter',
-                1605617449
+                1605617449,
             );
         }
 
@@ -187,7 +187,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     {
         $alreadyPersistedImages = $this->converterConfiguration->getConfigurationValue(
             self::class,
-            'IMAGES'
+            'IMAGES',
         );
 
         return $alreadyPersistedImages instanceof ObjectStorage ? $alreadyPersistedImages : new ObjectStorage();
@@ -195,7 +195,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
     protected function getAlreadyPersistedFileReferenceByPosition(
         ObjectStorage $alreadyPersistedFileReferences,
-        int $position
+        int $position,
     ): ?FileReference {
         return $alreadyPersistedFileReferences->toArray()[$position] ?? null;
     }
@@ -204,7 +204,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     {
         $settings = $this->converterConfiguration->getConfigurationValue(
             self::class,
-            'settings'
+            'settings',
         );
 
         return $settings ?? [];
@@ -219,7 +219,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         if ($combinedUploadFolderIdentifier === '') {
             throw new \Exception(
                 'You have forgotten to set an Upload Folder in TypoScript for telephonedirectory',
-                1605617430
+                1605617430,
             );
         }
 
@@ -244,7 +244,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function isValidUploadFile(array $uploadedFile): bool
     {
-        if ($uploadedFile['error'] === 4) {
+        if (isset($uploadedFile['error']) && $uploadedFile['error'] === 4) {
             return false;
         }
 
@@ -253,7 +253,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
             $uploadedFile['name'],
             $uploadedFile['size'],
             $uploadedFile['tmp_name'],
-            $uploadedFile['type']
+            $uploadedFile['type'],
         );
     }
 
@@ -303,7 +303,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                 'uid_local' => $uploadedFile->getUid(),
                 'uid_foreign' => uniqid('NEW_', true),
                 'uid' => uniqid('NEW_', true),
-            ]
+            ],
         );
     }
 

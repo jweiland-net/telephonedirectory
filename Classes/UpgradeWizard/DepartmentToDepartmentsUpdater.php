@@ -9,11 +9,14 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Updater;
+namespace JWeiland\Telephonedirectory\UpgradeWizard;
+
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 
 /**
  * Migrate department field to departments field in office table
  */
+#[UpgradeWizard('telephonedirectoryUpdateDepartmentToDepartments')]
 class DepartmentToDepartmentsUpdater extends AbstractSingleFieldToMmUpdater
 {
     public function getIdentifier(): string

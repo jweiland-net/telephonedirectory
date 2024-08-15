@@ -21,25 +21,10 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class ExtConf implements SingletonInterface
 {
-    /**
-     * @var string
-     */
-    protected $emailContact = '';
-
-    /**
-     * @var string
-     */
-    protected $emailFromAddress = '';
-
-    /**
-     * @var string
-     */
-    protected $emailFromName = '';
-
-    /**
-     * @var int
-     */
-    protected $additionalFunctionsParentCategoryUid = 0;
+    protected string $emailContact = '';
+    protected string $emailFromAddress = '';
+    protected string $emailFromName = '';
+    protected int $additionalFunctionsParentCategoryUid = 0;
 
     public function __construct(ExtensionConfiguration $extensionConfiguration)
     {
@@ -49,7 +34,12 @@ class ExtConf implements SingletonInterface
                 foreach ($extConf as $key => $value) {
                     $methodName = 'set' . ucfirst($key);
                     if (method_exists($this, $methodName)) {
-                        $this->$methodName($value);
+                        if ($methodName === 'setAdditionalFunctionsParentCategoryUid') {
+                            $this->setAdditionalFunctionsParentCategoryUid((int)$value);
+                        } elseif (method_exists($this, $methodName)) {
+                            // Ensure the method exists before calling it
+                            $this->$methodName($value);
+                        }
                     }
                 }
             }
@@ -67,7 +57,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailContact === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender email address in extension configuration or in install tool',
-                    1706178058
+                    1706178058,
                 );
             }
 
@@ -94,7 +84,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailFromAddress === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender email address in extension configuration or in install tool',
-                    1706178074
+                    1706178074,
                 );
             }
 
@@ -121,7 +111,7 @@ class ExtConf implements SingletonInterface
             if ($fallbackEmailFromName === '') {
                 throw new \Exception(
                     'You have forgotten to set a sender name in extension configuration or in install tool',
-                    1706178086
+                    1706178086,
                 );
             }
 
@@ -143,9 +133,9 @@ class ExtConf implements SingletonInterface
         return $this->additionalFunctionsParentCategoryUid;
     }
 
-    public function setAdditionalFunctionsParentCategoryUid($additionalFunctionsParentCategoryUid): self
+    public function setAdditionalFunctionsParentCategoryUid(int $additionalFunctionsParentCategoryUid): self
     {
-        $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
+        $this->additionalFunctionsParentCategoryUid = $additionalFunctionsParentCategoryUid;
 
         return $this;
     }

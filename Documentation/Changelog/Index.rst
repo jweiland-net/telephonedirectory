@@ -7,6 +7,16 @@
 Change log
 ==========
 
+Version 5.0.0
+=============
+
+*   Numerous bug fixes to improve stability and reliability.
+*   Various code optimizations for enhanced performance and maintainability.
+*   Adoption of the TYPO3 Testing Framework for improved testing practices.
+*   Enhanced flexibility with post and pre-processing using PSR-14 events.
+*   New configuration options added for glossary integrated mode.
+*   Removed deprecated API calls and functions.
+
 Version 4.1.0
 =============
 

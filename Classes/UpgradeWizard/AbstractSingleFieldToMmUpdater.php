@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Updater;
+namespace JWeiland\Telephonedirectory\UpgradeWizard;
 
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -34,10 +34,7 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
     {
         $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->getTableName());
 
-        $schemaManager = $queryBuilder->getConnection()->getSchemaManager();
-        if ($schemaManager === null) {
-            return false;
-        }
+        $schemaManager = $queryBuilder->getConnection()->createSchemaManager();
 
         if (!array_key_exists($this->getOldFieldName(), $schemaManager->listTableColumns($this->getTableName()))) {
             return false;
@@ -50,10 +47,10 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
             ->count('*')
             ->from($this->getTableName())
             ->where(
-                $this->getStatementForAffectedRecords($queryBuilder)
+                $this->getStatementForAffectedRecords($queryBuilder),
             )
-            ->execute()
-            ->fetchColumn();
+            ->executeQuery()
+            ->fetchOne();
 
         return (bool)$recordsToUpdate;
     }
@@ -68,13 +65,13 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
             ->select('uid', $this->getOldFieldName())
             ->from($this->getTableName())
             ->where(
-                $this->getStatementForAffectedRecords($queryBuilder)
+                $this->getStatementForAffectedRecords($queryBuilder),
             )
-            ->execute();
+            ->executeQuery();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->getTableName());
         $connectionMM = $this->getConnectionPool()->getConnectionForTable($this->getMmTableName());
-        while ($recordToUpdate = $statement->fetch()) {
+        while ($recordToUpdate = $statement->fetchAssociative()) {
             $uid = (int)$recordToUpdate['uid'];
             $connection->beginTransaction();
             $connectionMM->insert(
@@ -83,14 +80,14 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
                     'uid_local' => $uid,
                     'uid_foreign' => (int)$recordToUpdate[$this->getOldFieldName()],
                     'fieldname' => $this->getNewFieldName(),
-                    'tablenames' => $this->getTableName()
-                ]
+                    'tablenames' => $this->getTableName(),
+                ],
             );
 
             $connection->update(
                 $this->getTableName(),
                 [$this->getNewFieldName() => 1],
-                ['uid' => $uid]
+                ['uid' => $uid],
             );
             $connection->commit();
         }
@@ -101,15 +98,15 @@ abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
     public function getPrerequisites(): array
     {
         return [
-            DatabaseUpdatedPrerequisite::class
+            DatabaseUpdatedPrerequisite::class,
         ];
     }
 
     protected function getStatementForAffectedRecords(QueryBuilder $queryBuilder): CompositeExpression
     {
-        return $queryBuilder->expr()->andX(
+        return $queryBuilder->expr()->and(
             $queryBuilder->expr()->neq($this->getOldFieldName(), 0),
-            $queryBuilder->expr()->eq($this->getNewFieldName(), 0)
+            $queryBuilder->expr()->eq($this->getNewFieldName(), 0),
         );
     }
 

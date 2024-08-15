@@ -1,0 +1,40 @@
+<T3DataStructure>
+    <sheets>
+        <sDEFAULT>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.filterByOffice>
+                        <label>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:office</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <foreign_table>tx_telephonedirectory_domain_model_office</foreign_table>
+                            <foreign_table_where>ORDER BY title ASC</foreign_table_where>
+                            <items type="array">
+                                <numIndex index="0">
+                                    <label>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:allOffices</label>
+                                    <value>0</value>
+                                </numIndex>
+                            </items>
+                            <default>0</default>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                        </config>
+                    </settings.filterByOffice>
+                    <settings.showGlossary>
+                        <label>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:showGlossary</label>
+                        <config>
+                            <type>check</type>
+                            <renderType>checkboxToggle</renderType>
+                            <default>1</default>
+                        </config>
+                    </settings.showGlossary>
+                </el>
+            </ROOT>
+        </sDEFAULT>
+    </sheets>
+</T3DataStructure>

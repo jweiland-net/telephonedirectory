@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -21,147 +22,74 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Employee extends AbstractEntity
 {
-    /**
-     * @var bool
-     */
-    protected $hidden = true;
+    protected bool $hidden = true;
+
+    protected int $title = 0;
+
+    protected string $pathSegment = '';
+
+    protected string $firstName = '';
+
+    protected string $lastName = '';
+
+    protected string $nameAdditions = '';
+
+    protected bool $isCatchAllMail = false;
+
+    protected ?SubjectField $subjectField = null;
+
+    protected string $company = '';
+
+    protected string $roomNumber = '';
+
+    protected string $function = '';
 
     /**
-     * @var int
+     * @var ObjectStorage<Category>
      */
-    protected $title = 0;
+    protected ObjectStorage $additionalFunction;
+
+    protected string $telephone1 = '';
+
+    protected string $telephone2 = '';
+
+    protected string $telephone3 = '';
+
+    protected string $mobile = '';
+
+    protected string $pager = '';
+
+    protected string $fax = '';
+
+    protected string $pcFax = '';
 
     /**
-     * @var string
+     * @Validate("EmailAddress")
      */
-    protected $pathSegment = '';
+    protected string $email = '';
+
+    protected string $additionalInformations = '';
+
+    protected string $regularAttendance = '';
+
+    protected bool $moduleSysDmailHtml = true;
+
+    protected ?Office $office = null;
+
+    protected ?Building $building = null;
+
+    protected ?Department $department = null;
 
     /**
-     * @var string
+     * @var ObjectStorage<FileReference>
      */
-    protected $firstName = '';
+    protected ObjectStorage $image;
 
     /**
-     * @var string
+     * @var ObjectStorage<LanguageSkill>
+     * @Lazy
      */
-    protected $lastName = '';
-
-    /**
-     * @var string
-     */
-    protected $nameAdditions = '';
-
-    /**
-     * @var bool
-     */
-    protected $isCatchAllMail = false;
-
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\SubjectField
-     */
-    protected $subjectField;
-
-    /**
-     * @var string
-     */
-    protected $company = '';
-
-    /**
-     * @var string
-     */
-    protected $roomNumber = '';
-
-    /**
-     * @var string
-     */
-    protected $function = '';
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     */
-    protected $additionalFunction = '';
-
-    /**
-     * @var string
-     */
-    protected $telephone1 = '';
-
-    /**
-     * @var string
-     */
-    protected $telephone2 = '';
-
-    /**
-     * @var string
-     */
-    protected $telephone3 = '';
-
-    /**
-     * @var string
-     */
-    protected $mobile = '';
-
-    /**
-     * @var string
-     */
-    protected $pager = '';
-
-    /**
-     * @var string
-     */
-    protected $fax = '';
-
-    /**
-     * @var string
-     */
-    protected $pcFax = '';
-
-    /**
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
-     */
-    protected $email = '';
-
-    /**
-     * @var string
-     */
-    protected $additionalInformations = '';
-
-    /**
-     * @var string
-     */
-    protected $regularAttendance = '';
-
-    /**
-     * @var bool
-     */
-    protected $moduleSysDmailHtml = true;
-
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Office
-     */
-    protected $office;
-
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Building
-     */
-    protected $building;
-
-    /**
-     * @var \JWeiland\Telephonedirectory\Domain\Model\Department
-     */
-    protected $department;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     */
-    protected $image;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Telephonedirectory\Domain\Model\LanguageSkill>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     */
-    protected $languageSkill;
+    protected ObjectStorage $languageSkill;
 
     public function __construct()
     {
@@ -459,7 +387,7 @@ class Employee extends AbstractEntity
 
     public function setBuilding(Building $building): self
     {
-        $this->building = $building ?: 0;
+        $this->building = $building;
         return $this;
     }
 
@@ -526,7 +454,7 @@ class Employee extends AbstractEntity
             'uid' => $this->getUid(),
             'pid' => $this->getPid(),
             'first_name' => $this->getFirstName(),
-            'last_name' => $this->getLastName()
+            'last_name' => $this->getLastName(),
         ];
     }
 }

@@ -19,6 +19,8 @@ interface ApplyRecordToEmployeeInterface
 {
     /**
      * This is the main entrypoint to add further records to the employee array
+     *
+     * @param array<string, mixed> $employee
      */
     public function applyTo(array &$employee): void;
 }

@@ -16,6 +16,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for Offices
  */
-class OfficeRepository extends Repository
-{
-}
+class OfficeRepository extends Repository {}

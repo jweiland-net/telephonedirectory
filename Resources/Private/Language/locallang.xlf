@@ -197,28 +197,29 @@
 			<trans-unit id="optionSelectPrependLabel">
 				<source>--- Select ---</source>
 			</trans-unit>
-
 			<trans-unit id="email.subject">
 				<source>Edit entry</source>
 			</trans-unit>
 			<trans-unit id="email.text">
 				<source>Click following link to edit entry:</source>
 			</trans-unit>
-
 			<trans-unit id="sendMailToContact">
 				<source>To change your Data, please contact</source>
 			</trans-unit>
-
 			<trans-unit id="sendMailToContact">
 				<source>To change your Data, please contact</source>
 			</trans-unit>
-
 			<trans-unit id="add">
 				<source>Add</source>
 			</trans-unit>
-
 			<trans-unit id="remove">
 				<source>Remove</source>
+			</trans-unit>
+			<trans-unit id="form.select.office">
+				<source>Select Office</source>
+			</trans-unit>
+			<trans-unit id="form.input.keyword">
+				<source>Keyword</source>
 			</trans-unit>
 		</body>
 	</file>

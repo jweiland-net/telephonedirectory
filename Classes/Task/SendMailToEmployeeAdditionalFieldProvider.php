@@ -23,44 +23,47 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
     /**
      * Gets additional fields to render in the form to add/edit a task
      *
-     * @param array $taskInfo Values of the fields from the add/edit task form
-     * @param AbstractTask|SendMailToEmployeeTask $task The task object being edited. Null when adding a task!
+     * @param array<string, mixed> $taskInfo Values of the fields from the add/edit task form
+     * @param AbstractTask|SendMailToEmployeeTask|null $task The task object being edited. Null when adding a task!
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
-     * @return array A two dimensional array, array('Identifier' => array('fieldId' => array('code' => '', 'label' => '', 'cshKey' => '', 'cshLabel' => ''))
+     * @return array<string, mixed> A two dimensional array
      */
     public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule): array
     {
         $additionalFields = [];
 
-        if (empty($taskInfo['storagePid'])) {
-            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
-                $taskInfo['storagePid'] = $task->storagePid;
-            } else {
-                $taskInfo['storagePid'] = '';
+        // Ensure $task is of the expected type
+        if ($task instanceof SendMailToEmployeeTask) {
+            if (empty($taskInfo['storagePid'])) {
+                if ((string)$schedulerModule->getCurrentAction() === 'edit') {
+                    $taskInfo['storagePid'] = $task->storagePid;
+                } else {
+                    $taskInfo['storagePid'] = '';
+                }
             }
-        }
 
-        if (empty($taskInfo['detailViewPid'])) {
-            if ((string)$schedulerModule->getCurrentAction() === 'edit') {
-                $taskInfo['detailViewPid'] = $task->detailViewPid;
-            } else {
-                $taskInfo['detailViewPid'] = '';
+            if (empty($taskInfo['detailViewPid'])) {
+                if ((string)$schedulerModule->getCurrentAction() === 'edit') {
+                    $taskInfo['detailViewPid'] = $task->detailViewPid;
+                } else {
+                    $taskInfo['detailViewPid'] = '';
+                }
             }
+
+            $fieldID = 'storagePid';
+            $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
+            $additionalFields[$fieldID] = [
+                'code'     => $fieldCode,
+                'label'    => 'Storage pid',
+            ];
+
+            $fieldID = 'detailViewPid';
+            $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
+            $additionalFields[$fieldID] = [
+                'code'     => $fieldCode,
+                'label'    => 'Detail View Pid',
+            ];
         }
-
-        $fieldID = 'storagePid';
-        $fieldCode = '<input type="text" name="tx_scheduler[storagePid]" id="' . $fieldID . '" value="' . $taskInfo['storagePid'] . '" size="30" />';
-        $additionalFields[$fieldID] = [
-            'code'     => $fieldCode,
-            'label'    => 'Storage pid'
-        ];
-
-        $fieldID = 'detailViewPid';
-        $fieldCode = '<input type="text" name="tx_scheduler[detailViewPid]" id="' . $fieldID . '" value="' . $taskInfo['detailViewPid'] . '" size="30" />';
-        $additionalFields[$fieldID] = [
-            'code'     => $fieldCode,
-            'label'    => 'Detail View Pid'
-        ];
 
         return $additionalFields;
     }
@@ -88,7 +91,14 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
      */
     public function saveAdditionalFields(array $submittedData, AbstractTask $task)
     {
-        $task->storagePid = (int)$submittedData['storagePid'];
-        $task->detailViewPid = (int)$submittedData['detailViewPid'];
+        // Ensure the task is of the expected type
+        if ($task instanceof SendMailToEmployeeTask) {
+            $task->storagePid = (int)($submittedData['storagePid'] ?? 0);
+            $task->detailViewPid = (int)($submittedData['detailViewPid'] ?? 0);
+
+        } else {
+            // Handle cases where $task is not of the expected type
+            throw new \InvalidArgumentException('The task is not an instance of SendMailToEmployeeTask.');
+        }
     }
 }

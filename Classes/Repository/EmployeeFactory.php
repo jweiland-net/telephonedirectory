@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Repository\Handler\ApplyRecordToEmployeeInterface;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
@@ -65,13 +64,13 @@ class EmployeeFactory
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();
             return $this->lowerCamelCaseArrayKeys($employee);
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];
@@ -89,8 +88,8 @@ class EmployeeFactory
                 ->where(
                     $queryBuilder->expr()->in(
                         'pid',
-                        $queryBuilder->createNamedParameter($storages, Connection::PARAM_INT_ARRAY)
-                    )
+                        $queryBuilder->createNamedParameter($storages, Connection::PARAM_INT_ARRAY),
+                    ),
                 )
                 ->execute();
 
@@ -99,7 +98,7 @@ class EmployeeFactory
                 $employees[$employee['uid']] = $onlyUid ? $employee['uid'] : $this->lowerCamelCaseArrayKeys($employee);
             }
             return $employees;
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

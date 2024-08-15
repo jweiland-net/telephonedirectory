@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -54,13 +53,13 @@ class AddDepartmentToEmployee implements ApplyRecordToEmployeeInterface
                 ->where(
                     $queryBuilder->expr()->eq(
                         'uid',
-                        $queryBuilder->createNamedParameter($departmentUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($departmentUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->execute()
                 ->fetchAssociative();
             return is_array($departmentRecord) ? $this->lowerCamelCaseArrayKeys($departmentRecord) : [];
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];

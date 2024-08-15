@@ -16,6 +16,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * Repository to get individual Queries for Languages
  */
-class LanguageRepository extends Repository
-{
-}
+class LanguageRepository extends Repository {}

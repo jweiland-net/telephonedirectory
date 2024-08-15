@@ -12,25 +12,22 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 
 use JWeiland\Telephonedirectory\Domain\Model\Building;
+use JWeiland\Telephonedirectory\Domain\Model\Category;
 use JWeiland\Telephonedirectory\Domain\Model\Department;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
-use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
  */
 class EmployeeTest extends UnitTestCase
 {
-    /**
-     * @var Employee
-     */
-    protected $subject;
+    protected Employee $subject;
 
     protected function setUp(): void
     {
@@ -48,7 +45,7 @@ class EmployeeTest extends UnitTestCase
     public function getHiddenInitiallyReturnstrue(): void
     {
         self::assertTrue(
-            $this->subject->isHidden()
+            $this->subject->isHidden(),
         );
     }
 
@@ -59,7 +56,7 @@ class EmployeeTest extends UnitTestCase
     {
         $this->subject->setHidden(true);
         self::assertTrue(
-            $this->subject->isHidden()
+            $this->subject->isHidden(),
         );
     }
 
@@ -70,7 +67,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             0,
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -83,7 +80,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             123456,
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
@@ -94,7 +91,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getFirstName()
+            $this->subject->getFirstName(),
         );
     }
 
@@ -107,7 +104,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getFirstName()
+            $this->subject->getFirstName(),
         );
     }
 
@@ -118,7 +115,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getLastName()
+            $this->subject->getLastName(),
         );
     }
 
@@ -131,7 +128,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getLastName()
+            $this->subject->getLastName(),
         );
     }
 
@@ -142,7 +139,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getNameAdditions()
+            $this->subject->getNameAdditions(),
         );
     }
 
@@ -155,7 +152,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getNameAdditions()
+            $this->subject->getNameAdditions(),
         );
     }
 
@@ -165,7 +162,7 @@ class EmployeeTest extends UnitTestCase
     public function getIsCatchAllMailInitiallyReturnsfalse(): void
     {
         self::assertFalse(
-            $this->subject->getIsCatchAllMail()
+            $this->subject->getIsCatchAllMail(),
         );
     }
 
@@ -176,7 +173,7 @@ class EmployeeTest extends UnitTestCase
     {
         $this->subject->setIsCatchAllMail(true);
         self::assertTrue(
-            $this->subject->getIsCatchAllMail()
+            $this->subject->getIsCatchAllMail(),
         );
     }
 
@@ -198,7 +195,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getSubjectField()
+            $this->subject->getSubjectField(),
         );
     }
 
@@ -209,7 +206,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getCompany()
+            $this->subject->getCompany(),
         );
     }
 
@@ -222,7 +219,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getCompany()
+            $this->subject->getCompany(),
         );
     }
 
@@ -233,7 +230,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getRoomNumber()
+            $this->subject->getRoomNumber(),
         );
     }
 
@@ -246,7 +243,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getRoomNumber()
+            $this->subject->getRoomNumber(),
         );
     }
 
@@ -257,7 +254,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getFunction()
+            $this->subject->getFunction(),
         );
     }
 
@@ -270,7 +267,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getFunction()
+            $this->subject->getFunction(),
         );
     }
 
@@ -281,7 +278,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getAdditionalFunction()
+            $this->subject->getAdditionalFunction(),
         );
     }
 
@@ -297,7 +294,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getAdditionalFunction()
+            $this->subject->getAdditionalFunction(),
         );
     }
 
@@ -316,7 +313,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getAdditionalFunction()
+            $this->subject->getAdditionalFunction(),
         );
     }
 
@@ -335,7 +332,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getAdditionalFunction()
+            $this->subject->getAdditionalFunction(),
         );
     }
 
@@ -346,7 +343,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTelephone1()
+            $this->subject->getTelephone1(),
         );
     }
 
@@ -359,7 +356,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTelephone1()
+            $this->subject->getTelephone1(),
         );
     }
 
@@ -370,7 +367,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTelephone2()
+            $this->subject->getTelephone2(),
         );
     }
 
@@ -383,7 +380,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTelephone2()
+            $this->subject->getTelephone2(),
         );
     }
 
@@ -394,7 +391,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTelephone3()
+            $this->subject->getTelephone3(),
         );
     }
 
@@ -407,7 +404,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTelephone3()
+            $this->subject->getTelephone3(),
         );
     }
 
@@ -418,7 +415,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getMobile()
+            $this->subject->getMobile(),
         );
     }
 
@@ -431,7 +428,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getMobile()
+            $this->subject->getMobile(),
         );
     }
 
@@ -442,7 +439,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getPager()
+            $this->subject->getPager(),
         );
     }
 
@@ -455,7 +452,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getPager()
+            $this->subject->getPager(),
         );
     }
 
@@ -466,7 +463,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getFax()
+            $this->subject->getFax(),
         );
     }
 
@@ -479,7 +476,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getFax()
+            $this->subject->getFax(),
         );
     }
 
@@ -490,7 +487,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getPcFax()
+            $this->subject->getPcFax(),
         );
     }
 
@@ -503,7 +500,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getPcFax()
+            $this->subject->getPcFax(),
         );
     }
 
@@ -514,7 +511,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getEmail()
+            $this->subject->getEmail(),
         );
     }
 
@@ -527,7 +524,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getEmail()
+            $this->subject->getEmail(),
         );
     }
 
@@ -538,7 +535,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getAdditionalInformations()
+            $this->subject->getAdditionalInformations(),
         );
     }
 
@@ -551,7 +548,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getAdditionalInformations()
+            $this->subject->getAdditionalInformations(),
         );
     }
 
@@ -562,7 +559,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getRegularAttendance()
+            $this->subject->getRegularAttendance(),
         );
     }
 
@@ -575,7 +572,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getRegularAttendance()
+            $this->subject->getRegularAttendance(),
         );
     }
 
@@ -585,7 +582,7 @@ class EmployeeTest extends UnitTestCase
     public function getModuleSysDmailHtmlInitiallyReturnstrue(): void
     {
         self::assertTrue(
-            $this->subject->getModuleSysDmailHtml()
+            $this->subject->getModuleSysDmailHtml(),
         );
     }
 
@@ -596,7 +593,7 @@ class EmployeeTest extends UnitTestCase
     {
         $this->subject->setModuleSysDmailHtml(true);
         self::assertTrue(
-            $this->subject->getModuleSysDmailHtml()
+            $this->subject->getModuleSysDmailHtml(),
         );
     }
 
@@ -618,7 +615,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getOffice()
+            $this->subject->getOffice(),
         );
     }
 
@@ -640,7 +637,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getBuilding()
+            $this->subject->getBuilding(),
         );
     }
 
@@ -662,7 +659,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getDepartment()
+            $this->subject->getDepartment(),
         );
     }
 
@@ -692,7 +689,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getFirstImage()
+            $this->subject->getFirstImage(),
         );
     }
 
@@ -703,7 +700,7 @@ class EmployeeTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getLanguageSkill()
+            $this->subject->getLanguageSkill(),
         );
     }
 
@@ -719,7 +716,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getLanguageSkill()
+            $this->subject->getLanguageSkill(),
         );
     }
 
@@ -738,7 +735,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getLanguageSkill()
+            $this->subject->getLanguageSkill(),
         );
     }
 
@@ -757,7 +754,7 @@ class EmployeeTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getLanguageSkill()
+            $this->subject->getLanguageSkill(),
         );
     }
 }

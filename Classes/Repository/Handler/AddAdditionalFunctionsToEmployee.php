@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -58,26 +57,26 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
                     'sc',
                     'sys_category_record_mm',
                     'sc_mm',
-                    (string)$queryBuilder->expr()->andX(
+                    (string)$queryBuilder->expr()->and(
                         $queryBuilder->expr()->eq(
                             'sc_mm.tablenames',
-                            $queryBuilder->createNamedParameter(self::TABLE_NAME)
+                            $queryBuilder->createNamedParameter(self::TABLE_NAME),
                         ),
                         $queryBuilder->expr()->eq(
                             'sc_mm.fieldname',
-                            $queryBuilder->createNamedParameter(self::COLUMN)
+                            $queryBuilder->createNamedParameter(self::COLUMN),
                         ),
                         $queryBuilder->expr()->eq(
                             'sc_mm.uid_local',
-                            $queryBuilder->quoteIdentifier('sc.uid')
-                        )
-                    )
+                            $queryBuilder->quoteIdentifier('sc.uid'),
+                        ),
+                    ),
                 )
                 ->where(
                     $queryBuilder->expr()->eq(
                         'sc_mm.uid_foreign',
-                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT)
-                    )
+                        $queryBuilder->createNamedParameter($employeeUid, \PDO::PARAM_INT),
+                    ),
                 )
                 ->groupBy('sc.uid')
                 ->execute();
@@ -87,7 +86,7 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
                 $additionalFunctions[$additionalFunction['uid']] = $this->lowerCamelCaseArrayKeys($additionalFunction);
             }
             return $additionalFunctions;
-        } catch (DBALException | Exception $e) {
+        } catch (Exception $e) {
         }
 
         return [];
