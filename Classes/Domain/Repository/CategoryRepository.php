@@ -11,12 +11,15 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
+use JWeiland\Telephonedirectory\Domain\Model\Category;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository to get individual Queries for SubjectFields
+ *
+ * @extends Repository<Category>
  */
 class CategoryRepository extends Repository
 {

@@ -28,6 +28,9 @@ class PathSegmentHelper
 
     public function __construct(protected PersistenceManagerInterface $persistenceManager) {}
 
+    /**
+     * @param array<string, mixed> $baseRecord
+     */
     public function generatePathSegment(array $baseRecord, int $pid): string
     {
         return $this->getSlugHelper()->generate($baseRecord, $pid);

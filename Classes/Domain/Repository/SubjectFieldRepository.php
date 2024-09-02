@@ -11,9 +11,12 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Domain\Repository;
 
+use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository to get individual Queries for SubjectFields
+ *
+ * @extends Repository<SubjectField>
  */
 class SubjectFieldRepository extends Repository {}

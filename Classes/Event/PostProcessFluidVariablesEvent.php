@@ -21,10 +21,20 @@ class PostProcessFluidVariablesEvent implements ControllerActionEventInterface
 {
     protected RequestInterface $request;
 
+    /**
+     * @var array<string, mixed> $settings
+     */
     protected array $settings = [];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $fluidVariables = [];
 
+    /**
+     * @param array<string, mixed> $settings
+     * @param array<string, mixed> $fluidVariables
+     */
     public function __construct(
         RequestInterface $request,
         array $settings,
@@ -50,17 +60,23 @@ class PostProcessFluidVariablesEvent implements ControllerActionEventInterface
         return $this->request->getControllerActionName();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getSettings(): array
     {
         return $this->settings;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFluidVariables(): array
     {
         return $this->fluidVariables;
     }
 
-    public function addFluidVariable(string $key, $value): void
+    public function addFluidVariable(string $key, mixed $value): void
     {
         $this->fluidVariables[$key] = $value;
     }

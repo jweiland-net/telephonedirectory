@@ -218,11 +218,17 @@ class Employee extends AbstractEntity
         $this->function = $function;
     }
 
+    /**
+     * @return ObjectStorage<Category>
+     */
     public function getAdditionalFunction(): ObjectStorage
     {
         return $this->additionalFunction;
     }
 
+    /**
+     * @param ObjectStorage<Category> $additionalFunction
+     */
     public function setAdditionalFunction(ObjectStorage $additionalFunction): void
     {
         $this->additionalFunction = $additionalFunction;
@@ -384,11 +390,17 @@ class Employee extends AbstractEntity
         return $this->image->current();
     }
 
+    /**
+     * @return ObjectStorage<FileReference>
+     */
     public function getImage(): ObjectStorage
     {
         return $this->image;
     }
 
+    /**
+     * @param ObjectStorage<FileReference> $image
+     */
     public function setImage(ObjectStorage $image): void
     {
         $this->image = $image;
@@ -404,11 +416,17 @@ class Employee extends AbstractEntity
         $this->languageSkill->detach($languageSkillToRemove);
     }
 
+    /**
+     * @return ObjectStorage<LanguageSkill>
+     */
     public function getLanguageSkill(): ObjectStorage
     {
         return $this->languageSkill;
     }
 
+    /**
+     * @param ObjectStorage<LanguageSkill> $languageSkill
+     */
     public function setLanguageSkill(ObjectStorage $languageSkill): void
     {
         $this->languageSkill = $languageSkill;
@@ -418,7 +436,7 @@ class Employee extends AbstractEntity
      * Helper method to build a baseRecord for path_segment
      * Needed in PathSegmentHelper
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getBaseRecordForPathSegment(): array
     {

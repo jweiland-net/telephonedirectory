@@ -13,6 +13,7 @@ namespace JWeiland\Telephonedirectory\Domain\Repository;
 
 use Doctrine\DBAL\ArrayParameterType;
 use JWeiland\Glossary2\Service\GlossaryService;
+use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -23,6 +24,8 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository to get individual Queries for Employees
+ *
+ * @extends Repository<Employee>
  */
 class EmployeeRepository extends Repository
 {
@@ -35,7 +38,11 @@ class EmployeeRepository extends Repository
         $this->glossaryService = $glossaryService;
     }
 
-    public function findFilteredBy($office, array $search = []): QueryResultInterface
+    /**
+     * @param array<string, mixed> $search
+     * @return QueryResultInterface<int, Employee>
+     */
+    public function findFilteredBy(Office $office = null, array $search = []): QueryResultInterface
     {
         $query = $this->createQuery();
         $constraints = [];
@@ -59,6 +66,10 @@ class EmployeeRepository extends Repository
         return $query->matching($query->logicalAnd(...$constraints))->execute();
     }
 
+    /**
+     * @return QueryResultInterface<int, Employee>
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
     public function findBySearch(Office $office = null, string $search = ''): QueryResultInterface
     {
         $query = $this->createQuery();
@@ -78,6 +89,10 @@ class EmployeeRepository extends Repository
         return $query->matching($query->logicalAnd(...$constraintAnd))->execute();
     }
 
+    /**
+     * @return QueryResultInterface<int, Employee>
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
     public function findEmployees(string $csvListOfIdentifiers): QueryResultInterface
     {
         $query = $this->createQuery();

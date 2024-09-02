@@ -43,6 +43,9 @@ class AddOfficeToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getOfficeRecord((int)$employee[self::PROPERTY]);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getOfficeRecord(int $officeUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);

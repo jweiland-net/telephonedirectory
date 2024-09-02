@@ -16,6 +16,7 @@ use JWeiland\Telephonedirectory\Event\PostCheckFileReferenceEvent;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
+use TYPO3\CMS\Core\Resource\FileReference as CoreFileReference;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -81,6 +82,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         return true;
     }
 
+    /**
+     * @param array<string, mixed> $convertedChildProperties
+     * @throws \Exception
+     */
     public function convertFrom(
         $source,
         string $targetType,
@@ -172,6 +177,9 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         $this->setUploadFolder();
     }
 
+    /**
+     * @return  ObjectStorage<FileReference>
+     */
     protected function getAlreadyPersistedImages(): ObjectStorage
     {
         $alreadyPersistedImages = $this->converterConfiguration->getConfigurationValue(
@@ -182,6 +190,9 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         return $alreadyPersistedImages instanceof ObjectStorage ? $alreadyPersistedImages : new ObjectStorage();
     }
 
+    /**
+     * @param ObjectStorage<FileReference> $alreadyPersistedFileReferences
+     */
     protected function getAlreadyPersistedFileReferenceByPosition(
         ObjectStorage $alreadyPersistedFileReferences,
         int $position,
@@ -189,6 +200,9 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         return $alreadyPersistedFileReferences->toArray()[$position] ?? null;
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     protected function getTypoScriptPluginSettings(): array
     {
         $settings = $this->converterConfiguration->getConfigurationValue(
@@ -228,7 +242,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      * Check, if we have a valid uploaded file
      * Error = 4: No file uploaded
      *
-     * @param array $uploadedFile
+     * @param array<string, mixed> $uploadedFile
      * @return bool
      */
     protected function isValidUploadFile(array $uploadedFile): bool
@@ -266,6 +280,8 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
     /**
      * Upload file and get a file reference object.
+     *
+     * @param array<string, mixed> $source
      */
     protected function getExtbaseFileReference(array $source): FileReference
     {
@@ -278,10 +294,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     /**
      * Upload file and get a file reference object.
      *
-     * @param array $source
-     * @return \TYPO3\CMS\Core\Resource\FileReference
+     * @param array<string, mixed> $source contains information about the uploaded file given by $_FILES['file1']
+     * @return CoreFileReference
      */
-    protected function getCoreFileReference(array $source): \TYPO3\CMS\Core\Resource\FileReference
+    protected function getCoreFileReference(array $source): CoreFileReference
     {
         $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
         $uploadedFile = $this->uploadFolder->addUploadedFile($source, DuplicationBehavior::RENAME);

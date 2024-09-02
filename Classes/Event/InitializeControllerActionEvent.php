@@ -23,8 +23,14 @@ class InitializeControllerActionEvent implements ControllerActionEventInterface
 
     protected Arguments $arguments;
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $settings = [];
 
+    /**
+     * @param array<string, mixed> $settings
+     */
     public function __construct(RequestInterface $request, Arguments $arguments, array $settings)
     {
         $this->request = $request;
@@ -52,6 +58,9 @@ class InitializeControllerActionEvent implements ControllerActionEventInterface
         return $this->arguments;
     }
 
+    /**
+     * @return  array<string, mixed>
+     */
     public function getSettings(): array
     {
         return $this->settings;

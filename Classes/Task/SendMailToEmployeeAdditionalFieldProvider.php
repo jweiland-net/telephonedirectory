@@ -68,7 +68,7 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
     /**
      * Validates the additional fields' values
      *
-     * @param array $submittedData An array containing the data submitted by the add/edit task form
+     * @param array<string, mixed> $submittedData An array containing the data submitted by the add/edit task form
      * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
      * @return bool true if validation was ok (or selected class is not relevant), false otherwise
      */
@@ -83,10 +83,10 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
     /**
      * Takes care of saving the additional fields' values in the task's object
      *
-     * @param array $submittedData An array containing the data submitted by the add/edit task form
-     * @param AbstractTask|SendMailToEmployeeTask $task Reference to the scheduler backend module
+     * @param array<string, mixed> $submittedData An array containing the data submitted by the add/edit task form
+     * @param AbstractTask $task Reference to the scheduler backend module
      */
-    public function saveAdditionalFields(array $submittedData, AbstractTask $task)
+    public function saveAdditionalFields(array $submittedData, AbstractTask $task): void
     {
         // Ensure the task is of the expected type
         if ($task instanceof SendMailToEmployeeTask) {

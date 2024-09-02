@@ -43,13 +43,16 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
         $employee[self::PROPERTY] = $this->getLanguageSkillRecords((int)$employee['uid']);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getLanguageSkillRecords(int $employeeUid): array
     {
-        $queryBuilder = $this->getQueryBuilderForTable('tx_telephonedirectory_domain_model_languageskill');
+        $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);
         try {
             $queryResult = $queryBuilder
                 ->select('*')
-                ->from('tx_telephonedirectory_domain_model_languageskill')
+                ->from(self::TABLE_NAME)
                 ->where(
                     $queryBuilder->expr()->eq(
                         'employee',
@@ -70,6 +73,9 @@ class AddLanguageSkillsToEmployee implements ApplyRecordToEmployeeInterface
         return [];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getLanguageRecord(int $languageUid): array
     {
         $queryBuilder = $this->getQueryBuilderForTable('tx_telephonedirectory_domain_model_language');

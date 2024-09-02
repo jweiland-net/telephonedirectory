@@ -21,5 +21,8 @@ interface ControllerActionEventInterface
 
     public function getActionName(): string;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getSettings(): array;
 }

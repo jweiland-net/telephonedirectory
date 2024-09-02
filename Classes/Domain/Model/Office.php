@@ -104,11 +104,17 @@ class Office extends AbstractEntity
         }
     }
 
+    /**
+     * @return ObjectStorage<SubjectField>
+     */
     public function getSubjectFields(): ObjectStorage
     {
         return $this->subjectFields;
     }
 
+    /**
+     * @param ObjectStorage<SubjectField> $subjectFields
+     */
     public function setSubjectFields(ObjectStorage $subjectFields): void
     {
         $this->subjectFields = $subjectFields;
@@ -137,11 +143,17 @@ class Office extends AbstractEntity
         }
     }
 
+    /**
+     * @return ObjectStorage<Department>
+     */
     public function getDepartments(): ObjectStorage
     {
         return $this->departments;
     }
 
+    /**
+     * @param ObjectStorage<Department> $departments
+     */
     public function setDepartments(ObjectStorage $departments): void
     {
         $this->departments = $departments;
