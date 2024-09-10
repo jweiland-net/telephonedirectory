@@ -57,6 +57,10 @@ class EmployeeController extends AbstractController
     public function listAction(array $search = []): ResponseInterface
     {
         $office = $this->settings['filterByOffice'] ?? null;
+        if ((int)$office === 0) {
+            $office = null;
+        }
+
         $this->postProcessAndAssignFluidVariables([
             'employees' => $this->employeeRepository->findFilteredBy($office, $search),
             'offices' => $this->officeRepository->findAll(),
