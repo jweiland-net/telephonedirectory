@@ -159,11 +159,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'allowed' => 'tx_telephonedirectory_domain_model_department',
-                'MM' => 'tx_telephonedirectory_office_mm',
-                'MM_match_fields' => [
-                    'fieldname' => 'departments',
-                ],
-                'foreign_table' => 'tx_telephonedirectory_domain_model_department',
+                'MM' => 'tx_telephonedirectory_domain_model_office_department_mm',
             ],
         ],
         'subject_fields' => [
@@ -172,11 +168,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'allowed' => 'tx_telephonedirectory_domain_model_subjectfield',
-                'MM' => 'tx_telephonedirectory_office_mm',
-                'MM_match_fields' => [
-                    'fieldname' => 'subject_fields',
-                ],
-                'foreign_table' => 'tx_telephonedirectory_domain_model_subjectfield',
+                'MM' => 'tx_telephonedirectory_domain_model_office_subjectfield_mm',
             ],
         ],
     ],

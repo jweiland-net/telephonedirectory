@@ -104,8 +104,32 @@ CREATE TABLE tx_telephonedirectory_office_mm
 	fieldname       varchar(255) DEFAULT '' NOT NULL,
 	sorting         int(11) DEFAULT '0' NOT NULL,
 	sorting_foreign int(11) DEFAULT '0' NOT NULL,
-
-	PRIMARY KEY (fieldname, uid_local, uid_local),
 	KEY             uid_local (uid_local),
 	KEY             uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_telephonedirectory_domain_model_office_department_mm'
+#
+#
+CREATE TABLE tx_telephonedirectory_domain_model_office_department_mm
+(
+	uid_local   int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+	sorting     int(11) DEFAULT '0' NOT NULL,
+	KEY         uid_local (uid_local),
+	KEY         uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_telephonedirectory_domain_model_office_subjectfield_mm'
+#
+#
+CREATE TABLE tx_telephonedirectory_domain_model_office_subjectfield_mm
+(
+	uid_local   int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+	sorting     int(11) DEFAULT '0' NOT NULL,
+	KEY         uid_local (uid_local),
+	KEY         uid_foreign (uid_foreign)
 );
