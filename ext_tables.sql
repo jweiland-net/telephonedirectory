@@ -3,33 +3,33 @@
 #
 CREATE TABLE tx_telephonedirectory_domain_model_employee
 (
-	title                     TINYINT(1)          DEFAULT '0' NOT NULL,
-	path_segment              varchar(2048)       DEFAULT ''  NOT NULL,
-	first_name                varchar(255)        DEFAULT ''  NOT NULL,
-	last_name                 varchar(255)        DEFAULT ''  NOT NULL,
-	name_additions            varchar(255)        DEFAULT ''  NOT NULL,
-	is_catch_all_mail         TINYINT(1)          DEFAULT '0' NOT NULL,
-	function                  varchar(255)        DEFAULT ''  NOT NULL,
-	office                    int(11) unsigned    DEFAULT '0',
-	company                   varchar(255)        DEFAULT ''  NOT NULL,
-	department                int(11) unsigned    DEFAULT '0' NOT NULL,
-	building                  int(11) unsigned    DEFAULT '0' NOT NULL,
-	subject_field             int(11) unsigned    DEFAULT '0' NOT NULL,
-	room_number               varchar(255)        DEFAULT ''  NOT NULL,
-	telephone1                varchar(255)        DEFAULT ''  NOT NULL,
-	telephone2                varchar(255)        DEFAULT ''  NOT NULL,
-	telephone3                varchar(255)        DEFAULT ''  NOT NULL,
-	mobile                    varchar(255)        DEFAULT ''  NOT NULL,
-	email                     varchar(255)        DEFAULT ''  NOT NULL,
-	pager                     varchar(255)        DEFAULT ''  NOT NULL,
-	fax                       varchar(255)        DEFAULT ''  NOT NULL,
-	image                     int(11) unsigned    DEFAULT '0' NOT NULL,
-	regular_attendance        text                DEFAULT ''  NOT NULL,
-	language_skill            int(11) unsigned    DEFAULT '0' NOT NULL,
-	pc_fax                    varchar(255)        DEFAULT ''  NOT NULL,
-	additional_informations   text                DEFAULT ''  NOT NULL,
+	title                     TINYINT(1) DEFAULT '0' NOT NULL,
+	path_segment              varchar(2048) DEFAULT '' NOT NULL,
+	first_name                varchar(255)  DEFAULT '' NOT NULL,
+	last_name                 varchar(255)  DEFAULT '' NOT NULL,
+	name_additions            varchar(255)  DEFAULT '' NOT NULL,
+	is_catch_all_mail         TINYINT(1) DEFAULT '0' NOT NULL,
+	function                  varchar(255)  DEFAULT '' NOT NULL,
+	office                    int(11) unsigned DEFAULT '0',
+	company                   varchar(255)  DEFAULT '' NOT NULL,
+	department                int(11) unsigned DEFAULT '0' NOT NULL,
+	building                  int(11) unsigned DEFAULT '0' NOT NULL,
+	subject_field             int(11) unsigned DEFAULT '0' NOT NULL,
+	room_number               varchar(255)  DEFAULT '' NOT NULL,
+	telephone1                varchar(255)  DEFAULT '' NOT NULL,
+	telephone2                varchar(255)  DEFAULT '' NOT NULL,
+	telephone3                varchar(255)  DEFAULT '' NOT NULL,
+	mobile                    varchar(255)  DEFAULT '' NOT NULL,
+	email                     varchar(255)  DEFAULT '' NOT NULL,
+	pager                     varchar(255)  DEFAULT '' NOT NULL,
+	fax                       varchar(255)  DEFAULT '' NOT NULL,
+	image                     int(11) unsigned DEFAULT '0' NOT NULL,
+	regular_attendance        text          DEFAULT '' NOT NULL,
+	language_skill            int(11) unsigned DEFAULT '0' NOT NULL,
+	pc_fax                    varchar(255)  DEFAULT '' NOT NULL,
+	additional_informations   text          DEFAULT '' NOT NULL,
 	module_sys_dmail_html     tinyint(4) unsigned DEFAULT '1' NOT NULL,
-	module_sys_dmail_category int(10) unsigned    DEFAULT '0' NOT NULL
+	module_sys_dmail_category int(10) unsigned DEFAULT '0' NOT NULL
 );
 
 #
@@ -37,9 +37,9 @@ CREATE TABLE tx_telephonedirectory_domain_model_employee
 #
 CREATE TABLE tx_telephonedirectory_domain_model_office
 (
-	title          varchar(255)     DEFAULT ''  NOT NULL,
-	code           varchar(30)      DEFAULT ''  NOT NULL,
-	token          varchar(30)      DEFAULT ''  NOT NULL,
+	title          varchar(255) DEFAULT '' NOT NULL,
+	code           varchar(30)  DEFAULT '' NOT NULL,
+	token          varchar(30)  DEFAULT '' NOT NULL,
 	departments    int(11) unsigned DEFAULT '0',
 	subject_fields int(11) unsigned DEFAULT '0' NOT NULL
 );
@@ -61,7 +61,8 @@ CREATE TABLE tx_telephonedirectory_domain_model_building
 	street       varchar(64)  DEFAULT '' NOT NULL,
 	house_number varchar(32)  DEFAULT '' NOT NULL,
 	zip          varchar(16)  DEFAULT '' NOT NULL,
-	city         varchar(32)  DEFAULT '' NOT NULL
+	city         varchar(32)  DEFAULT '' NOT NULL,
+	tx_maps2_uid int UNSIGNED DEFAULT 0 NOT NULL
 );
 
 #
@@ -79,9 +80,9 @@ CREATE TABLE tx_telephonedirectory_domain_model_languageskill
 (
 	employee int(11) unsigned DEFAULT '0' NOT NULL,
 	language int(11) unsigned DEFAULT '0' NOT NULL,
-	writing  varchar(32)      DEFAULT ''  NOT NULL,
-	speaking varchar(32)      DEFAULT ''  NOT NULL,
-	infotext text                         NOT NULL
+	writing  varchar(32) DEFAULT '' NOT NULL,
+	speaking varchar(32) DEFAULT '' NOT NULL,
+	infotext text                   NOT NULL
 );
 
 #
@@ -97,14 +98,14 @@ CREATE TABLE tx_telephonedirectory_domain_model_language
 #
 CREATE TABLE tx_telephonedirectory_office_mm
 (
-	uid_local       int(11)      DEFAULT '0' NOT NULL,
-	uid_foreign     int(11)      DEFAULT '0' NOT NULL,
-	tablenames      varchar(255) DEFAULT ''  NOT NULL,
-	fieldname       varchar(255) DEFAULT ''  NOT NULL,
-	sorting         int(11)      DEFAULT '0' NOT NULL,
-	sorting_foreign int(11)      DEFAULT '0' NOT NULL,
+	uid_local       int(11) DEFAULT '0' NOT NULL,
+	uid_foreign     int(11) DEFAULT '0' NOT NULL,
+	tablenames      varchar(255) DEFAULT '' NOT NULL,
+	fieldname       varchar(255) DEFAULT '' NOT NULL,
+	sorting         int(11) DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) DEFAULT '0' NOT NULL,
 
-	PRIMARY KEY     (fieldname,uid_local,uid_local),
+	PRIMARY KEY (fieldname, uid_local, uid_local),
 	KEY             uid_local (uid_local),
 	KEY             uid_foreign (uid_foreign)
 );

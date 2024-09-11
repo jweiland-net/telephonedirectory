@@ -14,20 +14,22 @@ if (!defined('TYPO3')) {
 use JWeiland\Maps2\Tca\Maps2Registry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-// Add tx_maps2_uid column to telephone directory table
-if (ExtensionManagementUtility::isLoaded('maps2')) {
-    Maps2Registry::getInstance()->add(
-        'telephonedirectory',
-        'tx_telephonedirectory_domain_model_building',
-        [
-            'addressColumns' => ['street', 'house_number', 'zip', 'city'],
-            'defaultCountry' => 'Germany',
-            'synchronizeColumns' => [
-                [
-                    'foreignColumnName' => 'title',
-                    'poiCollectionColumnName' => 'title',
+call_user_func(function () {
+    // Add tx_maps2_uid column to telephone directory table
+    if (ExtensionManagementUtility::isLoaded('maps2')) {
+        Maps2Registry::getInstance()->add(
+            'telephonedirectory',
+            'tx_telephonedirectory_domain_model_building',
+            [
+                'addressColumns' => ['street', 'house_number', 'zip', 'city'],
+                'defaultCountry' => 'Germany',
+                'synchronizeColumns' => [
+                    [
+                        'foreignColumnName' => 'title',
+                        'poiCollectionColumnName' => 'title',
+                    ],
                 ],
             ],
-        ],
-    );
-}
+        );
+    }
+});
