@@ -17,11 +17,18 @@ The Telephonedirectory extension has been significantly updated in
 version 5.0.0. This release includes several new features, bug fixes,
 code optimizations, and improvements in testing. Here are the key highlights:
 
-1. **Enhanced Flexibility with PSR-14 Events**:
+1. **Migration of mm record tables**:
+    - We changed the relation of the table `tx_telephonedirectory_office_mm` to
+ `department` and `subjectfield` changed to two new mm tables for better
+ indexing and performance. So a new upgrade wizard introduced for migrating
+ the old relations to this new tables `tx_telephonedirectory_domain_model_office_department_mm`
+ and `tx_telephonedirectory_domain_model_office_department_mm`.
+
+2. **Enhanced Flexibility with PSR-14 Events**:
     - The extension now supports post and pre-processing using PSR-14 events,
 providing greater flexibility and customization options.
 
-2. **Glossary Integrated Mode**:
+3. **Glossary Integrated Mode**:
     - New configuration options have been added to enable glossary integrated
 mode, enhancing the user experience and functionality.
 

@@ -16,6 +16,7 @@ Version 5.0.0
 *   Enhanced flexibility with post and pre-processing using PSR-14 events.
 *   New configuration options added for glossary integrated mode.
 *   Removed deprecated API calls and functions.
+*   Change mm relations of different properties in one mm table to different.
 
 Version 4.1.0
 =============
