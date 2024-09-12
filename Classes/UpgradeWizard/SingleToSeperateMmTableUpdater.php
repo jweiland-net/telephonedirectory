@@ -120,6 +120,9 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         return true;
     }
 
+    /**
+     * @param array $recordToUpdate <string, mixed>
+     */
     private function isRecordMigrated(array $recordToUpdate): bool
     {
         try {
@@ -193,6 +196,9 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         return $this->getConnectionPool()->getQueryBuilderForTable($this->getOldTableName());
     }
 
+    /**
+     * @param array $recordToUpdate <string, mixed>
+     */
     private function migrateRecord(array $recordToUpdate): void
     {
         if ($recordToUpdate['fieldname'] === self::OLD_DEPARTMENT_FIELD_NAME) {
@@ -202,6 +208,9 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         }
     }
 
+    /**
+     * @param array $recordToUpdate <string, mixed>
+     */
     private function migrateToDepartmentTable(array $recordToUpdate): void
     {
         try {
@@ -219,6 +228,9 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         }
     }
 
+    /**
+     * @param array $recordToUpdate <string, mixed>
+     */
     private function migrateToSubjectFieldTable(array $recordToUpdate): void
     {
         try {
