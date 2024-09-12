@@ -121,7 +121,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
     }
 
     /**
-     * @param array $recordToUpdate <string, mixed>
+     * @param array<string, mixed> $recordToUpdate
      */
     private function isRecordMigrated(array $recordToUpdate): bool
     {
@@ -197,7 +197,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
     }
 
     /**
-     * @param array $recordToUpdate <string, mixed>
+     * @param array<string, mixed> $recordToUpdate
      */
     private function migrateRecord(array $recordToUpdate): void
     {
@@ -209,7 +209,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
     }
 
     /**
-     * @param array $recordToUpdate <string, mixed>
+     * @param array<string, mixed> $recordToUpdate
      */
     private function migrateToDepartmentTable(array $recordToUpdate): void
     {
@@ -229,7 +229,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
     }
 
     /**
-     * @param array $recordToUpdate <string, mixed>
+     * @param array<string, mixed> $recordToUpdate
      */
     private function migrateToSubjectFieldTable(array $recordToUpdate): void
     {
