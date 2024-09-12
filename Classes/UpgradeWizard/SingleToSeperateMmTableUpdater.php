@@ -30,8 +30,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
 {
     public function __construct(
         private readonly LoggerInterface $logger,
-    ) {
-    }
+    ) {}
 
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
     private const OLD_SUBJECT_FIELD_NAME = 'subject_fields';
@@ -60,7 +59,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         $schemaManager = $queryBuilder->getConnection()->createSchemaManager();
         if (!array_key_exists(
             'fieldname',
-            $schemaManager->listTableColumns($this->getOldTableName())
+            $schemaManager->listTableColumns($this->getOldTableName()),
         )) {
             return false;
         }
@@ -144,7 +143,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
                     $queryBuilder->expr()->eq(
                         'uid_foreign',
                         $queryBuilder->createNamedParameter($recordToUpdate['uid_foreign'], Connection::PARAM_INT),
-                    )
+                    ),
                 )
                 ->executeQuery()
                 ->fetchOne();
@@ -173,12 +172,12 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
     {
         $departmentCondition = $queryBuilder->expr()->eq(
             'fieldname',
-            $queryBuilder->createNamedParameter(self::OLD_DEPARTMENT_FIELD_NAME)
+            $queryBuilder->createNamedParameter(self::OLD_DEPARTMENT_FIELD_NAME),
         );
 
         $subjectFieldCondition = $queryBuilder->expr()->eq(
             'fieldname',
-            $queryBuilder->createNamedParameter(self::OLD_SUBJECT_FIELD_NAME)
+            $queryBuilder->createNamedParameter(self::OLD_SUBJECT_FIELD_NAME),
         );
 
         return $queryBuilder->expr()->or($departmentCondition, $subjectFieldCondition);
