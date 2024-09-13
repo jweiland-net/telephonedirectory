@@ -29,8 +29,8 @@ code optimizations, and improvements in testing. Here are the key highlights:
 providing greater flexibility and customization options.
 
 3. **Glossary Integrated Mode**:
-    - New configuration options have been added to enable glossary integrated
-mode, enhancing the user experience and functionality.
+    New configuration options have been added to enable glossary integrated
+    mode, enhancing the user experience and functionality.
 
 This update makes the Telephonedirectory extension more robust, flexible,
 and easier to maintain. The new features and optimizations will help users
