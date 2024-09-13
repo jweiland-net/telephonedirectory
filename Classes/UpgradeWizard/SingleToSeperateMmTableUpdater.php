@@ -59,14 +59,14 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         $schemaManager = $queryBuilder->getConnection()->createSchemaManager();
         if (!array_key_exists(
             'fieldname',
-            $schemaManager->listTableColumns($this->getOldTableName()),
+            $schemaManager->listTableColumns(self::TABLE_OLD_MM),
         )) {
             return false;
         }
 
         $recordsToUpdate = $queryBuilder
             ->count('*')
-            ->from($this->getOldTableName())
+            ->from(self::TABLE_OLD_MM)
             ->where(
                 $this->getStatementForAffectedRecords($queryBuilder),
             )
@@ -81,7 +81,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         $queryBuilder = $this->getQueryBuilderForOldTable();
         $statement = $queryBuilder
             ->select('*')
-            ->from($this->getOldTableName())
+            ->from(self::TABLE_OLD_MM)
             ->where(
                 $this->getStatementForAffectedRecords($queryBuilder),
             )
@@ -98,7 +98,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
                     // Double-check insertion then delete the record from old table
                     if ($this->isRecordMigrated($recordToUpdate)) {
                         $connection->delete(
-                            $this->getOldTableName(),
+                            self::TABLE_OLD_MM,
                             [
                                 'fieldname' => $recordToUpdate['fieldname'],
                                 'uid_foreign' => $recordToUpdate['uid_foreign'],
@@ -165,11 +165,6 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         ];
     }
 
-    protected function getOldTableName(): string
-    {
-        return self::TABLE_OLD_MM;
-    }
-
     protected function getStatementForAffectedRecords(QueryBuilder $queryBuilder): CompositeExpression
     {
         $departmentCondition = $queryBuilder->expr()->eq(
@@ -192,7 +187,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
 
     protected function getQueryBuilderForOldTable(): QueryBuilder
     {
-        return $this->getConnectionPool()->getQueryBuilderForTable($this->getOldTableName());
+        return $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_OLD_MM);
     }
 
     /**
