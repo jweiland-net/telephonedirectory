@@ -14,7 +14,7 @@ if (!defined('TYPO3')) {
 use JWeiland\Maps2\Tca\Maps2Registry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-call_user_func(function () {
+call_user_func(static function (): void {
     // Add tx_maps2_uid column to telephone directory table
     if (ExtensionManagementUtility::isLoaded('maps2')) {
         Maps2Registry::getInstance()->add(
