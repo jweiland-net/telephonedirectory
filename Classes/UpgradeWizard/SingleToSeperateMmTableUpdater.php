@@ -150,13 +150,12 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
                 )
                 ->executeQuery()
                 ->fetchOne();
-
-            return (bool)$recordExists;
         } catch (\Exception $exception) {
             $this->logError($exception);
-
             return false;
         }
+
+        return (bool)$recordExists;
     }
 
     public function getPrerequisites(): array
