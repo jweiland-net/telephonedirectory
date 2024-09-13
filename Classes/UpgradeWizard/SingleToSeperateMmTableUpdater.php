@@ -28,30 +28,15 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 #[UpgradeWizard('telephonedirectorySingleToSeparateMmTableUpdater')]
 final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
 {
-    public function __construct(
-        private readonly LoggerInterface $logger,
-    ) {}
-
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
     private const OLD_SUBJECT_FIELD_NAME = 'subject_fields';
     private const TABLE_OLD_MM = 'tx_telephonedirectory_office_mm';
     private const TABLE_NEW_DEPARTMENT_MM = 'tx_telephonedirectory_domain_model_office_department_mm';
     private const TABLE_NEW_SUBJECT_FIELD_MM = 'tx_telephonedirectory_domain_model_office_subjectfield_mm';
 
-    public function getIdentifier(): string
-    {
-        return 'telephonedirectorySingleToSeparateMmTableUpdater';
-    }
-
-    public function getTitle(): string
-    {
-        return '[telephonedirectory] Office mm table migration';
-    }
-
-    public function getDescription(): string
-    {
-        return 'This updater is intented for the migration of mm table which store department and subjectfields';
-    }
+    public function __construct(
+        private readonly LoggerInterface $logger,
+    ) {}
 
     public function updateNecessary(): bool
     {
@@ -158,38 +143,6 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
         return (bool)$recordExists;
     }
 
-    public function getPrerequisites(): array
-    {
-        return [
-            DatabaseUpdatedPrerequisite::class,
-        ];
-    }
-
-    protected function getStatementForAffectedRecords(QueryBuilder $queryBuilder): CompositeExpression
-    {
-        $departmentCondition = $queryBuilder->expr()->eq(
-            'fieldname',
-            $queryBuilder->createNamedParameter(self::OLD_DEPARTMENT_FIELD_NAME),
-        );
-
-        $subjectFieldCondition = $queryBuilder->expr()->eq(
-            'fieldname',
-            $queryBuilder->createNamedParameter(self::OLD_SUBJECT_FIELD_NAME),
-        );
-
-        return $queryBuilder->expr()->or($departmentCondition, $subjectFieldCondition);
-    }
-
-    protected function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
-    }
-
-    protected function getQueryBuilderForOldTable(): QueryBuilder
-    {
-        return $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_OLD_MM);
-    }
-
     /**
      * @param array<string, mixed> $recordToUpdate
      */
@@ -248,5 +201,52 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
             'exception' => $exception,
             'stackTrace' => $exception->getTraceAsString(),
         ]);
+    }
+
+    protected function getStatementForAffectedRecords(QueryBuilder $queryBuilder): CompositeExpression
+    {
+        $departmentCondition = $queryBuilder->expr()->eq(
+            'fieldname',
+            $queryBuilder->createNamedParameter(self::OLD_DEPARTMENT_FIELD_NAME),
+        );
+
+        $subjectFieldCondition = $queryBuilder->expr()->eq(
+            'fieldname',
+            $queryBuilder->createNamedParameter(self::OLD_SUBJECT_FIELD_NAME),
+        );
+
+        return $queryBuilder->expr()->or($departmentCondition, $subjectFieldCondition);
+    }
+
+    public function getIdentifier(): string
+    {
+        return 'telephonedirectorySingleToSeparateMmTableUpdater';
+    }
+
+    public function getTitle(): string
+    {
+        return '[telephonedirectory] Office mm table migration';
+    }
+
+    public function getDescription(): string
+    {
+        return 'This updater is intented for the migration of mm table which store department and subjectfields';
+    }
+
+    public function getPrerequisites(): array
+    {
+        return [
+            DatabaseUpdatedPrerequisite::class,
+        ];
+    }
+
+    protected function getConnectionPool(): ConnectionPool
+    {
+        return GeneralUtility::makeInstance(ConnectionPool::class);
+    }
+
+    protected function getQueryBuilderForOldTable(): QueryBuilder
+    {
+        return $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_OLD_MM);
     }
 }
