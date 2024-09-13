@@ -96,7 +96,6 @@ CREATE TABLE tx_telephonedirectory_domain_model_language
 #
 # Table structure for table 'tx_telephonedirectory_domain_model_office_department_mm'
 #
-#
 CREATE TABLE tx_telephonedirectory_domain_model_office_department_mm
 (
 	uid_local   int(11) DEFAULT '0' NOT NULL,
@@ -108,7 +107,6 @@ CREATE TABLE tx_telephonedirectory_domain_model_office_department_mm
 
 #
 # Table structure for table 'tx_telephonedirectory_domain_model_office_subjectfield_mm'
-#
 #
 CREATE TABLE tx_telephonedirectory_domain_model_office_subjectfield_mm
 (
