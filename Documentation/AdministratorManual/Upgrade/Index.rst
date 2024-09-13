@@ -25,7 +25,7 @@ code optimizations, and improvements in testing. Here are the key highlights:
  and `tx_telephonedirectory_domain_model_office_department_mm`.
 
 2. **Enhanced Flexibility with PSR-14 Events**:
-    - The extension now supports post and pre-processing using PSR-14 events,
+    The extension now supports post and pre-processing using PSR-14 events,
 providing greater flexibility and customization options.
 
 3. **Glossary Integrated Mode**:
