@@ -9,8 +9,10 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
+use JWeiland\Telephonedirectory\Domain\Model\Category;
+
 return [
-    \JWeiland\Telephonedirectory\Domain\Model\Category::class => [
+    Category::class => [
         'tableName' => 'sys_category',
     ],
 ];
