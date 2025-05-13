@@ -1,12 +1,13 @@
 <?php
 
+use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
+
 /*
  * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill',
@@ -140,7 +141,7 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.speak',
             'config' => [
                 'type' => 'radio',
-                'items' => \JWeiland\Telephonedirectory\Utility\LanguageSkillUtility::getLanguageSkills(),
+                'items' => LanguageSkillUtility::getLanguageSkills(),
             ],
         ],
         'writing' => [
@@ -148,7 +149,7 @@ return [
             'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.what.write',
             'config' => [
                 'type' => 'radio',
-                'items' => \JWeiland\Telephonedirectory\Utility\LanguageSkillUtility::getLanguageSkills(),
+                'items' => LanguageSkillUtility::getLanguageSkills(),
             ],
         ],
         'infotext' => [

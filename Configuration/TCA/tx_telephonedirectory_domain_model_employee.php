@@ -1,12 +1,13 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /*
  * This file is part of the package jweiland/telephonedirectory.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_employee',
@@ -30,7 +31,7 @@ return [
             'ignorePageTypeRestriction' => true,
         ],
         'searchFields' => 'first_name,last_name,name_additions,telephone1,telephone2,telephone3,mobile,fax,email,additional_informations',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('telephonedirectory') . 'Configuration/TCA/Employee.php',
+        'dynamicConfigFile' => ExtensionManagementUtility::extPath('telephonedirectory') . 'Configuration/TCA/Employee.php',
         'iconfile' => 'EXT:telephonedirectory/Resources/Public/Icons/tx_telephonedirectory_domain_model_employee.svg',
     ],
     'types' => [
