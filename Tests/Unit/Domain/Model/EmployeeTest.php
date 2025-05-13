@@ -290,6 +290,7 @@ class EmployeeTest extends UnitTestCase
         $object = new Category();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setAdditionalFunction($objectStorage);
 
         self::assertSame(
@@ -325,9 +326,11 @@ class EmployeeTest extends UnitTestCase
         $object = new Category();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setAdditionalFunction($objectStorage);
 
         $this->subject->removeAdditionalFunction($object);
+
         $objectStorage->detach($object);
 
         self::assertSame(
@@ -712,6 +715,7 @@ class EmployeeTest extends UnitTestCase
         $object = new LanguageSkill();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setLanguageSkill($objectStorage);
 
         self::assertSame(
@@ -747,9 +751,11 @@ class EmployeeTest extends UnitTestCase
         $object = new LanguageSkill();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setLanguageSkill($objectStorage);
 
         $this->subject->removeLanguageSkill($object);
+
         $objectStorage->detach($object);
 
         self::assertSame(
