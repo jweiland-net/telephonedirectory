@@ -24,6 +24,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 class BuildingTest extends FunctionalTestCase
 {
     protected Building $subject;
+
     protected EmployeeRepository $employeeRepository;
 
     /**
