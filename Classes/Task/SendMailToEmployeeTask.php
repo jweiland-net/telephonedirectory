@@ -67,7 +67,7 @@ class SendMailToEmployeeTask extends AbstractTask
     protected function generateContent(array $employee): string
     {
         $view = $this->getView();
-        $view->assign('link', $this->getEditLink((int)$employee['uid']));
+        $view->assign('link', $this->getEditLink());
         $view->assign('employee', $employee);
         $view->assign('contactName', $this->getExtConf()->getEmailFromName());
         $view->assign('contactEmail', $this->getExtConf()->getEmailContact());
@@ -92,23 +92,14 @@ class SendMailToEmployeeTask extends AbstractTask
     /**
      * @throws InvalidArgumentForHashGenerationException
      */
-    private function getEditLink(int $employeeUid): string
+    private function getEditLink(): string
     {
         $site = $this->getSite($this->detailViewPid);
         if (!$site instanceof Site) {
             return '';
         }
-
         return (string)$site->getRouter()->generateUri(
             $this->detailViewPid,
-            [
-                'tx_telephonedirectory_telephone' => [
-                    'action' => 'edit',
-                    'controller' => 'Employee',
-                    'employee' => $employeeUid,
-                    'hash' => $this->getHashService()->generateHmac('Employee:' . $employeeUid),
-                ],
-            ],
         );
     }
 
@@ -121,7 +112,7 @@ class SendMailToEmployeeTask extends AbstractTask
     {
         try {
             return $this->getSiteFinder()->getSiteByPageId($pageUid);
-        } catch (SiteNotFoundException $e) {
+        } catch (SiteNotFoundException $siteNotFoundException) {
         }
 
         return null;
