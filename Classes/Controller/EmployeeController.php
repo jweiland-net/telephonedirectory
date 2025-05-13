@@ -90,13 +90,14 @@ class EmployeeController extends AbstractController
 
     public function searchAction(Office $office = null, string $search = ''): ResponseInterface
     {
-        if ($office instanceof Office || !empty($search)) {
+        if ($office instanceof Office || $search !== '' && $search !== '0') {
             $employees = $this->employeeRepository->findBySearch($office, $search);
             $this->view->assign('office', $office);
             $this->view->assign('search', $search);
         } else {
             $employees = $this->employeeRepository->findAll();
         }
+
         $this->view->assign('employees', $employees);
         $this->view->assign('offices', $this->officeRepository->findAll());
 
@@ -232,7 +233,7 @@ class EmployeeController extends AbstractController
         try {
             $this->templateRenderingService->sendEmployeeEditMail($employee, $this->request, $this->settings);
             $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
         }
 
         return $this->redirect(
