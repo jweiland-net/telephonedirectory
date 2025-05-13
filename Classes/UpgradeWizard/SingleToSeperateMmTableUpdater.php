@@ -29,9 +29,13 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
 {
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
+
     private const OLD_SUBJECT_FIELD_NAME = 'subject_fields';
+
     private const TABLE_OLD_MM = 'tx_telephonedirectory_office_mm';
+
     private const TABLE_NEW_DEPARTMENT_MM = 'tx_telephonedirectory_domain_model_office_department_mm';
+
     private const TABLE_NEW_SUBJECT_FIELD_MM = 'tx_telephonedirectory_domain_model_office_subjectfield_mm';
 
     public function __construct(
@@ -91,6 +95,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
                             ],
                         );
                     }
+
                     $connection->commit();
                 } catch (\Exception $exception) {
                     $connection->rollBack(); // Revert changes on failure

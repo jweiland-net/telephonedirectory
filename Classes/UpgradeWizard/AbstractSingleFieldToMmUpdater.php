@@ -25,9 +25,11 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
 {
     abstract protected function getTableName(): string;
+
     abstract protected function getMmTableName(): string;
 
     abstract protected function getOldFieldName(): string;
+
     abstract protected function getNewFieldName(): string;
 
     public function updateNecessary(): bool
