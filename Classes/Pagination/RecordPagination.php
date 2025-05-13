@@ -156,4 +156,15 @@ class RecordPagination implements PaginationInterface
     {
         return $GLOBALS['TYPO3_REQUEST'];
     }
+
+    public function getAllPageNumbers(): array
+    {
+        $pages = [];
+
+        for ($i = $this->getFirstPageNumber(); $i <= $this->getLastPageNumber(); $i++) {
+            $pages[] = $i;
+        }
+
+        return $pages;
+    }
 }
