@@ -43,6 +43,7 @@ class TemplateRenderingService implements EmailServiceInterface
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
         $this->uriBuilder->setRequest($request);
+
         $link = $this->uriBuilder->uriFor(
             'edit',
             [
