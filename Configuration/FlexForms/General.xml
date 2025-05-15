@@ -2,9 +2,7 @@
     <sheets>
         <sDEFAULT>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:telephonedirectory/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.filterByOffice>
