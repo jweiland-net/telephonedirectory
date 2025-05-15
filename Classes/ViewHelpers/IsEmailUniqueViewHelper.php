@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\ViewHelpers;
 
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -37,15 +38,13 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
         );
     }
 
-    /**
-     * Implements a ViewHelper which checks if a given email address is unique in DB
-     */
     public function render(): bool
     {
-        if (empty($this->arguments['email'])) {
+        $email = $this->arguments['email'] ?? '';
+        if (empty($email)) {
             return false;
         }
 
-        return $this->employeeRepository->count(['email' => $this->arguments['email']]) === 1;
+        return $this->employeeRepository->count(['email' => $email]) === 1;
     }
 }
