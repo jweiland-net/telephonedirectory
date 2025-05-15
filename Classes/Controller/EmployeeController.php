@@ -170,7 +170,8 @@ class EmployeeController extends AbstractController
     {
         if (!$employee->getIsCatchAllMail()) {
             $hash = $this->request->getArgument('hash');
-            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $hash)) {
+            $additionalSecret = 'userInfo';
+            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $additionalSecret, $hash)) {
                 $this->view->assignMultiple(
                     [
                         'employee' => $employee,
