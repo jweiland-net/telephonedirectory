@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\UpgradeWizard;
+namespace JWeiland\Telephonedirectory\Updates;
 
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Psr\Log\LoggerInterface;
@@ -26,7 +26,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * single mm table to separate mm tables.
  */
 #[UpgradeWizard('telephonedirectorySingleToSeparateMmTableUpdater')]
-final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
+final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
 {
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
 

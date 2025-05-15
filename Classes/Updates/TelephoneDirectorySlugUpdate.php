@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\UpgradeWizard;
+namespace JWeiland\Telephonedirectory\Updates;
 
 use Doctrine\DBAL\Exception;
 use JWeiland\Telephonedirectory\Helper\PathSegmentHelper;
@@ -24,7 +24,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * Updater to fill empty slug columns of employee records
  */
 #[UpgradeWizard('telephonedirectoryUpdateSlug')]
-class TelephoneDirectorySlugUpdater implements UpgradeWizardInterface
+class TelephoneDirectorySlugUpdate implements UpgradeWizardInterface
 {
     private const TABLE = 'tx_telephonedirectory_domain_model_employee';
 
