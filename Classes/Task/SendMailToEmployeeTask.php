@@ -34,7 +34,7 @@ class SendMailToEmployeeTask extends AbstractTask
     public int $detailViewPid = 0;
 
     public function __construct(
-       private ViewFactoryInterface $viewFactory,
+        private ViewFactoryInterface $viewFactory,
     ) {}
 
     public function execute(): bool

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\ViewHelpers;
 
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**

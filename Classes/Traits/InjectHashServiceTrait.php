@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Traits;
 
-
 use TYPO3\CMS\Core\Crypto\HashService;
 
 trait InjectHashServiceTrait
