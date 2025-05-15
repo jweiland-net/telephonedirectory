@@ -24,29 +24,52 @@ if (!defined('TYPO3')) {
 ExtensionUtility::registerPlugin(
     'Telephonedirectory',
     'Telephone',
-    'Telephone: Main',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.employees.title',
+    'ext-telephonedirectory-employees-wizard-icon',
+    'Telephone Directory',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.employees.description',
 );
 
 ExtensionUtility::registerPlugin(
     'Telephonedirectory',
     'Interpreter',
-    'Telephone: Interpreter',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.interpreter.title',
+    'ext-telephonedirectory-interpreter-wizard-icon',
+    'Telephone Directory',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.interpreter.description',
 );
 
 ExtensionUtility::registerPlugin(
     'Telephonedirectory',
     'ShowRecords',
-    'Telephone: Show Records',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.individual-employees.title',
+    'ext-telephonedirectory-individual-employees-wizard-icon',
+    'Telephone Directory',
+    'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:plugin.telephonedirectory.individual-employees.description',
 );
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['telephonedirectory_showrecords'] = 'pi_flexform';
-ExtensionManagementUtility::addPiFlexFormValue(
+// FlexForm For ShowRecords Plugin CType
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--div--;Configuration,pi_flexform',
     'telephonedirectory_showrecords',
+    'after:subheader',
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
     'FILE:EXT:telephonedirectory/Configuration/FlexForms/ShowRecords.xml',
+    'telephonedirectory_showrecords',
 );
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['telephonedirectory_telephone'] = 'pi_flexform';
-ExtensionManagementUtility::addPiFlexFormValue(
+// FlexForm For MainTelephone Plugin CType
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--div--;Configuration,pi_flexform',
     'telephonedirectory_telephone',
+    'after:subheader',
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
     'FILE:EXT:telephonedirectory/Configuration/FlexForms/General.xml',
+    'telephonedirectory_telephone',
 );
