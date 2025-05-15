@@ -18,9 +18,11 @@ use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
@@ -28,15 +30,13 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
  */
 class SendMailToEmployeeTask extends AbstractTask
 {
-    /**
-     * @var int
-     */
-    public $storagePid = 0;
+    public int $storagePid = 0;
 
-    /**
-     * @var int
-     */
-    public $detailViewPid = 0;
+    public int $detailViewPid = 0;
+
+    public function __construct(
+       private ViewFactoryInterface $viewFactory,
+    ) {}
 
     public function execute(): bool
     {
@@ -75,14 +75,15 @@ class SendMailToEmployeeTask extends AbstractTask
         return $view->render();
     }
 
-    private function getView(): StandaloneView
+    private function getView(): ViewInterface
     {
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $viewFactoryData = new ViewFactoryData();
+        $view = $this->viewFactory->create($viewFactoryData);
 
-        $view->setTemplatePathAndFilename(
+        $view->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(
             $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html'),
         );
-        $view->setPartialRootPaths([
+        $view->getRenderingContext()->setPartialRootPaths([
             $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Partials/'),
         ]);
 
