@@ -1,0 +1,65 @@
+categories:
+  TelephoneDirectory:
+    label: 'TelephoneDirectory'
+  TelephoneDirectory.templates:
+    label: 'Templates'
+    parent: 'TelephoneDirectory'
+  TelephoneDirectory.templates.infoWindowContent:
+    label: 'Info Window Content'
+    parent: 'TelephoneDirectory.templates'
+  TelephoneDirectory.pages:
+    label: 'Pages'
+    parent: 'TelephoneDirectory'
+  TelephoneDirectory.settings:
+    label: 'Settings'
+    parent: 'TelephoneDirectory'
+
+settings:
+  telephonedirectory.templateRootPath:
+    label: 'Templates'
+    category: 'TelephoneDirectory.templates'
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:telephonedirectory/Resources/Private/Templates/'
+  telephonedirectory.partialRootPath:
+    label: 'Partials'
+    category: 'TelephoneDirectory.templates'
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:telephonedirectory/Resources/Private/Partials/'
+  telephonedirectory.layoutRootPath:
+    label: 'Layouts'
+    category: 'TelephoneDirectory.templates'
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:telephonedirectory/Resources/Private/Layouts/'
+  telephonedirectory.storagePid:
+    label: 'Default storage PID'
+    category: 'TelephoneDirectory.pages'
+    description: 'Folder that stores all POIs'
+    type: int
+    default: 0
+  telephonedirectory.pageBrowser.itemsPerPage:
+    label: 'Items per page for pagination'
+    category: TelephoneDirectory.settings
+    description: 'Number of results that needs to be shown on listing page'
+    type: int
+    default: 10
+  telephonedirectory.pageBrowser.insertAbove:
+    label: 'Insert Above'
+    category: TelephoneDirectory.settings
+    description: 'Should pagebrowser be displayed on top of the list'
+    type: bool
+    default: true
+  telephonedirectory.pageBrowser.insertBelow:
+    label: 'Insert Below'
+    category: TelephoneDirectory.settings
+    description: 'Should pagebrowser be displayed at bottom of the list'
+    type: bool
+    default: false
+  telephonedirectory.pageBrowser.maximumNumberOfLinks:
+    label: 'Maximum number of Links'
+    category: TelephoneDirectory.settings
+    description: 'Define maximum amount of pages which should be displayed'
+    type: int
+    default: 5
