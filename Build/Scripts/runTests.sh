@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# EXT:examples test runner based on docker/podman.
+# EXT:telephonedirectory test runner based on docker/podman.
 #
 
 trap 'cleanUp;exit 2' SIGINT
