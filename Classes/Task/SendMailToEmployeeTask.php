@@ -21,7 +21,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
@@ -122,11 +121,6 @@ class SendMailToEmployeeTask extends AbstractTask
     private function getSiteFinder(): SiteFinder
     {
         return GeneralUtility::makeInstance(SiteFinder::class);
-    }
-
-    private function getHashService(): HashService
-    {
-        return GeneralUtility::makeInstance(HashService::class);
     }
 
     private function getEmployeeFactory(): EmployeeFactory
