@@ -16,6 +16,10 @@ use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Telephonedirectory\Domain\Model\Building;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use PHPUnit\Framework\Attributes\Test;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequest;
+use TYPO3\CMS\Core\TypoScript\AST\Node\RootNode;
+use TYPO3\CMS\Core\TypoScript\FrontendTypoScript;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -35,11 +39,20 @@ class BuildingTest extends FunctionalTestCase
         'jweiland/telephonedirectory',
         'jweiland/maps2',
         'jweiland/glossary2',
+        'jweiland/checkfaluploads',
     ];
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        // Setup Request
+        $frontendTypoScript = new FrontendTypoScript(new RootNode(), [], [], []);
+        $frontendTypoScript->setSetupArray([]);
+        $GLOBALS['TYPO3_REQUEST'] = (new ServerRequest())
+            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
+            ->withAttribute('frontend.typoscript', $frontendTypoScript);
+
 
         // Create a mock for GlossaryService
         $glossaryServiceMock = $this->getMockBuilder(GlossaryService::class)
