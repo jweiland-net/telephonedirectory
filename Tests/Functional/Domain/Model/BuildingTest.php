@@ -53,7 +53,6 @@ class BuildingTest extends FunctionalTestCase
             ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
             ->withAttribute('frontend.typoscript', $frontendTypoScript);
 
-
         // Create a mock for GlossaryService
         $glossaryServiceMock = $this->getMockBuilder(GlossaryService::class)
             ->disableOriginalConstructor()
