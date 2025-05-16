@@ -15,6 +15,7 @@ use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Telephonedirectory\Domain\Model\Building;
 use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -60,9 +61,7 @@ class BuildingTest extends FunctionalTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -71,9 +70,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
@@ -84,9 +81,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getStreetInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -95,9 +90,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setStreetSetsStreet(): void
     {
         $this->subject->setStreet('foo bar');
@@ -108,9 +101,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getHouseNumberInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -119,9 +110,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setHouseNumberSetsHouseNumber(): void
     {
         $this->subject->setHouseNumber('foo bar');
@@ -132,9 +121,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getZipInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -143,9 +130,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setZipSetsZip(): void
     {
         $this->subject->setZip('foo bar');
@@ -156,9 +141,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCityInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -167,9 +150,7 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCitySetsCity(): void
     {
         $this->subject->setCity('foo bar');
@@ -180,17 +161,13 @@ class BuildingTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTxMaps2UidInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getTxMaps2Uid());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTxMaps2UidSetsTxMaps2Uid(): void
     {
         $instance = new PoiCollection();

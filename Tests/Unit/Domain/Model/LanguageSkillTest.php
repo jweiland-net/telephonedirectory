@@ -14,6 +14,7 @@ namespace JWeiland\Telephonedirectory\Tests\Unit\Domain\Model;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Language;
 use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -36,17 +37,13 @@ class LanguageSkillTest extends UnitTestCase
         unset($this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLanguageInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getLanguage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setLanguageSetsLanguage(): void
     {
         $instance = new Language();
@@ -58,9 +55,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getWritingInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -69,9 +64,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setWritingSetsWriting(): void
     {
         $this->subject->setWriting('foo bar');
@@ -82,9 +75,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSpeakingInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -93,9 +84,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setSpeakingSetsSpeaking(): void
     {
         $this->subject->setSpeaking('foo bar');
@@ -106,9 +95,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getInfotextInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -117,9 +104,7 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setInfotextSetsInfotext(): void
     {
         $this->subject->setInfotext('foo bar');
@@ -130,17 +115,13 @@ class LanguageSkillTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEmployeeInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getEmployee());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setEmployeeSetsEmployee(): void
     {
         $instance = new Employee();
