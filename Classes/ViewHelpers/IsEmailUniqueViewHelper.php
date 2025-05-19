@@ -39,8 +39,8 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
 
     public function render(): bool
     {
-        $email = $this->arguments['email'] ?? '';
-        if (empty($email)) {
+        $email = (string)($this->arguments['email'] ?? '');
+        if ($email === '') {
             return false;
         }
 
