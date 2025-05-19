@@ -51,7 +51,7 @@ ExtensionUtility::registerPlugin(
 // FlexForm For ShowRecords Plugin CType
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
-    '--div--;Configuration,pi_flexform',
+    '--div--;Configuration,pi_flexform, pages;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:pages.ALT.list_formlabel,recursive',
     'telephonedirectory_showrecords',
     'after:subheader',
 );
@@ -64,7 +64,7 @@ ExtensionManagementUtility::addPiFlexFormValue(
 // FlexForm For MainTelephone Plugin CType
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
-    '--div--;Configuration,pi_flexform',
+    '--div--;Configuration,pi_flexform, pages;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:pages.ALT.list_formlabel,recursive',
     'telephonedirectory_telephone',
     'after:subheader',
 );
@@ -72,4 +72,20 @@ ExtensionManagementUtility::addPiFlexFormValue(
     '*',
     'FILE:EXT:telephonedirectory/Configuration/FlexForms/General.xml',
     'telephonedirectory_telephone',
+);
+
+// FlexForm For MainTelephone Plugin CType
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'pages;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:pages.ALT.list_formlabel,recursive',
+    'telephonedirectory_interpreter',
+    'after:subheader',
+);
+
+// FlexForm For MainTelephone Plugin CType
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'pages;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:pages.ALT.list_formlabel,recursive',
+    'telephonedirectory_citymap',
+    'after:subheader',
 );
