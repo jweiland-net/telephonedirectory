@@ -52,9 +52,7 @@ call_user_func(static function () {
         [
             EmployeeController::class => 'showRecords',
         ],
-        [
-            EmployeeController::class => '',
-        ],
+        [],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
 
