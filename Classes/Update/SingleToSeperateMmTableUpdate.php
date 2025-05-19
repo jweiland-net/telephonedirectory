@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\Updates;
+namespace JWeiland\Telephonedirectory\Update;
 
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Psr\Log\LoggerInterface;
