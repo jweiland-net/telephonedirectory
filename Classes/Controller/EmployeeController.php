@@ -90,7 +90,7 @@ class EmployeeController extends AbstractController
 
     public function searchAction(Office $office = null, string $search = ''): ResponseInterface
     {
-        if ($office instanceof Office || $search !== '' && $search !== '0') {
+        if ($office instanceof Office || $search !== '') {
             $employees = $this->employeeRepository->findBySearch($office, $search);
             $this->view->assign('office', $office);
             $this->view->assign('search', $search);
