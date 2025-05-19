@@ -33,11 +33,11 @@ class SendMailToEmployeeAdditionalFieldProvider extends AbstractAdditionalFieldP
         $additionalFields = [];
 
         if (empty($taskInfo['storagePid'])) {
-            $taskInfo['storagePid'] = (string)$schedulerModule->getCurrentAction() === 'edit' ? $task->storagePid : '';
+            $taskInfo['storagePid'] = (string)$schedulerModule->getCurrentAction()->value === 'edit' ? $task->storagePid : '';
         }
 
         if (empty($taskInfo['detailViewPid'])) {
-            $taskInfo['detailViewPid'] = (string)$schedulerModule->getCurrentAction() === 'edit' ? $task->detailViewPid : '';
+            $taskInfo['detailViewPid'] = (string)$schedulerModule->getCurrentAction()->value === 'edit' ? $task->detailViewPid : '';
         }
 
         $fieldID = 'storagePid';

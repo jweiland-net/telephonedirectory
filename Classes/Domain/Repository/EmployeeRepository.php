@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -41,6 +42,7 @@ class EmployeeRepository extends Repository
     /**
      * @param array<string, mixed> $search
      * @return QueryResultInterface<int, Employee>
+     * @throws InvalidQueryException
      */
     public function findFilteredBy(Office $office = null, array $search = []): QueryResultInterface
     {
@@ -53,6 +55,7 @@ class EmployeeRepository extends Repository
 
         if (isset($search['letter']) && (string)$search['letter'] !== '') {
             $constraints[] = $this->glossaryService->getLetterConstraintForExtbaseQuery(
+                // @phpstan-ignore-next-line
                 $query,
                 'lastName',
                 $search['letter'],

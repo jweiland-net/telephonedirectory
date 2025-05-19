@@ -61,7 +61,11 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
     public function __construct(protected readonly EventDispatcher $eventDispatcher) {}
 
-    public function canConvertFrom($source, string $targetType): bool
+    /**
+     * @param array<string, mixed> $source
+     * @param string $targetType
+     */
+    public function canConvertFrom(array $source, string $targetType): bool
     {
         // check if $source consists of uploaded files
         foreach ($source as $uploadedFile) {
@@ -136,7 +140,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
             if (
                 ExtensionManagementUtility::isLoaded('checkfaluploads')
-                && $error = $this->getFalUploadService()->checkFile($uploadedFile)
+                && $error = $this->getFalUploadService()->checkFile($uploadedFile, null)
             ) {
                 return $error;
             }
@@ -217,7 +221,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function setUploadFolder(): void
     {
-        $combinedUploadFolderIdentifier = $this->getTypoScriptPluginSettings()['new']['uploadFolder'] ?? '';
+        /** @var array<string, mixed> $settings */
+        $settings = $this->getTypoScriptPluginSettings();
+        $combinedUploadFolderIdentifier = $settings['new']['uploadFolder'] ?? '';
+
         if ($combinedUploadFolderIdentifier === '') {
             throw new \Exception(
                 'You have forgotten to set an Upload Folder in TypoScript for telephonedirectory',
