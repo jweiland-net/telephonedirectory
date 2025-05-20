@@ -18,6 +18,7 @@ use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\LanguageSkill;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
 use JWeiland\Telephonedirectory\Domain\Model\SubjectField;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -39,9 +40,7 @@ class EmployeeTest extends UnitTestCase
         unset($this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getHiddenInitiallyReturnstrue(): void
     {
         self::assertTrue(
@@ -49,9 +48,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setHiddenSetsHidden(): void
     {
         $this->subject->setHidden(true);
@@ -60,9 +57,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTitleInitiallyReturnsZero(): void
     {
         self::assertSame(
@@ -71,9 +66,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle(123456);
@@ -84,9 +77,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFirstNameInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -95,9 +86,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFirstNameSetsFirstName(): void
     {
         $this->subject->setFirstName('foo bar');
@@ -108,9 +97,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLastNameInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -119,9 +106,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setLastNameSetsLastName(): void
     {
         $this->subject->setLastName('foo bar');
@@ -132,9 +117,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameAdditionsInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -143,9 +126,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setNameAdditionsSetsNameAdditions(): void
     {
         $this->subject->setNameAdditions('foo bar');
@@ -156,9 +137,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIsCatchAllMailInitiallyReturnsfalse(): void
     {
         self::assertFalse(
@@ -166,9 +145,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setIsCatchAllMailSetsIsCatchAllMail(): void
     {
         $this->subject->setIsCatchAllMail(true);
@@ -177,17 +154,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSubjectFieldInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getSubjectField());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setSubjectFieldSetsSubjectField(): void
     {
         $instance = new SubjectField();
@@ -199,9 +172,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCompanyInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -210,9 +181,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCompanySetsCompany(): void
     {
         $this->subject->setCompany('foo bar');
@@ -223,9 +192,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRoomNumberInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -234,9 +201,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setRoomNumberSetsRoomNumber(): void
     {
         $this->subject->setRoomNumber('foo bar');
@@ -247,9 +212,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFunctionInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -258,9 +221,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFunctionSetsFunction(): void
     {
         $this->subject->setFunction('foo bar');
@@ -271,9 +232,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAdditionalFunctionInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -282,14 +241,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setAdditionalFunctionSetsAdditionalFunction(): void
     {
         $object = new Category();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setAdditionalFunction($objectStorage);
 
         self::assertSame(
@@ -298,9 +256,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addAdditionalFunctionAddsOneAdditionalFunction(): void
     {
         $objectStorage = new ObjectStorage();
@@ -317,17 +273,17 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeAdditionalFunctionRemovesOneAdditionalFunction(): void
     {
         $object = new Category();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setAdditionalFunction($objectStorage);
 
         $this->subject->removeAdditionalFunction($object);
+
         $objectStorage->detach($object);
 
         self::assertSame(
@@ -336,9 +292,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTelephone1InitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -347,9 +301,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTelephone1SetsTelephone1(): void
     {
         $this->subject->setTelephone1('foo bar');
@@ -360,9 +312,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTelephone2InitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -371,9 +321,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTelephone2SetsTelephone2(): void
     {
         $this->subject->setTelephone2('foo bar');
@@ -384,9 +332,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTelephone3InitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -395,9 +341,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTelephone3SetsTelephone3(): void
     {
         $this->subject->setTelephone3('foo bar');
@@ -408,9 +352,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMobileInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -419,9 +361,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setMobileSetsMobile(): void
     {
         $this->subject->setMobile('foo bar');
@@ -432,9 +372,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPagerInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -443,9 +381,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPagerSetsPager(): void
     {
         $this->subject->setPager('foo bar');
@@ -456,9 +392,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFaxInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -467,9 +401,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFaxSetsFax(): void
     {
         $this->subject->setFax('foo bar');
@@ -480,9 +412,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPcFaxInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -491,9 +421,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPcFaxSetsPcFax(): void
     {
         $this->subject->setPcFax('foo bar');
@@ -504,9 +432,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEmailInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -515,9 +441,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setEmailSetsEmail(): void
     {
         $this->subject->setEmail('foo bar');
@@ -528,9 +452,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAdditionalInformationsInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -539,9 +461,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setAdditionalInformationsSetsAdditionalInformations(): void
     {
         $this->subject->setAdditionalInformations('foo bar');
@@ -552,9 +472,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRegularAttendanceInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -563,9 +481,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setRegularAttendanceSetsRegularAttendance(): void
     {
         $this->subject->setRegularAttendance('foo bar');
@@ -576,9 +492,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getModuleSysDmailHtmlInitiallyReturnstrue(): void
     {
         self::assertTrue(
@@ -586,9 +500,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setModuleSysDmailHtmlSetsModuleSysDmailHtml(): void
     {
         $this->subject->setModuleSysDmailHtml(true);
@@ -597,17 +509,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getOfficeInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getOffice());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setOfficeSetsOffice(): void
     {
         $instance = new Office();
@@ -619,17 +527,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBuildingInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getBuilding());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setBuildingSetsBuilding(): void
     {
         $instance = new Building();
@@ -641,17 +545,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getDepartmentInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getDepartment());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setDepartmentSetsDepartment(): void
     {
         $instance = new Department();
@@ -663,25 +563,19 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getImageInitiallyIsEmpty(): void
     {
         self::assertEmpty($this->subject->getImage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFirstImageInitiallyReturnsNull(): void
     {
         self::assertEmpty($this->subject->getFirstImage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFirstImageReturnsFirstImage(): void
     {
         $instance = new FileReference();
@@ -693,9 +587,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLanguageSkillInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -704,14 +596,13 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setLanguageSkillSetsLanguageSkill(): void
     {
         $object = new LanguageSkill();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setLanguageSkill($objectStorage);
 
         self::assertSame(
@@ -720,9 +611,7 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addLanguageSkillAddsOneLanguageSkill(): void
     {
         $objectStorage = new ObjectStorage();
@@ -739,17 +628,17 @@ class EmployeeTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeLanguageSkillRemovesOneLanguageSkill(): void
     {
         $object = new LanguageSkill();
         $objectStorage = new ObjectStorage();
         $objectStorage->attach($object);
+
         $this->subject->setLanguageSkill($objectStorage);
 
         $this->subject->removeLanguageSkill($object);
+
         $objectStorage->detach($object);
 
         self::assertSame(

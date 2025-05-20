@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
+use Doctrine\DBAL\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
 use TYPO3\CMS\Core\Database\Connection;
@@ -88,8 +89,9 @@ class AddAdditionalFunctionsToEmployee implements ApplyRecordToEmployeeInterface
             while ($additionalFunction = $queryResult->fetchAssociative()) {
                 $additionalFunctions[$additionalFunction['uid']] = $this->lowerCamelCaseArrayKeys($additionalFunction);
             }
+
             return $additionalFunctions;
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $exception) {
         }
 
         return [];

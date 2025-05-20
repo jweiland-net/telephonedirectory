@@ -32,6 +32,7 @@ class ExtConf implements SingletonInterface
 
     public function __construct(readonly ExtensionConfiguration $extensionConfiguration)
     {
+        // initializing array
         $extConf = [];
 
         try {

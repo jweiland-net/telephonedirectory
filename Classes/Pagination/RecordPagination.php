@@ -36,9 +36,11 @@ class RecordPagination implements PaginationInterface
             if ($argumentName[0] === '_' && $argumentName[1] === '_') {
                 continue;
             }
+
             if (in_array($argumentName, ['@extension', '@subpackage', '@controller', '@action', '@format'], true)) {
                 continue;
             }
+
             if (in_array($argumentName, ['extension', 'plugin', 'controller', 'action'], true)) {
                 continue;
             }
@@ -153,5 +155,16 @@ class RecordPagination implements PaginationInterface
     public function getRequestFromGlobalScope(): ServerRequestInterface
     {
         return $GLOBALS['TYPO3_REQUEST'];
+    }
+
+    public function getAllPageNumbers(): array
+    {
+        $pages = [];
+
+        for ($i = $this->getFirstPageNumber(); $i <= $this->getLastPageNumber(); $i++) {
+            $pages[] = $i;
+        }
+
+        return $pages;
     }
 }

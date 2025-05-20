@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\UpgradeWizard;
+namespace JWeiland\Telephonedirectory\Update;
 
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -22,12 +22,14 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 /**
  * Base Class to build updater for 1:1 to m:m migrations
  */
-abstract class AbstractSingleFieldToMmUpdater implements UpgradeWizardInterface
+abstract class AbstractSingleFieldToMmUpdate implements UpgradeWizardInterface
 {
     abstract protected function getTableName(): string;
+
     abstract protected function getMmTableName(): string;
 
     abstract protected function getOldFieldName(): string;
+
     abstract protected function getNewFieldName(): string;
 
     public function updateNecessary(): bool

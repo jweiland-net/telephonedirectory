@@ -28,6 +28,7 @@ call_user_func(static function () {
         [
             EmployeeController::class => 'search, edit, create, update, sendEditMail',
         ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
 
     ExtensionUtility::configurePlugin(
@@ -42,6 +43,7 @@ call_user_func(static function () {
             InterpreterController::class => '',
             EmployeeController::class => 'search, edit, create, update, sendEditMail',
         ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
 
     ExtensionUtility::configurePlugin(
@@ -50,6 +52,8 @@ call_user_func(static function () {
         [
             EmployeeController::class => 'showRecords',
         ],
+        [],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][SendMailToEmployeeTask::class] = [

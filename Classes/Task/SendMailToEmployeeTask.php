@@ -18,9 +18,10 @@ use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
@@ -28,15 +29,13 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
  */
 class SendMailToEmployeeTask extends AbstractTask
 {
-    /**
-     * @var int
-     */
-    public $storagePid = 0;
+    public int $storagePid = 0;
 
-    /**
-     * @var int
-     */
-    public $detailViewPid = 0;
+    public int $detailViewPid = 0;
+
+    public function __construct(
+        private ViewFactoryInterface $viewFactory,
+    ) {}
 
     public function execute(): bool
     {
@@ -67,7 +66,7 @@ class SendMailToEmployeeTask extends AbstractTask
     protected function generateContent(array $employee): string
     {
         $view = $this->getView();
-        $view->assign('link', $this->getEditLink((int)$employee['uid']));
+        $view->assign('link', $this->getEditLink());
         $view->assign('employee', $employee);
         $view->assign('contactName', $this->getExtConf()->getEmailFromName());
         $view->assign('contactEmail', $this->getExtConf()->getEmailContact());
@@ -75,14 +74,15 @@ class SendMailToEmployeeTask extends AbstractTask
         return $view->render();
     }
 
-    private function getView(): StandaloneView
+    private function getView(): ViewInterface
     {
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $viewFactoryData = new ViewFactoryData();
+        $view = $this->viewFactory->create($viewFactoryData);
 
-        $view->setTemplatePathAndFilename(
+        $view->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(
             $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html'),
         );
-        $view->setPartialRootPaths([
+        $view->getRenderingContext()->setPartialRootPaths([
             $this->getResolvedExtPath('EXT:telephonedirectory/Resources/Private/Partials/'),
         ]);
 
@@ -92,23 +92,14 @@ class SendMailToEmployeeTask extends AbstractTask
     /**
      * @throws InvalidArgumentForHashGenerationException
      */
-    private function getEditLink(int $employeeUid): string
+    private function getEditLink(): string
     {
         $site = $this->getSite($this->detailViewPid);
         if (!$site instanceof Site) {
             return '';
         }
-
         return (string)$site->getRouter()->generateUri(
             $this->detailViewPid,
-            [
-                'tx_telephonedirectory_telephone' => [
-                    'action' => 'edit',
-                    'controller' => 'Employee',
-                    'employee' => $employeeUid,
-                    'hash' => $this->getHashService()->generateHmac('Employee:' . $employeeUid),
-                ],
-            ],
         );
     }
 
@@ -121,7 +112,7 @@ class SendMailToEmployeeTask extends AbstractTask
     {
         try {
             return $this->getSiteFinder()->getSiteByPageId($pageUid);
-        } catch (SiteNotFoundException $e) {
+        } catch (SiteNotFoundException $siteNotFoundException) {
         }
 
         return null;
@@ -130,11 +121,6 @@ class SendMailToEmployeeTask extends AbstractTask
     private function getSiteFinder(): SiteFinder
     {
         return GeneralUtility::makeInstance(SiteFinder::class);
-    }
-
-    private function getHashService(): HashService
-    {
-        return GeneralUtility::makeInstance(HashService::class);
     }
 
     private function getEmployeeFactory(): EmployeeFactory

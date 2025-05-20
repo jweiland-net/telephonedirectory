@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -41,13 +42,14 @@ class EmployeeRepository extends Repository
     /**
      * @param array<string, mixed> $search
      * @return QueryResultInterface<int, Employee>
+     * @throws InvalidQueryException
      */
     public function findFilteredBy(Office $office = null, array $search = []): QueryResultInterface
     {
         $query = $this->createQuery();
         $constraints = [];
 
-        if ($office) {
+        if ($office instanceof Office) {
             $constraints[] = $query->equals('office', $office);
         }
 
@@ -97,7 +99,7 @@ class EmployeeRepository extends Repository
     {
         $query = $this->createQuery();
 
-        $employeeIdentifiers = GeneralUtility::intExplode(',', $csvListOfIdentifiers, true);
+        $employeeIdentifiers = GeneralUtility::intExplode(',', $csvListOfIdentifiers);
 
         return $query->matching($query->in('uid', $employeeIdentifiers))->execute();
     }
@@ -121,7 +123,7 @@ class EmployeeRepository extends Repository
                 ),
             );
 
-        if ($office) {
+        if ($office !== 0) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq('office', $office));
         }
 

@@ -14,7 +14,7 @@ namespace JWeiland\Telephonedirectory\Mvc\Property\TypeConverter;
 use JWeiland\Checkfaluploads\Service\FalUploadService;
 use JWeiland\Telephonedirectory\Event\PostCheckFileReferenceEvent;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
-use TYPO3\CMS\Core\Resource\DuplicationBehavior;
+use TYPO3\CMS\Core\Resource\Enum\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Resource\FileReference as CoreFileReference;
 use TYPO3\CMS\Core\Resource\Folder;
@@ -48,9 +48,6 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected $priority = 2;
 
-    /**
-     * @var Folder
-     */
     protected Folder $uploadFolder;
 
     protected PropertyMappingConfigurationInterface $converterConfiguration;
@@ -64,7 +61,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
     public function __construct(protected readonly EventDispatcher $eventDispatcher) {}
 
-    public function canConvertFrom($source, string $targetType): bool
+    /**
+     * @param array<string, mixed> $source
+     */
+    public function canConvertFrom(array $source, string $targetType): bool
     {
         // check if $source consists of uploaded files
         foreach ($source as $uploadedFile) {
@@ -110,8 +110,10 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                 } else {
                     unset($source[$key]);
                 }
+
                 continue;
             }
+
             // Check if uploaded file returns an error
             if ($uploadedFile['error'] !== 0) {
                 return new Error(
@@ -137,7 +139,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
             if (
                 ExtensionManagementUtility::isLoaded('checkfaluploads')
-                && $error = $this->getFalUploadService()->checkFile($uploadedFile)
+                && $error = $this->getFalUploadService()->checkFile($uploadedFile, null)
             ) {
                 return $error;
             }
@@ -165,7 +167,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function initialize(?PropertyMappingConfigurationInterface $configuration): void
     {
-        if ($configuration === null) {
+        if (!$configuration instanceof PropertyMappingConfigurationInterface) {
             throw new \Exception(
                 'Missing PropertyMapper configuration in UploadMultipleFilesConverter',
                 1605617449,
@@ -201,7 +203,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     }
 
     /**
-     * @return array<int, mixed>
+     * @return array<string, mixed>
      */
     protected function getTypoScriptPluginSettings(): array
     {
@@ -218,7 +220,9 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function setUploadFolder(): void
     {
-        $combinedUploadFolderIdentifier = $this->getTypoScriptPluginSettings()['new']['uploadFolder'] ?? '';
+        $settings = $this->getTypoScriptPluginSettings();
+        $combinedUploadFolderIdentifier = $settings['new']['uploadFolder'] ?? '';
+
         if ($combinedUploadFolderIdentifier === '') {
             throw new \Exception(
                 'You have forgotten to set an Upload Folder in TypoScript for telephonedirectory',
@@ -229,7 +233,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
         try {
             $uploadFolder = $resourceFactory->getObjectFromCombinedIdentifier($combinedUploadFolderIdentifier);
-        } catch (ResourceDoesNotExistException $exception) {
+        } catch (ResourceDoesNotExistException $resourceDoesNotExistException) {
             [$storageUid] = GeneralUtility::trimExplode(':', $combinedUploadFolderIdentifier);
             $resourceStorage = $resourceFactory->getStorageObject((int)$storageUid);
             $uploadFolder = $resourceStorage->createFolder($combinedUploadFolderIdentifier);
@@ -243,7 +247,6 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      * Error = 4: No file uploaded
      *
      * @param array<string, mixed> $uploadedFile
-     * @return bool
      */
     protected function isValidUploadFile(array $uploadedFile): bool
     {
@@ -265,7 +268,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function deleteFile(?FileReference $fileReference): void
     {
-        if ($fileReference !== null) {
+        if ($fileReference instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference) {
             $fileReference = $fileReference->getOriginalResource();
 
             if ($fileReference->getStorage()->isWithinFolder($this->uploadFolder, $fileReference)) {
@@ -295,7 +298,6 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      * Upload file and get a file reference object.
      *
      * @param array<string, mixed> $source contains information about the uploaded file given by $_FILES['file1']
-     * @return CoreFileReference
      */
     protected function getCoreFileReference(array $source): CoreFileReference
     {
@@ -317,6 +319,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         if ($this->falUploadService === null) {
             $this->falUploadService = GeneralUtility::makeInstance(FalUploadService::class);
         }
+
         return $this->falUploadService;
     }
 }

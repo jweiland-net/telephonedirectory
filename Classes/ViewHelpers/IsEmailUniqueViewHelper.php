@@ -37,15 +37,13 @@ class IsEmailUniqueViewHelper extends AbstractViewHelper
         );
     }
 
-    /**
-     * Implements a ViewHelper which checks if a given email address is unique in DB
-     */
     public function render(): bool
     {
-        if (empty($this->arguments['email'])) {
+        $email = (string)($this->arguments['email'] ?? '');
+        if ($email === '') {
             return false;
         }
 
-        return $this->employeeRepository->count(['email' => $this->arguments['email']]) === 1;
+        return $this->employeeRepository->count(['email' => $email]) === 1;
     }
 }

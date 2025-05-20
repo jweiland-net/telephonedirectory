@@ -2,22 +2,22 @@ plugin.tx_telephonedirectory {
     view {
         templateRootPaths {
             0 = EXT:telephonedirectory/Resources/Private/Templates/
-            1 = {$plugin.tx_telephonedirectory.view.templateRootPath}
+            1 = {$telephonedirectory.templateRootPath}
         }
 
         partialRootPaths {
             0 = EXT:telephonedirectory/Resources/Private/Partials/
-            1 = {$plugin.tx_telephonedirectory.view.partialRootPath}
+            1 = {$telephonedirectory.partialRootPath}
         }
 
         layoutRootPaths {
             0 = EXT:telephonedirectory/Resources/Private/Layouts/
-            1 = {$plugin.tx_telephonedirectory.view.layoutRootPath}
+            1 = {$telephonedirectory.layoutRootPath}
         }
     }
 
     persistence {
-        storagePid = {$plugin.tx_telephonedirectory.persistence.storagePid}
+        storagePid = {$telephonedirectory.storagePid}
     }
 
     features {
@@ -26,12 +26,12 @@ plugin.tx_telephonedirectory {
     }
 
     settings {
-      pidOfDetailPage = {$plugin.tx_telephonedirectory.settings.pidOfDetailPage}
+      pidOfDetailPage = {$telephonedirectory.pidOfDetailPage}
       pageBrowser {
-          itemsPerPage = {$plugin.tx_telephonedirectory.settings.pageBrowser.itemsPerPage}
-          insertAbove = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertAbove}
-          insertBelow = {$plugin.tx_telephonedirectory.settings.pageBrowser.insertBelow}
-          maximumNumberOfLinks = {$plugin.tx_telephonedirectory.settings.pageBrowser.maximumNumberOfLinks}
+          itemsPerPage = {$telephonedirectory.pageBrowser.itemsPerPage}
+          insertAbove = {$telephonedirectory.pageBrowser.insertAbove}
+          insertBelow = {$telephonedirectory.pageBrowser.insertBelow}
+          maximumNumberOfLinks = {$telephonedirectory.pageBrowser.maximumNumberOfLinks}
       }
       new {
           uploadFolder = 1:user_upload/tx_telephonedirectory/

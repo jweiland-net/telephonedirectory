@@ -103,9 +103,9 @@ class Employee extends AbstractEntity
      */
     protected function initializeObject(): void
     {
-        $this->additionalFunction = $this->additionalFunction ?? new ObjectStorage();
-        $this->languageSkill = $this->languageSkill ?? new ObjectStorage();
-        $this->image = $this->image ?? new ObjectStorage();
+        $this->additionalFunction ??= new ObjectStorage();
+        $this->languageSkill ??= new ObjectStorage();
+        $this->image ??= new ObjectStorage();
     }
 
     public function isHidden(): bool

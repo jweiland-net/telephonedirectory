@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository\Handler;
 
+use Doctrine\DBAL\Exception;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
 use TYPO3\CMS\Core\Database\Connection;
@@ -62,7 +63,7 @@ class AddDepartmentToEmployee implements ApplyRecordToEmployeeInterface
                 ->executeQuery()
                 ->fetchAssociative();
             return is_array($departmentRecord) ? $this->lowerCamelCaseArrayKeys($departmentRecord) : [];
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $exception) {
         }
 
         return [];

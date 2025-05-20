@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Repository;
 
+use Doctrine\DBAL\Exception;
 use JWeiland\Telephonedirectory\Repository\Handler\ApplyRecordToEmployeeInterface;
 use JWeiland\Telephonedirectory\Traits\GetQueryBuilderForTableTrait;
 use JWeiland\Telephonedirectory\Traits\LowerCamelCaseArrayKeysTrait;
@@ -78,7 +79,7 @@ class EmployeeFactory
                 ->executeQuery()
                 ->fetchAssociative();
             return $this->lowerCamelCaseArrayKeys($employee);
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $exception) {
         }
 
         return [];
@@ -89,7 +90,7 @@ class EmployeeFactory
      */
     public function getEmployees(string $csvStorages, bool $onlyUid = false): array
     {
-        $storages = GeneralUtility::intExplode(',', $csvStorages, true);
+        $storages = GeneralUtility::intExplode(',', $csvStorages);
 
         $queryBuilder = $this->getQueryBuilderForTable(self::TABLE_NAME);
         try {
@@ -108,8 +109,9 @@ class EmployeeFactory
             while ($employee = $queryResult->fetchAssociative()) {
                 $employees[$employee['uid']] = $onlyUid ? $employee['uid'] : $this->lowerCamelCaseArrayKeys($employee);
             }
+
             return $employees;
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $exception) {
         }
 
         return [];

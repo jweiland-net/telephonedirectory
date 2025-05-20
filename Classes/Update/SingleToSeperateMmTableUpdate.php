@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\UpgradeWizard;
+namespace JWeiland\Telephonedirectory\Update;
 
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Psr\Log\LoggerInterface;
@@ -26,12 +26,16 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * single mm table to separate mm tables.
  */
 #[UpgradeWizard('telephonedirectorySingleToSeparateMmTableUpdater')]
-final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
+final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
 {
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
+
     private const OLD_SUBJECT_FIELD_NAME = 'subject_fields';
+
     private const TABLE_OLD_MM = 'tx_telephonedirectory_office_mm';
+
     private const TABLE_NEW_DEPARTMENT_MM = 'tx_telephonedirectory_domain_model_office_department_mm';
+
     private const TABLE_NEW_SUBJECT_FIELD_MM = 'tx_telephonedirectory_domain_model_office_subjectfield_mm';
 
     public function __construct(
@@ -91,6 +95,7 @@ final class SingleToSeperateMmTableUpdater implements UpgradeWizardInterface
                             ],
                         );
                     }
+
                     $connection->commit();
                 } catch (\Exception $exception) {
                     $connection->rollBack(); // Revert changes on failure

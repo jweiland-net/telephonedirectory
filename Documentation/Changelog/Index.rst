@@ -7,6 +7,17 @@
 Change log
 ==========
 
+Version 6.0.0
+=============
+
+*   Compatibility adjustments for TYPO3 13 LTS
+*   Dropped support for older TYPO3 versions
+*   Replaced StandaloneView usage with modern alternatives based on ViewInterface and ViewFactoryData
+*   Migrated from deprecated Hashing Utility to HashService
+*   Moved TypoScript configuration to the SiteConfiguration folder for better flexibility
+*   Converted all list_type plugins to CType elements, including a migration wizard for existing tt_content records
+*   Replaced all deprecated method calls with updated TYPO3 Core API functions
+
 Version 5.0.0
 =============
 

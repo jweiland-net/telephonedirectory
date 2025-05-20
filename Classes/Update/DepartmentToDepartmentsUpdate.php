@@ -9,29 +9,29 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Telephonedirectory\UpgradeWizard;
+namespace JWeiland\Telephonedirectory\Update;
 
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 
 /**
- * Migrate subjectfield field to subjectfields field in office table
+ * Migrate department field to departments field in office table
  */
-#[UpgradeWizard('telephonedirectoryUpdateSubjectFieldToSubjectFields')]
-class SubjectFieldToSubjectFieldsUpdater extends AbstractSingleFieldToMmUpdater
+#[UpgradeWizard('telephonedirectoryUpdateDepartmentToDepartments')]
+class DepartmentToDepartmentsUpdate extends AbstractSingleFieldToMmUpdate
 {
     public function getIdentifier(): string
     {
-        return 'telephonedirectoryUpdateSubjectFieldToSubjectFields';
+        return 'telephonedirectoryUpdateDepartmentToDepartments';
     }
 
     public function getTitle(): string
     {
-        return '[telephonedirectory] Update subjectfield to subjectfields field';
+        return '[telephonedirectory] Update department to departments field';
     }
 
     public function getDescription(): string
     {
-        return 'Migrate existing subjectfields from the single subjectfield field to the subjectfields field which allows usage of multiple subjectfields';
+        return 'Migrate existing departments from the single department field to the departments field which allows usage of multiple departments';
     }
 
     protected function getTableName(): string
@@ -46,11 +46,11 @@ class SubjectFieldToSubjectFieldsUpdater extends AbstractSingleFieldToMmUpdater
 
     protected function getOldFieldName(): string
     {
-        return 'subject_field';
+        return 'department';
     }
 
     protected function getNewFieldName(): string
     {
-        return 'subject_fields';
+        return 'departments';
     }
 }

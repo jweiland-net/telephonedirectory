@@ -12,10 +12,10 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**

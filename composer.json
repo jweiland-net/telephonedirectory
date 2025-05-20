@@ -29,26 +29,23 @@
 		"source": "https://github.com/jweiland-net/telephonedirectory"
 	},
 	"require": {
-		"doctrine/dbal": "^3.8",
-		"jweiland/checkfaluploads": ">=4.0.0",
-		"jweiland/glossary2": ">=6.0.0",
-		"jweiland/maps2": ">=11.0.0",
-		"typo3/cms-backend": "^12.4",
-		"typo3/cms-core": "^12.4.16",
-		"typo3/cms-extbase": "^12.4",
-		"typo3/cms-fluid": "^12.4",
-		"typo3/cms-scheduler": "^12.4"
+		"jweiland/checkfaluploads": ">=5.0.0",
+		"jweiland/glossary2": ">=7.0.0",
+		"jweiland/maps2": ">=12.0.0",
+		"typo3/cms-backend": "^13.4",
+		"typo3/cms-core": "^13.4",
+		"typo3/cms-extbase": "^13.4",
+		"typo3/cms-fluid": "^13.4",
+		"typo3/cms-scheduler": "^13.4"
 	},
 	"require-dev": {
-		"ergebnis/composer-normalize": "~2.42.0",
+		"ergebnis/composer-normalize": "^2.44",
 		"friendsofphp/php-cs-fixer": "^3.14",
-		"phpstan/phpstan": "^1.10",
-		"phpunit/phpunit": "^9.6",
+		"phpstan/phpdoc-parser": "^1.33",
+		"phpstan/phpstan": "1.10",
 		"roave/security-advisories": "dev-latest",
-		"typo3/cms-dashboard": "^12.4",
-		"typo3/cms-install": "^12.4",
-		"typo3/cms-reports": "^12.4",
-		"typo3/testing-framework": "^7.0.2"
+		"typo3/coding-standards": "^0.8",
+		"typo3/testing-framework": "^9.0.1"
 	},
 	"replace": {
 		"typo3-ter/telephonedirectory": "self.version"

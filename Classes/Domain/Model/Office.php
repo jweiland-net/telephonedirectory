@@ -46,8 +46,8 @@ class Office extends AbstractEntity
      */
     public function initializeObject(): void
     {
-        $this->departments = $this->departments ?? new ObjectStorage();
-        $this->subjectFields = $this->subjectFields ?? new ObjectStorage();
+        $this->departments ??= new ObjectStorage();
+        $this->subjectFields ??= new ObjectStorage();
     }
 
     public function getTitle(): string
@@ -125,6 +125,7 @@ class Office extends AbstractEntity
         if ($this->departments->count() > 0) {
             return $this->departments->current();
         }
+
         return null;
     }
 

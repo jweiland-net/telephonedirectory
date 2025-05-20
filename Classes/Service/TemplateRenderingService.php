@@ -12,12 +12,13 @@ declare(strict_types=1);
 namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Crypto\HashService;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class TemplateRenderingService implements EmailServiceInterface
 {
@@ -25,6 +26,7 @@ class TemplateRenderingService implements EmailServiceInterface
         protected EmployeeNotificationService $emailService,
         protected UriBuilder $uriBuilder,
         protected HashService $hashService,
+        protected ViewFactoryInterface $viewFactory,
     ) {}
 
     /**
@@ -34,22 +36,22 @@ class TemplateRenderingService implements EmailServiceInterface
     public function sendEmployeeEditMail(Employee $employee, RequestInterface $request, array $settings): void
     {
         $view = $this->getView();
-        $view->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
-        $view->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
-        $view->setTemplatePathAndFilename(
+        $view->getRenderingContext()->getLayoutPaths()->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
+        $view->getRenderingContext()->getPartialPaths()->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
+        $view->getRenderingContext()->setTemplatePathAndFilename(
             'EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html',
         );
-        $view->setRequest($request);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
         $this->uriBuilder->setRequest($request);
+        $additionalSecret = 'userInfo';
         $link = $this->uriBuilder->uriFor(
             'edit',
             [
                 'controller' => 'Employee',
                 'action' => 'edit',
                 'employee' => $employee->getUid(),
-                'hash' => $this->hashService->generateHmac('Employee:' . $employee->getUid()),
+                'hash' => $this->hashService->hmac('Employee:' . $employee->getUid(), $additionalSecret),
             ],
         );
 
@@ -67,8 +69,10 @@ class TemplateRenderingService implements EmailServiceInterface
         $this->emailService->sendEmail($to, $subject, $content);
     }
 
-    protected function getView(): StandaloneView
+    protected function getView(): ViewInterface
     {
-        return GeneralUtility::makeInstance(StandaloneView::class);
+        $viewFactoryData = new ViewFactoryData();
+
+        return $this->viewFactory->create($viewFactoryData);
     }
 }
