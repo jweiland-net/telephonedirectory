@@ -37,7 +37,6 @@ class AddGlossaryEventListener extends AbstractControllerEventListener
                 'glossary',
                 $this->glossaryService->buildGlossary(
                     $this->employeeRepository->getQueryBuilderToFindAllEntries(),
-                    // @phpstan-ignore-next-line
                     $this->getOptions($event),
                     $event->getRequest(),
                 ),

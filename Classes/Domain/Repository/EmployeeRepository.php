@@ -55,7 +55,6 @@ class EmployeeRepository extends Repository
 
         if (isset($search['letter']) && (string)$search['letter'] !== '') {
             $constraints[] = $this->glossaryService->getLetterConstraintForExtbaseQuery(
-                // @phpstan-ignore-next-line
                 $query,
                 'lastName',
                 $search['letter'],

@@ -3,5 +3,9 @@ parameters:
 		ignoreErrors:
 			-
 				message: '#Call to an undefined method .*#'
-			#-
-			#	message: '#^Access to an undefined property TYPO3\\\\CMS\\\\Scheduler\\\\Task\\\\AbstractTask$#'
+			-
+				message: "#Parameter \\#1 \\$extbaseQuery of method JWeiland\\\\Glossary2\\\\Service\\\\GlossaryService::getLetterConstraintForExtbaseQuery\\(\\) expects TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface<.*>, TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface<.*> given#"
+				path:  %currentWorkingDirectory%/Classes/Domain/Repository/EmployeeRepository.php
+			-
+				message: "#Parameter \\#2 \\$options of method JWeiland\\\\Glossary2\\\\Service\\\\GlossaryService::buildGlossary\\(\\) expects array\\<string, mixed\\>, array\\<int, mixed\\> given.#"
+				path:  %currentWorkingDirectory%/Classes/EventListener/AddGlossaryEventListener.php
