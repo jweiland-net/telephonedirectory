@@ -203,7 +203,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     }
 
     /**
-     * @return array<int, mixed>
+     * @return array<string, mixed>
      */
     protected function getTypoScriptPluginSettings(): array
     {
@@ -220,7 +220,6 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
      */
     protected function setUploadFolder(): void
     {
-        /** @var array<string, mixed> $settings */
         $settings = $this->getTypoScriptPluginSettings();
         $combinedUploadFolderIdentifier = $settings['new']['uploadFolder'] ?? '';
 
