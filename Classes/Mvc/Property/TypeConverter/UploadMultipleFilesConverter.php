@@ -63,7 +63,6 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
 
     /**
      * @param array<string, mixed> $source
-     * @param string $targetType
      */
     public function canConvertFrom(array $source, string $targetType): bool
     {
