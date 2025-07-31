@@ -30,13 +30,13 @@ class ExtConf implements SingletonInterface
 
     protected int $additionalFunctionsParentCategoryUid = 0;
 
-    public function __construct(readonly ExtensionConfiguration $extensionConfiguration)
+    public function __construct(private readonly ExtensionConfiguration $extensionConfiguration)
     {
         // initializing array
         $extConf = [];
 
         try {
-            $extConf = (array)$extensionConfiguration->get('telephonedirectory');
+            $extConf = (array)$this->extensionConfiguration->get('telephonedirectory');
         } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $exception) {
         }
 
