@@ -73,7 +73,7 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "telephonedirectory",
-			"web-dir": ".Build/web"
+			"web-dir": ".Build/public"
 		}
 	}
 }

@@ -7,6 +7,11 @@
 Change log
 ==========
 
+Version 6.0.1
+=============
+
+*   Update testing directory
+
 Version 6.0.0
 =============
 
