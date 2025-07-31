@@ -36,7 +36,7 @@ class ExtConf implements SingletonInterface
         $extConf = [];
 
         try {
-            $extConf = (array)$extensionConfiguration->get('telephonedirectory');
+            $extConf = (array)$this->extensionConfiguration->get('telephonedirectory');
         } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $exception) {
         }
 
