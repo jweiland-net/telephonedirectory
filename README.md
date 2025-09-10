@@ -38,6 +38,12 @@ Download and install `telephonedirectory` with the extension manager module.
 2) Create employee and other records on a sysfolder.
 3) Add telephonedirectory plugin on a page and select at least the sysfolder as startingpoint.
 
+## 3 Support
+
+Free Support is available via [GitHub Issue Tracker](https://github.com/jweiland-net/telephonedirectory/issues).
+
+For commercial support, please contact us at [support@jweiland.net](support@jweiland.net).
+
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [extension-build-shield]: https://poser.pugx.org/jweiland/telephonedirectory/v/stable.svg?style=for-the-badge
