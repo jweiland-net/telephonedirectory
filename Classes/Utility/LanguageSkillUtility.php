@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 
 namespace JWeiland\Telephonedirectory\Utility;
-yma
+
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class LanguageSkillUtility
