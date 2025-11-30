@@ -16,7 +16,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class LanguageSkillUtility
 {
     /**
-     * @var array<int, array{string, string}>
+     * @var array<int, mixed>
      */
     protected static array $languageSkills = [
         [
@@ -42,14 +42,14 @@ class LanguageSkillUtility
     ];
 
     /**
-     * @var array<int, array{string, string}>
+     * @var array<int, mixed>
      */
     protected static array $languageSkillsForFluidSelect = [];
 
     /**
      * Returns an array of language skills.
      *
-     * @return array<int, array{string, string}>
+     * @return array<int, array{label: string, value: string}>
      */
     public static function getLanguageSkills(): array
     {
@@ -59,13 +59,13 @@ class LanguageSkillUtility
     /**
      * Returns an array of language skills for fluid select fields.
      *
-     * @return array<int, array{string, string}>
+     * @return array<int, mixed>
      */
     public static function getLanguageSkillsForFluidSelect(): array
     {
         if (!self::$languageSkillsForFluidSelect) {
             foreach (self::getLanguageSkills() as $skill) {
-                self::$languageSkillsForFluidSelect[$skill[1]] = LocalizationUtility::translate($skill[0]);
+                self::$languageSkillsForFluidSelect[$skill['value']] = LocalizationUtility::translate($skill['label']);
             }
         }
 
