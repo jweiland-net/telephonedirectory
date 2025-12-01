@@ -16,40 +16,40 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class LanguageSkillUtility
 {
     /**
-     * @var array<int, array{string, string}>
+     * @var array<int, mixed>
      */
     protected static array $languageSkills = [
         [
-            'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
-            '0',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.none',
+            'value' => '0',
         ],
         [
-            'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
-            'native',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.native',
+            'value' => 'native',
         ],
         [
-            'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
-            'fluent',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.fluent',
+            'value' => 'fluent',
         ],
         [
-            'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
-            'good',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.good',
+            'value' => 'good',
         ],
         [
-            'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
-            'basic',
+            'label' => 'LLL:EXT:telephonedirectory/Resources/Private/Language/locallang_db.xlf:tx_telephonedirectory_domain_model_languageskill.skill.basic',
+            'value' => 'basic',
         ],
     ];
 
     /**
-     * @var array<int, array{string, string}>
+     * @var array<int, mixed>
      */
     protected static array $languageSkillsForFluidSelect = [];
 
     /**
      * Returns an array of language skills.
      *
-     * @return array<int, array{string, string}>
+     * @return array<int, array{label: string, value: string}>
      */
     public static function getLanguageSkills(): array
     {
@@ -59,13 +59,13 @@ class LanguageSkillUtility
     /**
      * Returns an array of language skills for fluid select fields.
      *
-     * @return array<int, array{string, string}>
+     * @return array<int, mixed>
      */
     public static function getLanguageSkillsForFluidSelect(): array
     {
         if (!self::$languageSkillsForFluidSelect) {
             foreach (self::getLanguageSkills() as $skill) {
-                self::$languageSkillsForFluidSelect[$skill[1]] = LocalizationUtility::translate($skill[0]);
+                self::$languageSkillsForFluidSelect[$skill['value']] = LocalizationUtility::translate($skill['label']);
             }
         }
 
