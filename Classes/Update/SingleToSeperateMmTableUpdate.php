@@ -168,13 +168,22 @@ final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
         try {
             $connectionToDepartmentMmTable = $this->getConnectionPool()
                 ->getConnectionForTable(self::TABLE_NEW_DEPARTMENT_MM);
-            $connectionToDepartmentMmTable->insert(
-                self::TABLE_NEW_DEPARTMENT_MM,
-                [
-                    'uid_local' => (int)$recordToUpdate['uid_local'],
-                    'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
-                ],
-            );
+
+            // Check if record already exists
+            $existing = $connectionToDepartmentMmTable->select(['uid_local'], self::TABLE_NEW_DEPARTMENT_MM, [
+                'uid_local' => (int)$recordToUpdate['uid_local'],
+                'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
+            ])->fetchAssociative();
+
+            if (!$existing) {
+                $connectionToDepartmentMmTable->insert(
+                    self::TABLE_NEW_DEPARTMENT_MM,
+                    [
+                        'uid_local' => (int)$recordToUpdate['uid_local'],
+                        'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
+                    ],
+                );
+            }
         } catch (\Exception $exception) {
             $this->logError($exception);
         }
@@ -188,13 +197,22 @@ final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
         try {
             $connectionToSubjectFieldMmTable = $this->getConnectionPool()
                 ->getConnectionForTable(self::TABLE_NEW_SUBJECT_FIELD_MM);
-            $connectionToSubjectFieldMmTable->insert(
-                self::TABLE_NEW_SUBJECT_FIELD_MM,
-                [
-                    'uid_local' => (int)$recordToUpdate['uid_local'],
-                    'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
-                ],
-            );
+
+            // Check if record already exists
+            $existing = $connectionToSubjectFieldMmTable->select(['uid_local'], self::TABLE_NEW_SUBJECT_FIELD_MM, [
+                'uid_local' => (int)$recordToUpdate['uid_local'],
+                'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
+            ])->fetchAssociative();
+
+            if (!$existing) {
+                $connectionToSubjectFieldMmTable->insert(
+                    self::TABLE_NEW_SUBJECT_FIELD_MM,
+                    [
+                        'uid_local' => (int)$recordToUpdate['uid_local'],
+                        'uid_foreign' => (int)$recordToUpdate['uid_foreign'],
+                    ],
+                );
+            }
         } catch (\Exception $exception) {
             $this->logError($exception);
         }

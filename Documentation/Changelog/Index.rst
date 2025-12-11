@@ -7,6 +7,11 @@
 Change log
 ==========
 
+Version 6.0.3
+=============
+
+*   [BUGFIX] Issue while trying to insert a duplicate record has been fixed
+
 Version 6.0.2
 =============
 
