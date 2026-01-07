@@ -16,14 +16,9 @@ use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 /**
  * Migrate department field to departments field in office table
  */
-#[UpgradeWizard('telephonedirectoryUpdateDepartmentToDepartments')]
+#[UpgradeWizard('telephonedirectory_updateDepartmentToDepartments')]
 class DepartmentToDepartmentsUpdate extends AbstractSingleFieldToMmUpdate
 {
-    public function getIdentifier(): string
-    {
-        return 'telephonedirectoryUpdateDepartmentToDepartments';
-    }
-
     public function getTitle(): string
     {
         return '[telephonedirectory] Update department to departments field';

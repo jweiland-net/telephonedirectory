@@ -17,7 +17,7 @@ use TYPO3\CMS\Install\Updates\AbstractListTypeToCTypeUpdate;
 /**
  * With TYPO3 13 all plugins have to be declared as content elements (CType) insteadof "list_type"
  */
-#[UpgradeWizard('telephonedirectoryListTypeToCTypeUpdate')]
+#[UpgradeWizard('telephonedirectory_listTypeToCTypeUpdate')]
 class MigratePluginToContentElementUpdate extends AbstractListTypeToCTypeUpdate
 {
     protected function getListTypeToCTypeMapping(): array
@@ -32,7 +32,7 @@ class MigratePluginToContentElementUpdate extends AbstractListTypeToCTypeUpdate
 
     public function getTitle(): string
     {
-        return 'EXT:telephonedirectory - Migrate plugins to Content Elements';
+        return '[telephonedirectory] Migrate plugins to Content Elements';
     }
 
     public function getDescription(): string

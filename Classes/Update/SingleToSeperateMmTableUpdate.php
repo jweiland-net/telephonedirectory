@@ -25,7 +25,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * This updater is intended to migrate department and subject fields from a
  * single mm table to separate mm tables.
  */
-#[UpgradeWizard('telephonedirectorySingleToSeparateMmTableUpdater')]
+#[UpgradeWizard('telephonedirectory_singleToSeparateMmTableUpdater')]
 final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
 {
     private const OLD_DEPARTMENT_FIELD_NAME = 'departments';
@@ -239,11 +239,6 @@ final class SingleToSeperateMmTableUpdate implements UpgradeWizardInterface
         );
 
         return $queryBuilder->expr()->or($departmentCondition, $subjectFieldCondition);
-    }
-
-    public function getIdentifier(): string
-    {
-        return 'telephonedirectorySingleToSeparateMmTableUpdater';
     }
 
     public function getTitle(): string
