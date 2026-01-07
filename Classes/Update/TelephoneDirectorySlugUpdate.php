@@ -23,7 +23,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 /**
  * Updater to fill empty slug columns of employee records
  */
-#[UpgradeWizard('telephonedirectoryUpdateSlug')]
+#[UpgradeWizard('telephonedirectory_updateSlug')]
 class TelephoneDirectorySlugUpdate implements UpgradeWizardInterface
 {
     private const TABLE = 'tx_telephonedirectory_domain_model_employee';
@@ -31,15 +31,6 @@ class TelephoneDirectorySlugUpdate implements UpgradeWizardInterface
     private const FIELD = 'path_segment';
 
     public function __construct(private readonly PathSegmentHelper $pathSegmentHelper) {}
-
-    /**
-     * Return the identifier for this wizard
-     * This should be the same string as used in the ext_localconf class registration
-     */
-    public function getIdentifier(): string
-    {
-        return 'telephonedirectoryUpdateSlug';
-    }
 
     public function getTitle(): string
     {

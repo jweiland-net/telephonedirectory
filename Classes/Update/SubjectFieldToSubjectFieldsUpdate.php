@@ -16,14 +16,9 @@ use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 /**
  * Migrate subjectfield field to subjectfields field in office table
  */
-#[UpgradeWizard('telephonedirectoryUpdateSubjectFieldToSubjectFields')]
+#[UpgradeWizard('telephonedirectory_updateSubjectFieldToSubjectFields')]
 class SubjectFieldToSubjectFieldsUpdate extends AbstractSingleFieldToMmUpdate
 {
-    public function getIdentifier(): string
-    {
-        return 'telephonedirectoryUpdateSubjectFieldToSubjectFields';
-    }
-
     public function getTitle(): string
     {
         return '[telephonedirectory] Update subjectfield to subjectfields field';
