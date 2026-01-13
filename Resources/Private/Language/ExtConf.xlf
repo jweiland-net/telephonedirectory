@@ -15,6 +15,9 @@
 			<trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve">
 				<source>The UID of the category containing the additional functions</source>
 			</trans-unit>
+			<trans-unit id="additionalSecretForHashGeneration" xml:space="preserve">
+				<source>Additional secret for hash generation</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
