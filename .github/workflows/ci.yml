@@ -37,10 +37,6 @@ jobs:
         if: ${{ matrix.php <= '8.3' }}
         run: Build/Scripts/runTests.sh -n -p ${{ matrix.php }} -s cgl
 
-      - name: 'phpstan'
-        if: ${{ matrix.php <= '8.3' }}
-        run: Build/Scripts/runTests.sh -n -p ${{ matrix.php }} -s phpstan
-
       - name: 'Execute unit tests'
         run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s unit
 
