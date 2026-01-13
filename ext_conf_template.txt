@@ -6,3 +6,5 @@ emailFromAddress =
 emailFromName =
 # cat=basic; type=string; label = LLL:EXT:telephonedirectory/Resources/Private/Language/ExtConf.xlf:additionalFunctionsParentCategoryUid
 additionalFunctionsParentCategoryUid =
+# cat=basic; type=string; label = LLL:EXT:telephonedirectory/Resources/Private/Language/ExtConf.xlf:additionalSecretForHashGeneration
+additionalSecretForHashGeneration =
