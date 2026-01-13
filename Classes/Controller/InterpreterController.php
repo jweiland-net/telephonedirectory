@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Controller;
 
-use JWeiland\Telephonedirectory\Traits\InjectLanguageSkillRepositoryTrait;
+use JWeiland\Telephonedirectory\Domain\Repository\LanguageSkillRepository;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -19,7 +19,10 @@ use Psr\Http\Message\ResponseInterface;
  */
 class InterpreterController extends AbstractController
 {
-    use InjectLanguageSkillRepositoryTrait;
+    public function __construct(
+        readonly protected LanguageSkillRepository $languageSkillRepository,
+    ) {
+    }
 
     public function initializeAction(): void
     {
