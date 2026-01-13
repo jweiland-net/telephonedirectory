@@ -14,14 +14,17 @@ namespace JWeiland\Telephonedirectory\Service;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-class EmployeeNotificationService implements EmailServiceInterface
+readonly class EmployeeNotificationService implements EmailServiceInterface
 {
-    public function __construct(protected readonly BasicEmailService $emailService) {}
+    public function __construct(protected BasicEmailService $emailService) {}
 
     public function sendEmployeeNotification(Employee $employee, string $content): void
     {
         $subject = LocalizationUtility::translate('email.subject', 'telephonedirectory');
-        $this->emailService->sendEmail($employee->getEmail(), $subject, $content);
+        $this->emailService->sendEmail(
+            $employee->getEmail(),
+            $subject, $content
+        );
     }
 
     public function sendEmail(string $to, string $subject, string $content): void
