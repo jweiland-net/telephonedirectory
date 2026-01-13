@@ -287,6 +287,10 @@
         <source>Keyword</source>
         <target state="needs-translation">Keyword</target>
       </trans-unit>
+      <trans-unit id="email.error">
+        <source>The email could not be sent. Please contact the administrator.</source>
+        <target state="needs-translation">The email could not be sent. Please contact the administrator.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
