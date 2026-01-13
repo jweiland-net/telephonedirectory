@@ -174,8 +174,10 @@ return [
         ],
         'employee' => [
             'config' => [
-                'type' => 'passthrough',
+                'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_telephonedirectory_domain_model_employee',
+                'maxitems' => 1,
             ],
         ],
     ],

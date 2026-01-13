@@ -21,7 +21,10 @@ class BasicEmailService implements EmailServiceInterface
     {
         if (GeneralUtility::validEmail($to)) {
             $mail = $this->getMailMessage();
-            $mail->setFrom($this->getExtConf()->getEmailFromAddress(), $this->getExtConf()->getEmailFromName());
+            $mail->setFrom(
+                $this->getExtConf()->getEmailFromAddress(),
+                $this->getExtConf()->getEmailFromName(),
+            );
             $mail->setTo($to);
             $mail->setSubject($subject);
             $mail->html($content);

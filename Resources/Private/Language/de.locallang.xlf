@@ -274,7 +274,11 @@
 			</trans-unit>
 			<trans-unit id="form.input.keyword">
 				<source>Keyword</source>
-				<source>Schlüsselwort</source>
+				<target>Schlüsselwort</target>
+			</trans-unit>
+			<trans-unit id="email.error">
+				<source>The email could not be sent. Please contact the administrator.</source>
+				<target>Die E-Mail konnte nicht gesendet werden. Bitte wenden Sie sich an den Administrator.</target>
 			</trans-unit>
 		</body>
 	</file>

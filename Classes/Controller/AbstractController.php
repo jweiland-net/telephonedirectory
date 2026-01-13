@@ -11,10 +11,12 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Controller;
 
+use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Event\InitializeControllerActionEvent;
 use JWeiland\Telephonedirectory\Event\PostProcessFluidVariablesEvent;
 use JWeiland\Telephonedirectory\Event\PreProcessControllerActionEvent;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 abstract class AbstractController extends ActionController
@@ -56,6 +58,19 @@ abstract class AbstractController extends ActionController
                 $this->settings,
                 $this->request,
             ),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $arguments
+     */
+    protected function redirectToEmployee(string $action, array $arguments = []): ResponseInterface
+    {
+        return $this->redirect(
+            $action,
+            'Employee',
+            ExtConf::EXT_KEY,
+            $arguments,
         );
     }
 }

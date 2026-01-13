@@ -11,46 +11,55 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Configuration;
 
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
  * Class with all properties of Extensionmanager Configuration
  */
-class ExtConf implements SingletonInterface
+#[Autoconfigure(constructor: 'create')]
+readonly class ExtConf implements SingletonInterface
 {
-    protected string $emailContact = '';
+    public const EXT_KEY = 'telephonedirectory';
 
-    protected string $emailFromAddress = '';
+    private const DEFAULT_SETTINGS = [
+        'emailContact' => '',
+        'emailFromAddress' => '',
+        'emailFromName' => '',
+        'additionalFunctionsParentCategoryUid' => 0,
+        'additionalSecretForHashGeneration' => '',
+    ];
 
-    protected string $emailFromName = '';
+    public function __construct(
+        private string $emailContact = self::DEFAULT_SETTINGS['emailContact'],
+        private string $emailFromAddress = self::DEFAULT_SETTINGS['emailFromAddress'],
+        private string $emailFromName = self::DEFAULT_SETTINGS['emailFromName'],
+        private int $additionalFunctionsParentCategoryUid = self::DEFAULT_SETTINGS['additionalFunctionsParentCategoryUid'],
+        private string $additionalSecretForHashGeneration = self::DEFAULT_SETTINGS['additionalSecretForHashGeneration'],
+    ) {}
 
-    protected int $additionalFunctionsParentCategoryUid = 0;
-
-    public function __construct(private readonly ExtensionConfiguration $extensionConfiguration)
+    public static function create(ExtensionConfiguration $extensionConfiguration): self
     {
-        // initializing array
-        $extConf = [];
+        $extensionSettings = self::DEFAULT_SETTINGS;
 
         try {
-            $extConf = (array)$this->extensionConfiguration->get('telephonedirectory');
+            $extensionSettings = array_merge(
+                $extensionSettings,
+                $extensionConfiguration->get(self::EXT_KEY),
+            );
         } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $exception) {
         }
 
-        if ($extConf === []) {
-            return;
-        }
-
-        // call setter method foreach configuration entry
-        foreach ($extConf as $key => $value) {
-            $methodName = 'set' . ucfirst($key);
-            if (method_exists($this, $methodName)) {
-                $this->$methodName($value);
-            }
-        }
+        return new self(
+            emailContact: (string)$extensionSettings['emailContact'],
+            emailFromAddress: (string)$extensionSettings['emailFromAddress'],
+            emailFromName: (string)$extensionSettings['emailFromName'],
+            additionalFunctionsParentCategoryUid: (int)$extensionSettings['additionalFunctionsParentCategoryUid'],
+            additionalSecretForHashGeneration: (string)$extensionSettings['additionalSecretForHashGeneration'],
+        );
     }
 
     /**
@@ -73,11 +82,6 @@ class ExtConf implements SingletonInterface
         return $this->emailContact;
     }
 
-    public function setEmailContact(string $emailContact): void
-    {
-        $this->emailContact = $emailContact;
-    }
-
     /**
      * @throws \Exception
      */
@@ -96,11 +100,6 @@ class ExtConf implements SingletonInterface
         }
 
         return $this->emailFromAddress;
-    }
-
-    public function setEmailFromAddress(string $emailFromAddress): void
-    {
-        $this->emailFromAddress = $emailFromAddress;
     }
 
     /**
@@ -123,20 +122,13 @@ class ExtConf implements SingletonInterface
         return $this->emailFromName;
     }
 
-    public function setEmailFromName(string $emailFromName): void
-    {
-        $this->emailFromName = $emailFromName;
-    }
-
     public function getAdditionalFunctionsParentCategoryUid(): int
     {
         return $this->additionalFunctionsParentCategoryUid;
     }
 
-    public function setAdditionalFunctionsParentCategoryUid(string $additionalFunctionsParentCategoryUid): void
+    public function getAdditionalSecretForHashGeneration(): string
     {
-        if (MathUtility::canBeInterpretedAsInteger($additionalFunctionsParentCategoryUid)) {
-            $this->additionalFunctionsParentCategoryUid = (int)$additionalFunctionsParentCategoryUid;
-        }
+        return $this->additionalSecretForHashGeneration;
     }
 }

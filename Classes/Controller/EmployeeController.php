@@ -11,22 +11,25 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Controller;
 
+use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use JWeiland\Telephonedirectory\Domain\Model\Office;
-use JWeiland\Telephonedirectory\Traits\InjectBuildingRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectCategoryRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectDepartmentRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectEmployeeRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectExtConfTrait;
-use JWeiland\Telephonedirectory\Traits\InjectLanguageRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectOfficeRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectPropertyMappingConfiguratorTrait;
-use JWeiland\Telephonedirectory\Traits\InjectSubjectFieldRepositoryTrait;
-use JWeiland\Telephonedirectory\Traits\InjectTemplateServiceTrait;
+use JWeiland\Telephonedirectory\Domain\Repository\BuildingRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\CategoryRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\DepartmentRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
+use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
+use JWeiland\Telephonedirectory\Mvc\Property\Mapping\PropertyMappingConfigurator;
+use JWeiland\Telephonedirectory\Service\TemplateRenderingService;
 use JWeiland\Telephonedirectory\Traits\MediaTypeConverterTrait;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -34,17 +37,22 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class EmployeeController extends AbstractController
 {
-    use InjectCategoryRepositoryTrait;
-    use InjectBuildingRepositoryTrait;
-    use InjectDepartmentRepositoryTrait;
-    use InjectEmployeeRepositoryTrait;
-    use InjectExtConfTrait;
-    use InjectLanguageRepositoryTrait;
-    use InjectOfficeRepositoryTrait;
-    use InjectPropertyMappingConfiguratorTrait;
-    use InjectSubjectFieldRepositoryTrait;
-    use InjectTemplateServiceTrait;
     use MediaTypeConverterTrait;
+
+    public function __construct(
+        protected readonly BuildingRepository $buildingRepository,
+        protected readonly CategoryRepository $categoryRepository,
+        protected readonly DepartmentRepository $departmentRepository,
+        protected readonly EmployeeRepository $employeeRepository,
+        protected readonly ExtConf $extConf,
+        protected HashService $hashService,
+        protected readonly LanguageRepository $languageRepository,
+        protected readonly LoggerInterface $logger,
+        protected readonly OfficeRepository $officeRepository,
+        protected readonly PropertyMappingConfigurator $propertyMappingConfigurator,
+        protected readonly SubjectFieldRepository $subjectFieldRepository,
+        protected readonly TemplateRenderingService $templateRenderingService,
+    ) {}
 
     public function initializeListAction(): void
     {
@@ -53,6 +61,7 @@ class EmployeeController extends AbstractController
 
     /**
      * @param array<string, mixed> $search
+     * @throws InvalidQueryException
      */
     public function listAction(array $search = []): ResponseInterface
     {
@@ -72,7 +81,7 @@ class EmployeeController extends AbstractController
     /**
      * If an office is set, f:form.select changes name to [office][__identity]
      * The following request works,
-     * but if customer changes office back to "" an empty __identity was send
+     * but if the customer changes office back to "" an empty __identity was send
      * Now extbase tries to get an object of a non given UID which results in multiple errors
      * That's why we remove this request here
      */
@@ -155,10 +164,11 @@ class EmployeeController extends AbstractController
     public function createAction(Employee $newEmployee): ResponseInterface
     {
         $this->employeeRepository->add($newEmployee);
-        $this->addFlashMessage(LocalizationUtility::translate('employeeCreated', 'telephonedirectory'));
-        $this->redirect('list');
+        $this->addFlashMessage(
+            LocalizationUtility::translate('employeeCreated', ExtConf::EXT_KEY),
+        );
 
-        return $this->htmlResponse();
+        return $this->redirect('list');
     }
 
     public function initializeEditAction(): void
@@ -169,9 +179,13 @@ class EmployeeController extends AbstractController
     public function editAction(Employee $employee): ResponseInterface
     {
         if (!$employee->getIsCatchAllMail()) {
-            $hash = $this->request->getArgument('hash');
-            $additionalSecret = 'userInfo';
-            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $additionalSecret, $hash)) {
+            $hash = (string)$this->request->getArgument('hash');
+
+            if ($this->hashService->validateHmac(
+                'Employee:' . $employee->getUid(),
+                $this->extConf->getAdditionalSecretForHashGeneration(),
+                $hash,
+            )) {
                 $this->view->assignMultiple(
                     [
                         'employee' => $employee,
@@ -195,18 +209,30 @@ class EmployeeController extends AbstractController
 
     public function initializeUpdateAction(): void
     {
-        $employeeMappingConfiguration = $this->arguments->getArgument('employee')->getPropertyMappingConfiguration();
-        $this->propertyMappingConfigurator->configureEmployeeMapping($employeeMappingConfiguration);
+        if ($this->request->hasArgument('employee')) {
+            $employeeMappingConfiguration = $this->arguments
+                ->getArgument('employee')
+                ->getPropertyMappingConfiguration();
 
-        $persistedEmployee = $this->employeeRepository->findByIdentifier(
-            $this->request->getArgument('employee')['__identity'],
-        );
-        $this->assignMediaTypeConverter(
-            'image',
-            $employeeMappingConfiguration,
-            $persistedEmployee->getImage(),
-            $this->settings,
-        );
+            $this->propertyMappingConfigurator
+                ->configureEmployeeMapping($employeeMappingConfiguration);
+
+            $persistedEmployee = $this->employeeRepository->findByIdentifier(
+                $this
+                    ->request
+                    ->getArgument('employee')['__identity'],
+            );
+
+            if ($persistedEmployee instanceof Employee) {
+                $this
+                    ->assignMediaTypeConverter(
+                        'image',
+                        $employeeMappingConfiguration,
+                        $persistedEmployee->getImage(),
+                        $this->settings,
+                    );
+            }
+        }
 
         $this->initializeControllerAction();
     }
@@ -214,12 +240,10 @@ class EmployeeController extends AbstractController
     public function updateAction(Employee $employee): ResponseInterface
     {
         $this->employeeRepository->update($employee);
-        $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
+        $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', ExtConf::EXT_KEY));
 
-        return $this->redirect(
+        return $this->redirectToEmployee(
             'show',
-            'Employee',
-            'telephonedirectory',
             ['employee' => $employee],
         );
     }
@@ -232,15 +256,29 @@ class EmployeeController extends AbstractController
     public function sendEditMailAction(Employee $employee): ResponseInterface
     {
         try {
-            $this->templateRenderingService->sendEmployeeEditMail($employee, $this->request, $this->settings);
-            $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', 'telephonedirectory'));
+            $this->templateRenderingService
+                ->sendEmployeeEditMail(
+                    $employee,
+                    $this->request,
+                    $this->settings,
+                );
+            $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', ExtConf::EXT_KEY));
         } catch (\Exception $exception) {
+            $this->logger->error('Failed to send employee edit email', [
+                'employeeUid' => $employee->getUid(),
+                'exceptionCode' => $exception->getCode(),
+                'message' => $exception->getMessage(),
+                'trace' => $exception->getTraceAsString(),
+            ]);
+
+            $this->addFlashMessage(
+                LocalizationUtility::translate('email.error', ExtConf::EXT_KEY),
+                'Error',
+            );
         }
 
-        return $this->redirect(
+        return $this->redirectToEmployee(
             'show',
-            'Employee',
-            'telephonedirectory',
             ['employee' => $employee],
         );
     }
