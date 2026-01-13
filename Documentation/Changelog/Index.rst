@@ -7,6 +7,19 @@
 Change log
 ==========
 
+Version 6.1.0
+=============
+
+*   [REFACTORING] Migrated from legacy InjectTraits to modern Constructor Injection with PHP 8.2 readonly properties for all controllers and services.
+*   [REFACTORING] Refactored TemplateRenderingService and EmployeeNotificationService to enforce Single Responsibility and strict typing.
+*   [REFACTORING] Added redirectToEmployee helper to AbstractController to centralize internal navigation.
+*   [TASK] Introduced ExtConf service to manage extension settings, eliminating "magic strings" and global array access.
+*   [TASK] Added additionalSecretForHashGeneration to ext_conf_template.txt and ExtConf.xlf for administrative control over security salts.
+*   [TASK] Integrated PSR-3 Logger into EmployeeController for professional error tracking.
+*   [TASK] Updated German translations in de.locallang.xlf and corrected malformed XLIFF structures.
+*   [BUGFIX] Added defensive checks in initializeUpdateAction to prevent fatal errors during property mapping.
+*   [BUGFIX] Corrected redundant logic in the EmployeeNotificationService dispatch process.
+
 Version 6.0.4
 =============
 
