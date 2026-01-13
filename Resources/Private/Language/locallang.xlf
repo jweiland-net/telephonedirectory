@@ -221,6 +221,9 @@
 			<trans-unit id="form.input.keyword">
 				<source>Keyword</source>
 			</trans-unit>
+			<trans-unit id="email.error">
+				<source>The email could not be sent. Please contact the administrator.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
