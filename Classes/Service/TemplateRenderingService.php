@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Telephonedirectory\Service;
 
+use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
 use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\View\ViewFactoryData;
@@ -18,45 +19,46 @@ use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
-use TYPO3\CMS\Extbase\Security\Exception\InvalidArgumentForHashGenerationException;
 
 class TemplateRenderingService implements EmailServiceInterface
 {
     public function __construct(
-        protected EmployeeNotificationService $emailService,
-        protected UriBuilder $uriBuilder,
-        protected HashService $hashService,
-        protected ViewFactoryInterface $viewFactory,
-    ) {}
+        protected readonly EmployeeNotificationService $emailService,
+        protected readonly UriBuilder $uriBuilder,
+        protected readonly HashService $hashService,
+        protected readonly ViewFactoryInterface $viewFactory,
+        protected readonly ExtConf $extConf,
+    ) {
+    }
 
     /**
      * @param array<string, mixed> $settings
-     * @throws InvalidArgumentForHashGenerationException
      */
     public function sendEmployeeEditMail(Employee $employee, RequestInterface $request, array $settings): void
     {
-        $view = $this->getView();
-        $view->getRenderingContext()->getLayoutPaths()->setLayoutRootPaths(['EXT:telephonedirectory/Resources/Private/Layouts/']);
-        $view->getRenderingContext()->getPartialPaths()->setPartialRootPaths(['EXT:telephonedirectory/Resources/Private/Partials/']);
-        $view->getRenderingContext()->setTemplatePathAndFilename(
-            'EXT:telephonedirectory/Resources/Private/Templates/Mail/EditEmployee.html',
-        );
+        $templatePathAndFilename = 'EXT:' . ExtConf::EXT_KEY .'/Resources/Private/Templates/Mail/EditEmployee.html';
+        $view = $this->getView($templatePathAndFilename);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
         $this->uriBuilder->setRequest($request);
-        $additionalSecret = 'userInfo';
+
         $link = $this->uriBuilder->uriFor(
             'edit',
             [
                 'controller' => 'Employee',
                 'action' => 'edit',
                 'employee' => $employee->getUid(),
-                'hash' => $this->hashService->hmac('Employee:' . $employee->getUid(), $additionalSecret),
+                'hash' => $this->hashService->hmac(
+                    'Employee:' . $employee->getUid(),
+                    $this->extConf->getAdditionalSecretForHashGeneration()
+                ),
             ],
         );
 
-        $view->assign('link', $link);
-        $view->assign('employee', $employee);
+        $view->assignMultiple([
+            'link' => $link,
+            'employee' => $employee,
+        ]);
 
         $this->emailService->sendEmployeeNotification(
             $employee,
@@ -69,9 +71,18 @@ class TemplateRenderingService implements EmailServiceInterface
         $this->emailService->sendEmail($to, $subject, $content);
     }
 
-    protected function getView(): ViewInterface
-    {
-        $viewFactoryData = new ViewFactoryData();
+    protected function getView(
+        string $templatePathAndFilename,
+        array $templateRootPaths = ['EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Templates/'],
+        array $partialRootPaths = ['EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Partials/'],
+        array $layoutRootPaths = ['EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Layouts/'],
+    ): ViewInterface {
+        $viewFactoryData = new ViewFactoryData(
+            templateRootPaths: $templateRootPaths,
+            partialRootPaths: $partialRootPaths,
+            layoutRootPaths: $layoutRootPaths,
+            templatePathAndFilename: $templatePathAndFilename,
+        );
 
         return $this->viewFactory->create($viewFactoryData);
     }
