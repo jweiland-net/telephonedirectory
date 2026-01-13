@@ -7,6 +7,11 @@
 Change log
 ==========
 
+Version 6.1.1
+=============
+
+*   [BUGFIX] Temporary fix for frontend file upload with old TypeConverter
+
 Version 6.1.0
 =============
 
