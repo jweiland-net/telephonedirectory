@@ -61,13 +61,16 @@ abstract class AbstractController extends ActionController
         );
     }
 
+    /**
+     * @param array<string, mixed> $arguments
+     */
     protected function redirectToEmployee(string $action, array $arguments = []): ResponseInterface
     {
         return $this->redirect(
             $action,
             'Employee',
             ExtConf::EXT_KEY,
-            $arguments
+            $arguments,
         );
     }
 }

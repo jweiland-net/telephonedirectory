@@ -23,7 +23,7 @@ class BasicEmailService implements EmailServiceInterface
             $mail = $this->getMailMessage();
             $mail->setFrom(
                 $this->getExtConf()->getEmailFromAddress(),
-                $this->getExtConf()->getEmailFromName()
+                $this->getExtConf()->getEmailFromName(),
             );
             $mail->setTo($to);
             $mail->setSubject($subject);

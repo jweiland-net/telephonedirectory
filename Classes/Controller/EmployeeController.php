@@ -40,20 +40,19 @@ class EmployeeController extends AbstractController
     use MediaTypeConverterTrait;
 
     public function __construct(
-        readonly protected BuildingRepository $buildingRepository,
-        readonly protected CategoryRepository $categoryRepository,
-        readonly protected DepartmentRepository $departmentRepository,
-        readonly protected EmployeeRepository $employeeRepository,
-        readonly protected ExtConf $extConf,
+        protected readonly BuildingRepository $buildingRepository,
+        protected readonly CategoryRepository $categoryRepository,
+        protected readonly DepartmentRepository $departmentRepository,
+        protected readonly EmployeeRepository $employeeRepository,
+        protected readonly ExtConf $extConf,
         protected HashService $hashService,
-        readonly protected LanguageRepository $languageRepository,
-        readonly protected LoggerInterface $logger,
-        readonly protected OfficeRepository $officeRepository,
-        readonly protected PropertyMappingConfigurator $propertyMappingConfigurator,
-        readonly protected SubjectFieldRepository $subjectFieldRepository,
-        readonly protected TemplateRenderingService $templateRenderingService,
-    ) {
-    }
+        protected readonly LanguageRepository $languageRepository,
+        protected readonly LoggerInterface $logger,
+        protected readonly OfficeRepository $officeRepository,
+        protected readonly PropertyMappingConfigurator $propertyMappingConfigurator,
+        protected readonly SubjectFieldRepository $subjectFieldRepository,
+        protected readonly TemplateRenderingService $templateRenderingService,
+    ) {}
 
     public function initializeListAction(): void
     {
@@ -166,7 +165,7 @@ class EmployeeController extends AbstractController
     {
         $this->employeeRepository->add($newEmployee);
         $this->addFlashMessage(
-            LocalizationUtility::translate('employeeCreated', ExtConf::EXT_KEY)
+            LocalizationUtility::translate('employeeCreated', ExtConf::EXT_KEY),
         );
 
         return $this->redirect('list');
@@ -185,7 +184,7 @@ class EmployeeController extends AbstractController
             if ($this->hashService->validateHmac(
                 'Employee:' . $employee->getUid(),
                 $this->extConf->getAdditionalSecretForHashGeneration(),
-                $hash
+                $hash,
             )) {
                 $this->view->assignMultiple(
                     [
@@ -261,7 +260,7 @@ class EmployeeController extends AbstractController
                 ->sendEmployeeEditMail(
                     $employee,
                     $this->request,
-                    $this->settings
+                    $this->settings,
                 );
             $this->addFlashMessage(LocalizationUtility::translate('emailWasSend', ExtConf::EXT_KEY));
         } catch (\Exception $exception) {
@@ -269,7 +268,7 @@ class EmployeeController extends AbstractController
                 'employeeUid' => $employee->getUid(),
                 'exceptionCode' => $exception->getCode(),
                 'message' => $exception->getMessage(),
-                'trace' => $exception->getTraceAsString()
+                'trace' => $exception->getTraceAsString(),
             ]);
 
             $this->addFlashMessage(

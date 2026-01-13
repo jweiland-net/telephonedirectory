@@ -23,7 +23,8 @@ readonly class EmployeeNotificationService implements EmailServiceInterface
         $subject = LocalizationUtility::translate('email.subject', 'telephonedirectory');
         $this->emailService->sendEmail(
             $employee->getEmail(),
-            $subject, $content
+            $subject,
+            $content,
         );
     }
 

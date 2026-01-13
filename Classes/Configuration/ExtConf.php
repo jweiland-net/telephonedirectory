@@ -48,7 +48,7 @@ readonly class ExtConf implements SingletonInterface
         try {
             $extensionSettings = array_merge(
                 $extensionSettings,
-                $extensionConfiguration->get(self::EXT_KEY)
+                $extensionConfiguration->get(self::EXT_KEY),
             );
         } catch (ExtensionConfigurationExtensionNotConfiguredException | ExtensionConfigurationPathDoesNotExistException $exception) {
         }

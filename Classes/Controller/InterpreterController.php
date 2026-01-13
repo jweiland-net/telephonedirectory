@@ -20,9 +20,8 @@ use Psr\Http\Message\ResponseInterface;
 class InterpreterController extends AbstractController
 {
     public function __construct(
-        readonly protected LanguageSkillRepository $languageSkillRepository,
-    ) {
-    }
+        protected readonly LanguageSkillRepository $languageSkillRepository,
+    ) {}
 
     public function initializeAction(): void
     {

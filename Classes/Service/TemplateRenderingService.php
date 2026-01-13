@@ -28,15 +28,14 @@ class TemplateRenderingService implements EmailServiceInterface
         protected readonly HashService $hashService,
         protected readonly ViewFactoryInterface $viewFactory,
         protected readonly ExtConf $extConf,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array<string, mixed> $settings
      */
     public function sendEmployeeEditMail(Employee $employee, RequestInterface $request, array $settings): void
     {
-        $templatePathAndFilename = 'EXT:' . ExtConf::EXT_KEY .'/Resources/Private/Templates/Mail/EditEmployee.html';
+        $templatePathAndFilename = 'EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Templates/Mail/EditEmployee.html';
         $view = $this->getView($templatePathAndFilename);
 
         $this->uriBuilder->setCreateAbsoluteUri(true);
@@ -50,7 +49,7 @@ class TemplateRenderingService implements EmailServiceInterface
                 'employee' => $employee->getUid(),
                 'hash' => $this->hashService->hmac(
                     'Employee:' . $employee->getUid(),
-                    $this->extConf->getAdditionalSecretForHashGeneration()
+                    $this->extConf->getAdditionalSecretForHashGeneration(),
                 ),
             ],
         );
@@ -71,6 +70,11 @@ class TemplateRenderingService implements EmailServiceInterface
         $this->emailService->sendEmail($to, $subject, $content);
     }
 
+    /**
+     * @param list<string> $templateRootPaths
+     * @param list<string> $partialRootPaths
+     * @param list<string> $layoutRootPaths
+     */
     protected function getView(
         string $templatePathAndFilename,
         array $templateRootPaths = ['EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Templates/'],
