@@ -7,6 +7,11 @@
 Change log
 ==========
 
+Version 6.1.2
+=============
+
+*   [BUGFIX] Replace hardcoded tab labels with localized labels in tt_content
+
 Version 6.1.1
 =============
 
