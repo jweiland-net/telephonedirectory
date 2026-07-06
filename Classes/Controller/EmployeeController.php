@@ -21,6 +21,7 @@ use JWeiland\Telephonedirectory\Domain\Repository\EmployeeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\LanguageRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\OfficeRepository;
 use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
+use JWeiland\Telephonedirectory\Domain\Validator\EmployeeValidator;
 use JWeiland\Telephonedirectory\Mvc\Property\Mapping\PropertyMappingConfigurator;
 use JWeiland\Telephonedirectory\Service\TemplateRenderingService;
 use JWeiland\Telephonedirectory\Traits\MediaTypeConverterTrait;
@@ -29,6 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -176,33 +178,31 @@ class EmployeeController extends AbstractController
         $this->initializeControllerAction();
     }
 
+    #[Validate([
+        'param' => 'employee',
+        'validator' => EmployeeValidator::class,
+    ])]
     public function editAction(Employee $employee): ResponseInterface
     {
-        if (!$employee->getIsCatchAllMail()) {
-            $hash = (string)$this->request->getArgument('hash');
-
-            if ($this->hashService->validateHmac(
-                'Employee:' . $employee->getUid(),
-                $this->extConf->getAdditionalSecretForHashGeneration(),
-                $hash,
-            )) {
-                $this->view->assignMultiple(
-                    [
-                        'employee' => $employee,
-                        'buildings' => $this->buildingRepository->findAll(),
-                        'subjectFields' => $this->subjectFieldRepository->findAll(),
-                        'departments' => $this->departmentRepository->findAll(),
-                        'offices' => $this->officeRepository->findAll(),
-                        'languages' => $this->languageRepository->findAll(),
-                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $this->categoryRepository->findBy(
-                            ['parent' => $this->extConf->getAdditionalFunctionsParentCategoryUid()],
-                        ),
-                        'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
-                    ],
-                );
-            }
+        if ($employee->getIsCatchAllMail()) {
+            return $this->htmlResponse();
         }
+
+        $this->view->assignMultiple(
+            [
+                'employee' => $employee,
+                'buildings' => $this->buildingRepository->findAll(),
+                'subjectFields' => $this->subjectFieldRepository->findAll(),
+                'departments' => $this->departmentRepository->findAll(),
+                'offices' => $this->officeRepository->findAll(),
+                'languages' => $this->languageRepository->findAll(),
+                'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
+                'additionalFunctions' => $this->categoryRepository->findBy(
+                    ['parent' => $this->extConf->getAdditionalFunctionsParentCategoryUid()],
+                ),
+                'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
+            ],
+        );
 
         return $this->htmlResponse();
     }
@@ -237,6 +237,10 @@ class EmployeeController extends AbstractController
         $this->initializeControllerAction();
     }
 
+    #[Validate([
+        'param' => 'employee',
+        'validator' => EmployeeValidator::class,
+    ])]
     public function updateAction(Employee $employee): ResponseInterface
     {
         $this->employeeRepository->update($employee);

@@ -13,6 +13,10 @@ services:
   JWeiland\Telephonedirectory\Configuration\ExtConf:
     public: true
 
+  # Called by makeInstance in DataHandler
+  JWeiland\Telephonedirectory\Hook\DataHandlerHook:
+    public: true
+
   # Will be instanciated by GU::makeInstance in SendMailToEmployeeTask
   JWeiland\Telephonedirectory\Repository\EmployeeFactory:
     public: true;

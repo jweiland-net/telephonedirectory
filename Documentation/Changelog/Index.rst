@@ -7,10 +7,24 @@
 Change log
 ==========
 
-Version 6.1.2
+Version 6.2.0
 =============
 
-*   [BUGFIX] Replace hardcoded tab labels with localized labels in tt_content
+Add employee secrets for improved validation.
+
+The telephonedirectory extension now stores a dedicated secret for employee
+records. This secret is generated using HMAC and is used to validate employee
+data more reliably.
+
+Highlights:
+
+*   Added a `secret` field to the employee table
+*   Introduced the `AddSecretToEmployeeUpdate` upgrade wizard for initial secret
+    assignment
+*   Added `EmployeeValidator` for HMAC-based validation of employee records
+*   Refactored the `editAction` and `updateAction` for a streamlined validation
+    flow
+*   Updated TCA, database schema, and documentation for the new feature
 
 Version 6.1.1
 =============

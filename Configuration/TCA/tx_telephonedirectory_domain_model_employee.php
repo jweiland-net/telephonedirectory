@@ -357,6 +357,11 @@ return [
                 'allowed' => 'common-image-types',
             ],
         ],
+        'secret' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
         'module_sys_dmail_html' => [
             'config' => [
                 'type' => 'passthrough',

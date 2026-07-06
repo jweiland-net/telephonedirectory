@@ -13,53 +13,54 @@ if (!defined('TYPO3')) {
 
 use JWeiland\Telephonedirectory\Controller\EmployeeController;
 use JWeiland\Telephonedirectory\Controller\InterpreterController;
+use JWeiland\Telephonedirectory\Hook\DataHandlerHook;
 use JWeiland\Telephonedirectory\Task\SendMailToEmployeeAdditionalFieldProvider;
 use JWeiland\Telephonedirectory\Task\SendMailToEmployeeTask;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-call_user_func(static function () {
-    ExtensionUtility::configurePlugin(
-        'Telephonedirectory',
-        'Telephone',
-        [
-            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
-        ],
-        // non-cacheable actions
-        [
-            EmployeeController::class => 'search, edit, create, update, sendEditMail',
-        ],
-        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
-    );
+ExtensionUtility::configurePlugin(
+    'Telephonedirectory',
+    'Telephone',
+    [
+        EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
+    ],
+    // non-cacheable actions
+    [
+        EmployeeController::class => 'search, edit, create, update, sendEditMail',
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
+);
 
-    ExtensionUtility::configurePlugin(
-        'Telephonedirectory',
-        'Interpreter',
-        [
-            InterpreterController::class => 'list',
-            EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
-        ],
-        // non-cacheable actions
-        [
-            InterpreterController::class => '',
-            EmployeeController::class => 'search, edit, create, update, sendEditMail',
-        ],
-        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
-    );
+ExtensionUtility::configurePlugin(
+    'Telephonedirectory',
+    'Interpreter',
+    [
+        InterpreterController::class => 'list',
+        EmployeeController::class => 'list, search, show, new, create, edit, update, sendEditMail',
+    ],
+    // non-cacheable actions
+    [
+        InterpreterController::class => '',
+        EmployeeController::class => 'search, edit, create, update, sendEditMail',
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
+);
 
-    ExtensionUtility::configurePlugin(
-        'Telephonedirectory',
-        'ShowRecords',
-        [
-            EmployeeController::class => 'showRecords',
-        ],
-        [],
-        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
-    );
+ExtensionUtility::configurePlugin(
+    'Telephonedirectory',
+    'ShowRecords',
+    [
+        EmployeeController::class => 'showRecords',
+    ],
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
+);
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][SendMailToEmployeeTask::class] = [
-        'extension' => 'telephonedirectory',
-        'title' => 'Send email to every employee about their current data',
-        'description' => 'Send email to every employee about their current data',
-        'additionalFields' => SendMailToEmployeeAdditionalFieldProvider::class,
-    ];
-});
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][DataHandlerHook::class] = DataHandlerHook::class;
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][SendMailToEmployeeTask::class] = [
+    'extension' => 'telephonedirectory',
+    'title' => 'Send email to every employee about their current data',
+    'description' => 'Send email to every employee about their current data',
+    'additionalFields' => SendMailToEmployeeAdditionalFieldProvider::class,
+];
