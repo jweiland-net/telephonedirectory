@@ -7,6 +7,11 @@
 Change log
 ==========
 
+Version 6.2.1
+=============
+
+*   [FEATURE] Tailor Release implementation
+
 Version 6.2.0
 =============
 
