@@ -66,8 +66,8 @@ class AddSecretToEmployeeUpdate implements UpgradeWizardInterface
                     'Failed to count employees without secret: %s in %s:%d',
                     $e->getMessage(),
                     $e->getFile(),
-                    $e->getLine()
-                )
+                    $e->getLine(),
+                ),
             );
             return true;
         }
@@ -118,8 +118,8 @@ class AddSecretToEmployeeUpdate implements UpgradeWizardInterface
                     'Failed to fetch employees without secret: %s in %s:%d',
                     $e->getMessage(),
                     $e->getFile(),
-                    $e->getLine()
-                )
+                    $e->getLine(),
+                ),
             );
             $employeesWithoutSecret = [];
         }
