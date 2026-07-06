@@ -13,7 +13,6 @@ namespace JWeiland\Telephonedirectory\Service;
 
 use JWeiland\Telephonedirectory\Configuration\ExtConf;
 use JWeiland\Telephonedirectory\Domain\Model\Employee;
-use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
@@ -25,9 +24,7 @@ class TemplateRenderingService implements EmailServiceInterface
     public function __construct(
         protected readonly EmployeeNotificationService $emailService,
         protected readonly UriBuilder $uriBuilder,
-        protected readonly HashService $hashService,
         protected readonly ViewFactoryInterface $viewFactory,
-        protected readonly ExtConf $extConf,
     ) {}
 
     /**
@@ -47,10 +44,7 @@ class TemplateRenderingService implements EmailServiceInterface
                 'controller' => 'Employee',
                 'action' => 'edit',
                 'employee' => $employee->getUid(),
-                'hash' => $this->hashService->hmac(
-                    'Employee:' . $employee->getUid(),
-                    $this->extConf->getAdditionalSecretForHashGeneration(),
-                ),
+                'hash' => $employee->getSecret(),
             ],
         );
 

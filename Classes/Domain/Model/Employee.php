@@ -74,6 +74,8 @@ class Employee extends AbstractEntity
 
     protected bool $moduleSysDmailHtml = true;
 
+    protected string $secret = '';
+
     protected ?Office $office = null;
 
     protected ?Building $building = null;
@@ -342,6 +344,16 @@ class Employee extends AbstractEntity
     public function setRegularAttendance(string $regularAttendance): void
     {
         $this->regularAttendance = $regularAttendance;
+    }
+
+    public function getSecret(): string
+    {
+        return $this->secret;
+    }
+
+    public function setSecret(string $secret): void
+    {
+        $this->secret = $secret;
     }
 
     public function getModuleSysDmailHtml(): bool

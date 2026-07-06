@@ -10,6 +10,27 @@ Upgrade
 If you update/upgrade `telephonedirectory` to a newer version, please read this
 section carefully!
 
+Upgrade to version 6.2.0
+========================
+
+When updating to version 6.2.0, please extend the
+`Resources/Private/Partials/Employee/FormFields.html` Fluid template with the
+following hidden field for security reasons:
+
+..  code-block:: html
+
+    <f:form.hidden name="hash" value="{employee.secret}"/>
+
+A new column `secret` is added to the `employee` table. Please open the
+Install Tool and go to `Maintenance > Analyze database...` to add the new
+database column.
+
+After updating, run the upgrade wizard `Add secret to employees`:
+
+..  code-block:: bash
+
+    vendor/bin/typo3 upgrade:run telephonedirectory_addEmployeeSecret
+
 Upgrade to version 5.0.0
 ========================
 
