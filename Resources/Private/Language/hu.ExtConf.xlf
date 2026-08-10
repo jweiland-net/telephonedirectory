@@ -5,19 +5,19 @@
     <body>
       <trans-unit id="emailContact" xml:space="preserve">
 				<source>Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</source>
-			<target state="needs-translation">Email contact: If no email address is assigned to an employee, a mailto link to this email address is displayed</target></trans-unit>
+			<target state="translated">E-mail kapcsolat: Ha egy alkalmazotthoz nincs e-mail cím hozzárendelve, az e-mail címre mutató mailto hivatkozás jelenik meg</target></trans-unit>
       <trans-unit id="emailFromAddress" xml:space="preserve">
 				<source>Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
-			<target state="needs-translation">Email FROM address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
+			<target state="translated">Feladó e-mail címe: A feladó e-mail címe. Ha nincs megadva, a bővítmény az INSTALL_TOOL-ból próbálja lekérni.</target></trans-unit>
       <trans-unit id="emailFromName" xml:space="preserve">
 				<source>Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
-			<target state="needs-translation">Email FROM name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</target></trans-unit>
+			<target state="translated">Feladó e-mail neve: A feladó e-mail neve. Ha nincs megadva, a bővítmény az INSTALL_TOOL-ból próbálja lekérni.</target></trans-unit>
       <trans-unit id="additionalFunctionsParentCategoryUid" xml:space="preserve">
 				<source>The UID of the category containing the additional functions</source>
-			<target state="needs-translation">The UID of the category containing the additional functions</target></trans-unit>
+			<target state="translated">A további funkciókat tartalmazó kategória UID-ja</target></trans-unit>
       <trans-unit id="additionalSecretForHashGeneration" xml:space="preserve">
 				<source>Additional secret for hash generation</source>
-			<target state="needs-translation">Additional secret for hash generation</target></trans-unit>
+			<target state="translated">További titkos kulcs a hash generálásához</target></trans-unit>
     </body>
   </file>
 </xliff>
