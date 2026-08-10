@@ -5,19 +5,19 @@
     <body>
       <trans-unit id="sheetGeneral" xml:space="preserve">
 				<source>General</source>
-			<target state="needs-translation">General</target></trans-unit>
+			<target state="translated">Általános</target></trans-unit>
       <trans-unit id="showRecords" xml:space="preserve">
 				<source>Show Records</source>
-			<target state="needs-translation">Show Records</target></trans-unit>
+			<target state="translated">Rekordok megjelenítése</target></trans-unit>
       <trans-unit id="showGlossary" xml:space="preserve">
 				<source>Show Glossary</source>
-			<target state="needs-translation">Show Glossary</target></trans-unit>
+			<target state="translated">Szószedet megjelenítése</target></trans-unit>
       <trans-unit id="office" xml:space="preserve">
 				<source>Restrict By Office</source>
-			<target state="needs-translation">Restrict By Office</target></trans-unit>
+			<target state="translated">Iroda szerinti szűrés</target></trans-unit>
       <trans-unit id="allOffices" xml:space="preserve">
 				<source>All Offices</source>
-			<target state="needs-translation">All Offices</target></trans-unit>
+			<target state="translated">Összes iroda</target></trans-unit>
     </body>
   </file>
 </xliff>
