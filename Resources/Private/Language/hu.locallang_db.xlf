@@ -5,279 +5,279 @@
     <body>
       <trans-unit id="telephonedirectory.title">
         <source>Telephone Directory</source>
-        <target state="needs-translation">Telephone Directory</target>
+        <target state="translated">Telefonkönyv</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.employees.title">
         <source>Telephone: Show employees</source>
-        <target state="needs-translation">Telephone: Show employees</target>
+        <target state="translated">Telefonkönyv: Alkalmazottak megjelenítése</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.employees.description">
         <source>Use this plugin to list, view and search employees</source>
-        <target state="needs-translation">Use this plugin to list, view and search employees</target>
+        <target state="translated">Ez a bővítmény az alkalmazottak listázására, megtekintésére és keresésére szolgál.</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.individual-employees.title">
         <source>Telephone: Show selection of employees</source>
-        <target state="needs-translation">Telephone: Show selection of employees</target>
+        <target state="translated">Telefonkönyv: Kiválasztott alkalmazottak megjelenítése</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.individual-employees.description">
         <source>Use this plugin to list only selected employees</source>
-        <target state="needs-translation">Use this plugin to list only selected employees</target>
+        <target state="translated">Ez a bővítmény csak a kiválasztott alkalmazottak listázására szolgál.</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.interpreter.title">
         <source>Telephone: Grouped by language skill</source>
-        <target state="needs-translation">Telephone: Grouped by language skill</target>
+        <target state="translated">Telefonkönyv: Nyelvtudás szerinti csoportosítás</target>
       </trans-unit>
       <trans-unit id="plugin.telephonedirectory.interpreter.description">
         <source>Use this plugin to list employees grouped by their language skills</source>
-        <target state="needs-translation">Use this plugin to list employees grouped by their language skills</target>
+        <target state="translated">Ez a bővítmény az alkalmazottak nyelvtudás szerinti csoportosított listázására szolgál.</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee">
         <source>Employees</source>
-        <target state="needs-translation">Employees</target>
+        <target state="translated">Alkalmazottak</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
         <source>Mrs.</source>
-        <target state="needs-translation">Mrs.</target>
+        <target state="translated">Asszony</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
         <source>Mr.</source>
-        <target state="needs-translation">Mr.</target>
+        <target state="translated">Úr</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
         <source>First name</source>
-        <target state="needs-translation">First name</target>
+        <target state="translated">Keresztnév</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.last_name">
         <source>Last name</source>
-        <target state="needs-translation">Last name</target>
+        <target state="translated">Vezetéknév</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
         <source>Name additions</source>
-        <target state="needs-translation">Name additions</target>
+        <target state="translated">Névkiegészítések</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.is_catch_all_mail">
         <source>Is Catch-All Mail?</source>
-        <target state="needs-translation">Is Catch-All Mail?</target>
+        <target state="translated">Mindent fogadó e-mail cím?</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
         <source>Subject Field</source>
-        <target state="needs-translation">Subject Field</target>
+        <target state="translated">Tárgykör</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.company">
         <source>Company</source>
-        <target state="needs-translation">Company</target>
+        <target state="translated">Cég</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.room_number">
         <source>Room number</source>
-        <target state="needs-translation">Room number</target>
+        <target state="translated">Szobaszám</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.function">
         <source>Function</source>
-        <target state="needs-translation">Function</target>
+        <target state="translated">Funkció</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
         <source>Additional Function</source>
-        <target state="needs-translation">Additional Function</target>
+        <target state="translated">További funkció</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone1">
         <source>Telephone 1</source>
-        <target state="needs-translation">Telephone 1</target>
+        <target state="translated">Telefon 1</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone2">
         <source>Telephone 2</source>
-        <target state="needs-translation">Telephone 2</target>
+        <target state="translated">Telefon 2</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone3">
         <source>Telephone 3</source>
-        <target state="needs-translation">Telephone 3</target>
+        <target state="translated">Telefon 3</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.mobile">
         <source>Mobile</source>
-        <target state="needs-translation">Mobile</target>
+        <target state="translated">Mobil</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.pager">
         <source>Pager</source>
-        <target state="needs-translation">Pager</target>
+        <target state="translated">Személyhívó</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.fax">
         <source>Fax</source>
-        <target state="needs-translation">Fax</target>
+        <target state="translated">Fax</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.pc_fax">
         <source>PC Fax</source>
-        <target state="needs-translation">PC Fax</target>
+        <target state="translated">PC fax</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.email">
         <source>E-Mail</source>
-        <target state="needs-translation">E-Mail</target>
+        <target state="translated">E-mail</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
         <source>Additional Informations</source>
-        <target state="needs-translation">Additional Informations</target>
+        <target state="translated">További információk</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
         <source>Regular attendance</source>
-        <target state="needs-translation">Regular attendance</target>
+        <target state="translated">Rendszeres jelenlét</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.image">
         <source>Image</source>
-        <target state="needs-translation">Image</target>
+        <target state="translated">Kép</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.images">
         <source>Images</source>
-        <target state="needs-translation">Images</target>
+        <target state="translated">Képek</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.path_segment">
         <source>Segment for URL</source>
-        <target state="needs-translation">Segment for URL</target>
+        <target state="translated">URL-szegmens</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.office">
         <source>Office</source>
-        <target state="needs-translation">Office</target>
+        <target state="translated">Iroda</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.building">
         <source>Building</source>
-        <target state="needs-translation">Building</target>
+        <target state="translated">Épület</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.department">
         <source>Department</source>
-        <target state="needs-translation">Department</target>
+        <target state="translated">Osztály</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
         <source>Language Skill</source>
-        <target state="needs-translation">Language Skill</target>
+        <target state="translated">Nyelvtudás</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office">
         <source>Office</source>
-        <target state="needs-translation">Office</target>
+        <target state="translated">Iroda</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office.code">
         <source>Office Code</source>
-        <target state="needs-translation">Office Code</target>
+        <target state="translated">Irodakód</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office.token">
         <source>Office token</source>
-        <target state="needs-translation">Office token</target>
+        <target state="translated">Iroda tokenje</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office.department">
         <source>Department</source>
-        <target state="needs-translation">Department</target>
+        <target state="translated">Osztály</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_office.subject_field">
         <source>Subject field</source>
-        <target state="needs-translation">Subject field</target>
+        <target state="translated">Tárgykör</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_subjectfield">
         <source>Subject Field</source>
-        <target state="needs-translation">Subject Field</target>
+        <target state="translated">Tárgykör</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_subjectfield.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building">
         <source>Building</source>
-        <target state="needs-translation">Building</target>
+        <target state="translated">Épület</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.street">
         <source>Street</source>
-        <target state="needs-translation">Street</target>
+        <target state="translated">Utca</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.house_number">
         <source>House number</source>
-        <target state="needs-translation">House number</target>
+        <target state="translated">Házszám</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.zip">
         <source>Zip</source>
-        <target state="needs-translation">Zip</target>
+        <target state="translated">Irányítószám</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_building.tx_maps2_uid">
         <source>Marker</source>
-        <target state="needs-translation">Marker</target>
+        <target state="translated">Jelölő</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_department">
         <source>Department</source>
-        <target state="needs-translation">Department</target>
+        <target state="translated">Osztály</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_department.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill">
         <source>Language Skill</source>
-        <target state="needs-translation">Language Skill</target>
+        <target state="translated">Nyelvtudás</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.language">
         <source>Language</source>
-        <target state="needs-translation">Language</target>
+        <target state="translated">Nyelv</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what">
         <source>What</source>
-        <target state="needs-translation">What</target>
+        <target state="translated">Mit</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
         <source>Speak</source>
-        <target state="needs-translation">Speak</target>
+        <target state="translated">Beszéd</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
         <source>Write</source>
-        <target state="needs-translation">Write</target>
+        <target state="translated">Írás</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
         <source>Speak and Write</source>
-        <target state="needs-translation">Speak and Write</target>
+        <target state="translated">Beszéd és írás</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
         <source>Skill</source>
-        <target state="needs-translation">Skill</target>
+        <target state="translated">Készség</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
         <source>None</source>
-        <target state="needs-translation">None</target>
+        <target state="translated">Nincs</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
         <source>Native language</source>
-        <target state="needs-translation">Native language</target>
+        <target state="translated">Anyanyelv</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
         <source>Fluent</source>
-        <target state="needs-translation">Fluent</target>
+        <target state="translated">Folyékony</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
         <source>Good</source>
-        <target state="needs-translation">Good</target>
+        <target state="translated">Jó</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
         <source>Basic knowledge</source>
-        <target state="needs-translation">Basic knowledge</target>
+        <target state="translated">Alapismeretek</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
         <source>Infotext</source>
-        <target state="needs-translation">Infotext</target>
+        <target state="translated">Információs szöveg</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_language">
         <source>Language</source>
-        <target state="needs-translation">Language</target>
+        <target state="translated">Nyelv</target>
       </trans-unit>
       <trans-unit id="tx_telephonedirectory_domain_model_language.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
     </body>
   </file>
