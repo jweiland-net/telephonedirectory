@@ -7,6 +7,15 @@
 Change log
 ==========
 
+Version 5.0.1
+=============
+
+*   [SECURITY] `EmployeeController::updateAction()` did not validate the HMAC secret
+    that protects an employee's edit link, allowing anyone who could guess or
+    enumerate an employee UID to overwrite that employee's data without ever
+    having received a valid edit link. The hash is now validated in
+    `updateAction()` as well as in `editAction()`.
+
 Version 5.0.0
 =============
 
