@@ -44,7 +44,6 @@
 		"friendsofphp/php-cs-fixer": "^3.14",
 		"phpstan/phpstan": "^1.10",
 		"phpunit/phpunit": "^9.6",
-		"roave/security-advisories": "dev-latest",
 		"typo3/cms-dashboard": "^12.4",
 		"typo3/cms-install": "^12.4",
 		"typo3/cms-reports": "^12.4",
