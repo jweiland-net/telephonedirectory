@@ -30,7 +30,7 @@ class ExtConf implements SingletonInterface
 
     protected int $additionalFunctionsParentCategoryUid = 0;
 
-    public function __construct(readonly ExtensionConfiguration $extensionConfiguration)
+    public function __construct(public readonly ExtensionConfiguration $extensionConfiguration)
     {
         $extConf = [];
 
