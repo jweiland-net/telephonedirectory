@@ -237,6 +237,10 @@
 				<source>Employee successful edited</source>
 				<target>Der Telefoneintrag wurde bearbeitet</target>
 			</trans-unit>
+			<trans-unit id="employeeSecretInvalid">
+				<source>Your edit link is invalid or expired. Please request a new one.</source>
+				<target>Ihr Bearbeitungslink ist ungültig oder abgelaufen. Bitte fordern Sie einen neuen an.</target>
+			</trans-unit>
 			<trans-unit id="emailWasSend">
 				<source>An email was send to employee to edit this entry</source>
 				<target>Es wurde eine Mail an die dem Datensatz hinterlegte E-Mail-Adresse mit einem Link zum Bearbeiten

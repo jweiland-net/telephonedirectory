@@ -26,6 +26,7 @@ use JWeiland\Telephonedirectory\Traits\InjectTemplateServiceTrait;
 use JWeiland\Telephonedirectory\Traits\MediaTypeConverterTrait;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -167,26 +168,26 @@ class EmployeeController extends AbstractController
 
     public function editAction(Employee $employee): ResponseInterface
     {
-        if (!$employee->getIsCatchAllMail()) {
-            $hash = $this->request->getArgument('hash');
-            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $hash)) {
-                $this->view->assignMultiple(
-                    [
-                        'employee' => $employee,
-                        'buildings' => $this->buildingRepository->findAll(),
-                        'subjectFields' => $this->subjectFieldRepository->findAll(),
-                        'departments' => $this->departmentRepository->findAll(),
-                        'offices' => $this->officeRepository->findAll(),
-                        'languages' => $this->languageRepository->findAll(),
-                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $this->categoryRepository->findBy(
-                            ['parent' => $this->extConf->getAdditionalFunctionsParentCategoryUid()],
-                        ),
-                        'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
-                    ],
-                );
-            }
+        if ($employee->getIsCatchAllMail() || !$this->hasValidEmployeeSecret($employee)) {
+            return $this->htmlResponse();
         }
+
+        $this->view->assignMultiple(
+            [
+                'employee' => $employee,
+                'hash' => $this->getHashArgument(),
+                'buildings' => $this->buildingRepository->findAll(),
+                'subjectFields' => $this->subjectFieldRepository->findAll(),
+                'departments' => $this->departmentRepository->findAll(),
+                'offices' => $this->officeRepository->findAll(),
+                'languages' => $this->languageRepository->findAll(),
+                'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
+                'additionalFunctions' => $this->categoryRepository->findBy(
+                    ['parent' => $this->extConf->getAdditionalFunctionsParentCategoryUid()],
+                ),
+                'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads'),
+            ],
+        );
 
         return $this->htmlResponse();
     }
@@ -211,6 +212,16 @@ class EmployeeController extends AbstractController
 
     public function updateAction(Employee $employee): ResponseInterface
     {
+        if (!$this->hasValidEmployeeSecret($employee)) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('employeeSecretInvalid', 'telephonedirectory'),
+                '',
+                ContextualFeedbackSeverity::ERROR,
+            );
+
+            return $this->redirect('list');
+        }
+
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
 
@@ -240,6 +251,19 @@ class EmployeeController extends AbstractController
             'Employee',
             'telephonedirectory',
             ['employee' => $employee],
+        );
+    }
+
+    private function getHashArgument(): string
+    {
+        return $this->request->hasArgument('hash') ? (string)$this->request->getArgument('hash') : '';
+    }
+
+    private function hasValidEmployeeSecret(Employee $employee): bool
+    {
+        return $this->hashService->validateHmac(
+            'Employee:' . $employee->getUid(),
+            $this->getHashArgument(),
         );
     }
 }
