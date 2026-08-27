@@ -23,6 +23,7 @@ use JWeiland\Telephonedirectory\Domain\Repository\SubjectFieldRepository;
 use JWeiland\Telephonedirectory\Property\TypeConverter\UploadMultipleFilesConverter;
 use JWeiland\Telephonedirectory\Service\EmailService;
 use JWeiland\Telephonedirectory\Utility\LanguageSkillUtility;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
@@ -214,27 +215,26 @@ class EmployeeController extends ActionController
 
     public function editAction(Employee $employee): void
     {
-        if (!$employee->getIsCatchAllMail()) {
-            $hash = $this->request->getArgument('hash');
-
-            if ($this->hashService->validateHmac('Employee:' . $employee->getUid(), $hash)) {
-                $this->view->assignMultiple(
-                    [
-                        'employee' => $employee,
-                        'buildings' => $this->buildingRepository->findAll(),
-                        'subjectFields' => $this->subjectFieldRepository->findAll(),
-                        'departments' => $this->departmentRepository->findAll(),
-                        'offices' => $this->officeRepository->findAll(),
-                        'languages' => $this->languageRepository->findAll(),
-                        'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
-                        'additionalFunctions' => $this->categoryRepository->findByParent(
-                            $this->extConf->getAdditionalFunctionsParentCategoryUid()
-                        ),
-                        'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads')
-                    ]
-                );
-            }
+        if ($employee->getIsCatchAllMail() || !$this->hasValidEmployeeSecret($employee)) {
+            return;
         }
+
+        $this->view->assignMultiple(
+            [
+                'employee' => $employee,
+                'hash' => $this->getHashArgument(),
+                'buildings' => $this->buildingRepository->findAll(),
+                'subjectFields' => $this->subjectFieldRepository->findAll(),
+                'departments' => $this->departmentRepository->findAll(),
+                'offices' => $this->officeRepository->findAll(),
+                'languages' => $this->languageRepository->findAll(),
+                'languageSkills' => LanguageSkillUtility::getLanguageSkillsForFluidSelect(),
+                'additionalFunctions' => $this->categoryRepository->findByParent(
+                    $this->extConf->getAdditionalFunctionsParentCategoryUid()
+                ),
+                'checkFalUploadEnabled' => ExtensionManagementUtility::isLoaded('checkfaluploads')
+            ]
+        );
     }
 
     public function initializeUpdateAction(): void
@@ -253,8 +253,21 @@ class EmployeeController extends ActionController
         $this->assignMediaTypeConverter('image', $employeeMappingConfiguration, $persistedEmployee->getImage());
     }
 
+    /**
+     * @throws StopActionException
+     */
     public function updateAction(Employee $employee): void
     {
+        if (!$this->hasValidEmployeeSecret($employee)) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('employeeSecretInvalid', 'telephonedirectory'),
+                '',
+                AbstractMessage::ERROR
+            );
+            $this->redirect('list');
+            return;
+        }
+
         $this->employeeRepository->update($employee);
         $this->addFlashMessage(LocalizationUtility::translate('employeeUpdated', 'telephonedirectory'));
         $this->redirect('show', 'Employee', 'telephonedirectory', ['employee' => $employee]);
@@ -349,5 +362,15 @@ class EmployeeController extends ActionController
                 $converterOptionValue
             );
         }
+    }
+
+    protected function getHashArgument(): string
+    {
+        return $this->request->hasArgument('hash') ? (string)$this->request->getArgument('hash') : '';
+    }
+
+    protected function hasValidEmployeeSecret(Employee $employee): bool
+    {
+        return $this->hashService->validateHmac('Employee:' . $employee->getUid(), $this->getHashArgument());
     }
 }
