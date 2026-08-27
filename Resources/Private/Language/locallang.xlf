@@ -191,6 +191,9 @@
 			<trans-unit id="employeeUpdated">
 				<source>Employee successful edited</source>
 			</trans-unit>
+			<trans-unit id="employeeSecretInvalid">
+				<source>Your edit link is invalid or expired. Please request a new one.</source>
+			</trans-unit>
 			<trans-unit id="emailWasSend">
 				<source>An email was send to employee to edit this entry</source>
 			</trans-unit>
