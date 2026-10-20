@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-01-11T15:45:04Z" product-name="telephonedirectory" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="sheetGeneral" xml:space="preserve">
+				<source>General</source>
+			<target>crwdns310146:0crwdne310146:0</target></trans-unit>
+      <trans-unit id="showRecords" xml:space="preserve">
+				<source>Show Records</source>
+			<target>crwdns310148:0crwdne310148:0</target></trans-unit>
+      <trans-unit id="showGlossary" xml:space="preserve">
+				<source>Show Glossary</source>
+			<target>crwdns340334:0crwdne340334:0</target></trans-unit>
+      <trans-unit id="office" xml:space="preserve">
+				<source>Restrict By Office</source>
+			<target>crwdns340336:0crwdne340336:0</target></trans-unit>
+      <trans-unit id="allOffices" xml:space="preserve">
+				<source>All Offices</source>
+			<target>crwdns340338:0crwdne340338:0</target></trans-unit>
+    </body>
+  </file>
+</xliff>
