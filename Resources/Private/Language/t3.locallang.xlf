@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee">
+        <source>Employee</source>
+        <target>crwdns310150:0crwdne310150:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+        <source>Title</source>
+        <target>crwdns310152:0crwdne310152:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+        <source>Mrs.</source>
+        <target>crwdns310154:0crwdne310154:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+        <source>Mr.</source>
+        <target>crwdns310156:0crwdne310156:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+        <source>Regular attendance</source>
+        <target>crwdns310158:0crwdne310158:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
+        <source>First name</source>
+        <target>crwdns310160:0crwdne310160:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.last_name">
+        <source>Last name</source>
+        <target>crwdns310162:0crwdne310162:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
+        <source>Name additions</source>
+        <target>crwdns310164:0crwdne310164:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
+        <source>Subject Field</source>
+        <target>crwdns310166:0crwdne310166:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.company">
+        <source>Company</source>
+        <target>crwdns310168:0crwdne310168:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.room_number">
+        <source>Room number</source>
+        <target>crwdns310170:0crwdne310170:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.function">
+        <source>Function</source>
+        <target>crwdns310172:0crwdne310172:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
+        <source>Additional Function</source>
+        <target>crwdns310174:0crwdne310174:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone1">
+        <source>Telephone 1</source>
+        <target>crwdns310176:0crwdne310176:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone2">
+        <source>Telephone 2</source>
+        <target>crwdns310178:0crwdne310178:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone3">
+        <source>Telephone 3</source>
+        <target>crwdns310180:0crwdne310180:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.mobile">
+        <source>Mobile</source>
+        <target>crwdns310182:0crwdne310182:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.pager">
+        <source>Pager</source>
+        <target>crwdns310184:0crwdne310184:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.fax">
+        <source>Fax</source>
+        <target>crwdns310186:0crwdne310186:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.pc_fax">
+        <source>PC Fax</source>
+        <target>crwdns310188:0crwdne310188:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.email">
+        <source>E-Mail</source>
+        <target>crwdns310190:0crwdne310190:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
+        <source>Additional Informations</source>
+        <target>crwdns310192:0crwdne310192:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.image">
+        <source>Image</source>
+        <target>crwdns310194:0crwdne310194:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.office">
+        <source>Office</source>
+        <target>crwdns310196:0crwdne310196:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.building">
+        <source>Building</source>
+        <target>crwdns310198:0crwdne310198:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.department">
+        <source>Department</source>
+        <target>crwdns310200:0crwdne310200:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
+        <source>Language Skill</source>
+        <target>crwdns310202:0crwdne310202:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.speak">
+        <source>Speak</source>
+        <target>crwdns310204:0crwdne310204:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill.write">
+        <source>Write</source>
+        <target>crwdns310206:0crwdne310206:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office">
+        <source>Offices</source>
+        <target>crwdns310208:0crwdne310208:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.title">
+        <source>Title</source>
+        <target>crwdns310210:0crwdne310210:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.code">
+        <source>Office Code</source>
+        <target>crwdns310212:0crwdne310212:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.token">
+        <source>Office token</source>
+        <target>crwdns310214:0crwdne310214:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.department">
+        <source>Department</source>
+        <target>crwdns310216:0crwdne310216:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.subject_field">
+        <source>Subject field</source>
+        <target>crwdns310218:0crwdne310218:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building">
+        <source>Buildings</source>
+        <target>crwdns310220:0crwdne310220:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.title">
+        <source>Title</source>
+        <target>crwdns310222:0crwdne310222:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.address">
+        <source>Address</source>
+        <target>crwdns310224:0crwdne310224:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_department">
+        <source>Departments</source>
+        <target>crwdns310226:0crwdne310226:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_department.title">
+        <source>Title</source>
+        <target>crwdns310228:0crwdne310228:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill">
+        <source>Language Skills</source>
+        <target>crwdns310230:0crwdne310230:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.language">
+        <source>Language</source>
+        <target>crwdns310232:0crwdne310232:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what">
+        <source>What</source>
+        <target>crwdns310234:0crwdne310234:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
+        <source>Spoken Skills</source>
+        <target>crwdns310236:0crwdne310236:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
+        <source>Written Skills</source>
+        <target>crwdns310238:0crwdne310238:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
+        <source>Speak and Write</source>
+        <target>crwdns310240:0crwdne310240:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
+        <source>Skill</source>
+        <target>crwdns310242:0crwdne310242:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
+        <source>native language</source>
+        <target>crwdns310244:0crwdne310244:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
+        <source>fluent</source>
+        <target>crwdns310246:0crwdne310246:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
+        <source>good</source>
+        <target>crwdns310248:0crwdne310248:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
+        <source>basic knowledge</source>
+        <target>crwdns310250:0crwdne310250:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
+        <source>Infotext</source>
+        <target>crwdns310252:0crwdne310252:0</target>
+      </trans-unit>
+      <trans-unit id="search">
+        <source>Search</source>
+        <target>crwdns310254:0crwdne310254:0</target>
+      </trans-unit>
+      <trans-unit id="noResults">
+        <source>No results found</source>
+        <target>crwdns310256:0crwdne310256:0</target>
+      </trans-unit>
+      <trans-unit id="backToList">
+        <source>Back to list</source>
+        <target>crwdns310258:0crwdne310258:0</target>
+      </trans-unit>
+      <trans-unit id="edit">
+        <source>Edit entry</source>
+        <target>crwdns310260:0crwdne310260:0</target>
+      </trans-unit>
+      <trans-unit id="editYourRecord">
+        <source>Here you can edit your own data</source>
+        <target>crwdns310262:0crwdne310262:0</target>
+      </trans-unit>
+      <trans-unit id="cantEditYourRecord">
+        <source>For editing your record please contact %1$s (%2$s)</source>
+        <target>crwdns310264:0%1$scrwdnd310264:0%2$scrwdne310264:0</target>
+      </trans-unit>
+      <trans-unit id="save">
+        <source>Save</source>
+        <target>crwdns310266:0crwdne310266:0</target>
+      </trans-unit>
+      <trans-unit id="employeeCreated">
+        <source>New employee created</source>
+        <target>crwdns310268:0crwdne310268:0</target>
+      </trans-unit>
+      <trans-unit id="employeeUpdated">
+        <source>Employee successful edited</source>
+        <target>crwdns310270:0crwdne310270:0</target>
+      </trans-unit>
+      <trans-unit id="emailWasSend">
+        <source>An email was send to employee to edit this entry</source>
+        <target>crwdns310272:0crwdne310272:0</target>
+      </trans-unit>
+      <trans-unit id="optionSelectPrependLabel">
+        <source>--- Select ---</source>
+        <target>crwdns310274:0crwdne310274:0</target>
+      </trans-unit>
+      <trans-unit id="email.subject">
+        <source>Edit entry</source>
+        <target>crwdns310276:0crwdne310276:0</target>
+      </trans-unit>
+      <trans-unit id="email.text">
+        <source>Click following link to edit entry:</source>
+        <target>crwdns310278:0crwdne310278:0</target>
+      </trans-unit>
+      <trans-unit id="sendMailToContact">
+        <source>To change your Data, please contact</source>
+        <target>crwdns310280:0crwdne310280:0</target>
+      </trans-unit>
+      <trans-unit id="sendMailToContact">
+        <source>To change your Data, please contact</source>
+        <target>crwdns310280:0crwdne310280:0</target>
+      </trans-unit>
+      <trans-unit id="add">
+        <source>Add</source>
+        <target>crwdns310284:0crwdne310284:0</target>
+      </trans-unit>
+      <trans-unit id="remove">
+        <source>Remove</source>
+        <target>crwdns310286:0crwdne310286:0</target>
+      </trans-unit>
+      <trans-unit id="form.select.office">
+        <source>Select Office</source>
+        <target>crwdns340330:0crwdne340330:0</target>
+      </trans-unit>
+      <trans-unit id="form.input.keyword">
+        <source>Keyword</source>
+        <target>crwdns340332:0crwdne340332:0</target>
+      </trans-unit>
+      <trans-unit id="email.error">
+        <source>The email could not be sent. Please contact the administrator.</source>
+        <target>crwdns388590:0crwdne388590:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
