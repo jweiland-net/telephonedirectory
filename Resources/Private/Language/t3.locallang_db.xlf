@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T12:56:19Z" product-name="telephonedirectory" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="telephonedirectory.title">
+        <source>Telephone Directory</source>
+        <target>crwdns340328:0crwdne340328:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.employees.title">
+        <source>Telephone: Show employees</source>
+        <target>crwdns310288:0crwdne310288:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.employees.description">
+        <source>Use this plugin to list, view and search employees</source>
+        <target>crwdns310290:0crwdne310290:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.individual-employees.title">
+        <source>Telephone: Show selection of employees</source>
+        <target>crwdns310292:0crwdne310292:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.individual-employees.description">
+        <source>Use this plugin to list only selected employees</source>
+        <target>crwdns310294:0crwdne310294:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.interpreter.title">
+        <source>Telephone: Grouped by language skill</source>
+        <target>crwdns310296:0crwdne310296:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.telephonedirectory.interpreter.description">
+        <source>Use this plugin to list employees grouped by their language skills</source>
+        <target>crwdns310298:0crwdne310298:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee">
+        <source>Employees</source>
+        <target>crwdns310300:0crwdne310300:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title">
+        <source>Title</source>
+        <target>crwdns310302:0crwdne310302:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title.0">
+        <source>Mrs.</source>
+        <target>crwdns310304:0crwdne310304:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.title.1">
+        <source>Mr.</source>
+        <target>crwdns310306:0crwdne310306:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.first_name">
+        <source>First name</source>
+        <target>crwdns310308:0crwdne310308:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.last_name">
+        <source>Last name</source>
+        <target>crwdns310310:0crwdne310310:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.name_additions">
+        <source>Name additions</source>
+        <target>crwdns310312:0crwdne310312:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.is_catch_all_mail">
+        <source>Is Catch-All Mail?</source>
+        <target>crwdns310314:0crwdne310314:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.subject_field">
+        <source>Subject Field</source>
+        <target>crwdns310316:0crwdne310316:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.company">
+        <source>Company</source>
+        <target>crwdns310318:0crwdne310318:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.room_number">
+        <source>Room number</source>
+        <target>crwdns310320:0crwdne310320:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.function">
+        <source>Function</source>
+        <target>crwdns310322:0crwdne310322:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_function">
+        <source>Additional Function</source>
+        <target>crwdns310324:0crwdne310324:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone1">
+        <source>Telephone 1</source>
+        <target>crwdns310326:0crwdne310326:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone2">
+        <source>Telephone 2</source>
+        <target>crwdns310328:0crwdne310328:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.telephone3">
+        <source>Telephone 3</source>
+        <target>crwdns310330:0crwdne310330:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.mobile">
+        <source>Mobile</source>
+        <target>crwdns310332:0crwdne310332:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.pager">
+        <source>Pager</source>
+        <target>crwdns310334:0crwdne310334:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.fax">
+        <source>Fax</source>
+        <target>crwdns310336:0crwdne310336:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.pc_fax">
+        <source>PC Fax</source>
+        <target>crwdns310338:0crwdne310338:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.email">
+        <source>E-Mail</source>
+        <target>crwdns310340:0crwdne310340:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.additional_informations">
+        <source>Additional Informations</source>
+        <target>crwdns310342:0crwdne310342:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.regular_attendance">
+        <source>Regular attendance</source>
+        <target>crwdns310344:0crwdne310344:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.image">
+        <source>Image</source>
+        <target>crwdns310346:0crwdne310346:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.images">
+        <source>Images</source>
+        <target>crwdns310348:0crwdne310348:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.path_segment">
+        <source>Segment for URL</source>
+        <target>crwdns310350:0crwdne310350:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.office">
+        <source>Office</source>
+        <target>crwdns310352:0crwdne310352:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.building">
+        <source>Building</source>
+        <target>crwdns310354:0crwdne310354:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.department">
+        <source>Department</source>
+        <target>crwdns310356:0crwdne310356:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_employee.language_skill">
+        <source>Language Skill</source>
+        <target>crwdns310358:0crwdne310358:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office">
+        <source>Office</source>
+        <target>crwdns310360:0crwdne310360:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.title">
+        <source>Title</source>
+        <target>crwdns310362:0crwdne310362:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.code">
+        <source>Office Code</source>
+        <target>crwdns310364:0crwdne310364:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.token">
+        <source>Office token</source>
+        <target>crwdns310366:0crwdne310366:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.department">
+        <source>Department</source>
+        <target>crwdns310368:0crwdne310368:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_office.subject_field">
+        <source>Subject field</source>
+        <target>crwdns310370:0crwdne310370:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_subjectfield">
+        <source>Subject Field</source>
+        <target>crwdns310372:0crwdne310372:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_subjectfield.title">
+        <source>Title</source>
+        <target>crwdns310374:0crwdne310374:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building">
+        <source>Building</source>
+        <target>crwdns310376:0crwdne310376:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.title">
+        <source>Title</source>
+        <target>crwdns310378:0crwdne310378:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.street">
+        <source>Street</source>
+        <target>crwdns310380:0crwdne310380:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.house_number">
+        <source>House number</source>
+        <target>crwdns310382:0crwdne310382:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.zip">
+        <source>Zip</source>
+        <target>crwdns310384:0crwdne310384:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.city">
+        <source>City</source>
+        <target>crwdns310386:0crwdne310386:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_building.tx_maps2_uid">
+        <source>Marker</source>
+        <target>crwdns310388:0crwdne310388:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_department">
+        <source>Department</source>
+        <target>crwdns310390:0crwdne310390:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_department.title">
+        <source>Title</source>
+        <target>crwdns310392:0crwdne310392:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill">
+        <source>Language Skill</source>
+        <target>crwdns310394:0crwdne310394:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.language">
+        <source>Language</source>
+        <target>crwdns310396:0crwdne310396:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what">
+        <source>What</source>
+        <target>crwdns310398:0crwdne310398:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speak">
+        <source>Speak</source>
+        <target>crwdns310400:0crwdne310400:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.write">
+        <source>Write</source>
+        <target>crwdns310402:0crwdne310402:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.what.speakAndWrite">
+        <source>Speak and Write</source>
+        <target>crwdns310404:0crwdne310404:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill">
+        <source>Skill</source>
+        <target>crwdns310406:0crwdne310406:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.none">
+        <source>None</source>
+        <target>crwdns310408:0crwdne310408:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.native">
+        <source>Native language</source>
+        <target>crwdns310410:0crwdne310410:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.fluent">
+        <source>Fluent</source>
+        <target>crwdns310412:0crwdne310412:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.good">
+        <source>Good</source>
+        <target>crwdns310414:0crwdne310414:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.skill.basic">
+        <source>Basic knowledge</source>
+        <target>crwdns310416:0crwdne310416:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_languageskill.infotext">
+        <source>Infotext</source>
+        <target>crwdns310418:0crwdne310418:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_language">
+        <source>Language</source>
+        <target>crwdns310420:0crwdne310420:0</target>
+      </trans-unit>
+      <trans-unit id="tx_telephonedirectory_domain_model_language.title">
+        <source>Title</source>
+        <target>crwdns310422:0crwdne310422:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
